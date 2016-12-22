@@ -250,13 +250,13 @@ Partial Class AdminPage
         '
         'TabPage5
         '
+        Me.TabPage5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.TabPage5.Location = New System.Drawing.Point(4, 30)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage5.Size = New System.Drawing.Size(1252, 440)
         Me.TabPage5.TabIndex = 1
         Me.TabPage5.Text = "Schedule Maintenance"
-        Me.TabPage5.UseVisualStyleBackColor = True
         '
         'FacultyList
         '
