@@ -13,4 +13,5 @@ Module GlobalVariableModule
     Public activeuserfname As String = "" 'Public Variable to store the logged-in user's first name.
     Public activeuserlname As String = "" 'Public Variable to store the logged-in user's last name.
 
+
 End Module

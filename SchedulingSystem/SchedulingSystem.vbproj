@@ -85,12 +85,6 @@
     <Compile Include="AddSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AssignSched.Designer.vb">
-      <DependentUpon>AssignSched.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AssignSched.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="AssignSchedule.Designer.vb">
       <DependentUpon>AssignSchedule.vb</DependentUpon>
     </Compile>
@@ -136,9 +130,6 @@
   <ItemGroup>
     <EmbeddedResource Include="AddSchedule.resx">
       <DependentUpon>AddSchedule.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AssignSched.resx">
-      <DependentUpon>AssignSched.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AssignSchedule.resx">
       <DependentUpon>AssignSchedule.vb</DependentUpon>
