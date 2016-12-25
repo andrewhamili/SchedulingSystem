@@ -12,6 +12,13 @@ Public Class AssignSchedule
         Load_Classcodes()
         Timer_OverloadBlinker.Enabled = True
         Timer_TotalUnitOutput.Enabled = True
+        lblSubjDesc.Text = ""
+        lblDay.Text = ""
+        lblTimeTo.Text = ""
+        lblTimeFrom.Text = ""
+        lblRoom.Text = ""
+        lblUnit.Text = "0"
+        ComboBoxClasscode.Enabled = False
     End Sub
     Public Sub Load_Employee_Lastnames()
         ComboBoxEmployeeLastname.Items.Clear()
@@ -36,37 +43,50 @@ Public Class AssignSchedule
 
     End Sub
     Public Sub Load_Classcodes()
-        ComboBoxClasscode.Items.Clear()
-        If MySQLConn.State = ConnectionState.Open Then
-            MySQLConn.Close()
-        End If
-        MySQLConn.ConnectionString = connstring
-        Try
-            MySQLConn.Open()
-            comm = New MySqlCommand("SELECT classcode FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE isAssigned!='true'", MySQLConn)
-            reader = comm.ExecuteReader
-            While reader.Read
-                ComboBoxClasscode.Items.Add(reader.GetString("classcode"))
-            End While
-            MySQLConn.Close()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            MySQLConn.Dispose()
-        End Try
+
+        With ComboBoxClasscode
+            .Items.Clear()
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+            MySQLConn.ConnectionString = connstring
+            Try
+                MySQLConn.Open()
+                comm = New MySqlCommand("SELECT classcode FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE isAssigned!='true'", MySQLConn)
+                reader = comm.ExecuteReader
+                While reader.Read
+                    .Items.Add(reader.GetString("classcode"))
+                    .AutoCompleteCustomSource.Add(reader.GetString("classcode"))
+                End While
+                MySQLConn.Close()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            Finally
+                MySQLConn.Dispose()
+            End Try
+        End With
+
     End Sub
 
     Private Sub btnChooseClasscode_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnChooseClasscode.Click
+
+        'lblSubjDesc.Text = ""
+        'lblDay.Text = ""
+        'lblTimeTo.Text = ""
+        'lblTimeFrom.Text = ""
+        'lblRoom.Text = ""
+        'lblUnit.Text = "0"
+
         Dim instrname As String = LabelProfLname.Text & ", " & LabelProfFname.Text
-        Dim addedunit As Integer = CInt(lblUnit.Text)
-        Dim TotalTime
+        Dim addedunit As Integer = Val(lblUnit.Text)
 
 
 
         MySQLConn.ConnectionString = connstring
         Try
+            'To Check if there are exisiting subject that is already assigned to the selected employee
             MySQLConn.Open()
-            comm = New MySqlCommand("select * from `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` where instructor=@instructorname", MySQLConn)
+            comm = New MySqlCommand("SELECT DISTINCT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE instructor=@instructorname", MySQLConn)
             comm.Parameters.AddWithValue("instructorname", instrname)
             reader = comm.ExecuteReader
             Dim count As Integer
@@ -75,10 +95,12 @@ Public Class AssignSchedule
             While reader.Read
                 count += 1
             End While
-            If count >= 1 Then
-                MySQLConn.Close()
-                Dim divider As Integer = lblDay.Text.Length / 2 - 1
 
+            If count >= 1 Then
+                'If there were subject that are previously assigned to the selected employee, the system will now start to read the selected subject for Conflict test.
+                MySQLConn.Close()
+
+                Dim divider As Integer = lblDay.Text.Length / 2 - 1 'Divides the Days to two characters. for searching by Day
                 Dim looper As Integer
                 Dim starter As Integer = 0
                 Dim stopper As Integer = 0
@@ -88,22 +110,29 @@ Public Class AssignSchedule
                 Dim conflictClasscode As String
                 While looper <= divider
                     daycheck = lblDay.Text.Substring(starter, 2)
+
                     MySQLConn.Open()
+
                     starter = starter + 2
                     looper = looper + 1
-                    'comm = New MySqlCommand("SELECT * FROM  `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day LIKE '%" & daytext & "%' and ('" & AssignSchedLabelTimeFrom.Text & "' >=TimeStart  '" & AssignSchedLabelTimeFrom.Text & "' < TimeEnd) and instructor='" & instrname & "'", MySQLConn)
-                    comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & daycheck & "%' AND TimeStart > @timefrom and TimeEnd < @timeto AND instructor=@instructorname;", MySQLConn)
+
+                    comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & daycheck & "%' AND TimeEnd > @timefrom and TimeStart < @timeto AND instructor=@instructorname;", MySQLConn)
+
+                    'SELECT * FROM `assignedsubj2015-20161st` WHERE day like '%Mo%' AND (TimeEnd > '14:00' AND TimeStart <'15:00') AND instructor='Ayo, Eliza'
                     comm.Parameters.AddWithValue("instructorname", instrname)
-                    comm.Parameters.AddWithValue("timeto", lblTimeTo)
-                    comm.Parameters.AddWithValue("timefrom", lblTimeFrom)
+                    comm.Parameters.AddWithValue("timeto", lblTimeTo.Text)
+                    comm.Parameters.AddWithValue("timefrom", lblTimeFrom.Text)
                     reader = comm.ExecuteReader
                     While reader.Read
+                        'If the System detects a conflict...
                         conflictTimeFrom = reader.GetString("TimeStart")
                         conflictTimeTo = reader.GetString("TimeEnd")
                         conflictClasscode = reader.GetString("classcode")
+                        '...the System will increment the variable "Stopper" to 1.
                         stopper += 1
                     End While
                     MySQLConn.Close()
+                    'If the "sttopper" variable is greater that 1, there is a conflicting schedule.
                     If stopper > 0 Then
                         MsgBox("The System has detected a conflict! " & vbCrLf & "" & vbCrLf & "Classcode: " & conflictClasscode & "" & vbCrLf & "Start Time: " & conflictTimeFrom & "" & vbCrLf & "End Time: " & conflictTimeTo & "" & vbCrLf & "Day : " & daycheck & "", MsgBoxStyle.Critical, "Occupied")
                         MySQLConn.Close()
@@ -125,9 +154,11 @@ Public Class AssignSchedule
 
             MsgBox("The Subject does not exist! Please add it in the Subjects Database first.", MsgBoxStyle.Critical, "No Subject.")
         ElseIf pendingunit + addedunit > 24 Then
-            Dim warning As Integer
+
+            Dim warning As DialogResult
             warning = MsgBox("WARNING! Faculty load for " & LabelProfLname.Text & "will exceed the maximum load allowed. Do you still wamt to assign this subject to " & LabelProfFname.Text & "?", MsgBoxStyle.YesNo + MsgBoxStyle.Exclamation, "Overload")
-            If warning = 6 Then
+
+            If warning = Windows.Forms.DialogResult.Yes Then
                 With DataGridViewPendingList
                     ' Write to cell 
                     .Rows.Add()
@@ -138,12 +169,18 @@ Public Class AssignSchedule
                     .Rows(AssignSubejectPendingRowCounter).Cells("TimeTo").Value = lblTimeTo.Text
                     .Rows(AssignSubejectPendingRowCounter).Cells("Room").Value = lblRoom.Text
                     .Rows(AssignSubejectPendingRowCounter).Cells("Unit").Value = lblUnit.Text
-                    
+
 
                     pendingunit = pendingunit + lblUnit.Text
                     AssignSubejectPendingRowCounter = AssignSubejectPendingRowCounter + 1
                     Timer_OverloadBlinker.Enabled = True
+                    With ComboBoxClasscode
+                        .Items.Remove(ComboBoxClasscode.Text)
+                        .DropDownStyle = ComboBoxStyle.DropDown
+                        .AutoCompleteCustomSource.Remove(ComboBoxClasscode.Text)
+                        .AutoCompleteMode = AutoCompleteMode.SuggestAppend
 
+                    End With
 
 
                 End With
@@ -163,10 +200,14 @@ Public Class AssignSchedule
                 .Rows(AssignSubejectPendingRowCounter).Cells("Unit").Value = lblUnit.Text
 
 
-                pendingunit = pendingunit + lblunit.Text
+                pendingunit = pendingunit + lblUnit.Text
                 AssignSubejectPendingRowCounter = AssignSubejectPendingRowCounter + 1
 
+                With ComboBoxClasscode
+                    .Items.Remove(ComboBoxClasscode.Text)
+                    .DropDownStyle = ComboBoxStyle.DropDown
 
+                End With
 
 
             End With
@@ -176,14 +217,7 @@ Public Class AssignSchedule
 
 
 
-        With ComboBoxClasscode
-            .AutoCompleteCustomSource.Remove(ComboBoxClasscode.Text)
-            .Items.Remove(ComboBoxClasscode.Text)
-            .Text = ""
-            .DropDownStyle = ComboBoxStyle.DropDown
-            .AutoCompleteSource = AutoCompleteSource.CustomSource
-            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        End With
+
 
 
         lblSubjDesc.Text = ""
@@ -195,7 +229,15 @@ Public Class AssignSchedule
 
     End Sub
 
+    Private Sub ComboBoxEmployeeLastname_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles ComboBoxEmployeeLastname.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            ComboBoxEmployeeLastname.Enabled = False
+            ComboBoxClasscode.Enabled = True
+        End If
+    End Sub
+
     Private Sub ComboBoxEmployeeLastname_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxEmployeeLastname.SelectedIndexChanged
+        ComboBoxClasscode.Enabled = True
         pendingunit = 0
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
@@ -263,6 +305,12 @@ Public Class AssignSchedule
             lblTotalUnits.Visible = True
         End If
 
+    End Sub
+
+    Private Sub ComboBoxClasscode_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles ComboBoxClasscode.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            btnChooseClasscode.PerformClick()
+        End If
     End Sub
 
     Private Sub ComboBoxClasscode_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxClasscode.SelectedIndexChanged
