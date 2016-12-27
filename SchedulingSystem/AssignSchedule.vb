@@ -368,4 +368,141 @@ Public Class AssignSchedule
     Private Sub Timer_TotalUnitOutput_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer_TotalUnitOutput.Tick
         lblTotalUnits.Text = pendingunit
     End Sub
+
+    Private Sub DataGridViewPendingList_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewPendingList.CellDoubleClick
+        If e.RowIndex >= 0 Then
+            Dim row As DataGridViewRow
+            row = DataGridViewPendingList.Rows(e.RowIndex)
+
+            ComboBoxClasscode.Items.Add(row.Cells("Code").Value.ToString)
+            ComboBoxClasscode.AutoCompleteCustomSource.Add(row.Cells("Code").Value.ToString)
+            pendingunit = pendingunit - row.Cells("Unit").Value.ToString
+            DataGridViewPendingList.Rows.RemoveAt(e.RowIndex)
+            AssignSubejectPendingRowCounter = AssignSubejectPendingRowCounter - 1
+
+
+
+
+        End If
+    End Sub
+
+    Private Sub btnSaveSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSaveSchedule.Click
+        Dim rownumber As Integer = DataGridViewPendingList.Rows.Count
+
+        Dim conflictclasscode As String = ""
+        Dim conflictdesc As String = ""
+        Dim conflictday As String = ""
+        Dim conflicttimefrom As String = ""
+        Dim conflicttimeto As String = ""
+        Dim conflictroom As String = ""
+        Dim errorcount As Boolean = False
+
+        'MySQLConn.ConnectionString = connstring
+
+        'Dim mo As Boolean = CheckBoxMo.Checked
+        'Dim tu As Boolean = CheckBoxTu.Checked
+        'Dim we As Boolean = CheckBoxWe.Checked
+        'Dim th As Boolean = CheckBoxTh.Checked
+        'Dim fr As Boolean = CheckBoxFr.Checked
+        'Dim sa As Boolean = CheckBoxSa.Checked
+        'daytext = ""
+
+        Dim counter As Integer
+        counter = 0
+        If rownumber > 0 Then
+
+            While counter <> rownumber
+
+                Dim subjcode As String = DataGridViewPendingList.Rows(counter).Cells("Code").Value
+                Dim subjdesc As String = DataGridViewPendingList.Rows(counter).Cells("SubjectDescription").Value
+                Dim subjday As String = DataGridViewPendingList.Rows(counter).Cells("Day").Value
+                Dim subjtimefrom As String = DataGridViewPendingList.Rows(counter).Cells("TimeFrom").Value
+                Dim subjtimeto As String = DataGridViewPendingList.Rows(counter).Cells("TimeTo").Value
+                Dim subjroom As String = DataGridViewPendingList.Rows(counter).Cells("Room").Value
+                Dim subjunit As String = DataGridViewPendingList.Rows(counter).Cells("Unit").Value
+                Dim instrname As String = LabelProfLname.Text & ", " & LabelProfFname.Text
+
+                MySQLConn.ConnectionString = connstring
+
+                Try
+                    'MySQLConn.Open()
+                    'query = "select * from `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` where instructor='" & instrname & " and day='" & subjday & "', and ('" & subjtimefrom & "' >=TimeFrom and '" & subjtimefrom & "' < TimeTo)"
+                    MySQLConn.Open()
+                    'query = "select * from  `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` where day like '%" & subjday & "%' and ('" & subjtimefrom & "' >=TimeStart and '" & subjtimeto & "' = TimeEnd) and instructor='" & instrname & "'"
+                    comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & subjday & "%' AND TimeEnd > @timeto and TimeStart < @timefrom AND instructor=@instructorname;", MySQLConn)
+
+                    comm.Parameters.AddWithValue("instructorname", instrname)
+                    comm.Parameters.AddWithValue("timeto", subjtimeto)
+                    comm.Parameters.AddWithValue("timefrom", subjtimefrom)
+
+                    reader = comm.ExecuteReader
+                    Dim count As Integer
+                    count = 0
+                    While reader.Read
+                        count = count + 1
+                        conflictclasscode = reader.GetString("classcode")
+                        conflictdesc = reader.GetString("subj_desc")
+                        conflictday = reader.GetString("day")
+                        conflicttimefrom = reader.GetString("TimeStart")
+                        conflicttimeto = reader.GetString("TimeEnd")
+                        conflictroom = reader.GetString("room")
+                    End While
+
+                    If count > 0 Then
+                        MsgBox("You cannot assign " & subjcode & " to " & instrname & " because the system has detected a conflict! " & vbCrLf & "" & vbCrLf & "Classcode:" & conflictclasscode & "" & vbCrLf & "Subject Dscription:" & conflictdesc & "" & vbCrLf & "DAy:" & conflictday & "" & vbCrLf & "Time From:" & conflicttimefrom & "" & vbCrLf & "Time To::" & conflicttimeto & "" & vbCrLf & "Room:" & conflictroom & "", MsgBoxStyle.Critical)
+                        errorcount = True
+                        Exit While
+                    Else
+                        MySQLConn.Close()
+                        MySQLConn.Open()
+                        'query = "insert into `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` values('" & subjcode & "', '" & subjdesc & "', '" & subjday & "', '" & subjroom & "', '" & subjtimefrom & "', '" & subjtimeto & "', '" & instrname & "', '" & subjunit & "')"
+                        comm = New MySqlCommand("INSERT INTO `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` VALUES (@subjectcode, @subjectdesc, @subjday, @subjroom, @subjtimefrom, @subjtimeto, @instructorname, @unit)", MySQLConn)
+                        comm.Parameters.AddWithValue("subjectcode", subjcode)
+                        comm.Parameters.AddWithValue("subjectdesc", subjdesc)
+                        comm.Parameters.AddWithValue("subjday", subjday)
+                        comm.Parameters.AddWithValue("subjroom", subjroom)
+                        comm.Parameters.AddWithValue("subjtimefrom", subjtimefrom)
+                        comm.Parameters.AddWithValue("subjtimeto", subjtimeto)
+                        comm.Parameters.AddWithValue("instructorname", instrname)
+                        comm.Parameters.AddWithValue("unit", subjunit)
+
+                        reader = comm.ExecuteReader
+                        MySQLConn.Close()
+
+                        MySQLConn.Open()
+                        'query = "update `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` set isAssigned='true' where classcode='" & subjcode & "'"
+                        comm = New MySqlCommand("UPDATE `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` SET isAssigned='true' WHERE classcode=@classcode", MySQLConn)
+
+                        comm.Parameters.AddWithValue("classcode", subjcode)
+
+                        reader = comm.ExecuteReader
+                        MySQLConn.Close()
+                    End If
+
+
+
+                Catch ex As Exception
+
+                    MsgBox(ex.Message)
+
+                Finally
+                    MySQLConn.Dispose()
+
+
+                End Try
+
+                counter = counter + 1
+            End While
+
+            DataGridViewPendingList.Rows.Clear()
+            AssignSubejectPendingRowCounter = 0
+        Else
+            MsgBox("No subject assigned!", MsgBoxStyle.Information, "Empty")
+        End If
+        If errorcount = False Then
+            MsgBox("Congratuations! You have succesfully assigned all selected subjects to " & LabelProfLname.Text & ", " & LabelProfFname.Text & ". Thank you!", MsgBoxStyle.Information, "Success")
+        Else
+            MsgBox("Some of the selected subjects were successfully assigned and some were not assigned to " & LabelProfLname.Text & ", " & LabelProfFname.Text & ". because there is a conflict!", MsgBoxStyle.Critical, "Success")
+        End If
+    End Sub
 End Class
