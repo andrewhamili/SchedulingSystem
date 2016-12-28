@@ -423,79 +423,74 @@ Public Class AssignSchedule
                 Dim instrname As String = LabelProfLname.Text & ", " & LabelProfFname.Text
 
                 MySQLConn.ConnectionString = connstring
+                Dim starter As Integer = 0
+                Dim divider As Integer = subjday.Length / 2 - 1
+                Dim looper As Integer = 0
+                Dim daycheck As String
 
-                Try
-                    'MySQLConn.Open()
-                    'query = "select * from `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` where instructor='" & instrname & " and day='" & subjday & "', and ('" & subjtimefrom & "' >=TimeFrom and '" & subjtimefrom & "' < TimeTo)"
-                    MySQLConn.Open()
-                    'query = "select * from  `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` where day like '%" & subjday & "%' and ('" & subjtimefrom & "' >=TimeStart and '" & subjtimeto & "' = TimeEnd) and instructor='" & instrname & "'"
-                    comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & subjday & "%' AND TimeEnd > @timeto and TimeStart < @timefrom AND instructor=@instructorname;", MySQLConn)
-
-                    comm.Parameters.AddWithValue("instructorname", instrname)
-                    comm.Parameters.AddWithValue("timeto", subjtimeto)
-                    comm.Parameters.AddWithValue("timefrom", subjtimefrom)
-
-                    reader = comm.ExecuteReader
-                    Dim count As Integer
-                    count = 0
-                    While reader.Read
-                        count = count + 1
-                        conflictclasscode = reader.GetString("classcode")
-                        conflictdesc = reader.GetString("subj_desc")
-                        conflictday = reader.GetString("day")
-                        conflicttimefrom = reader.GetString("TimeStart")
-                        conflicttimeto = reader.GetString("TimeEnd")
-                        conflictroom = reader.GetString("room")
-                    End While
-
-                    If count > 0 Then
-                        MsgBox("You cannot assign " & subjcode & " to " & instrname & " because the system has detected a conflict! " & vbCrLf & "" & vbCrLf & "Classcode:" & conflictclasscode & "" & vbCrLf & "Subject Dscription:" & conflictdesc & "" & vbCrLf & "DAy:" & conflictday & "" & vbCrLf & "Time From:" & conflicttimefrom & "" & vbCrLf & "Time To::" & conflicttimeto & "" & vbCrLf & "Room:" & conflictroom & "", MsgBoxStyle.Critical)
-                        errorcount = True
-                        Exit While
-                    Else
-                        MySQLConn.Close()
+                While looper <= divider
+                    daycheck = subjday.Substring(starter, 2)
+                    looper += 1
+                    starter += 2
+                    Try
                         MySQLConn.Open()
-                        'query = "insert into `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` values('" & subjcode & "', '" & subjdesc & "', '" & subjday & "', '" & subjroom & "', '" & subjtimefrom & "', '" & subjtimeto & "', '" & instrname & "', '" & subjunit & "')"
-                        comm = New MySqlCommand("INSERT INTO `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` VALUES (@subjectcode, @subjectdesc, @subjday, @subjroom, @subjtimefrom, @subjtimeto, @instructorname, @unit)", MySQLConn)
-                        comm.Parameters.AddWithValue("subjectcode", subjcode)
-                        comm.Parameters.AddWithValue("subjectdesc", subjdesc)
-                        comm.Parameters.AddWithValue("subjday", subjday)
-                        comm.Parameters.AddWithValue("subjroom", subjroom)
-                        comm.Parameters.AddWithValue("subjtimefrom", subjtimefrom)
-                        comm.Parameters.AddWithValue("subjtimeto", subjtimeto)
+                        comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & daycheck & "%' AND TimeEnd > @timefrom and TimeStart < @timeto AND instructor=@instructorname;", MySQLConn)
+
+                        'SELECT * FROM `assignedsubj2015-20161st` WHERE day like '%Mo%' AND (TimeEnd > '14:00' AND TimeStart <'15:00') AND instructor='Ayo, Eliza'
                         comm.Parameters.AddWithValue("instructorname", instrname)
-                        comm.Parameters.AddWithValue("unit", subjunit)
-
+                        comm.Parameters.AddWithValue("timeto", subjtimeto)
+                        comm.Parameters.AddWithValue("timefrom", subjtimefrom)
                         reader = comm.ExecuteReader
+                        Dim count As Integer = 0
+                        While reader.Read
+                            count = count + 1
+                            conflictclasscode = reader.GetString("classcode")
+                            conflictdesc = reader.GetString("subj_desc")
+                            conflictday = reader.GetString("day")
+                            conflicttimefrom = reader.GetString("TimeStart")
+                            conflicttimeto = reader.GetString("TimeEnd")
+                            conflictroom = reader.GetString("room")
+                        End While
                         MySQLConn.Close()
+                        If count > 0 Then
+                            MsgBox("You cannot assign " & subjcode & " to " & instrname & " because the system has detected a conflict! " & vbCrLf & "" & vbCrLf & "Classcode:" & conflictclasscode & "" & vbCrLf & "Subject Dscription:" & conflictdesc & "" & vbCrLf & "DAy:" & conflictday & "" & vbCrLf & "Time From:" & conflicttimefrom & "" & vbCrLf & "Time To::" & conflicttimeto & "" & vbCrLf & "Room:" & conflictroom & "", MsgBoxStyle.Critical)
+                            errorcount = True
+                            Exit While
+                        End If
+                        
 
-                        MySQLConn.Open()
-                        'query = "update `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` set isAssigned='true' where classcode='" & subjcode & "'"
-                        comm = New MySqlCommand("UPDATE `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` SET isAssigned='true' WHERE classcode=@classcode", MySQLConn)
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    Finally
+                        MySQLConn.Dispose()
+                    End Try
+                End While
+                If errorcount = False Then
+                    MySQLConn.Close()
+                    MySQLConn.Open()
+                    comm = New MySqlCommand("INSERT INTO `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` VALUES(@classcode, @subjdesc, @subjday, @subjroom, @TImeStart, @TimeEnd, @instructor, @units)", MySQLConn)
+                    comm.Parameters.AddWithValue("classcode", subjcode)
+                    comm.Parameters.AddWithValue("subjdesc", subjdesc)
+                    comm.Parameters.AddWithValue("subjday", subjday)
+                    comm.Parameters.AddWithValue("subjroom", subjroom)
+                    comm.Parameters.AddWithValue("TimeStart", subjtimefrom)
+                    comm.Parameters.AddWithValue("TimeEnd", subjtimeto)
+                    comm.Parameters.AddWithValue("instructor", instrname)
+                    comm.Parameters.AddWithValue("units", subjunit)
+                    reader = comm.ExecuteReader
+                    MySQLConn.Close()
+                    MySQLConn.Open()
+                    comm = New MySqlCommand("UPDATE `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` SET isAssigned='true'", MySQLConn)
+                    reader = comm.ExecuteReader
+                    MySQLConn.Close()
+                End If
 
-                        comm.Parameters.AddWithValue("classcode", subjcode)
-
-                        reader = comm.ExecuteReader
-                        MySQLConn.Close()
-                    End If
-
-
-
-                Catch ex As Exception
-
-                    MsgBox(ex.Message)
-
-                Finally
-                    MySQLConn.Dispose()
-
-
-                End Try
+                
 
                 counter = counter + 1
             End While
 
-            DataGridViewPendingList.Rows.Clear()
-            AssignSubejectPendingRowCounter = 0
+            
         Else
             MsgBox("No subject assigned!", MsgBoxStyle.Information, "Empty")
         End If
