@@ -8,6 +8,7 @@ Public Class AssignSchedule
 
 
     Private Sub AssignSchedule_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Console.WriteLine(DataGridViewPendingList.Rows.Count)
         Load_Employee_Lastnames()
         Load_Classcodes()
         Timer_OverloadBlinker.Enabled = True
@@ -18,6 +19,8 @@ Public Class AssignSchedule
         lblTimeFrom.Text = ""
         lblRoom.Text = ""
         lblUnit.Text = "0"
+        LabelProfFname.Text = ""
+        LabelProfLname.Text = ""
         ComboBoxClasscode.Enabled = False
     End Sub
     Public Sub Load_Employee_Lastnames()
@@ -69,7 +72,8 @@ Public Class AssignSchedule
     End Sub
 
     Private Sub btnChooseClasscode_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnChooseClasscode.Click
-
+        AssignSubejectPendingRowCounter = DataGridViewPendingList.Rows.Count
+        'AssignSubejectPendingRowCounter = (DataGridViewPendingList.Rows.Count) - 1
         'lblSubjDesc.Text = ""
         'lblDay.Text = ""
         'lblTimeTo.Text = ""
@@ -201,7 +205,7 @@ Public Class AssignSchedule
 
 
                 pendingunit = pendingunit + lblUnit.Text
-                AssignSubejectPendingRowCounter = AssignSubejectPendingRowCounter + 1
+                'AssignSubejectPendingRowCounter = AssignSubejectPendingRowCounter + 1
 
                 With ComboBoxClasscode
                     .Items.Remove(ComboBoxClasscode.Text)
@@ -387,6 +391,7 @@ Public Class AssignSchedule
     End Sub
 
     Private Sub btnSaveSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSaveSchedule.Click
+
         Dim rownumber As Integer = DataGridViewPendingList.Rows.Count
 
         Dim conflictclasscode As String = ""
@@ -413,13 +418,13 @@ Public Class AssignSchedule
 
             While counter <> rownumber
 
-                Dim subjcode As String = DataGridViewPendingList.Rows(counter).Cells("Code").Value
-                Dim subjdesc As String = DataGridViewPendingList.Rows(counter).Cells("SubjectDescription").Value
-                Dim subjday As String = DataGridViewPendingList.Rows(counter).Cells("Day").Value
-                Dim subjtimefrom As String = DataGridViewPendingList.Rows(counter).Cells("TimeFrom").Value
-                Dim subjtimeto As String = DataGridViewPendingList.Rows(counter).Cells("TimeTo").Value
-                Dim subjroom As String = DataGridViewPendingList.Rows(counter).Cells("Room").Value
-                Dim subjunit As String = DataGridViewPendingList.Rows(counter).Cells("Unit").Value
+                Dim subjcode As String = DataGridViewPendingList.Rows(0).Cells("Code").Value
+                Dim subjdesc As String = DataGridViewPendingList.Rows(0).Cells("SubjectDescription").Value
+                Dim subjday As String = DataGridViewPendingList.Rows(0).Cells("Day").Value
+                Dim subjtimefrom As String = DataGridViewPendingList.Rows(0).Cells("TimeFrom").Value
+                Dim subjtimeto As String = DataGridViewPendingList.Rows(0).Cells("TimeTo").Value
+                Dim subjroom As String = DataGridViewPendingList.Rows(0).Cells("Room").Value
+                Dim subjunit As String = DataGridViewPendingList.Rows(0).Cells("Unit").Value
                 Dim instrname As String = LabelProfLname.Text & ", " & LabelProfFname.Text
 
                 MySQLConn.ConnectionString = connstring
@@ -453,11 +458,11 @@ Public Class AssignSchedule
                         End While
                         MySQLConn.Close()
                         If count > 0 Then
-                            MsgBox("You cannot assign " & subjcode & " to " & instrname & " because the system has detected a conflict! " & vbCrLf & "" & vbCrLf & "Classcode:" & conflictclasscode & "" & vbCrLf & "Subject Dscription:" & conflictdesc & "" & vbCrLf & "DAy:" & conflictday & "" & vbCrLf & "Time From:" & conflicttimefrom & "" & vbCrLf & "Time To::" & conflicttimeto & "" & vbCrLf & "Room:" & conflictroom & "", MsgBoxStyle.Critical)
+                            MsgBox("You cannot assign " & subjcode & " to " & instrname & " because the system has detected a conflict! " & vbCrLf & "" & vbCrLf & "Classcode: " & conflictclasscode & "" & vbCrLf & "Subject Dscription: " & conflictdesc & "" & vbCrLf & "Day: " & conflictday & "" & vbCrLf & "Time From: " & conflicttimefrom & "" & vbCrLf & "Time To: " & conflicttimeto & "" & vbCrLf & "Room: " & conflictroom & "", MsgBoxStyle.Critical)
                             errorcount = True
                             Exit While
                         End If
-                        
+
 
                     Catch ex As Exception
                         MsgBox(ex.Message)
@@ -480,24 +485,26 @@ Public Class AssignSchedule
                     reader = comm.ExecuteReader
                     MySQLConn.Close()
                     MySQLConn.Open()
-                    comm = New MySqlCommand("UPDATE `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` SET isAssigned='true'", MySQLConn)
+                    comm = New MySqlCommand("UPDATE `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` SET isAssigned='true' WHERE classcode=@classcode", MySQLConn)
+                    comm.Parameters.AddWithValue("classcode", subjcode)
                     reader = comm.ExecuteReader
                     MySQLConn.Close()
+                    DataGridViewPendingList.Rows.RemoveAt(0)
                 End If
 
-                
+
 
                 counter = counter + 1
             End While
 
-            
+            If errorcount = False Then
+                MsgBox("Congratuations! You have succesfully assigned all selected subjects to " & LabelProfLname.Text & ", " & LabelProfFname.Text & ". Thank you!", MsgBoxStyle.Information, "Success")
+            Else
+                MsgBox("Some of the selected subjects were successfully assigned and some were not assigned to " & LabelProfLname.Text & ", " & LabelProfFname.Text & ". because there is a conflict!", MsgBoxStyle.Critical, "Success")
+            End If
         Else
             MsgBox("No subject assigned!", MsgBoxStyle.Information, "Empty")
         End If
-        If errorcount = False Then
-            MsgBox("Congratuations! You have succesfully assigned all selected subjects to " & LabelProfLname.Text & ", " & LabelProfFname.Text & ". Thank you!", MsgBoxStyle.Information, "Success")
-        Else
-            MsgBox("Some of the selected subjects were successfully assigned and some were not assigned to " & LabelProfLname.Text & ", " & LabelProfFname.Text & ". because there is a conflict!", MsgBoxStyle.Critical, "Success")
-        End If
+        
     End Sub
 End Class
