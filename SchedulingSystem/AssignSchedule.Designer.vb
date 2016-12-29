@@ -56,28 +56,37 @@ Partial Class AssignSchedule
         Me.lblUnit = New System.Windows.Forms.Label()
         Me.Timer_OverloadBlinker = New System.Windows.Forms.Timer(Me.components)
         Me.Timer_TotalUnitOutput = New System.Windows.Forms.Timer(Me.components)
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.DataGridViewPendingList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBoxEmployeeInfo.SuspendLayout()
         Me.SuspendLayout()
         '
         'ComboBoxEmployeeLastname
         '
+        Me.ComboBoxEmployeeLastname.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ComboBoxEmployeeLastname.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.ComboBoxEmployeeLastname.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.ComboBoxEmployeeLastname.FormattingEnabled = True
-        Me.ComboBoxEmployeeLastname.Location = New System.Drawing.Point(87, 12)
+        Me.ComboBoxEmployeeLastname.Location = New System.Drawing.Point(167, 17)
         Me.ComboBoxEmployeeLastname.Name = "ComboBoxEmployeeLastname"
         Me.ComboBoxEmployeeLastname.Size = New System.Drawing.Size(196, 26)
         Me.ComboBoxEmployeeLastname.TabIndex = 0
         '
         'ComboBoxClasscode
         '
+        Me.ComboBoxClasscode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ComboBoxClasscode.FormattingEnabled = True
-        Me.ComboBoxClasscode.Location = New System.Drawing.Point(87, 60)
+        Me.ComboBoxClasscode.Location = New System.Drawing.Point(167, 63)
         Me.ComboBoxClasscode.Name = "ComboBoxClasscode"
         Me.ComboBoxClasscode.Size = New System.Drawing.Size(196, 26)
         Me.ComboBoxClasscode.TabIndex = 1
         '
         'btnChooseClasscode
         '
+        Me.btnChooseClasscode.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnChooseClasscode.BackColor = System.Drawing.Color.LightGreen
         Me.btnChooseClasscode.Location = New System.Drawing.Point(1, 350)
         Me.btnChooseClasscode.Name = "btnChooseClasscode"
@@ -148,7 +157,8 @@ Partial Class AssignSchedule
         '
         'btnSaveSchedule
         '
-        Me.btnSaveSchedule.Location = New System.Drawing.Point(530, 350)
+        Me.btnSaveSchedule.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSaveSchedule.Location = New System.Drawing.Point(661, 355)
         Me.btnSaveSchedule.Name = "btnSaveSchedule"
         Me.btnSaveSchedule.Size = New System.Drawing.Size(109, 40)
         Me.btnSaveSchedule.TabIndex = 4
@@ -175,6 +185,7 @@ Partial Class AssignSchedule
         '
         'GroupBoxEmployeeInfo
         '
+        Me.GroupBoxEmployeeInfo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBoxEmployeeInfo.Controls.Add(Me.Label8)
         Me.GroupBoxEmployeeInfo.Controls.Add(Me.Label7)
         Me.GroupBoxEmployeeInfo.Controls.Add(Me.LabelProfLname)
@@ -208,7 +219,8 @@ Partial Class AssignSchedule
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(646, 350)
+        Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCancel.Location = New System.Drawing.Point(777, 355)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 40)
         Me.btnCancel.TabIndex = 8
@@ -217,6 +229,7 @@ Partial Class AssignSchedule
         '
         'Label1
         '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial Black", 12.0!)
         Me.Label1.Location = New System.Drawing.Point(12, 126)
@@ -227,6 +240,7 @@ Partial Class AssignSchedule
         '
         'Label2
         '
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial Black", 12.0!)
         Me.Label2.Location = New System.Drawing.Point(12, 169)
@@ -237,6 +251,7 @@ Partial Class AssignSchedule
         '
         'Label3
         '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial Black", 12.0!)
         Me.Label3.Location = New System.Drawing.Point(12, 210)
@@ -247,6 +262,7 @@ Partial Class AssignSchedule
         '
         'Label4
         '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial Black", 12.0!)
         Me.Label4.Location = New System.Drawing.Point(12, 252)
@@ -257,6 +273,7 @@ Partial Class AssignSchedule
         '
         'Label5
         '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Arial Black", 12.0!)
         Me.Label5.Location = New System.Drawing.Point(12, 294)
@@ -267,6 +284,7 @@ Partial Class AssignSchedule
         '
         'Label6
         '
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial Black", 12.0!)
         Me.Label6.Location = New System.Drawing.Point(163, 363)
@@ -277,6 +295,7 @@ Partial Class AssignSchedule
         '
         'lblTotalUnits
         '
+        Me.lblTotalUnits.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblTotalUnits.AutoSize = True
         Me.lblTotalUnits.Location = New System.Drawing.Point(293, 366)
         Me.lblTotalUnits.Name = "lblTotalUnits"
@@ -286,6 +305,7 @@ Partial Class AssignSchedule
         '
         'lblSubjDesc
         '
+        Me.lblSubjDesc.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblSubjDesc.AutoSize = True
         Me.lblSubjDesc.Location = New System.Drawing.Point(201, 129)
         Me.lblSubjDesc.Name = "lblSubjDesc"
@@ -295,6 +315,7 @@ Partial Class AssignSchedule
         '
         'lblDay
         '
+        Me.lblDay.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblDay.AutoSize = True
         Me.lblDay.Location = New System.Drawing.Point(200, 172)
         Me.lblDay.Name = "lblDay"
@@ -304,6 +325,7 @@ Partial Class AssignSchedule
         '
         'lblTimeFrom
         '
+        Me.lblTimeFrom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblTimeFrom.AutoSize = True
         Me.lblTimeFrom.Location = New System.Drawing.Point(202, 210)
         Me.lblTimeFrom.Name = "lblTimeFrom"
@@ -313,6 +335,7 @@ Partial Class AssignSchedule
         '
         'lblTimeTo
         '
+        Me.lblTimeTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblTimeTo.AutoSize = True
         Me.lblTimeTo.Location = New System.Drawing.Point(264, 210)
         Me.lblTimeTo.Name = "lblTimeTo"
@@ -322,6 +345,7 @@ Partial Class AssignSchedule
         '
         'lblRoom
         '
+        Me.lblRoom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblRoom.AutoSize = True
         Me.lblRoom.Location = New System.Drawing.Point(200, 255)
         Me.lblRoom.Name = "lblRoom"
@@ -331,6 +355,7 @@ Partial Class AssignSchedule
         '
         'lblUnit
         '
+        Me.lblUnit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblUnit.AutoSize = True
         Me.lblUnit.Location = New System.Drawing.Point(200, 297)
         Me.lblUnit.Name = "lblUnit"
@@ -344,12 +369,36 @@ Partial Class AssignSchedule
         'Timer_TotalUnitOutput
         '
         '
+        'Label9
+        '
+        Me.Label9.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(3, 20)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(158, 18)
+        Me.Label9.TabIndex = 22
+        Me.Label9.Text = "Employee Last Name"
+        '
+        'Label10
+        '
+        Me.Label10.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(40, 71)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(83, 18)
+        Me.Label10.TabIndex = 23
+        Me.Label10.Text = "Classcode"
+        '
         'AssignSchedule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(857, 559)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.lblUnit)
         Me.Controls.Add(Me.lblRoom)
         Me.Controls.Add(Me.lblTimeTo)
@@ -373,6 +422,7 @@ Partial Class AssignSchedule
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "AssignSchedule"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AssignSchedule"
         CType(Me.DataGridViewPendingList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBoxEmployeeInfo.ResumeLayout(False)
@@ -414,4 +464,6 @@ Partial Class AssignSchedule
     Friend WithEvents lblUnit As System.Windows.Forms.Label
     Friend WithEvents Timer_OverloadBlinker As System.Windows.Forms.Timer
     Friend WithEvents Timer_TotalUnitOutput As System.Windows.Forms.Timer
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
 End Class

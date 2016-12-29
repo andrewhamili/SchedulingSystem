@@ -22,6 +22,11 @@ Public Class AssignSchedule
         LabelProfFname.Text = ""
         LabelProfLname.Text = ""
         ComboBoxClasscode.Enabled = False
+        With ComboBoxClasscode
+            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+            .AutoCompleteSource = AutoCompleteSource.CustomSource
+        End With
+        
     End Sub
     Public Sub Load_Employee_Lastnames()
         ComboBoxEmployeeLastname.Items.Clear()
@@ -36,6 +41,7 @@ Public Class AssignSchedule
             reader = comm.ExecuteReader
             While reader.Read
                 ComboBoxEmployeeLastname.Items.Add(reader.GetString("lname"))
+                ComboBoxEmployeeLastname.AutoCompleteCustomSource.Add(reader.GetString("lname"))
             End While
             MySQLConn.Close()
         Catch ex As Exception
@@ -49,6 +55,7 @@ Public Class AssignSchedule
 
         With ComboBoxClasscode
             .Items.Clear()
+            .AutoCompleteCustomSource.Clear()
             If MySQLConn.State = ConnectionState.Open Then
                 MySQLConn.Close()
             End If
@@ -176,14 +183,14 @@ Public Class AssignSchedule
 
 
                     pendingunit = pendingunit + lblUnit.Text
-                    AssignSubejectPendingRowCounter = AssignSubejectPendingRowCounter + 1
+                    'AssignSubejectPendingRowCounter = AssignSubejectPendingRowCounter + 1
                     Timer_OverloadBlinker.Enabled = True
+
                     With ComboBoxClasscode
+                        .AutoCompleteCustomSource.Remove(ComboBoxClasscode.Text)
                         .Items.Remove(ComboBoxClasscode.Text)
                         .DropDownStyle = ComboBoxStyle.DropDown
-                        .AutoCompleteCustomSource.Remove(ComboBoxClasscode.Text)
                         .AutoCompleteMode = AutoCompleteMode.SuggestAppend
-
                     End With
 
 
@@ -208,9 +215,10 @@ Public Class AssignSchedule
                 'AssignSubejectPendingRowCounter = AssignSubejectPendingRowCounter + 1
 
                 With ComboBoxClasscode
+                    .AutoCompleteCustomSource.Remove(ComboBoxClasscode.Text)
                     .Items.Remove(ComboBoxClasscode.Text)
                     .DropDownStyle = ComboBoxStyle.DropDown
-
+                    .AutoCompleteMode = AutoCompleteMode.SuggestAppend
                 End With
 
 
@@ -231,13 +239,6 @@ Public Class AssignSchedule
         lblRoom.Text = ""
         lblUnit.Text = "0"
 
-    End Sub
-
-    Private Sub ComboBoxEmployeeLastname_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles ComboBoxEmployeeLastname.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            ComboBoxEmployeeLastname.Enabled = False
-            ComboBoxClasscode.Enabled = True
-        End If
     End Sub
 
     Private Sub ComboBoxEmployeeLastname_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxEmployeeLastname.SelectedIndexChanged
@@ -505,6 +506,19 @@ Public Class AssignSchedule
         Else
             MsgBox("No subject assigned!", MsgBoxStyle.Information, "Empty")
         End If
-        
+        AdminPage.dbdataset.Clear()
+        AdminPage.Load_Schedules()
+    End Sub
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        Me.Dispose()
+    End Sub
+
+    Private Sub AssignSchedule_ResizeEnd(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.ResizeEnd
+        Dim SizeX As Integer = Me.Width
+        Dim SizeY As Integer = Me.Height
+        If SizeX < 873 And SizeY < 597 Then
+            Me.Size = New Point(873, 597)
+        End If
     End Sub
 End Class
