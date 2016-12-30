@@ -5,8 +5,13 @@ Public Class AssignSchedule
     Public pendingunit As Integer
     Public timer As Integer
     Public AssignSubejectPendingRowCounter As Integer = 0
-
-
+    Protected Overrides ReadOnly Property CreateParams() As CreateParams
+        Get
+            Dim Param As CreateParams = MyBase.CreateParams
+            Param.ClassStyle = Param.ClassStyle Or &H200
+            Return Param
+        End Get
+    End Property
     Private Sub AssignSchedule_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Console.WriteLine(DataGridViewPendingList.Rows.Count)
         Load_Employee_Lastnames()
@@ -485,6 +490,8 @@ Public Class AssignSchedule
                     reader = comm.ExecuteReader
                     MySQLConn.Close()
                     DataGridViewPendingList.Rows.RemoveAt(0)
+                Else
+                    Exit While
                 End If
 
 

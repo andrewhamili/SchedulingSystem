@@ -109,16 +109,16 @@ Public Class AddSchedule
                         If starter = daytext.Length Then
 
                             MySQLConn.Close()
-                            'MySQLConn.Open()
-                            'query = "INSERT INTO `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` VALUES(@classcode, @subjDesc, @subjUnit, '" & daytext & "', @timefrom, @timeto, @room, 'false')"
-                            'comm = New MySqlCommand(query, MySQLConn)
-                            'comm.Parameters.AddWithValue("classcode", txt_AddSchedule_Classcode.Text)
-                            'comm.Parameters.AddWithValue("subjDesc", txt_AddSchedule_SubjDesc.Text)
-                            'comm.Parameters.AddWithValue("subjUnit", txt_AddSchedule_Unit.Text)
-                            'comm.Parameters.AddWithValue("timefrom", DateTimePicker_AddSchedule_timefrom.Value.ToString("HH:mm"))
-                            'comm.Parameters.AddWithValue("timeto", DateTimePicker_AddSchedule_timeto.Value.ToString("HH:mm"))
-                            'comm.Parameters.AddWithValue("room", CboxChooseRoom.Text)
-                            'reader = comm.ExecuteReader
+                            MySQLConn.Open()
+                            query = "INSERT INTO `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` VALUES(@classcode, @subjDesc, @subjUnit, '" & daytext & "', @timefrom, @timeto, @room, 'false')"
+                            comm = New MySqlCommand(query, MySQLConn)
+                            comm.Parameters.AddWithValue("classcode", txt_AddSchedule_Classcode.Text)
+                            comm.Parameters.AddWithValue("subjDesc", txt_AddSchedule_SubjDesc.Text)
+                            comm.Parameters.AddWithValue("subjUnit", txt_AddSchedule_Unit.Text)
+                            comm.Parameters.AddWithValue("timefrom", DateTimePicker_AddSchedule_timefrom.Value.ToString("HH:mm"))
+                            comm.Parameters.AddWithValue("timeto", DateTimePicker_AddSchedule_timeto.Value.ToString("HH:mm"))
+                            comm.Parameters.AddWithValue("room", CboxChooseRoom.Text)
+                            reader = comm.ExecuteReader
                             'If starter = daytext.Length Then
                             MsgBox("The Subject has been saved to the Database and is now ready to be assigned to a Professor!", MsgBoxStyle.Information, "New Subject")
                             'End If

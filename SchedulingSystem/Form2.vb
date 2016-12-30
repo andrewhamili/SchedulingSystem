@@ -100,6 +100,14 @@ Public Class AdminPage
         Load_Schedules()
     End Sub
 
+    Private Sub btnAddSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddSchedule.Click
+        AddSchedule.ShowDialog()
+    End Sub
+
+    Private Sub btnManageSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnManageSchedule.Click
+        ManageSchedule.ShowDialog()
+    End Sub
+
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         UnassignSchedule.ShowDialog()
     End Sub

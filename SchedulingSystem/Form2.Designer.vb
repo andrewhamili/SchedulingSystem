@@ -27,6 +27,7 @@ Partial Class AdminPage
         Me.ScheduleManagement = New System.Windows.Forms.TabPage()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.TabSchedule = New System.Windows.Forms.TabPage()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnAssignSched = New System.Windows.Forms.Button()
         Me.DataGridSched = New System.Windows.Forms.DataGridView()
@@ -39,6 +40,9 @@ Partial Class AdminPage
         Me.Radiosortbyroom = New System.Windows.Forms.RadioButton()
         Me.Radiosortbyday = New System.Windows.Forms.RadioButton()
         Me.TabSubject = New System.Windows.Forms.TabPage()
+        Me.btnManageSchedule = New System.Windows.Forms.Button()
+        Me.btnAddSchedule = New System.Windows.Forms.Button()
+        Me.lblTotalSubjects = New System.Windows.Forms.Label()
         Me.DataGridSubjects = New System.Windows.Forms.DataGridView()
         Me.FacultyList = New System.Windows.Forms.TabPage()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -48,20 +52,19 @@ Partial Class AdminPage
         Me.btnChangeSchoolyearSemester = New System.Windows.Forms.Button()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.btnAccountManagement = New System.Windows.Forms.Button()
-        Me.lblTotalSubjects = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.DataGridViewFacultyList = New System.Windows.Forms.DataGridView()
         Me.TabControl.SuspendLayout()
         Me.ScheduleManagement.SuspendLayout()
         Me.TabControl2.SuspendLayout()
         Me.TabSchedule.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridSched, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.TabSubject.SuspendLayout()
         CType(Me.DataGridSubjects, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FacultyList.SuspendLayout()
+        CType(Me.DataGridViewFacultyList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblName
@@ -127,10 +130,21 @@ Partial Class AdminPage
         Me.TabSchedule.TabIndex = 0
         Me.TabSchedule.Text = "View Schedule"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.giphy
+        Me.PictureBox1.Location = New System.Drawing.Point(1126, 109)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 5
+        Me.PictureBox1.TabStop = False
+        '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(993, 104)
+        Me.Button1.Location = New System.Drawing.Point(993, 109)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(111, 52)
         Me.Button1.TabIndex = 4
@@ -140,7 +154,7 @@ Partial Class AdminPage
         'btnAssignSched
         '
         Me.btnAssignSched.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAssignSched.Location = New System.Drawing.Point(876, 104)
+        Me.btnAssignSched.Location = New System.Drawing.Point(876, 109)
         Me.btnAssignSched.Name = "btnAssignSched"
         Me.btnAssignSched.Size = New System.Drawing.Size(111, 52)
         Me.btnAssignSched.TabIndex = 3
@@ -259,8 +273,8 @@ Partial Class AdminPage
         'TabSubject
         '
         Me.TabSubject.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TabSubject.Controls.Add(Me.Button3)
-        Me.TabSubject.Controls.Add(Me.Button2)
+        Me.TabSubject.Controls.Add(Me.btnManageSchedule)
+        Me.TabSubject.Controls.Add(Me.btnAddSchedule)
         Me.TabSubject.Controls.Add(Me.lblTotalSubjects)
         Me.TabSubject.Controls.Add(Me.DataGridSubjects)
         Me.TabSubject.Location = New System.Drawing.Point(4, 30)
@@ -269,6 +283,34 @@ Partial Class AdminPage
         Me.TabSubject.Size = New System.Drawing.Size(1250, 440)
         Me.TabSubject.TabIndex = 1
         Me.TabSubject.Text = "Schedule Maintenance"
+        '
+        'btnManageSchedule
+        '
+        Me.btnManageSchedule.Location = New System.Drawing.Point(1122, 77)
+        Me.btnManageSchedule.Name = "btnManageSchedule"
+        Me.btnManageSchedule.Size = New System.Drawing.Size(122, 49)
+        Me.btnManageSchedule.TabIndex = 3
+        Me.btnManageSchedule.Text = "Edit / Delete Schedule"
+        Me.btnManageSchedule.UseVisualStyleBackColor = True
+        '
+        'btnAddSchedule
+        '
+        Me.btnAddSchedule.Location = New System.Drawing.Point(994, 75)
+        Me.btnAddSchedule.Name = "btnAddSchedule"
+        Me.btnAddSchedule.Size = New System.Drawing.Size(122, 51)
+        Me.btnAddSchedule.TabIndex = 2
+        Me.btnAddSchedule.Text = "Add Schedule"
+        Me.btnAddSchedule.UseVisualStyleBackColor = True
+        '
+        'lblTotalSubjects
+        '
+        Me.lblTotalSubjects.AutoSize = True
+        Me.lblTotalSubjects.Font = New System.Drawing.Font("Arial Black", 12.0!)
+        Me.lblTotalSubjects.Location = New System.Drawing.Point(6, 103)
+        Me.lblTotalSubjects.Name = "lblTotalSubjects"
+        Me.lblTotalSubjects.Size = New System.Drawing.Size(155, 23)
+        Me.lblTotalSubjects.TabIndex = 1
+        Me.lblTotalSubjects.Text = "lblTotalSubjects"
         '
         'DataGridSubjects
         '
@@ -289,6 +331,7 @@ Partial Class AdminPage
         'FacultyList
         '
         Me.FacultyList.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.FacultyList.Controls.Add(Me.DataGridViewFacultyList)
         Me.FacultyList.Location = New System.Drawing.Point(4, 27)
         Me.FacultyList.Name = "FacultyList"
         Me.FacultyList.Padding = New System.Windows.Forms.Padding(3)
@@ -372,44 +415,14 @@ Partial Class AdminPage
         Me.btnAccountManagement.Text = "Account Management"
         Me.btnAccountManagement.UseVisualStyleBackColor = True
         '
-        'lblTotalSubjects
+        'DataGridViewFacultyList
         '
-        Me.lblTotalSubjects.AutoSize = True
-        Me.lblTotalSubjects.Font = New System.Drawing.Font("Arial Black", 12.0!)
-        Me.lblTotalSubjects.Location = New System.Drawing.Point(6, 103)
-        Me.lblTotalSubjects.Name = "lblTotalSubjects"
-        Me.lblTotalSubjects.Size = New System.Drawing.Size(155, 23)
-        Me.lblTotalSubjects.TabIndex = 1
-        Me.lblTotalSubjects.Text = "lblTotalSubjects"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.giphy
-        Me.PictureBox1.Location = New System.Drawing.Point(1126, 104)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 5
-        Me.PictureBox1.TabStop = False
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(994, 75)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(122, 51)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Add Schedule"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(1122, 77)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(122, 49)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Edit / Delete Schedule"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.DataGridViewFacultyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewFacultyList.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DataGridViewFacultyList.Location = New System.Drawing.Point(3, 320)
+        Me.DataGridViewFacultyList.Name = "DataGridViewFacultyList"
+        Me.DataGridViewFacultyList.Size = New System.Drawing.Size(1258, 150)
+        Me.DataGridViewFacultyList.TabIndex = 0
         '
         'AdminPage
         '
@@ -428,6 +441,7 @@ Partial Class AdminPage
         Me.Controls.Add(Me.lblName)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.MinimizeBox = False
         Me.Name = "AdminPage"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form2"
@@ -435,6 +449,7 @@ Partial Class AdminPage
         Me.ScheduleManagement.ResumeLayout(False)
         Me.TabControl2.ResumeLayout(False)
         Me.TabSchedule.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridSched, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -443,7 +458,8 @@ Partial Class AdminPage
         Me.TabSubject.ResumeLayout(False)
         Me.TabSubject.PerformLayout()
         CType(Me.DataGridSubjects, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FacultyList.ResumeLayout(False)
+        CType(Me.DataGridViewFacultyList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -476,6 +492,7 @@ Partial Class AdminPage
     Friend WithEvents btnAccountManagement As System.Windows.Forms.Button
     Friend WithEvents DataGridSubjects As System.Windows.Forms.DataGridView
     Friend WithEvents lblTotalSubjects As System.Windows.Forms.Label
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnManageSchedule As System.Windows.Forms.Button
+    Friend WithEvents btnAddSchedule As System.Windows.Forms.Button
+    Friend WithEvents DataGridViewFacultyList As System.Windows.Forms.DataGridView
 End Class

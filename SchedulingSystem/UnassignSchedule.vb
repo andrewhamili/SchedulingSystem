@@ -98,6 +98,7 @@ Class UnassignSchedule
         End With
         AdminPage.dbdataset.Clear()
         AdminPage.Load_Schedules()
+        ComboBoxClasscode.Focus()
     End Sub
 
     Private Sub ComboBoxClasscode_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxClasscode.SelectedIndexChanged
