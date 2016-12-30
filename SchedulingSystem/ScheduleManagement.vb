@@ -8,6 +8,8 @@ Class ManageSchedule
             Return Param
         End Get
     End Property
+    Public daytext As String
+
     Private Sub ScheduleManagement_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Load_Classcodes()
         Panel1.Hide()
@@ -37,7 +39,6 @@ Class ManageSchedule
 
     Private Sub ComboBoxClasscode_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxClasscode.SelectedIndexChanged
 
-        Dim daytext As String
 
         'Dim mo As Boolean
 
@@ -117,5 +118,86 @@ Class ManageSchedule
 
     Private Sub btnCancel1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel1.Click
         Me.Dispose()
+    End Sub
+
+    Private Sub btnModify_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModify.Click
+
+        Dim change As Boolean = False
+
+        Dim tempSubjDesc As String = txtSubjDesc.Text
+        Dim tempSubjUnit As String = txtUnit.Text
+        Dim tempDaytext As String = daytext
+        Dim tempTimeFrom As String = DateTimePickertimefrom.Text
+        Dim tempTimeTo As String = DateTimePickertimeto.Text
+        Dim tempRoom As String = ComboBoxRoom.Text
+
+        Dim mo As Boolean = CheckBoxDay_mo.Checked
+
+        Dim tu As Boolean = CheckBoxDay_mo.Checked
+
+        Dim we As Boolean = CheckBoxDay_mo.Checked
+
+        Dim th As Boolean = CheckBoxDay_mo.Checked
+
+        Dim fr As Boolean = CheckBoxDay_mo.Checked
+
+        Dim sa As Boolean = CheckBoxDay_mo.Checked
+
+        daytext = ""
+
+        If mo = True Then
+            daytext = daytext + "Mo"
+        End If
+
+        If tu = True Then
+            daytext = daytext + "Tu"
+        End If
+
+        If we = True Then
+            daytext = daytext + "We"
+        End If
+
+        If th = True Then
+            daytext = daytext + "Th"
+        End If
+
+        If fr = True Then
+            daytext = daytext + "Fr"
+        End If
+
+        If sa = True Then
+            daytext = daytext + "Mo"
+        End If
+
+        If tempSubjDesc <> txtSubjDesc.Text Then
+            change = True
+        End If
+
+        If tempSubjUnit <> txtUnit.Text Then
+            change = True
+        End If
+
+        If tempDaytext <> daytext Then
+            change = True
+        End If
+
+        If tempTimeFrom <> txtSubjDesc.Text Then
+            change = True
+        End If
+
+        If tempTimeTo <> txtSubjDesc.Text Then
+            change = True
+        End If
+
+        If tempSubjDesc <> txtSubjDesc.Text Then
+            change = True
+        End If
+
+        If change = True Then
+            MsgBox("Change")
+        Else
+            MsgBox("No modification to be saved", MsgBoxStyle.Information, SystemTitle)
+        End If
+
     End Sub
 End Class

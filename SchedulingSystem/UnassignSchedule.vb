@@ -100,7 +100,6 @@ Class UnassignSchedule
         AdminPage.Load_Schedules()
         ComboBoxClasscode.Focus()
     End Sub
-
     Private Sub ComboBoxClasscode_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxClasscode.SelectedIndexChanged
         ComboBoxClasscode.Enabled = False
         If MySQLConn.State = ConnectionState.Open Then
