@@ -10,6 +10,13 @@ Class ManageSchedule
     End Property
     Public daytext As String
 
+    Public tempSubjDesc As String
+    Public tempSubjUnit As String
+    Public tempDaytext As String
+    Public tempTimeFrom As String
+    Public tempTimeTo As String
+    Public tempRoom As String
+
     Private Sub ScheduleManagement_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Load_Classcodes()
         Panel1.Hide()
@@ -104,6 +111,13 @@ Class ManageSchedule
         btnCancel.Enabled = False
         Panel1.Show()
 
+        tempSubjDesc = txtSubjDesc.Text
+        tempSubjUnit = txtUnit.Text
+        tempDaytext = daytext
+        tempTimeFrom = DateTimePickertimefrom.Text
+        tempTimeTo = DateTimePickertimeto.Text
+        tempRoom = ComboBoxRoom.Text
+
     End Sub
 
     Private Sub btnReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReset.Click
@@ -124,24 +138,19 @@ Class ManageSchedule
 
         Dim change As Boolean = False
 
-        Dim tempSubjDesc As String = txtSubjDesc.Text
-        Dim tempSubjUnit As String = txtUnit.Text
-        Dim tempDaytext As String = daytext
-        Dim tempTimeFrom As String = DateTimePickertimefrom.Text
-        Dim tempTimeTo As String = DateTimePickertimeto.Text
-        Dim tempRoom As String = ComboBoxRoom.Text
+        
 
         Dim mo As Boolean = CheckBoxDay_mo.Checked
 
-        Dim tu As Boolean = CheckBoxDay_mo.Checked
+        Dim tu As Boolean = CheckBoxDay_tu.Checked
 
-        Dim we As Boolean = CheckBoxDay_mo.Checked
+        Dim we As Boolean = CheckBoxDay_we.Checked
 
-        Dim th As Boolean = CheckBoxDay_mo.Checked
+        Dim th As Boolean = CheckBoxDay_th.Checked
 
-        Dim fr As Boolean = CheckBoxDay_mo.Checked
+        Dim fr As Boolean = CheckBoxDay_fr.Checked
 
-        Dim sa As Boolean = CheckBoxDay_mo.Checked
+        Dim sa As Boolean = CheckBoxDay_sa.Checked
 
         daytext = ""
 
@@ -171,30 +180,62 @@ Class ManageSchedule
 
         If tempSubjDesc <> txtSubjDesc.Text Then
             change = True
+            Console.WriteLine("1")
         End If
 
         If tempSubjUnit <> txtUnit.Text Then
             change = True
+            Console.WriteLine("2")
         End If
 
         If tempDaytext <> daytext Then
             change = True
+            Console.WriteLine("3")
         End If
 
-        If tempTimeFrom <> txtSubjDesc.Text Then
+        If tempTimeFrom <> DateTimePickertimefrom.Text Then
             change = True
+            Console.WriteLine("4")
         End If
 
-        If tempTimeTo <> txtSubjDesc.Text Then
+        If tempTimeTo <> DateTimePickertimeto.Text Then
             change = True
+            Console.WriteLine("5")
         End If
 
-        If tempSubjDesc <> txtSubjDesc.Text Then
+        If tempRoom <> ComboBoxRoom.Text Then
             change = True
+            Console.WriteLine("6")
         End If
 
         If change = True Then
-            MsgBox("Change")
+            Dim answer As DialogResult = MsgBox("Are you sure you want to modify the Schedule? Modifying the schedule will automatically unassign it to a Professor. You need to assign it again to prevent schedule conflicts.", MsgBoxStyle.Question, SystemTitle)
+            If answer = Windows.Forms.DialogResult.Yes Then
+                'Try
+                '    MySQLConn.Open()
+                '    comm = New MySqlCommand("UPDATE `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` SET subj_desc=@subjdesc, subj_unit=@subjunit, day=@subjday, TimeFrom=@timefrom, TimeTo=@timeto, room=@room, isAssigned='false' WHERE classcode=@classcode;", MySQLConn)
+                '    comm.Parameters.AddWithValue("subjdesc", txtSubjDesc.Text)
+                '    comm.Parameters.AddWithValue("subjunit", txtUnit.Text)
+                '    comm.Parameters.AddWithValue("subjday", daytext)
+                '    comm.Parameters.AddWithValue("timefrom", DateTimePickertimefrom.Value.ToString("HH:mm"))
+                '    comm.Parameters.AddWithValue("timeto", DateTimePickertimeto.Value.ToString("HH:mm"))
+                '    comm.Parameters.AddWithValue("room", ComboBoxRoom.Text)
+                '    comm.Parameters.AddWithValue("classcode", ComboBoxClasscode.Text)
+
+                '    comm.ExecuteReader()
+                '    MySQLConn.Close()
+                '    MySQLConn.Open()
+                '    comm = New MySqlCommand("DELETE FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode", MySQLConn)
+                '    comm.Parameters.AddWithValue("classcode", ComboBoxClasscode.Text)
+                '    comm.ExecuteReader()
+                '    MySQLConn.Close()
+                'Catch ex As Exception
+                '    MsgBox(ex.Message)
+                'Finally
+                '    MySQLConn.Dispose()
+                'End Try
+            End If
+            
         Else
             MsgBox("No modification to be saved", MsgBoxStyle.Information, SystemTitle)
         End If
