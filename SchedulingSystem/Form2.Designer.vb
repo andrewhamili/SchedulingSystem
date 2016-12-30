@@ -27,7 +27,6 @@ Partial Class AdminPage
         Me.ScheduleManagement = New System.Windows.Forms.TabPage()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.TabSchedule = New System.Windows.Forms.TabPage()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnAssignSched = New System.Windows.Forms.Button()
         Me.DataGridSched = New System.Windows.Forms.DataGridView()
@@ -40,25 +39,29 @@ Partial Class AdminPage
         Me.Radiosortbyroom = New System.Windows.Forms.RadioButton()
         Me.Radiosortbyday = New System.Windows.Forms.RadioButton()
         Me.TabSubject = New System.Windows.Forms.TabPage()
+        Me.DataGridSubjects = New System.Windows.Forms.DataGridView()
         Me.FacultyList = New System.Windows.Forms.TabPage()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtCurrentSchoolYear = New System.Windows.Forms.TextBox()
+        Me.txtCurrentSemester = New System.Windows.Forms.TextBox()
         Me.btnChangeSchoolyearSemester = New System.Windows.Forms.Button()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.btnAccountManagement = New System.Windows.Forms.Button()
-        Me.DataGridSubjects = New System.Windows.Forms.DataGridView()
+        Me.lblTotalSubjects = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.TabControl.SuspendLayout()
         Me.ScheduleManagement.SuspendLayout()
         Me.TabControl2.SuspendLayout()
         Me.TabSchedule.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridSched, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.TabSubject.SuspendLayout()
         CType(Me.DataGridSubjects, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblName
@@ -124,17 +127,6 @@ Partial Class AdminPage
         Me.TabSchedule.TabIndex = 0
         Me.TabSchedule.Text = "View Schedule"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.giphy
-        Me.PictureBox1.Location = New System.Drawing.Point(1126, 104)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 5
-        Me.PictureBox1.TabStop = False
-        '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -159,6 +151,7 @@ Partial Class AdminPage
         '
         Me.DataGridSched.AllowUserToAddRows = False
         Me.DataGridSched.AllowUserToDeleteRows = False
+        Me.DataGridSched.AllowUserToResizeRows = False
         Me.DataGridSched.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridSched.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridSched.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -266,6 +259,9 @@ Partial Class AdminPage
         'TabSubject
         '
         Me.TabSubject.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TabSubject.Controls.Add(Me.Button3)
+        Me.TabSubject.Controls.Add(Me.Button2)
+        Me.TabSubject.Controls.Add(Me.lblTotalSubjects)
         Me.TabSubject.Controls.Add(Me.DataGridSubjects)
         Me.TabSubject.Location = New System.Drawing.Point(4, 30)
         Me.TabSubject.Name = "TabSubject"
@@ -273,6 +269,22 @@ Partial Class AdminPage
         Me.TabSubject.Size = New System.Drawing.Size(1250, 440)
         Me.TabSubject.TabIndex = 1
         Me.TabSubject.Text = "Schedule Maintenance"
+        '
+        'DataGridSubjects
+        '
+        Me.DataGridSubjects.AllowUserToAddRows = False
+        Me.DataGridSubjects.AllowUserToDeleteRows = False
+        Me.DataGridSubjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridSubjects.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DataGridSubjects.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.DataGridSubjects.Location = New System.Drawing.Point(3, 134)
+        Me.DataGridSubjects.Name = "DataGridSubjects"
+        Me.DataGridSubjects.ReadOnly = True
+        Me.DataGridSubjects.RowHeadersVisible = False
+        Me.DataGridSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridSubjects.Size = New System.Drawing.Size(1244, 303)
+        Me.DataGridSubjects.TabIndex = 0
         '
         'FacultyList
         '
@@ -308,27 +320,27 @@ Partial Class AdminPage
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Semester:"
         '
-        'TextBox1
+        'txtCurrentSchoolYear
         '
-        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.txtCurrentSchoolYear.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(652, 15)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox1.TabIndex = 4
-        Me.TextBox1.Text = "2015-2016"
+        Me.txtCurrentSchoolYear.Enabled = False
+        Me.txtCurrentSchoolYear.Location = New System.Drawing.Point(652, 15)
+        Me.txtCurrentSchoolYear.Name = "txtCurrentSchoolYear"
+        Me.txtCurrentSchoolYear.Size = New System.Drawing.Size(100, 26)
+        Me.txtCurrentSchoolYear.TabIndex = 4
+        Me.txtCurrentSchoolYear.Text = "2015-2016"
         '
-        'TextBox2
+        'txtCurrentSemester
         '
-        Me.TextBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.txtCurrentSemester.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox2.Enabled = False
-        Me.TextBox2.Location = New System.Drawing.Point(652, 49)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox2.TabIndex = 5
-        Me.TextBox2.Text = "1st"
+        Me.txtCurrentSemester.Enabled = False
+        Me.txtCurrentSemester.Location = New System.Drawing.Point(652, 49)
+        Me.txtCurrentSemester.Name = "txtCurrentSemester"
+        Me.txtCurrentSemester.Size = New System.Drawing.Size(100, 26)
+        Me.txtCurrentSemester.TabIndex = 5
+        Me.txtCurrentSemester.Text = "1st"
         '
         'btnChangeSchoolyearSemester
         '
@@ -360,18 +372,44 @@ Partial Class AdminPage
         Me.btnAccountManagement.Text = "Account Management"
         Me.btnAccountManagement.UseVisualStyleBackColor = True
         '
-        'DataGridSubjects
+        'lblTotalSubjects
         '
-        Me.DataGridSubjects.AllowUserToAddRows = False
-        Me.DataGridSubjects.AllowUserToDeleteRows = False
-        Me.DataGridSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridSubjects.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.DataGridSubjects.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataGridSubjects.Location = New System.Drawing.Point(3, 134)
-        Me.DataGridSubjects.Name = "DataGridSubjects"
-        Me.DataGridSubjects.ReadOnly = True
-        Me.DataGridSubjects.Size = New System.Drawing.Size(1244, 303)
-        Me.DataGridSubjects.TabIndex = 0
+        Me.lblTotalSubjects.AutoSize = True
+        Me.lblTotalSubjects.Font = New System.Drawing.Font("Arial Black", 12.0!)
+        Me.lblTotalSubjects.Location = New System.Drawing.Point(6, 103)
+        Me.lblTotalSubjects.Name = "lblTotalSubjects"
+        Me.lblTotalSubjects.Size = New System.Drawing.Size(155, 23)
+        Me.lblTotalSubjects.TabIndex = 1
+        Me.lblTotalSubjects.Text = "lblTotalSubjects"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.giphy
+        Me.PictureBox1.Location = New System.Drawing.Point(1126, 104)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 5
+        Me.PictureBox1.TabStop = False
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(994, 75)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(122, 51)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Add Schedule"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(1122, 77)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(122, 49)
+        Me.Button3.TabIndex = 3
+        Me.Button3.Text = "Edit / Delete Schedule"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'AdminPage
         '
@@ -382,8 +420,8 @@ Partial Class AdminPage
         Me.Controls.Add(Me.btnAccountManagement)
         Me.Controls.Add(Me.btnLogout)
         Me.Controls.Add(Me.btnChangeSchoolyearSemester)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtCurrentSemester)
+        Me.Controls.Add(Me.txtCurrentSchoolYear)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TabControl)
@@ -397,14 +435,15 @@ Partial Class AdminPage
         Me.ScheduleManagement.ResumeLayout(False)
         Me.TabControl2.ResumeLayout(False)
         Me.TabSchedule.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridSched, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.TabSubject.ResumeLayout(False)
+        Me.TabSubject.PerformLayout()
         CType(Me.DataGridSubjects, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -429,11 +468,14 @@ Partial Class AdminPage
     Friend WithEvents TabSubject As System.Windows.Forms.TabPage
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtCurrentSchoolYear As System.Windows.Forms.TextBox
+    Friend WithEvents txtCurrentSemester As System.Windows.Forms.TextBox
     Friend WithEvents btnChangeSchoolyearSemester As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents btnLogout As System.Windows.Forms.Button
     Friend WithEvents btnAccountManagement As System.Windows.Forms.Button
     Friend WithEvents DataGridSubjects As System.Windows.Forms.DataGridView
+    Friend WithEvents lblTotalSubjects As System.Windows.Forms.Label
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 End Class

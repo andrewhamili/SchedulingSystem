@@ -26,7 +26,7 @@ Public Class AssignSchedule
             .AutoCompleteMode = AutoCompleteMode.SuggestAppend
             .AutoCompleteSource = AutoCompleteSource.CustomSource
         End With
-        
+        AcceptButton = btnChooseClasscode
     End Sub
     Public Sub Load_Employee_Lastnames()
         ComboBoxEmployeeLastname.Items.Clear()
@@ -243,6 +243,7 @@ Public Class AssignSchedule
 
     Private Sub ComboBoxEmployeeLastname_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxEmployeeLastname.SelectedIndexChanged
         ComboBoxClasscode.Enabled = True
+        ComboBoxEmployeeLastname.Enabled = False
         pendingunit = 0
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
@@ -311,13 +312,6 @@ Public Class AssignSchedule
         End If
 
     End Sub
-
-    Private Sub ComboBoxClasscode_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles ComboBoxClasscode.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            btnChooseClasscode.PerformClick()
-        End If
-    End Sub
-
     Private Sub ComboBoxClasscode_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxClasscode.SelectedIndexChanged
         ComboBoxEmployeeLastname.Enabled = False
 

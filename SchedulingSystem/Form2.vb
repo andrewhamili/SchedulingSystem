@@ -93,9 +93,14 @@ Public Class AdminPage
 
     Private Sub TabSubject_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabSubject.Enter
         Load_Subjects()
+        lblTotalSubjects.Text = "Total Subjects: " + DataGridSubjects.Rows.Count.ToString
     End Sub
 
     Private Sub DataGridSched_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridSched.Enter
         Load_Schedules()
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        UnassignSchedule.ShowDialog()
     End Sub
 End Class

@@ -37,7 +37,7 @@ Public Class LoginPage
 
             Try
                 MySQLConn.Open()
-                comm = New MySqlCommand("SELECT * FROM scheduling.userlist where username=@username AND password=sha2(@password, 512);", MySQLConn)
+                comm = New MySqlCommand("SELECT * FROM scheduling.userlist where BINARY username=@username AND password=sha2(@password, 512);", MySQLConn)
                 comm.Parameters.AddWithValue("username", tboxusername.Text)
                 comm.Parameters.AddWithValue("password", tboxpassword.Text)
                 reader = comm.ExecuteReader
@@ -90,30 +90,30 @@ Public Class LoginPage
             MySQLConn.Dispose()
         End Try
     End Sub
-    'Public Sub Check_if_database_exists()
-    '    If MySQLConn.State = ConnectionState.Open Then
-    '        MySQLConn.Close()
-    '    End If
-    '    MySQLConn.ConnectionString = connstring
-    '    Try
-    '        MySQLConn.Open()
+    Public Sub Check_if_database_exists()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring
+        Try
+            MySQLConn.Open()
 
-    '        comm = New MySqlCommand("SHOW DATABASES LIKE 'scheduling'", MySQLConn)
-    '        reader = comm.ExecuteReader
-    '        Dim count As Integer = 0
-    '        While reader.Read
-    '            count += 1
-    '        End While
-    '        If count = 0 Then
-    '            MsgBox("WARNING: The MySQL Database Server is Online but the database for this system was not found! Logging-in will not be possible.", MsgBoxStyle.Exclamation, SystemTitle)
-    '            btnLogin.Enabled = False
-    '        End If
-    '        MySQLConn.Close()
-    '    Catch ex As Exception
-    '        MsgBox("MySQL Server Connection Error" & ex.Message)
-    '    Finally
-    '        MySQLConn.Dispose()
-    '    End Try
+            comm = New MySqlCommand("SHOW DATABASES LIKE 'scheduling'", MySQLConn)
+            reader = comm.ExecuteReader
+            Dim count As Integer = 0
+            While reader.Read
+                count += 1
+            End While
+            If count = 0 Then
+                MsgBox("WARNING: The MySQL Database Server is Online but the database for this system was not found! Logging-in will not be possible.", MsgBoxStyle.Exclamation, SystemTitle)
+                btnLogin.Enabled = False
+            End If
+            MySQLConn.Close()
+        Catch ex As Exception
+            MsgBox("MySQL Server Connection Error" & ex.Message)
+        Finally
+            MySQLConn.Dispose()
+        End Try
 
-    'End Sub
+    End Sub
 End Class
