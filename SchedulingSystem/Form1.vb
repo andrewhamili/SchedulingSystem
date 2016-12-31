@@ -58,6 +58,11 @@ Public Class LoginPage
                     AdminPage.Show()
                 Else
                     MsgBox("You have entered an incorrect username/password", MsgBoxStyle.Exclamation, SystemTitle)
+                    With tboxusername
+                        .Text = ""
+                        .Focus()
+                    End With
+                    tboxpassword.Text = ""
                 End If
                 MySQLConn.Close()
             Catch ex As Exception

@@ -12,7 +12,7 @@ Public Class AddSchedule
         Dim th As Boolean = CheckBox_AddSchedule_Day_th.Checked
         Dim fr As Boolean = CheckBox_AddSchedule_Day_fr.Checked
         Dim sa As Boolean = CheckBox_AddSchedule_Day_sa.Checked
-        Dim query As String
+
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
@@ -48,9 +48,8 @@ Public Class AddSchedule
         Else
             Try
                 MySQLConn.Open()
-                query = "SELECT classcode FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode"
                 'query = "insert into subjectlist values('" & AddSubjectTboxClasscode.Text & "', '" & AddSubjectTboxSubj_desc.Text & "', '" & AddSubjectTboxSubj_unit.Text & "', '" & daytext & "', '" & timefrom & "', '" & timeto & "', '" & AddSubjectCBoxRoom.Text & "')"
-                comm = New MySqlCommand(query, MySQLConn)
+                comm = New MySqlCommand("SELECT classcode FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode", MySQLConn)
                 comm.Parameters.AddWithValue("classcode", txt_AddSchedule_Classcode.Text)
                 reader = comm.ExecuteReader
 
@@ -69,7 +68,6 @@ Public Class AddSchedule
 
                     MySQLConn.Close()
                     Dim divider As Integer = daytext.Length / 2 - 1
-
                     Dim looper As Integer
                     Dim starter As Integer = 0
                     Dim stopper As Integer = 0
@@ -81,19 +79,15 @@ Public Class AddSchedule
                         MySQLConn.Close()
                         daycheck = daytext.Substring(starter, 2)
                         MySQLConn.Open()
-                        query = "SELECT * FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & daycheck & "%' and room=@room and TimeTo > @timefrom and TimeFrom < @timeto;"
 
                         starter = starter + 2
                         looper = looper + 1
-                        comm = New MySqlCommand(query, MySQLConn)
+                        comm = New MySqlCommand("SELECT * FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & daycheck & "%' and room=@room and TimeTo > @timefrom and TimeFrom < @timeto;", MySQLConn)
                         comm.Parameters.AddWithValue("room", CboxChooseRoom.Text)
                         comm.Parameters.AddWithValue("timeto", DateTimePicker_AddSchedule_timeto.Value.ToString("HH:mm"))
                         comm.Parameters.AddWithValue("timefrom", DateTimePicker_AddSchedule_timefrom.Value.ToString("HH:mm"))
 
                         reader = comm.ExecuteReader
-
-
-
 
                         While reader.Read
                             conflictTimeFrom = reader.GetString("TimeFrom")
@@ -110,8 +104,8 @@ Public Class AddSchedule
 
                             MySQLConn.Close()
                             MySQLConn.Open()
-                            query = "INSERT INTO `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` VALUES(@classcode, @subjDesc, @subjUnit, '" & daytext & "', @timefrom, @timeto, @room, 'false')"
-                            comm = New MySqlCommand(query, MySQLConn)
+
+                            comm = New MySqlCommand("INSERT INTO `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` VALUES(@classcode, @subjDesc, @subjUnit, '" & daytext & "', @timefrom, @timeto, @room, 'false')", MySQLConn)
                             comm.Parameters.AddWithValue("classcode", txt_AddSchedule_Classcode.Text)
                             comm.Parameters.AddWithValue("subjDesc", txt_AddSchedule_SubjDesc.Text)
                             comm.Parameters.AddWithValue("subjUnit", txt_AddSchedule_Unit.Text)

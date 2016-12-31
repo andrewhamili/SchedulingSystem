@@ -14,4 +14,7 @@ Module GlobalVariableModule
     Public activeuserlname As String = "" 'Public Variable to store the logged-in user's last name.
 
 
+    Public data As New DataSetPrint
+    Public PrintAction As String
+
 End Module

@@ -6,6 +6,10 @@ Public Class AdminPage
     Public bsource As New BindingSource
     Public dbdataset As New DataTable
 
+    Public charactersAllowed As String = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+    Public charactersAllowedClasscodeAndRoom As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+
+
     Protected Overrides ReadOnly Property CreateParams() As CreateParams
         Get
             Dim Param As CreateParams = MyBase.CreateParams
@@ -20,6 +24,7 @@ Public Class AdminPage
     End Sub
 
     Private Sub AdminPage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Control.CheckForIllegalCrossThreadCalls = False
         Load_Schedules()
     End Sub
 
@@ -41,6 +46,9 @@ Public Class AdminPage
     End Sub
     Public Sub Load_Schedules()
 
+        GroupBoxSearch.Hide()
+        lblSearch.Hide()
+
         'Dim adapter As New MySqlDataAdapter
         'Dim bsource As New BindingSource
         'Dim dbdataset As New DataTable
@@ -55,7 +63,7 @@ Public Class AdminPage
         MySQLConn.ConnectionString = connstring
         Try
             MySQLConn.Open()
-            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'Subject Description', day AS Day, room AS Room, TimeStart AS 'Time Start', TimeEnd AS 'Time End', instructor AS Instructor, units as 'Unit(s)' FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` ORDER BY instructor ASC", MySQLConn)
+            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'SubjectDescription', day AS Day, room AS Room, TIME_FORMAT(TimeStart, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeEnd, '%H:%i') AS 'Time End', instructor AS Instructor, units as 'Unit(s)' FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` ORDER BY instructor ASC", MySQLConn)
             adapter.SelectCommand = comm
             adapter.Fill(dbdataset)
             DataGridSched.DataSource = dbdataset
@@ -78,7 +86,7 @@ Public Class AdminPage
         MySQLConn.ConnectionString = connstring
         Try
             MySQLConn.Open()
-            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'Subject Description', subj_unit as 'Unit(s)', day AS Day, TimeFrom AS 'Time Start', TimeTo AS 'Time End', room AS Room FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` ORDER BY room ASC", MySQLConn)
+            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'Subject Description', subj_unit as 'Unit(s)', day AS Day, TIME_FORMAT(TimeFrom, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeTo, '%H:%i') AS 'Time End', room AS Room FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` ORDER BY room ASC", MySQLConn)
             adapter.SelectCommand = comm
             adapter.Fill(dbdataset)
             DataGridSubjects.DataSource = dbdataset
@@ -96,10 +104,6 @@ Public Class AdminPage
         lblTotalSubjects.Text = "Total Subjects: " + DataGridSubjects.Rows.Count.ToString
     End Sub
 
-    Private Sub DataGridSched_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridSched.Enter
-        Load_Schedules()
-    End Sub
-
     Private Sub btnAddSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddSchedule.Click
         AddSchedule.ShowDialog()
     End Sub
@@ -110,5 +114,177 @@ Public Class AdminPage
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         UnassignSchedule.ShowDialog()
+    End Sub
+
+    Private Sub TabSchedule_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabSchedule.Enter
+        Load_Schedules()
+
+    End Sub
+
+    Private Sub AdminPage_ResizeEnd(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.ResizeEnd
+        Dim height As Integer = Me.Height
+        Dim width As Integer = Me.Width
+
+        If height < 620 And width < 1145 Then
+            Me.Size = New Point(1145, 620)
+        End If
+
+    End Sub
+
+    Private Sub DataGridSched_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DataGridSched.KeyDown
+        If e.KeyCode = Keys.F AndAlso e.Modifiers = Keys.Control Then
+            GroupBoxSearch.Show()
+        End If
+        Console.WriteLine("Press")
+    End Sub
+
+    Private Sub DataGridSched_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridSched.LostFocus
+        lblSearch.Hide()
+    End Sub
+
+    Private Sub txtSearchClasscode_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearchClasscode.TextChanged
+        Dim theText As String = txtSearchClasscode.Text
+        Dim Letter As String
+        Dim SelectionIndex As Integer = txtSearchClasscode.SelectionStart
+        Dim Change As Integer
+
+        For x As Integer = 0 To txtSearchClasscode.Text.Length - 1
+            Letter = txtSearchClasscode.Text.Substring(x, 1)
+            If charactersAllowedClasscodeAndRoom.Contains(Letter) = False Then
+                theText = theText.Replace(Letter, String.Empty)
+                Change = 1
+            End If
+        Next
+
+        txtSearchClasscode.Text = theText
+        txtSearchClasscode.Select(SelectionIndex - Change, 0)
+
+        Dim dv As New DataView(dbdataset)
+        dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and 'Subject Description' LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
+        DataGridSched.DataSource = dv
+    End Sub
+
+    Private Sub txtSearchSubjDesc_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearchSubjDesc.TextChanged
+        Dim theText As String = txtSearchSubjDesc.Text
+        Dim Letter As String
+        Dim SelectionIndex As Integer = txtSearchSubjDesc.SelectionStart
+        Dim Change As Integer
+
+        For x As Integer = 0 To txtSearchSubjDesc.Text.Length - 1
+            Letter = txtSearchSubjDesc.Text.Substring(x, 1)
+            If charactersAllowed.Contains(Letter) = False Then
+                theText = theText.Replace(Letter, String.Empty)
+                Change = 1
+            End If
+        Next
+
+        txtSearchSubjDesc.Text = theText
+        txtSearchSubjDesc.Select(SelectionIndex - Change, 0)
+
+        Dim dv As New DataView(dbdataset)
+        dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and SubjectDescription LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
+        DataGridSched.DataSource = dv
+    End Sub
+
+    Private Sub txtSearchRoom_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearchRoom.TextChanged
+        Dim theText As String = txtSearchRoom.Text
+        Dim Letter As String
+        Dim SelectionIndex As Integer = txtSearchRoom.SelectionStart
+        Dim Change As Integer
+
+        For x As Integer = 0 To txtSearchRoom.Text.Length - 1
+            Letter = txtSearchRoom.Text.Substring(x, 1)
+            If charactersAllowedClasscodeAndRoom.Contains(Letter) = False Then
+                theText = theText.Replace(Letter, String.Empty)
+                Change = 1
+            End If
+        Next
+
+        txtSearchRoom.Text = theText
+        txtSearchRoom.Select(SelectionIndex - Change, 0)
+
+        Dim dv As New DataView(dbdataset)
+        dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and SubjectDescription LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
+        DataGridSched.DataSource = dv
+    End Sub
+
+    Private Sub DataGridSched_MouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridSched.MouseClick
+        lblSearch.Show()
+    End Sub
+
+    Private Sub DataGridSched_MouseHover(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridSched.MouseHover
+        lblSearch.Show()
+        DataGridSched.Focus()
+    End Sub
+
+    Private Sub PictureBoxPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBoxPrintSchedules.Click
+        
+        PrintAction = "AllSched"
+
+        PrepareDataForPrintingAllSchedules()
+
+        PrintWindow.ShowDialog()
+    End Sub
+    Public Sub PrepareDataForPrintingAllSchedules()
+        data.Clear()
+        Try
+            '' Add Table
+            'ds.Tables.Add("Test")
+
+            '' Add Columns
+            'Dim col As DataColumn
+            'For Each dgvCol As DataGridViewColumn In DataGridView1.Columns
+            '    col = New DataColumn(dgvCol.Name)
+            '    ds.Tables("Invoices").Columns.Add(col)
+            'Next
+
+            ' Rows from the datagridview
+            Dim row As DataRow
+            Dim colcount As Integer = DataGridSched.Columns.Count - 1
+            For i As Integer = 0 To DataGridSched.Rows.Count - 1
+                row = data.Tables(0).Rows.Add
+                For Each column As DataGridViewColumn In DataGridSched.Columns
+                    row.Item(column.Index) = DataGridSched.Rows.Item(i).Cells(column.Index).Value
+                Next
+            Next
+
+        Catch ex As Exception
+
+            MsgBox("CRITICAL ERROR : Exception caught while converting dataGridView to DataSet (dgvtods).. " & Chr(10) & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub PictureBoxPrintSubjects_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBoxPrintSubjects.Click
+        PrintAction = "AllSubjects"
+        PrepareDataForPrintingAllSubjects()
+        PrintWindow.ShowDialog()
+    End Sub
+    Public Sub PrepareDataForPrintingAllSubjects()
+        data.Clear()
+        Try
+            '' Add Table
+            'ds.Tables.Add("Test")
+
+            '' Add Columns
+            'Dim col As DataColumn
+            'For Each dgvCol As DataGridViewColumn In DataGridView1.Columns
+            '    col = New DataColumn(dgvCol.Name)
+            '    ds.Tables("Invoices").Columns.Add(col)
+            'Next
+
+            ' Rows from the datagridview
+            Dim row As DataRow
+            Dim colcount As Integer = DataGridSubjects.Columns.Count - 1
+            For i As Integer = 0 To DataGridSubjects.Rows.Count - 1
+                row = data.Tables(1).Rows.Add
+                For Each column As DataGridViewColumn In DataGridSubjects.Columns
+                    row.Item(column.Index) = DataGridSubjects.Rows.Item(i).Cells(column.Index).Value
+                Next
+            Next
+
+        Catch ex As Exception
+
+            MsgBox("CRITICAL ERROR : Exception caught while converting dataGridView to DataSet (dgvtods).. " & Chr(10) & ex.Message)
+        End Try
     End Sub
 End Class

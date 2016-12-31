@@ -27,24 +27,26 @@ Partial Class AdminPage
         Me.ScheduleManagement = New System.Windows.Forms.TabPage()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.TabSchedule = New System.Windows.Forms.TabPage()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.GroupBoxSearch = New System.Windows.Forms.GroupBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtSearchSubjDesc = New System.Windows.Forms.TextBox()
+        Me.txtSearchRoom = New System.Windows.Forms.TextBox()
+        Me.txtSearchClasscode = New System.Windows.Forms.TextBox()
+        Me.PictureBoxPrintSchedules = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnAssignSched = New System.Windows.Forms.Button()
         Me.DataGridSched = New System.Windows.Forms.DataGridView()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Radiosortthenprofessor = New System.Windows.Forms.RadioButton()
-        Me.Radiosortthenday = New System.Windows.Forms.RadioButton()
-        Me.Radiosortthenroom = New System.Windows.Forms.RadioButton()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Radiosortbyprofessor = New System.Windows.Forms.RadioButton()
-        Me.Radiosortbyroom = New System.Windows.Forms.RadioButton()
-        Me.Radiosortbyday = New System.Windows.Forms.RadioButton()
+        Me.lblSearch = New System.Windows.Forms.Label()
         Me.TabSubject = New System.Windows.Forms.TabPage()
+        Me.PictureBoxPrintSubjects = New System.Windows.Forms.PictureBox()
         Me.btnManageSchedule = New System.Windows.Forms.Button()
         Me.btnAddSchedule = New System.Windows.Forms.Button()
         Me.lblTotalSubjects = New System.Windows.Forms.Label()
         Me.DataGridSubjects = New System.Windows.Forms.DataGridView()
         Me.FacultyList = New System.Windows.Forms.TabPage()
+        Me.DataGridViewFacultyList = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtCurrentSchoolYear = New System.Windows.Forms.TextBox()
@@ -52,16 +54,15 @@ Partial Class AdminPage
         Me.btnChangeSchoolyearSemester = New System.Windows.Forms.Button()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.btnAccountManagement = New System.Windows.Forms.Button()
-        Me.DataGridViewFacultyList = New System.Windows.Forms.DataGridView()
         Me.TabControl.SuspendLayout()
         Me.ScheduleManagement.SuspendLayout()
         Me.TabControl2.SuspendLayout()
         Me.TabSchedule.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBoxSearch.SuspendLayout()
+        CType(Me.PictureBoxPrintSchedules, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridSched, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
         Me.TabSubject.SuspendLayout()
+        CType(Me.PictureBoxPrintSubjects, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridSubjects, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FacultyList.SuspendLayout()
         CType(Me.DataGridViewFacultyList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,9 +83,10 @@ Partial Class AdminPage
         '
         'TabControl
         '
+        Me.TabControl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl.Controls.Add(Me.ScheduleManagement)
         Me.TabControl.Controls.Add(Me.FacultyList)
-        Me.TabControl.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.TabControl.Location = New System.Drawing.Point(0, 86)
         Me.TabControl.Name = "TabControl"
         Me.TabControl.SelectedIndex = 0
@@ -117,12 +119,12 @@ Partial Class AdminPage
         'TabSchedule
         '
         Me.TabSchedule.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TabSchedule.Controls.Add(Me.PictureBox1)
+        Me.TabSchedule.Controls.Add(Me.GroupBoxSearch)
+        Me.TabSchedule.Controls.Add(Me.PictureBoxPrintSchedules)
         Me.TabSchedule.Controls.Add(Me.Button1)
         Me.TabSchedule.Controls.Add(Me.btnAssignSched)
         Me.TabSchedule.Controls.Add(Me.DataGridSched)
-        Me.TabSchedule.Controls.Add(Me.GroupBox2)
-        Me.TabSchedule.Controls.Add(Me.GroupBox1)
+        Me.TabSchedule.Controls.Add(Me.lblSearch)
         Me.TabSchedule.Location = New System.Drawing.Point(4, 30)
         Me.TabSchedule.Name = "TabSchedule"
         Me.TabSchedule.Padding = New System.Windows.Forms.Padding(3)
@@ -130,21 +132,88 @@ Partial Class AdminPage
         Me.TabSchedule.TabIndex = 0
         Me.TabSchedule.Text = "View Schedule"
         '
-        'PictureBox1
+        'GroupBoxSearch
         '
-        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.giphy
-        Me.PictureBox1.Location = New System.Drawing.Point(1126, 109)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 5
-        Me.PictureBox1.TabStop = False
+        Me.GroupBoxSearch.Controls.Add(Me.Label5)
+        Me.GroupBoxSearch.Controls.Add(Me.Label4)
+        Me.GroupBoxSearch.Controls.Add(Me.Label3)
+        Me.GroupBoxSearch.Controls.Add(Me.txtSearchSubjDesc)
+        Me.GroupBoxSearch.Controls.Add(Me.txtSearchRoom)
+        Me.GroupBoxSearch.Controls.Add(Me.txtSearchClasscode)
+        Me.GroupBoxSearch.Font = New System.Drawing.Font("Arial Black", 12.0!)
+        Me.GroupBoxSearch.Location = New System.Drawing.Point(10, 21)
+        Me.GroupBoxSearch.Name = "GroupBoxSearch"
+        Me.GroupBoxSearch.Size = New System.Drawing.Size(570, 120)
+        Me.GroupBoxSearch.TabIndex = 6
+        Me.GroupBoxSearch.TabStop = False
+        Me.GroupBoxSearch.Text = "Search"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.Label5.Location = New System.Drawing.Point(408, 34)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(50, 18)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Room"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.Label4.Location = New System.Drawing.Point(210, 34)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(88, 18)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "Description"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.Label3.Location = New System.Drawing.Point(50, 39)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(83, 18)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Classcode"
+        '
+        'txtSearchSubjDesc
+        '
+        Me.txtSearchSubjDesc.Location = New System.Drawing.Point(187, 60)
+        Me.txtSearchSubjDesc.Name = "txtSearchSubjDesc"
+        Me.txtSearchSubjDesc.Size = New System.Drawing.Size(144, 30)
+        Me.txtSearchSubjDesc.TabIndex = 2
+        '
+        'txtSearchRoom
+        '
+        Me.txtSearchRoom.Location = New System.Drawing.Point(355, 60)
+        Me.txtSearchRoom.Name = "txtSearchRoom"
+        Me.txtSearchRoom.Size = New System.Drawing.Size(152, 30)
+        Me.txtSearchRoom.TabIndex = 1
+        '
+        'txtSearchClasscode
+        '
+        Me.txtSearchClasscode.Location = New System.Drawing.Point(17, 60)
+        Me.txtSearchClasscode.Name = "txtSearchClasscode"
+        Me.txtSearchClasscode.Size = New System.Drawing.Size(151, 30)
+        Me.txtSearchClasscode.TabIndex = 0
+        '
+        'PictureBoxPrintSchedules
+        '
+        Me.PictureBoxPrintSchedules.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBoxPrintSchedules.Image = Global.SchedulingSystem.My.Resources.Resources.giphy
+        Me.PictureBoxPrintSchedules.Location = New System.Drawing.Point(1135, 108)
+        Me.PictureBoxPrintSchedules.Name = "PictureBoxPrintSchedules"
+        Me.PictureBoxPrintSchedules.Size = New System.Drawing.Size(100, 50)
+        Me.PictureBoxPrintSchedules.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBoxPrintSchedules.TabIndex = 5
+        Me.PictureBoxPrintSchedules.TabStop = False
         '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(993, 109)
+        Me.Button1.Location = New System.Drawing.Point(1005, 108)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(111, 52)
         Me.Button1.TabIndex = 4
@@ -154,7 +223,7 @@ Partial Class AdminPage
         'btnAssignSched
         '
         Me.btnAssignSched.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAssignSched.Location = New System.Drawing.Point(876, 109)
+        Me.btnAssignSched.Location = New System.Drawing.Point(888, 108)
         Me.btnAssignSched.Name = "btnAssignSched"
         Me.btnAssignSched.Size = New System.Drawing.Size(111, 52)
         Me.btnAssignSched.TabIndex = 3
@@ -170,109 +239,28 @@ Partial Class AdminPage
         Me.DataGridSched.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridSched.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.DataGridSched.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataGridSched.Location = New System.Drawing.Point(3, 162)
+        Me.DataGridSched.Location = New System.Drawing.Point(3, 176)
         Me.DataGridSched.Name = "DataGridSched"
         Me.DataGridSched.ReadOnly = True
         Me.DataGridSched.RowHeadersVisible = False
         Me.DataGridSched.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridSched.Size = New System.Drawing.Size(1244, 275)
+        Me.DataGridSched.Size = New System.Drawing.Size(1244, 261)
         Me.DataGridSched.TabIndex = 2
         '
-        'GroupBox2
+        'lblSearch
         '
-        Me.GroupBox2.Controls.Add(Me.Radiosortthenprofessor)
-        Me.GroupBox2.Controls.Add(Me.Radiosortthenday)
-        Me.GroupBox2.Controls.Add(Me.Radiosortthenroom)
-        Me.GroupBox2.Font = New System.Drawing.Font("Arial Black", 12.0!)
-        Me.GroupBox2.Location = New System.Drawing.Point(7, 75)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(278, 65)
-        Me.GroupBox2.TabIndex = 1
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Then"
-        '
-        'Radiosortthenprofessor
-        '
-        Me.Radiosortthenprofessor.AutoSize = True
-        Me.Radiosortthenprofessor.Location = New System.Drawing.Point(157, 29)
-        Me.Radiosortthenprofessor.Name = "Radiosortthenprofessor"
-        Me.Radiosortthenprofessor.Size = New System.Drawing.Size(113, 27)
-        Me.Radiosortthenprofessor.TabIndex = 2
-        Me.Radiosortthenprofessor.TabStop = True
-        Me.Radiosortthenprofessor.Text = "Professor"
-        Me.Radiosortthenprofessor.UseVisualStyleBackColor = True
-        '
-        'Radiosortthenday
-        '
-        Me.Radiosortthenday.AutoSize = True
-        Me.Radiosortthenday.Location = New System.Drawing.Point(6, 29)
-        Me.Radiosortthenday.Name = "Radiosortthenday"
-        Me.Radiosortthenday.Size = New System.Drawing.Size(61, 27)
-        Me.Radiosortthenday.TabIndex = 0
-        Me.Radiosortthenday.TabStop = True
-        Me.Radiosortthenday.Text = "Day"
-        Me.Radiosortthenday.UseVisualStyleBackColor = True
-        '
-        'Radiosortthenroom
-        '
-        Me.Radiosortthenroom.AutoSize = True
-        Me.Radiosortthenroom.Location = New System.Drawing.Point(73, 29)
-        Me.Radiosortthenroom.Name = "Radiosortthenroom"
-        Me.Radiosortthenroom.Size = New System.Drawing.Size(78, 27)
-        Me.Radiosortthenroom.TabIndex = 1
-        Me.Radiosortthenroom.TabStop = True
-        Me.Radiosortthenroom.Text = "Room"
-        Me.Radiosortthenroom.UseVisualStyleBackColor = True
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.Radiosortbyprofessor)
-        Me.GroupBox1.Controls.Add(Me.Radiosortbyroom)
-        Me.GroupBox1.Controls.Add(Me.Radiosortbyday)
-        Me.GroupBox1.Font = New System.Drawing.Font("Arial Black", 12.0!)
-        Me.GroupBox1.Location = New System.Drawing.Point(7, 7)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(278, 62)
-        Me.GroupBox1.TabIndex = 0
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "By"
-        '
-        'Radiosortbyprofessor
-        '
-        Me.Radiosortbyprofessor.AutoSize = True
-        Me.Radiosortbyprofessor.Location = New System.Drawing.Point(157, 29)
-        Me.Radiosortbyprofessor.Name = "Radiosortbyprofessor"
-        Me.Radiosortbyprofessor.Size = New System.Drawing.Size(113, 27)
-        Me.Radiosortbyprofessor.TabIndex = 2
-        Me.Radiosortbyprofessor.TabStop = True
-        Me.Radiosortbyprofessor.Text = "Professor"
-        Me.Radiosortbyprofessor.UseVisualStyleBackColor = True
-        '
-        'Radiosortbyroom
-        '
-        Me.Radiosortbyroom.AutoSize = True
-        Me.Radiosortbyroom.Location = New System.Drawing.Point(73, 29)
-        Me.Radiosortbyroom.Name = "Radiosortbyroom"
-        Me.Radiosortbyroom.Size = New System.Drawing.Size(78, 27)
-        Me.Radiosortbyroom.TabIndex = 1
-        Me.Radiosortbyroom.TabStop = True
-        Me.Radiosortbyroom.Text = "Room"
-        Me.Radiosortbyroom.UseVisualStyleBackColor = True
-        '
-        'Radiosortbyday
-        '
-        Me.Radiosortbyday.AutoSize = True
-        Me.Radiosortbyday.Location = New System.Drawing.Point(6, 29)
-        Me.Radiosortbyday.Name = "Radiosortbyday"
-        Me.Radiosortbyday.Size = New System.Drawing.Size(61, 27)
-        Me.Radiosortbyday.TabIndex = 0
-        Me.Radiosortbyday.TabStop = True
-        Me.Radiosortbyday.Text = "Day"
-        Me.Radiosortbyday.UseVisualStyleBackColor = True
+        Me.lblSearch.AutoSize = True
+        Me.lblSearch.Font = New System.Drawing.Font("Arial Black", 12.0!)
+        Me.lblSearch.Location = New System.Drawing.Point(6, 81)
+        Me.lblSearch.Name = "lblSearch"
+        Me.lblSearch.Size = New System.Drawing.Size(225, 23)
+        Me.lblSearch.TabIndex = 7
+        Me.lblSearch.Text = "Press CTRL+F to Search"
         '
         'TabSubject
         '
         Me.TabSubject.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TabSubject.Controls.Add(Me.PictureBoxPrintSubjects)
         Me.TabSubject.Controls.Add(Me.btnManageSchedule)
         Me.TabSubject.Controls.Add(Me.btnAddSchedule)
         Me.TabSubject.Controls.Add(Me.lblTotalSubjects)
@@ -284,9 +272,19 @@ Partial Class AdminPage
         Me.TabSubject.TabIndex = 1
         Me.TabSubject.Text = "Schedule Maintenance"
         '
+        'PictureBoxPrintSubjects
+        '
+        Me.PictureBoxPrintSubjects.Image = Global.SchedulingSystem.My.Resources.Resources.giphy
+        Me.PictureBoxPrintSubjects.Location = New System.Drawing.Point(1120, 75)
+        Me.PictureBoxPrintSubjects.Name = "PictureBoxPrintSubjects"
+        Me.PictureBoxPrintSubjects.Size = New System.Drawing.Size(100, 50)
+        Me.PictureBoxPrintSubjects.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBoxPrintSubjects.TabIndex = 4
+        Me.PictureBoxPrintSubjects.TabStop = False
+        '
         'btnManageSchedule
         '
-        Me.btnManageSchedule.Location = New System.Drawing.Point(1122, 77)
+        Me.btnManageSchedule.Location = New System.Drawing.Point(991, 77)
         Me.btnManageSchedule.Name = "btnManageSchedule"
         Me.btnManageSchedule.Size = New System.Drawing.Size(122, 49)
         Me.btnManageSchedule.TabIndex = 3
@@ -295,7 +293,7 @@ Partial Class AdminPage
         '
         'btnAddSchedule
         '
-        Me.btnAddSchedule.Location = New System.Drawing.Point(994, 75)
+        Me.btnAddSchedule.Location = New System.Drawing.Point(863, 75)
         Me.btnAddSchedule.Name = "btnAddSchedule"
         Me.btnAddSchedule.Size = New System.Drawing.Size(122, 51)
         Me.btnAddSchedule.TabIndex = 2
@@ -316,6 +314,7 @@ Partial Class AdminPage
         '
         Me.DataGridSubjects.AllowUserToAddRows = False
         Me.DataGridSubjects.AllowUserToDeleteRows = False
+        Me.DataGridSubjects.AllowUserToResizeRows = False
         Me.DataGridSubjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridSubjects.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -338,6 +337,15 @@ Partial Class AdminPage
         Me.FacultyList.Size = New System.Drawing.Size(1264, 473)
         Me.FacultyList.TabIndex = 1
         Me.FacultyList.Text = "Faculty"
+        '
+        'DataGridViewFacultyList
+        '
+        Me.DataGridViewFacultyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewFacultyList.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DataGridViewFacultyList.Location = New System.Drawing.Point(3, 206)
+        Me.DataGridViewFacultyList.Name = "DataGridViewFacultyList"
+        Me.DataGridViewFacultyList.Size = New System.Drawing.Size(1258, 264)
+        Me.DataGridViewFacultyList.TabIndex = 0
         '
         'Label1
         '
@@ -415,15 +423,6 @@ Partial Class AdminPage
         Me.btnAccountManagement.Text = "Account Management"
         Me.btnAccountManagement.UseVisualStyleBackColor = True
         '
-        'DataGridViewFacultyList
-        '
-        Me.DataGridViewFacultyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewFacultyList.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.DataGridViewFacultyList.Location = New System.Drawing.Point(3, 320)
-        Me.DataGridViewFacultyList.Name = "DataGridViewFacultyList"
-        Me.DataGridViewFacultyList.Size = New System.Drawing.Size(1258, 150)
-        Me.DataGridViewFacultyList.TabIndex = 0
-        '
         'AdminPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -449,14 +448,14 @@ Partial Class AdminPage
         Me.ScheduleManagement.ResumeLayout(False)
         Me.TabControl2.ResumeLayout(False)
         Me.TabSchedule.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabSchedule.PerformLayout()
+        Me.GroupBoxSearch.ResumeLayout(False)
+        Me.GroupBoxSearch.PerformLayout()
+        CType(Me.PictureBoxPrintSchedules, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridSched, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.TabSubject.ResumeLayout(False)
         Me.TabSubject.PerformLayout()
+        CType(Me.PictureBoxPrintSubjects, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridSubjects, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FacultyList.ResumeLayout(False)
         CType(Me.DataGridViewFacultyList, System.ComponentModel.ISupportInitialize).EndInit()
@@ -473,21 +472,13 @@ Partial Class AdminPage
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents btnAssignSched As System.Windows.Forms.Button
     Friend WithEvents DataGridSched As System.Windows.Forms.DataGridView
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents Radiosortthenprofessor As System.Windows.Forms.RadioButton
-    Friend WithEvents Radiosortthenday As System.Windows.Forms.RadioButton
-    Friend WithEvents Radiosortthenroom As System.Windows.Forms.RadioButton
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Radiosortbyprofessor As System.Windows.Forms.RadioButton
-    Friend WithEvents Radiosortbyroom As System.Windows.Forms.RadioButton
-    Friend WithEvents Radiosortbyday As System.Windows.Forms.RadioButton
     Friend WithEvents TabSubject As System.Windows.Forms.TabPage
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtCurrentSchoolYear As System.Windows.Forms.TextBox
     Friend WithEvents txtCurrentSemester As System.Windows.Forms.TextBox
     Friend WithEvents btnChangeSchoolyearSemester As System.Windows.Forms.Button
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents PictureBoxPrintSchedules As System.Windows.Forms.PictureBox
     Friend WithEvents btnLogout As System.Windows.Forms.Button
     Friend WithEvents btnAccountManagement As System.Windows.Forms.Button
     Friend WithEvents DataGridSubjects As System.Windows.Forms.DataGridView
@@ -495,4 +486,13 @@ Partial Class AdminPage
     Friend WithEvents btnManageSchedule As System.Windows.Forms.Button
     Friend WithEvents btnAddSchedule As System.Windows.Forms.Button
     Friend WithEvents DataGridViewFacultyList As System.Windows.Forms.DataGridView
+    Friend WithEvents GroupBoxSearch As System.Windows.Forms.GroupBox
+    Friend WithEvents lblSearch As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents txtSearchSubjDesc As System.Windows.Forms.TextBox
+    Friend WithEvents txtSearchRoom As System.Windows.Forms.TextBox
+    Friend WithEvents txtSearchClasscode As System.Windows.Forms.TextBox
+    Friend WithEvents PictureBoxPrintSubjects As System.Windows.Forms.PictureBox
 End Class

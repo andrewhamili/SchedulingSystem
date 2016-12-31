@@ -49,6 +49,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\MetroFrameworkLibraries\MySql.Data.dll</HintPath>
@@ -60,6 +62,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -91,6 +94,14 @@
     <Compile Include="AssignSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DataSetPrint.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPrint.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetPrint.vb">
+      <DependentUpon>DataSetPrint.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +130,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PrintWindow.Designer.vb">
+      <DependentUpon>PrintWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PrintWindow.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ScheduleManagement.Designer.vb">
       <DependentUpon>ScheduleManagement.vb</DependentUpon>
@@ -158,18 +175,41 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintWindow.resx">
+      <DependentUpon>PrintWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Schedule-Single.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="ScheduleManagement.resx">
       <DependentUpon>ScheduleManagement.vb</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Schedules.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="SchoolYearSemester.resx">
       <DependentUpon>SchoolYearSemester.vb</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Subjects.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="UnassignSchedule.resx">
       <DependentUpon>UnassignSchedule.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="DataSetPrint.xsc">
+      <DependentUpon>DataSetPrint.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetPrint.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPrint.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSetPrint.xss">
+      <DependentUpon>DataSetPrint.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
