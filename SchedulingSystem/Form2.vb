@@ -24,7 +24,6 @@ Public Class AdminPage
     End Sub
 
     Private Sub AdminPage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Control.CheckForIllegalCrossThreadCalls = False
         Load_Schedules()
     End Sub
 
@@ -60,7 +59,7 @@ Public Class AdminPage
 
 
 
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
             comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'SubjectDescription', day AS Day, room AS Room, TIME_FORMAT(TimeStart, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeEnd, '%H:%i') AS 'Time End', instructor AS Instructor, units as 'Unit(s)' FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` ORDER BY instructor ASC", MySQLConn)
@@ -83,7 +82,7 @@ Public Class AdminPage
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
             comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'Subject Description', subj_unit as 'Unit(s)', day AS Day, TIME_FORMAT(TimeFrom, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeTo, '%H:%i') AS 'Time End', room AS Room FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` ORDER BY room ASC", MySQLConn)

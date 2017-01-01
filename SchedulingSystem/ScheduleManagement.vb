@@ -25,7 +25,7 @@ Class ManageSchedule
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         With ComboBoxClasscode
             Try
                 MySQLConn.Open()
@@ -63,7 +63,7 @@ Class ManageSchedule
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
             comm = New MySqlCommand("SELECT * FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode", MySQLConn)
@@ -136,9 +136,14 @@ Class ManageSchedule
 
     Private Sub btnModify_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModify.Click
 
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring & database
+
         Dim change As Boolean = False
 
-        
+
 
         Dim mo As Boolean = CheckBoxDay_mo.Checked
 
@@ -274,10 +279,32 @@ Class ManageSchedule
                     MsgBox(ex.Message)
                 End Try
             End If
-            
+
         Else
             MsgBox("No modification to be saved", MsgBoxStyle.Information, SystemTitle)
         End If
 
+    End Sub
+
+    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
+        Dim confirmDelete As DialogResult = MsgBox("Are you sure you want to delete this Schedule? This action is irreversible unless you have a latest database backup.", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
+        If confirmDelete = DialogResult.Yes Then
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+            MySQLConn.ConnectionString = connstring & database
+            Try
+                MySQLConn.Open()
+                comm = New MySqlCommand("DELETE FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode;DELETE FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode;", MySQLConn)
+                comm.Parameters.AddWithValue("classcode", ComboBoxClasscode.Text)
+                comm.ExecuteReader()
+                MsgBox("The Schedule has been successfully deleted", MsgBoxStyle.Information, SystemTitle)
+                MySQLConn.Close()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            Finally
+                MySQLConn.Dispose()
+            End Try
+        End If
     End Sub
 End Class

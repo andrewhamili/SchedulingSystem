@@ -49,6 +49,7 @@ Partial Class SchoolYearSemester
         '
         Me.ComboBoxSchoolYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxSchoolYear.FormattingEnabled = True
+        Me.ComboBoxSchoolYear.Items.AddRange(New Object() {"2015-2016", "2016-2017", "2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024", "2024-2025", "2025-2026", "2026-2027", "2027-2028", "2028-2029", "2029-2030"})
         Me.ComboBoxSchoolYear.Location = New System.Drawing.Point(257, 85)
         Me.ComboBoxSchoolYear.Name = "ComboBoxSchoolYear"
         Me.ComboBoxSchoolYear.Size = New System.Drawing.Size(121, 26)
@@ -58,6 +59,7 @@ Partial Class SchoolYearSemester
         '
         Me.ComboBoxSemester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxSemester.FormattingEnabled = True
+        Me.ComboBoxSemester.Items.AddRange(New Object() {"1st", "2nd", "summer"})
         Me.ComboBoxSemester.Location = New System.Drawing.Point(257, 118)
         Me.ComboBoxSemester.Name = "ComboBoxSemester"
         Me.ComboBoxSemester.Size = New System.Drawing.Size(121, 26)

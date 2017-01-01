@@ -38,7 +38,7 @@ Public Class AssignSchedule
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
 
         Try
             MySQLConn.Open()
@@ -64,7 +64,7 @@ Public Class AssignSchedule
             If MySQLConn.State = ConnectionState.Open Then
                 MySQLConn.Close()
             End If
-            MySQLConn.ConnectionString = connstring
+            MySQLConn.ConnectionString = connstring & database
             Try
                 MySQLConn.Open()
                 comm = New MySqlCommand("SELECT classcode FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE isAssigned!='true'", MySQLConn)
@@ -98,7 +98,7 @@ Public Class AssignSchedule
 
 
 
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Try
             'To Check if there are exisiting subject that is already assigned to the selected employee
             MySQLConn.Open()
@@ -253,7 +253,7 @@ Public Class AssignSchedule
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
             comm = New MySqlCommand("SELECT * FROM userlist WHERE lname=@selectedLastName", MySQLConn)
@@ -319,6 +319,11 @@ Public Class AssignSchedule
     End Sub
     Private Sub ComboBoxClasscode_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxClasscode.SelectedIndexChanged
         ComboBoxEmployeeLastname.Enabled = False
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+
+        MySQLConn.ConnectionString = connstring & database
 
         Try
             MySQLConn.Open()
@@ -392,6 +397,12 @@ Public Class AssignSchedule
 
     Private Sub btnSaveSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSaveSchedule.Click
 
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+
+        MySQLConn.ConnectionString = connstring & database
+
         Dim rownumber As Integer = DataGridViewPendingList.Rows.Count
 
         Dim conflictclasscode As String = ""
@@ -427,7 +438,7 @@ Public Class AssignSchedule
                 Dim subjunit As String = DataGridViewPendingList.Rows(0).Cells("Unit").Value
                 Dim instrname As String = LabelProfLname.Text & ", " & LabelProfFname.Text
 
-                MySQLConn.ConnectionString = connstring
+                MySQLConn.ConnectionString = connstring & database
                 Dim starter As Integer = 0
                 Dim divider As Integer = subjday.Length / 2 - 1
                 Dim looper As Integer = 0

@@ -112,6 +112,7 @@ Partial Class AddSchedule
         '
         Me.txt_AddSchedule_Classcode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_AddSchedule_Classcode.Location = New System.Drawing.Point(168, 12)
+        Me.txt_AddSchedule_Classcode.MaxLength = 255
         Me.txt_AddSchedule_Classcode.Name = "txt_AddSchedule_Classcode"
         Me.txt_AddSchedule_Classcode.Size = New System.Drawing.Size(197, 26)
         Me.txt_AddSchedule_Classcode.TabIndex = 7
@@ -119,6 +120,7 @@ Partial Class AddSchedule
         'txt_AddSchedule_SubjDesc
         '
         Me.txt_AddSchedule_SubjDesc.Location = New System.Drawing.Point(168, 56)
+        Me.txt_AddSchedule_SubjDesc.MaxLength = 255
         Me.txt_AddSchedule_SubjDesc.Name = "txt_AddSchedule_SubjDesc"
         Me.txt_AddSchedule_SubjDesc.Size = New System.Drawing.Size(197, 26)
         Me.txt_AddSchedule_SubjDesc.TabIndex = 8
@@ -126,6 +128,7 @@ Partial Class AddSchedule
         'txt_AddSchedule_Unit
         '
         Me.txt_AddSchedule_Unit.Location = New System.Drawing.Point(168, 103)
+        Me.txt_AddSchedule_Unit.MaxLength = 2
         Me.txt_AddSchedule_Unit.Name = "txt_AddSchedule_Unit"
         Me.txt_AddSchedule_Unit.Size = New System.Drawing.Size(197, 26)
         Me.txt_AddSchedule_Unit.TabIndex = 9

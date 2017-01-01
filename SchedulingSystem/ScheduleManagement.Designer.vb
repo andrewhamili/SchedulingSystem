@@ -26,6 +26,7 @@ Partial Class ManageSchedule
         Me.Label8 = New System.Windows.Forms.Label()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnReset = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.DateTimePickertimeto = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePickertimefrom = New System.Windows.Forms.DateTimePicker()
@@ -46,7 +47,6 @@ Partial Class ManageSchedule
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnReset = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -105,6 +105,15 @@ Partial Class ManageSchedule
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(399, 379)
         Me.Panel1.TabIndex = 67
+        '
+        'btnReset
+        '
+        Me.btnReset.Location = New System.Drawing.Point(144, 336)
+        Me.btnReset.Name = "btnReset"
+        Me.btnReset.Size = New System.Drawing.Size(113, 39)
+        Me.btnReset.TabIndex = 66
+        Me.btnReset.Text = "Reset"
+        Me.btnReset.UseVisualStyleBackColor = True
         '
         'btnDelete
         '
@@ -294,15 +303,6 @@ Partial Class ManageSchedule
         Me.Label2.Size = New System.Drawing.Size(144, 18)
         Me.Label2.TabIndex = 45
         Me.Label2.Text = "Subject Description"
-        '
-        'btnReset
-        '
-        Me.btnReset.Location = New System.Drawing.Point(144, 336)
-        Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(113, 39)
-        Me.btnReset.TabIndex = 66
-        Me.btnReset.Text = "Reset"
-        Me.btnReset.UseVisualStyleBackColor = True
         '
         'ManageSchedule
         '

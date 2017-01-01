@@ -9,6 +9,7 @@ Public Class LoginPage
 
     Private Sub LoginPage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         CheckMYSQLConnection()
+        Check_if_database_exists()
         If MySQLConnection = True Then
             With lblDatabaseStatus
                 .Text = "Online"
@@ -33,7 +34,7 @@ Public Class LoginPage
             If MySQLConn.State = ConnectionState.Open Then
                 MySQLConn.Close()
             End If
-            MySQLConn.ConnectionString = connstring
+            MySQLConn.ConnectionString = connstring & database
 
             Try
                 MySQLConn.Open()

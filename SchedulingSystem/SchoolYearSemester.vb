@@ -1,6 +1,7 @@
-﻿Public Class SchoolYearSemester
+﻿Imports MySql.Data.MySqlClient
+Class SchoolYearSemester
 
-
+    Public hovercheck As Boolean = False
     Protected Overrides ReadOnly Property CreateParams() As CreateParams
         Get
             Dim Param As CreateParams = MyBase.CreateParams
@@ -9,15 +10,89 @@
         End Get
     End Property
 
+
+    Private Sub SchoolYearSemester_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ComboBoxSchoolYear.Text = My.Settings.schoolyear
+        ComboBoxSemester.Text = My.Settings.semester
+    End Sub
+
     Private Sub SchoolYearSemester_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         AdminPage.Show()
     End Sub
 
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
-        Me.Close()
+        Me.Dispose()
+    End Sub
+    Private Sub btnCreate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCreate.Click
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring & database
+        Try
+            MySQLConn.Open()
+            comm = New MySqlCommand("SELECT * FROM existingschoolyearsemester WHERE schoolyear=@schoolyear AND semester=@semester", MySQLConn)
+            comm.Parameters.AddWithValue("schoolyear", ComboBoxSchoolYear.Text)
+            comm.Parameters.AddWithValue("semester", ComboBoxSemester.Text)
+            reader = comm.ExecuteReader
+            Dim count As Integer = 0
+            While reader.Read
+                count += 1
+            End While
+            MySQLConn.Close()
+            If count > 0 Then
+                MsgBox("Error creating the School Year and Semester because it already exists!", MsgBoxStyle.Exclamation, SystemTitle)
+            Else
+                Dim copyexist As DialogResult = MsgBox("Do you want to copy subjects from a previous School Year and Semester?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
+                If copyexist = DialogResult.Yes Then
+                Else
+                    MySQLConn.Open()
+                    comm = New MySqlCommand("CREATE TABLE `subjectlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "` LIKE subjectlist;CREATE TABLE `assignedsubj" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "` LIKE assignedsubj;", MySQLConn)
+                    comm.ExecuteReader()
+                    MySQLConn.Close()
+                    MySQLConn.Open()
+                    comm = New MySqlCommand("INSERT INTO existingschoolyearsemester VALUES(@schoolyear, @semester, @isActive);", MySQLConn)
+                    comm.Parameters.AddWithValue("schoolyear", ComboBoxSchoolYear.Text)
+                    comm.Parameters.AddWithValue("semester", ComboBoxSemester.Text)
+                    comm.Parameters.AddWithValue("isActive", "false")
+                    comm.ExecuteReader()
+                    MsgBox("The School Year and Semester has been successfully created. You can now Load it by clicking the 'Load' Button.", MsgBoxStyle.Information, SystemTitle)
+                    MySQLConn.Close()
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
-    Private Sub SchoolYearSemester_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub ButtonDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonDelete.Click
+        Dim confirmDelete As DialogResult = MsgBox("Are you sure you want to delete the selected School Year and Semester. This action is irreversible unless you have the latest database backup", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
+        If ComboBoxSchoolYear.Text = My.Settings.schoolyear And ComboBoxSemester.Text = My.Settings.semester Then
+            MsgBox("You cannot delete the selected School Year and Semester because it is Active, activate another School Year and Semester so that you can delete this.", MsgBoxStyle.Critical, SystemTitle)
+        ElseIf confirmDelete = DialogResult.Yes Then
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+            MySQLConn.ConnectionString = connstring & database
 
+            Try
+                MySQLConn.Open()
+                comm = New MySqlCommand("DROP TABLE `assignedsubj" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DROP TABLE `subjectlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;", MySQLConn)
+                comm.ExecuteReader()
+                MsgBox("The School Year and Semester has been successfully deleted!", MsgBoxStyle.Information, SystemTitle)
+                MySQLConn.Close()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            Finally
+                MySQLConn.Dispose()
+            End Try
+        End If
+
+    End Sub
+
+    Private Sub ButtonDelete_MouseHover(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonDelete.MouseHover
+        If hovercheck = False Then
+            MsgBox("WARNING: This Delete button was created for you to permanently delete the whole Tables that includes the Assigned Subjects for Professors and the Subjectlist table for a particular Schoolyear and Semester. USE WITH EXTREME CAUTION!", MsgBoxStyle.Critical, "DISCLAIMER")
+            hovercheck = True
+        End If
     End Sub
 End Class

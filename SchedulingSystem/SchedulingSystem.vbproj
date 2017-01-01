@@ -56,7 +56,7 @@
       <HintPath>..\..\..\..\MetroFrameworkLibraries\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySqlBackup">
-      <HintPath>..\..\..\..\MetroFrameworkLibraries\MySqlBackup.dll</HintPath>
+      <HintPath>C:\Users\Andrew\Documents\MetroFrameworkLibraries\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

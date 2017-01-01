@@ -31,7 +31,7 @@ Class UnassignSchedule
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
             comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "`", MySQLConn)
@@ -52,7 +52,7 @@ Class UnassignSchedule
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         If ComboBoxClasscode.Text = "" Then
             MsgBox("Please choose a classcode first!", MsgBoxStyle.Critical, SystemTitle)
         ElseIf lblSubjDesc.Text = "" Then
@@ -105,7 +105,7 @@ Class UnassignSchedule
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
             comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode", MySQLConn)
