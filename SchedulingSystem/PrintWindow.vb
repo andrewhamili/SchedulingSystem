@@ -11,49 +11,92 @@ Public Class PrintWindow
             AllSched()
         ElseIf PrintAction = "AllSubjects" Then
             AllSubjects()
+        ElseIf PrintAction = "Single" Then
+            SingleSched()
         End If
     End Sub
     Public Sub AllSched()
-        Dim schoolyeartext As String = "SchoolYear: " & My.Settings.schoolyear
-        Dim semestertext As String = "Semester: " & My.Settings.semester
-        Dim schoolyear As New ReportParameter("ReportParameterSchoolYear", schoolyeartext)
-        Dim semester As New ReportParameter("ReportParameterSemester", semestertext)
+        Dim schoolyeartext As String = "SchoolYear: " & schoolyear & ""
+        Dim semestertext As String = "Semester: " & semester & ""
+        Dim schoolyeartexts As New ReportParameter("ReportParameterSchoolYear", schoolyeartext)
+        Dim semestertexts As New ReportParameter("ReportParameterSemester", semestertext)
+        
 
-        ReportViewer1.LocalReport.DataSources.Clear()
-        ReportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-        ReportViewer1.LocalReport.ReportPath = System.Environment.CurrentDirectory + "\Schedules.rdlc"
+        
 
-        ReportViewer1.LocalReport.SetParameters(schoolyear)
-        ReportViewer1.LocalReport.SetParameters(semester)
+        With ReportViewer1
+            .LocalReport.DataSources.Clear()
+            .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
+            .LocalReport.ReportPath = System.Environment.CurrentDirectory + "\Schedules.rdlc"
 
-        ReportViewer1.LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", data.Tables(0)))
+            .LocalReport.SetParameters(schoolyeartexts)
+            .LocalReport.SetParameters(semestertexts)
+            
 
-        ReportViewer1.DocumentMapCollapsed = True
-        ReportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
-        ReportViewer1.ZoomMode = ZoomMode.Percent
-        ReportViewer1.ZoomPercent = 75
+            .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", data.Tables(0)))
+
+            .DocumentMapCollapsed = True
+            .SetDisplayMode(DisplayMode.PrintLayout)
+            .ZoomMode = ZoomMode.Percent
+            .ZoomPercent = 75
+
+        End With
+        
 
         Me.ReportViewer1.RefreshReport()
     End Sub
     Public Sub AllSubjects()
-        Dim schoolyeartext As String = "SchoolYear: " & My.Settings.schoolyear
-        Dim semestertext As String = "Semester: " & My.Settings.semester
-        Dim schoolyear As New ReportParameter("ReportParameterSchoolYear", schoolyeartext)
-        Dim semester As New ReportParameter("ReportParameterSemester", semestertext)
+        Dim schoolyeartext As String = "SchoolYear: " & schoolyear
+        Dim semestertext As String = "Semester: " & semester
+        Dim schoolyeartexts As New ReportParameter("ReportParameterSchoolYear", schoolyeartext)
+        Dim semestertexts As New ReportParameter("ReportParameterSemester", semestertext)
 
-        ReportViewer1.LocalReport.DataSources.Clear()
-        ReportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-        ReportViewer1.LocalReport.ReportPath = System.Environment.CurrentDirectory + "\Subjects.rdlc"
+        With ReportViewer1
+            .LocalReport.DataSources.Clear()
+            .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
+            .LocalReport.ReportPath = System.Environment.CurrentDirectory + "\Subjects.rdlc"
 
-        ReportViewer1.LocalReport.SetParameters(schoolyear)
-        ReportViewer1.LocalReport.SetParameters(semester)
+            .LocalReport.SetParameters(schoolyeartexts)
+            .LocalReport.SetParameters(semestertexts)
 
-        ReportViewer1.LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", data.Tables(1)))
+            .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", data.Tables(1)))
 
-        ReportViewer1.DocumentMapCollapsed = True
-        ReportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
-        ReportViewer1.ZoomMode = ZoomMode.Percent
-        ReportViewer1.ZoomPercent = 75
+            .DocumentMapCollapsed = True
+            .SetDisplayMode(DisplayMode.PrintLayout)
+            .ZoomMode = ZoomMode.Percent
+            .ZoomPercent = 75
+        End With
+
+        Me.ReportViewer1.RefreshReport()
+    End Sub
+    Public Sub SingleSched()
+        Dim schoolyeartext As String = "SchoolYear: " & SchoolYear
+        Dim semestertext As String = "Semester: " & Semester
+        Dim schoolyeartexts As New ReportParameter("ReportParameterSchoolYear", schoolyeartext)
+        Dim semestertexts As New ReportParameter("ReportParameterSemester", semestertext)
+
+        Dim profname As New ReportParameter("ProfName", FacultySched.instrname)
+        Dim totalunit As New ReportParameter("TotalUnits", FacultySched.lbltotalunit.Text.Substring(15, 2))
+
+
+        With ReportViewer1
+            .LocalReport.DataSources.Clear()
+            .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
+            .LocalReport.ReportPath = System.Environment.CurrentDirectory + "\Schedule-Single.rdlc"
+
+            .LocalReport.SetParameters(schoolyeartexts)
+            .LocalReport.SetParameters(semestertexts)
+            .LocalReport.SetParameters(profname)
+            .LocalReport.SetParameters(totalunit)
+
+
+            .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", data.Tables(2)))
+
+            .DocumentMapCollapsed = True
+            .SetDisplayMode(DisplayMode.PrintLayout)
+            .ZoomMode = ZoomMode.Percent
+            .ZoomPercent = 75
+        End With
 
         Me.ReportViewer1.RefreshReport()
     End Sub

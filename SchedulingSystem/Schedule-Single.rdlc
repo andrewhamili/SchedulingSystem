@@ -12,12 +12,12 @@
   <DataSets>
     <DataSet Name="DataSet1">
       <Fields>
-        <Field Name="Code">
-          <DataField>Code</DataField>
+        <Field Name="Classcode">
+          <DataField>Classcode</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
+        <Field Name="SubjectDescription">
+          <DataField>SubjectDescription</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Day">
@@ -28,24 +28,16 @@
           <DataField>Room</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="From">
-          <DataField>From</DataField>
+        <Field Name="TimeStart">
+          <DataField>TimeStart</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="To">
-          <DataField>To</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Instructor">
-          <DataField>Instructor</DataField>
+        <Field Name="TimeEnd">
+          <DataField>TimeEnd</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Unit">
           <DataField>Unit</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TotalUnits">
-          <DataField>TotalUnits</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -54,9 +46,9 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <rd:DataSetInfo>
-        <rd:DataSetName>DataSet1</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\ANDREW\Documents\Visual Studio 2010\Projects\SchedulingSystem\SchedulingSystem\DataSet1.xsd</rd:SchemaPath>
-        <rd:TableName>DataTable1</rd:TableName>
+        <rd:DataSetName>DataSetPrint</rd:DataSetName>
+        <rd:SchemaPath>E:\SchedulingSystem\SchedulingSystem\DataSetPrint.xsd</rd:SchemaPath>
+        <rd:TableName>Schedule-Single</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
@@ -69,10 +61,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.48235in</Width>
+              <Width>1.74277in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.05761in</Width>
+              <Width>1.77215in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.71946in</Width>
@@ -85,9 +77,6 @@
             </TablixColumn>
             <TablixColumn>
               <Width>0.52139in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>0.94053in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.41349in</Width>
@@ -267,7 +256,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox9</rd:DefaultName>
@@ -303,46 +294,12 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#7292cc</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>#4c68a2</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox13">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Instructor</Value>
-                              <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Color>White</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#7292cc</Color>
@@ -407,7 +364,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Code.Value</Value>
+                              <Value>=Fields!Classcode.Value</Value>
                               <Style>
                                 <FontFamily>arial</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -440,7 +397,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Description.Value</Value>
+                              <Value>=Fields!SubjectDescription.Value</Value>
                               <Style>
                                 <FontFamily>arial</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -539,7 +496,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!From.Value</Value>
+                              <Value>=Fields!TimeStart.Value</Value>
                               <Style>
                                 <Format>HH:mm</Format>
                                 <Color>#4d4d4d</Color>
@@ -572,7 +529,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!To.Value</Value>
+                              <Value>=Fields!TimeEnd.Value</Value>
                               <Style>
                                 <Format>H:mm</Format>
                                 <Color>#4d4d4d</Color>
@@ -583,39 +540,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>To</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#000000</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Instructor">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Instructor.Value</Value>
-                              <Style>
-                                <FontFamily>arial</FontFamily>
-                                <Color>#4d4d4d</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Instructor</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#000000</Color>
@@ -691,15 +615,13 @@
             <TablixMember>
               <FixedData>true</FixedData>
             </TablixMember>
-            <TablixMember>
-              <FixedData>true</FixedData>
-            </TablixMember>
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
               <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
             </TablixMember>
             <TablixMember>
               <Group Name="Details" />
@@ -711,7 +633,7 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>0.92362in</Top>
         <Height>0.5in</Height>
-        <Width>6.29167in</Width>
+        <Width>6.3261in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -938,14 +860,15 @@
                   </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
           <Top>0.35764in</Top>
-          <Left>2.13265in</Left>
           <Height>0.3125in</Height>
-          <Width>2.6875in</Width>
+          <Width>6.3261in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -967,14 +890,15 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
           <Top>0.69792in</Top>
-          <Left>2.33057in</Left>
           <Height>0.25in</Height>
-          <Width>2.20125in</Width>
+          <Width>6.3261in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1059,14 +983,15 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox21</rd:DefaultName>
           <Top>1.43402in</Top>
-          <Left>2.33057in</Left>
           <Height>0.22917in</Height>
-          <Width>2.20125in</Width>
+          <Width>6.3261in</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -1089,14 +1014,15 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox19</rd:DefaultName>
           <Top>1.18403in</Top>
-          <Left>2.33057in</Left>
           <Height>0.22222in</Height>
-          <Width>2.20125in</Width>
+          <Width>6.3261in</Width>
           <ZIndex>5</ZIndex>
           <Style>
             <Border>

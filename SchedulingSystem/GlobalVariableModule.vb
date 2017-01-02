@@ -16,6 +16,9 @@ Module GlobalVariableModule
     Public activeuserfname As String = "" 'Public Variable to store the logged-in user's first name.
     Public activeuserlname As String = "" 'Public Variable to store the logged-in user's last name.
 
+    Public SchoolYear As String = ""
+    Public Semester As String = ""
+
 
     Public data As New DataSetPrint
     Public PrintAction As String

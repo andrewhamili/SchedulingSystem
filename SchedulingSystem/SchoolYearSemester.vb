@@ -12,8 +12,9 @@ Class SchoolYearSemester
 
 
     Private Sub SchoolYearSemester_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ComboBoxSchoolYear.Text = My.Settings.schoolyear
-        ComboBoxSemester.Text = My.Settings.semester
+        CancelButton = btnClose
+        ComboBoxSchoolYear.Text = schoolyear
+        ComboBoxSemester.Text = semester
     End Sub
 
     Private Sub SchoolYearSemester_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
@@ -44,6 +45,8 @@ Class SchoolYearSemester
             Else
                 Dim copyexist As DialogResult = MsgBox("Do you want to copy subjects from a previous School Year and Semester?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
                 If copyexist = DialogResult.Yes Then
+                    Me.Hide()
+                    PreviousSchoolYearSemester.ShowDialog()
                 Else
                     MySQLConn.Open()
                     comm = New MySqlCommand("CREATE TABLE `subjectlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "` LIKE subjectlist;CREATE TABLE `assignedsubj" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "` LIKE assignedsubj;", MySQLConn)
@@ -66,7 +69,7 @@ Class SchoolYearSemester
 
     Private Sub ButtonDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonDelete.Click
         Dim confirmDelete As DialogResult = MsgBox("Are you sure you want to delete the selected School Year and Semester. This action is irreversible unless you have the latest database backup", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
-        If ComboBoxSchoolYear.Text = My.Settings.schoolyear And ComboBoxSemester.Text = My.Settings.semester Then
+        If ComboBoxSchoolYear.Text = schoolyear And ComboBoxSemester.Text = semester Then
             MsgBox("You cannot delete the selected School Year and Semester because it is Active, activate another School Year and Semester so that you can delete this.", MsgBoxStyle.Critical, SystemTitle)
         ElseIf confirmDelete = DialogResult.Yes Then
             If MySQLConn.State = ConnectionState.Open Then
@@ -76,7 +79,9 @@ Class SchoolYearSemester
 
             Try
                 MySQLConn.Open()
-                comm = New MySqlCommand("DROP TABLE `assignedsubj" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DROP TABLE `subjectlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;", MySQLConn)
+                comm = New MySqlCommand("DROP TABLE `assignedsubj" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DROP TABLE `subjectlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DELETE FROM existingschoolyearsemester WHERE schoolyear=@schoolyear AND semester=@semester;", MySQLConn)
+                comm.Parameters.AddWithValue("schoolyear", ComboBoxSchoolYear.Text)
+                comm.Parameters.AddWithValue("semester", ComboBoxSemester.Text)
                 comm.ExecuteReader()
                 MsgBox("The School Year and Semester has been successfully deleted!", MsgBoxStyle.Information, SystemTitle)
                 MySQLConn.Close()
@@ -94,5 +99,46 @@ Class SchoolYearSemester
             MsgBox("WARNING: This Delete button was created for you to permanently delete the whole Tables that includes the Assigned Subjects for Professors and the Subjectlist table for a particular Schoolyear and Semester. USE WITH EXTREME CAUTION!", MsgBoxStyle.Critical, "DISCLAIMER")
             hovercheck = True
         End If
+    End Sub
+
+    Private Sub btnLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoad.Click
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring & database
+        Try
+            MySQLConn.Open()
+            comm = New MySqlCommand("SELECT * FROM existingschoolyearsemester WHERE schoolyear=@schoolyear AND semester=@semester;", MySQLConn)
+            With comm.Parameters
+                .AddWithValue("schoolyear", ComboBoxSchoolYear.Text)
+                .AddWithValue("semester", ComboBoxSemester.Text)
+            End With
+            reader = comm.ExecuteReader
+            Dim count As Integer = 0
+            While reader.Read
+                count += 1
+            End While
+            If count > 0 Then
+                schoolyear = ComboBoxSchoolYear.Text
+                semester = ComboBoxSemester.Text
+                MySQLConn.Close()
+                MySQLConn.Open()
+                comm = New MySqlCommand("UPDATE existingschoolyearsemester SET isActive='false';UPDATE existingschoolyearsemester SET isActive='true' WHERE schoolyear=@schoolyear AND semester=@semester;", MySQLConn)
+                With comm.Parameters
+                    .AddWithValue("schoolyear", ComboBoxSchoolYear.Text)
+                    .AddWithValue("semester", ComboBoxSemester.Text)
+                End With
+                comm.ExecuteReader()
+                MsgBox("The School Year and Semester is now loaded!", MsgBoxStyle.Information, SystemTitle)
+                MySQLConn.Close()
+            Else
+                MsgBox("The School Year and Semester does not exist. Click the 'Create' button first!", MsgBoxStyle.Critical, SystemTitle)
+            End If
+            MySQLConn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            MySQLConn.Dispose()
+        End Try
     End Sub
 End Class

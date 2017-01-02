@@ -22,6 +22,8 @@ Partial Class AdminPage
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminPage))
         Me.lblName = New System.Windows.Forms.Label()
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.ScheduleManagement = New System.Windows.Forms.TabPage()
@@ -54,6 +56,7 @@ Partial Class AdminPage
         Me.btnChangeSchoolyearSemester = New System.Windows.Forms.Button()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.btnAccountManagement = New System.Windows.Forms.Button()
+        Me.TimerTimeAndDate = New System.Windows.Forms.Timer(Me.components)
         Me.TabControl.SuspendLayout()
         Me.ScheduleManagement.SuspendLayout()
         Me.TabControl2.SuspendLayout()
@@ -203,7 +206,7 @@ Partial Class AdminPage
         '
         Me.PictureBoxPrintSchedules.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBoxPrintSchedules.Image = Global.SchedulingSystem.My.Resources.Resources.giphy
-        Me.PictureBoxPrintSchedules.Location = New System.Drawing.Point(1135, 108)
+        Me.PictureBoxPrintSchedules.Location = New System.Drawing.Point(1135, 118)
         Me.PictureBoxPrintSchedules.Name = "PictureBoxPrintSchedules"
         Me.PictureBoxPrintSchedules.Size = New System.Drawing.Size(100, 50)
         Me.PictureBoxPrintSchedules.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -213,7 +216,7 @@ Partial Class AdminPage
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(1005, 108)
+        Me.Button1.Location = New System.Drawing.Point(1005, 118)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(111, 52)
         Me.Button1.TabIndex = 4
@@ -223,7 +226,7 @@ Partial Class AdminPage
         'btnAssignSched
         '
         Me.btnAssignSched.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAssignSched.Location = New System.Drawing.Point(888, 108)
+        Me.btnAssignSched.Location = New System.Drawing.Point(888, 118)
         Me.btnAssignSched.Name = "btnAssignSched"
         Me.btnAssignSched.Size = New System.Drawing.Size(111, 52)
         Me.btnAssignSched.TabIndex = 3
@@ -340,12 +343,20 @@ Partial Class AdminPage
         '
         'DataGridViewFacultyList
         '
+        Me.DataGridViewFacultyList.AllowUserToAddRows = False
+        Me.DataGridViewFacultyList.AllowUserToDeleteRows = False
+        Me.DataGridViewFacultyList.AllowUserToResizeRows = False
+        Me.DataGridViewFacultyList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewFacultyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewFacultyList.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.DataGridViewFacultyList.Location = New System.Drawing.Point(3, 206)
+        Me.DataGridViewFacultyList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.DataGridViewFacultyList.Location = New System.Drawing.Point(3, 209)
         Me.DataGridViewFacultyList.Name = "DataGridViewFacultyList"
-        Me.DataGridViewFacultyList.Size = New System.Drawing.Size(1258, 264)
-        Me.DataGridViewFacultyList.TabIndex = 0
+        Me.DataGridViewFacultyList.ReadOnly = True
+        Me.DataGridViewFacultyList.RowHeadersVisible = False
+        Me.DataGridViewFacultyList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridViewFacultyList.Size = New System.Drawing.Size(1258, 261)
+        Me.DataGridViewFacultyList.TabIndex = 3
         '
         'Label1
         '
@@ -423,6 +434,9 @@ Partial Class AdminPage
         Me.btnAccountManagement.Text = "Account Management"
         Me.btnAccountManagement.UseVisualStyleBackColor = True
         '
+        'TimerTimeAndDate
+        '
+        '
         'AdminPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -439,11 +453,12 @@ Partial Class AdminPage
         Me.Controls.Add(Me.TabControl)
         Me.Controls.Add(Me.lblName)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MinimizeBox = False
         Me.Name = "AdminPage"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Form2"
+        Me.Text = "Home Page"
         Me.TabControl.ResumeLayout(False)
         Me.ScheduleManagement.ResumeLayout(False)
         Me.TabControl2.ResumeLayout(False)
@@ -485,7 +500,6 @@ Partial Class AdminPage
     Friend WithEvents lblTotalSubjects As System.Windows.Forms.Label
     Friend WithEvents btnManageSchedule As System.Windows.Forms.Button
     Friend WithEvents btnAddSchedule As System.Windows.Forms.Button
-    Friend WithEvents DataGridViewFacultyList As System.Windows.Forms.DataGridView
     Friend WithEvents GroupBoxSearch As System.Windows.Forms.GroupBox
     Friend WithEvents lblSearch As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -495,4 +509,6 @@ Partial Class AdminPage
     Friend WithEvents txtSearchRoom As System.Windows.Forms.TextBox
     Friend WithEvents txtSearchClasscode As System.Windows.Forms.TextBox
     Friend WithEvents PictureBoxPrintSubjects As System.Windows.Forms.PictureBox
+    Friend WithEvents TimerTimeAndDate As System.Windows.Forms.Timer
+    Friend WithEvents DataGridViewFacultyList As System.Windows.Forms.DataGridView
 End Class

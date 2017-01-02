@@ -23,6 +23,7 @@ Partial Class AssignSchedule
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AssignSchedule))
         Me.ComboBoxEmployeeLastname = New System.Windows.Forms.ComboBox()
         Me.ComboBoxClasscode = New System.Windows.Forms.ComboBox()
         Me.btnChooseClasscode = New System.Windows.Forms.Button()
@@ -420,6 +421,7 @@ Partial Class AssignSchedule
         Me.Controls.Add(Me.ComboBoxClasscode)
         Me.Controls.Add(Me.ComboBoxEmployeeLastname)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "AssignSchedule"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

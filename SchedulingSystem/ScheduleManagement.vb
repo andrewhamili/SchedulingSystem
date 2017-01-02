@@ -18,6 +18,7 @@ Class ManageSchedule
     Public tempRoom As String
 
     Private Sub ScheduleManagement_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        CancelButton = btnCancel
         Load_Classcodes()
         Panel1.Hide()
     End Sub
@@ -29,7 +30,7 @@ Class ManageSchedule
         With ComboBoxClasscode
             Try
                 MySQLConn.Open()
-                comm = New MySqlCommand("SELECT classcode FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "`", MySQLConn)
+                comm = New MySqlCommand("SELECT classcode FROM `subjectlist" & schoolyear & "" & semester & "`", MySQLConn)
                 reader = comm.ExecuteReader
                 While reader.Read
                     .Items.Add(reader.GetString("classcode"))
@@ -66,7 +67,7 @@ Class ManageSchedule
         MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
-            comm = New MySqlCommand("SELECT * FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode", MySQLConn)
+            comm = New MySqlCommand("SELECT * FROM `subjectlist" & schoolyear & "" & semester & "` WHERE classcode=@classcode", MySQLConn)
             comm.Parameters.AddWithValue("classcode", ComboBoxClasscode.Text)
             reader = comm.ExecuteReader
             While reader.Read
@@ -127,10 +128,12 @@ Class ManageSchedule
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        AdminPage.ChangeTab()
         Me.Dispose()
     End Sub
 
     Private Sub btnCancel1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel1.Click
+        AdminPage.ChangeTab()
         Me.Dispose()
     End Sub
 
@@ -215,7 +218,16 @@ Class ManageSchedule
 
         If change = True Then
             Dim answer As DialogResult = MsgBox("Are you sure you want to modify the Schedule? Modifying the schedule will automatically unassign it to a Professor. You need to assign it again to prevent schedule conflicts.", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
+            Dim TimeStart As DateTime = DateTimePickertimefrom.Value.ToString("HH:mm")
+            Dim TimeEnd As DateTime = DateTimePickertimeto.Value.ToString("HH:mm")
+
+            Dim span As TimeSpan
+
             If answer = Windows.Forms.DialogResult.Yes Then
+                If span.TotalSeconds <= 0 Then
+                    MsgBox("The Time End cannot be greater than or equal to the Time Start", MsgBoxStyle.Exclamation, SystemTitle)
+                    Exit Sub
+                End If
 
                 Try
 
@@ -234,8 +246,8 @@ Class ManageSchedule
                         looper += 1
 
                         MySQLConn.Open()
-                        'comm = New MySqlCommand("SELECT * FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & daycheck & "%' and room='" & ComboBoxRoom.Text & "' AND TimeTo > '" & DateTimePickertimefrom.Value.ToString("HH:mm") & "' and TimeFrom < '" & DateTimePickertimeto.Value.ToString("HH:mm") & "' AND classcode!='" & ComboBoxClasscode.Text & "'", MySQLConn)
-                        comm = New MySqlCommand("SELECT * FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & daycheck & "%' and room=@room and TimeTo > @timefrom and TimeFrom < @timeto AND classcode!=@classcode", MySQLConn)
+                        'comm = New MySqlCommand("SELECT * FROM `subjectlist" & schoolyear & "" & semester & "` WHERE day like '%" & daycheck & "%' and room='" & ComboBoxRoom.Text & "' AND TimeTo > '" & DateTimePickertimefrom.Value.ToString("HH:mm") & "' and TimeFrom < '" & DateTimePickertimeto.Value.ToString("HH:mm") & "' AND classcode!='" & ComboBoxClasscode.Text & "'", MySQLConn)
+                        comm = New MySqlCommand("SELECT * FROM `subjectlist" & schoolyear & "" & semester & "` WHERE day like '%" & daycheck & "%' and room=@room and TimeTo > @timefrom and TimeFrom < @timeto AND classcode!=@classcode", MySQLConn)
                         comm.Parameters.AddWithValue("room", ComboBoxRoom.Text)
                         comm.Parameters.AddWithValue("timefrom", DateTimePickertimefrom.Value.ToString("HH:mm"))
                         comm.Parameters.AddWithValue("timeto", DateTimePickertimeto.Value.ToString("HH:mm"))
@@ -257,7 +269,7 @@ Class ManageSchedule
                     End While
                     MySQLConn.Close()
                     MySQLConn.Open()
-                    comm = New MySqlCommand("UPDATE `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` SET subj_desc=@subjdesc, subj_unit=@subjunit, day=@subjday, TimeFrom=@timefrom, TimeTo=@timeto, room=@room, isAssigned='false' WHERE classcode=@classcode;", MySQLConn)
+                    comm = New MySqlCommand("UPDATE `subjectlist" & schoolyear & "" & semester & "` SET subj_desc=@subjdesc, subj_unit=@subjunit, day=@subjday, TimeFrom=@timefrom, TimeTo=@timeto, room=@room, isAssigned='false' WHERE classcode=@classcode;", MySQLConn)
                     comm.Parameters.AddWithValue("subjdesc", txtSubjDesc.Text)
                     comm.Parameters.AddWithValue("subjunit", txtUnit.Text)
                     comm.Parameters.AddWithValue("subjday", daytext)
@@ -269,7 +281,7 @@ Class ManageSchedule
                     comm.ExecuteReader()
                     MySQLConn.Close()
                     MySQLConn.Open()
-                    comm = New MySqlCommand("DELETE FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode", MySQLConn)
+                    comm = New MySqlCommand("DELETE FROM `assignedsubj" & schoolyear & "" & semester & "` WHERE classcode=@classcode", MySQLConn)
                     comm.Parameters.AddWithValue("classcode", ComboBoxClasscode.Text)
                     comm.ExecuteReader()
                     MySQLConn.Close()
@@ -295,11 +307,12 @@ Class ManageSchedule
             MySQLConn.ConnectionString = connstring & database
             Try
                 MySQLConn.Open()
-                comm = New MySqlCommand("DELETE FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode;DELETE FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode;", MySQLConn)
+                comm = New MySqlCommand("DELETE FROM `subjectlist" & schoolyear & "" & semester & "` WHERE classcode=@classcode;DELETE FROM `assignedsubj" & schoolyear & "" & semester & "` WHERE classcode=@classcode;", MySQLConn)
                 comm.Parameters.AddWithValue("classcode", ComboBoxClasscode.Text)
                 comm.ExecuteReader()
                 MsgBox("The Schedule has been successfully deleted", MsgBoxStyle.Information, SystemTitle)
                 MySQLConn.Close()
+                btnReset.PerformClick()
             Catch ex As Exception
                 MsgBox(ex.Message)
             Finally

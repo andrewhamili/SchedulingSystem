@@ -15,6 +15,7 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,7 +28,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
@@ -77,6 +77,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -97,6 +98,13 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountManagement.Designer.vb">
+      <DependentUpon>AccountManagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Actions.vb" />
     <Compile Include="AddSchedule.Designer.vb">
       <DependentUpon>AddSchedule.vb</DependentUpon>
     </Compile>
@@ -116,6 +124,12 @@
     </Compile>
     <Compile Include="DataSetPrint.vb">
       <DependentUpon>DataSetPrint.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FacultySched.Designer.vb">
+      <DependentUpon>FacultySched.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacultySched.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
@@ -146,6 +160,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PreviousSchoolYearSemester.Designer.vb">
+      <DependentUpon>PreviousSchoolYearSemester.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PreviousSchoolYearSemester.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PrintWindow.Designer.vb">
       <DependentUpon>PrintWindow.vb</DependentUpon>
     </Compile>
@@ -172,11 +192,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AccountManagement.resx">
+      <DependentUpon>AccountManagement.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddSchedule.resx">
       <DependentUpon>AddSchedule.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AssignSchedule.resx">
       <DependentUpon>AssignSchedule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacultySched.resx">
+      <DependentUpon>FacultySched.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
@@ -189,6 +215,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviousSchoolYearSemester.resx">
+      <DependentUpon>PreviousSchoolYearSemester.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintWindow.resx">
       <DependentUpon>PrintWindow.vb</DependentUpon>

@@ -8,8 +8,6 @@ Public Class AdminPage
 
     Public charactersAllowed As String = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
     Public charactersAllowedClasscodeAndRoom As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
-
-
     Protected Overrides ReadOnly Property CreateParams() As CreateParams
         Get
             Dim Param As CreateParams = MyBase.CreateParams
@@ -17,7 +15,6 @@ Public Class AdminPage
             Return Param
         End Get
     End Property
-
     Private Sub AdminPage_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         LoginPage.Show()
         LoginPage.tboxusername.Focus()
@@ -25,6 +22,7 @@ Public Class AdminPage
 
     Private Sub AdminPage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Load_Schedules()
+        TimerTimeAndDate.Enabled = True
     End Sub
 
     Private Sub btnLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogout.Click
@@ -62,7 +60,7 @@ Public Class AdminPage
         MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
-            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'SubjectDescription', day AS Day, room AS Room, TIME_FORMAT(TimeStart, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeEnd, '%H:%i') AS 'Time End', instructor AS Instructor, units as 'Unit(s)' FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` ORDER BY instructor ASC", MySQLConn)
+            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'SubjectDescription', day AS Day, room AS Room, TIME_FORMAT(TimeStart, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeEnd, '%H:%i') AS 'Time End', instructor AS Instructor, units as 'Unit(s)' FROM `assignedsubj" & schoolyear & "" & semester & "` ORDER BY instructor ASC", MySQLConn)
             adapter.SelectCommand = comm
             adapter.Fill(dbdataset)
             DataGridSched.DataSource = dbdataset
@@ -85,7 +83,7 @@ Public Class AdminPage
         MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
-            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'Subject Description', subj_unit as 'Unit(s)', day AS Day, TIME_FORMAT(TimeFrom, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeTo, '%H:%i') AS 'Time End', room AS Room FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` ORDER BY room ASC", MySQLConn)
+            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'Subject Description', subj_unit as 'Unit(s)', day AS Day, TIME_FORMAT(TimeFrom, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeTo, '%H:%i') AS 'Time End', room AS Room FROM `subjectlist" & schoolyear & "" & semester & "` ORDER BY room ASC", MySQLConn)
             adapter.SelectCommand = comm
             adapter.Fill(dbdataset)
             DataGridSubjects.DataSource = dbdataset
@@ -285,5 +283,69 @@ Public Class AdminPage
 
             MsgBox("CRITICAL ERROR : Exception caught while converting dataGridView to DataSet (dgvtods).. " & Chr(10) & ex.Message)
         End Try
+    End Sub
+
+    Private Sub btnAccountManagement_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAccountManagement.Click
+        AccountManagement.ShowDialog()
+    End Sub
+    Public Sub ChangeTab()
+        TabControl2.SelectedTab = TabSchedule
+    End Sub
+
+    Private Sub TimerTimeAndDate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerTimeAndDate.Tick
+        txtCurrentSchoolYear.Text = SchoolYear
+        txtCurrentSemester.Text = Semester
+        Me.Text = "Home Page        " & Now.ToString("MMMMM dd, yyyy    HH:mm:ss")
+    End Sub
+    Public Sub Load_FacultyList()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+
+        Dim adapter As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
+        MySQLConn.ConnectionString = connstring & database
+        Try
+            MySQLConn.Open()
+            comm = New MySqlCommand("SELECT lname AS 'Last Name', fname AS 'First Name', mname AS 'Middle Name', username AS Username FROM userlist WHERE username!='pass';", MySQLConn)
+            adapter.SelectCommand = comm
+            adapter.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            DataGridViewFacultyList.DataSource = bsource
+            adapter.Update(dbdataset)
+            MySQLConn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            MySQLConn.Close()
+        End Try
+    End Sub
+
+    Private Sub FacultyList_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles FacultyList.Enter
+        Load_FacultyList()
+    End Sub
+
+    Private Sub DataGridViewFacultyList_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
+        If e.RowIndex >= 0 Then
+            Dim row As DataGridViewRow
+            Dim instructor As String
+            row = DataGridViewFacultyList.Rows(e.RowIndex)
+            instructor = row.Cells("Last Name").Value + ", " + row.Cells("First Name").Value
+            FacultySched.instrname = instructor
+            FacultySched.ShowDialog()
+        End If
+    End Sub
+
+    Private Sub DataGridViewFacultyList_CellDoubleClick1(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewFacultyList.CellDoubleClick
+        If e.RowIndex >= 0 Then
+            Dim row As DataGridViewRow
+            Dim instructor As String = ""
+            row = DataGridViewFacultyList.Rows(e.RowIndex)
+            instructor = row.Cells("Last Name").Value + ", " + row.Cells("First Name").Value
+            FacultySched.instrname = instructor
+            FacultySched.ShowDialog()
+        End If
     End Sub
 End Class

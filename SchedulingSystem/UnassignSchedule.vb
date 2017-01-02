@@ -9,6 +9,7 @@ Class UnassignSchedule
         End Get
     End Property
     Private Sub UnassignSchedule_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        CancelButton = btnCancel
         With ComboBoxClasscode
             .AutoCompleteSource = AutoCompleteSource.CustomSource
             .AutoCompleteMode = AutoCompleteMode.SuggestAppend
@@ -34,7 +35,7 @@ Class UnassignSchedule
         MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
-            comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "`", MySQLConn)
+            comm = New MySqlCommand("SELECT * FROM `assignedsubj" & schoolyear & "" & semester & "`", MySQLConn)
             reader = comm.ExecuteReader
             While reader.Read
                 ComboBoxClasscode.Items.Add(reader.GetString("classcode"))
@@ -63,12 +64,12 @@ Class UnassignSchedule
             If answer = Windows.Forms.DialogResult.Yes Then
                 Try
                     MySQLConn.Open()
-                    comm = New MySqlCommand("DELETE FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode;", MySQLConn)
+                    comm = New MySqlCommand("DELETE FROM `assignedsubj" & schoolyear & "" & semester & "` WHERE classcode=@classcode;", MySQLConn)
                     comm.Parameters.AddWithValue("classcode", ComboBoxClasscode.Text)
                     comm.ExecuteReader()
                     MySQLConn.Close()
                     MySQLConn.Open()
-                    comm = New MySqlCommand("UPDATE `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` SET isAssigned='false' WHERE classcode=@classcode", MySQLConn)
+                    comm = New MySqlCommand("UPDATE `subjectlist" & schoolyear & "" & semester & "` SET isAssigned='false' WHERE classcode=@classcode", MySQLConn)
                     comm.Parameters.AddWithValue("classcode", ComboBoxClasscode.Text)
                     comm.ExecuteReader()
                     With ComboBoxClasscode
@@ -108,7 +109,7 @@ Class UnassignSchedule
         MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
-            comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode", MySQLConn)
+            comm = New MySqlCommand("SELECT * FROM `assignedsubj" & schoolyear & "" & semester & "` WHERE classcode=@classcode", MySQLConn)
             comm.Parameters.AddWithValue("classcode", ComboBoxClasscode.Text)
             reader = comm.ExecuteReader
             While reader.Read

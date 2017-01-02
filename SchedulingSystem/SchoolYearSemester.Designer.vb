@@ -22,6 +22,7 @@ Partial Class SchoolYearSemester
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SchoolYearSemester))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBoxSchoolYear = New System.Windows.Forms.ComboBox()
         Me.ComboBoxSemester = New System.Windows.Forms.ComboBox()
@@ -155,6 +156,7 @@ Partial Class SchoolYearSemester
         Me.Controls.Add(Me.ComboBoxSchoolYear)
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "SchoolYearSemester"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

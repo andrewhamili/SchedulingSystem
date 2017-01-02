@@ -56,25 +56,49 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("2015-2016")>  _
-        Public Property schoolyear() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("localhost")>  _
+        Public Property hostname() As String
             Get
-                Return CType(Me("schoolyear"),String)
+                Return CType(Me("hostname"),String)
             End Get
             Set
-                Me("schoolyear") = value
+                Me("hostname") = value
             End Set
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("1st")>  _
-        Public Property semester() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("3306")>  _
+        Public Property port() As String
             Get
-                Return CType(Me("semester"),String)
+                Return CType(Me("port"),String)
             End Get
             Set
-                Me("semester") = value
+                Me("port") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("root")>  _
+        Public Property username() As String
+            Get
+                Return CType(Me("username"),String)
+            End Get
+            Set
+                Me("username") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property password() As String
+            Get
+                Return CType(Me("password"),String)
+            End Get
+            Set
+                Me("password") = value
             End Set
         End Property
     End Class

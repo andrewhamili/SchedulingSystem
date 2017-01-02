@@ -13,10 +13,17 @@ Public Class AddSchedule
         Dim fr As Boolean = CheckBox_AddSchedule_Day_fr.Checked
         Dim sa As Boolean = CheckBox_AddSchedule_Day_sa.Checked
 
+        Dim TimeStart As DateTime = DateTimePicker_AddSchedule_timefrom.Value.ToString("HH:mm")
+
+        Dim TimeEnd As DateTime = DateTimePicker_AddSchedule_timeto.Value.ToString("HH:mm")
+
+        Dim span As TimeSpan
+        span = TimeEnd.Subtract(TimeStart)
+
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         daytext = ""
 
         If mo = True Then
@@ -45,11 +52,14 @@ Public Class AddSchedule
 
         If txt_AddSchedule_Classcode.Text = "" Or txt_AddSchedule_SubjDesc.Text = "" Or txt_AddSchedule_Unit.Text = "" Or DateTimePicker_AddSchedule_timefrom.Value.ToString = "00:00" Or DateTimePicker_AddSchedule_timeto.Value.ToString = "00:00" Or CboxChooseRoom.Text = "" Or daytext = "" Then
             MsgBox("Please fill-up all fields!", MsgBoxStyle.Critical, SystemTitle)
+        ElseIf span.TotalSeconds <= 0 Then
+            MsgBox("The Time Start cannto be greater or equal to the Time End", MsgBoxStyle.Critical, SystemTitle)
         Else
+
             Try
                 MySQLConn.Open()
                 'query = "insert into subjectlist values('" & AddSubjectTboxClasscode.Text & "', '" & AddSubjectTboxSubj_desc.Text & "', '" & AddSubjectTboxSubj_unit.Text & "', '" & daytext & "', '" & timefrom & "', '" & timeto & "', '" & AddSubjectCBoxRoom.Text & "')"
-                comm = New MySqlCommand("SELECT classcode FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@classcode", MySQLConn)
+                comm = New MySqlCommand("SELECT classcode FROM `subjectlist" & SchoolYear & "" & Semester & "` WHERE classcode=@classcode", MySQLConn)
                 comm.Parameters.AddWithValue("classcode", txt_AddSchedule_Classcode.Text)
                 reader = comm.ExecuteReader
 
@@ -62,7 +72,7 @@ Public Class AddSchedule
 
                 If count = 1 Then
 
-                    MsgBox("The Classcode is already used. Please double ckheck your Classcode. If you want to edit a subject, press the edit button in the Subjects Tab.", MsgBoxStyle.Critical, "Duplicate Classcode")
+                    MsgBox("The Classcode is already used. Please double check your Classcode. If you want to edit a subject, press the edit button in the Subjects Tab.", MsgBoxStyle.Critical, "Duplicate Classcode")
 
                 Else
 
@@ -82,7 +92,7 @@ Public Class AddSchedule
 
                         starter = starter + 2
                         looper = looper + 1
-                        comm = New MySqlCommand("SELECT * FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & daycheck & "%' and room=@room and TimeTo > @timefrom and TimeFrom < @timeto;", MySQLConn)
+                        comm = New MySqlCommand("SELECT * FROM `subjectlist" & SchoolYear & "" & Semester & "` WHERE day like '%" & daycheck & "%' and room=@room and TimeTo > @timefrom and TimeFrom < @timeto;", MySQLConn)
                         comm.Parameters.AddWithValue("room", CboxChooseRoom.Text)
                         comm.Parameters.AddWithValue("timeto", DateTimePicker_AddSchedule_timeto.Value.ToString("HH:mm"))
                         comm.Parameters.AddWithValue("timefrom", DateTimePicker_AddSchedule_timefrom.Value.ToString("HH:mm"))
@@ -105,7 +115,7 @@ Public Class AddSchedule
                             MySQLConn.Close()
                             MySQLConn.Open()
 
-                            comm = New MySqlCommand("INSERT INTO `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` VALUES(@classcode, @subjDesc, @subjUnit, '" & daytext & "', @timefrom, @timeto, @room, 'false')", MySQLConn)
+                            comm = New MySqlCommand("INSERT INTO `subjectlist" & SchoolYear & "" & Semester & "` VALUES(@classcode, @subjDesc, @subjUnit, '" & daytext & "', @timefrom, @timeto, @room, 'false')", MySQLConn)
                             comm.Parameters.AddWithValue("classcode", txt_AddSchedule_Classcode.Text)
                             comm.Parameters.AddWithValue("subjDesc", txt_AddSchedule_SubjDesc.Text)
                             comm.Parameters.AddWithValue("subjUnit", txt_AddSchedule_Unit.Text)
@@ -117,15 +127,13 @@ Public Class AddSchedule
                             MsgBox("The Subject has been saved to the Database and is now ready to be assigned to a Professor!", MsgBoxStyle.Information, "New Subject")
                             'End If
                             MySQLConn.Close()
-
-
                         End If
 
                     End While
 
                 End If
             Catch ex As Exception
-
+                MsgBox(ex.Message)
             End Try
         End If
 
@@ -133,6 +141,27 @@ Public Class AddSchedule
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        AdminPage.ChangeTab()
         Me.Dispose()
+    End Sub
+
+    Private Sub txt_AddSchedule_Unit_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_AddSchedule_Unit.KeyPress
+        e.Handled = Not (Char.IsDigit(e.KeyChar))
+        If e.Handled = True Then
+            Beep()
+        End If
+    End Sub
+
+    Private Sub txt_AddSchedule_Unit_PreviewKeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles txt_AddSchedule_Unit.PreviewKeyDown
+        If e.KeyCode = Keys.Back Then
+            If txt_AddSchedule_Unit.Text.Length > 0 Then
+                txt_AddSchedule_Unit.Text = txt_AddSchedule_Unit.Text.Substring(0, txt_AddSchedule_Unit.Text.Length - 1)
+                txt_AddSchedule_Unit.Select(txt_AddSchedule_Unit.Text.Length, 0)
+            End If
+        End If
+    End Sub
+
+    Private Sub AddSchedule_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        CancelButton = btnCancel
     End Sub
 End Class

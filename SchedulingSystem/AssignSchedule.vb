@@ -13,7 +13,7 @@ Public Class AssignSchedule
         End Get
     End Property
     Private Sub AssignSchedule_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Console.WriteLine(DataGridViewPendingList.Rows.Count)
+        CancelButton = btnCancel
         Load_Employee_Lastnames()
         Load_Classcodes()
         Timer_OverloadBlinker.Enabled = True
@@ -42,7 +42,7 @@ Public Class AssignSchedule
 
         Try
             MySQLConn.Open()
-            comm = New MySqlCommand("SELECT * FROM userlist WHERE empnum!='DEFAULT'", MySQLConn)
+            comm = New MySqlCommand("SELECT * FROM userlist WHERE username!='pass'", MySQLConn)
             reader = comm.ExecuteReader
             While reader.Read
                 ComboBoxEmployeeLastname.Items.Add(reader.GetString("lname"))
@@ -67,7 +67,7 @@ Public Class AssignSchedule
             MySQLConn.ConnectionString = connstring & database
             Try
                 MySQLConn.Open()
-                comm = New MySqlCommand("SELECT classcode FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE isAssigned!='true'", MySQLConn)
+                comm = New MySqlCommand("SELECT classcode FROM `subjectlist" & schoolyear & "" & Semester & "` WHERE isAssigned!='true'", MySQLConn)
                 reader = comm.ExecuteReader
                 While reader.Read
                     .Items.Add(reader.GetString("classcode"))
@@ -102,7 +102,7 @@ Public Class AssignSchedule
         Try
             'To Check if there are exisiting subject that is already assigned to the selected employee
             MySQLConn.Open()
-            comm = New MySqlCommand("SELECT DISTINCT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE instructor=@instructorname", MySQLConn)
+            comm = New MySqlCommand("SELECT DISTINCT * FROM `assignedsubj" & schoolyear & "" & Semester & "` WHERE instructor=@instructorname", MySQLConn)
             comm.Parameters.AddWithValue("instructorname", instrname)
             reader = comm.ExecuteReader
             Dim count As Integer
@@ -132,7 +132,7 @@ Public Class AssignSchedule
                     starter = starter + 2
                     looper = looper + 1
 
-                    comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & daycheck & "%' AND TimeEnd > @timefrom and TimeStart < @timeto AND instructor=@instructorname;", MySQLConn)
+                    comm = New MySqlCommand("SELECT * FROM `assignedsubj" & schoolyear & "" & Semester & "` WHERE day like '%" & daycheck & "%' AND TimeEnd > @timefrom and TimeStart < @timeto AND instructor=@instructorname;", MySQLConn)
 
                     'SELECT * FROM `assignedsubj2015-20161st` WHERE day like '%Mo%' AND (TimeEnd > '14:00' AND TimeStart <'15:00') AND instructor='Ayo, Eliza'
                     comm.Parameters.AddWithValue("instructorname", instrname)
@@ -270,7 +270,7 @@ Public Class AssignSchedule
             MySQLConn.Close()
             MySQLConn.Open()
             Dim instructor As String = LabelProfLname.Text + ", " + LabelProfFname.Text
-            comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE instructor=@instructorname", MySQLConn)
+            comm = New MySqlCommand("SELECT * FROM `assignedsubj" & schoolyear & "" & Semester & "` WHERE instructor=@instructorname", MySQLConn)
             comm.Parameters.AddWithValue("instructorname", instructor)
             reader = comm.ExecuteReader
             Dim count1 As Integer
@@ -280,7 +280,7 @@ Public Class AssignSchedule
             If count1 >= 1 Then
                 MySQLConn.Close()
                 MySQLConn.Open()
-                comm = New MySqlCommand("SELECT sum(units) AS TotalUnits FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE instructor=@instructorname", MySQLConn)
+                comm = New MySqlCommand("SELECT sum(units) AS TotalUnits FROM `assignedsubj" & schoolyear & "" & Semester & "` WHERE instructor=@instructorname", MySQLConn)
                 comm.Parameters.AddWithValue("instructorname", instructor)
                 reader = comm.ExecuteReader
                 Dim count2 As Integer
@@ -328,7 +328,7 @@ Public Class AssignSchedule
         Try
             MySQLConn.Open()
 
-            comm = New MySqlCommand("SELECT * FROM `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE classcode=@selectedClassCode", MySQLConn)
+            comm = New MySqlCommand("SELECT * FROM `subjectlist" & schoolyear & "" & Semester & "` WHERE classcode=@selectedClassCode", MySQLConn)
             comm.Parameters.AddWithValue("selectedClassCode", ComboBoxClasscode.Text)
             reader = comm.ExecuteReader
 
@@ -450,7 +450,7 @@ Public Class AssignSchedule
                     starter += 2
                     Try
                         MySQLConn.Open()
-                        comm = New MySqlCommand("SELECT * FROM `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` WHERE day like '%" & daycheck & "%' AND TimeEnd > @timefrom and TimeStart < @timeto AND instructor=@instructorname;", MySQLConn)
+                        comm = New MySqlCommand("SELECT * FROM `assignedsubj" & schoolyear & "" & Semester & "` WHERE day like '%" & daycheck & "%' AND TimeEnd > @timefrom and TimeStart < @timeto AND instructor=@instructorname;", MySQLConn)
 
                         'SELECT * FROM `assignedsubj2015-20161st` WHERE day like '%Mo%' AND (TimeEnd > '14:00' AND TimeStart <'15:00') AND instructor='Ayo, Eliza'
                         comm.Parameters.AddWithValue("instructorname", instrname)
@@ -484,7 +484,7 @@ Public Class AssignSchedule
                 If errorcount = False Then
                     MySQLConn.Close()
                     MySQLConn.Open()
-                    comm = New MySqlCommand("INSERT INTO `assignedsubj" & My.Settings.schoolyear & "" & My.Settings.semester & "` VALUES(@classcode, @subjdesc, @subjday, @subjroom, @TImeStart, @TimeEnd, @instructor, @units)", MySQLConn)
+                    comm = New MySqlCommand("INSERT INTO `assignedsubj" & schoolyear & "" & Semester & "` VALUES(@classcode, @subjdesc, @subjday, @subjroom, @TImeStart, @TimeEnd, @instructor, @units)", MySQLConn)
                     comm.Parameters.AddWithValue("classcode", subjcode)
                     comm.Parameters.AddWithValue("subjdesc", subjdesc)
                     comm.Parameters.AddWithValue("subjday", subjday)
@@ -496,7 +496,7 @@ Public Class AssignSchedule
                     reader = comm.ExecuteReader
                     MySQLConn.Close()
                     MySQLConn.Open()
-                    comm = New MySqlCommand("UPDATE `subjectlist" & My.Settings.schoolyear & "" & My.Settings.semester & "` SET isAssigned='true' WHERE classcode=@classcode", MySQLConn)
+                    comm = New MySqlCommand("UPDATE `subjectlist" & schoolyear & "" & Semester & "` SET isAssigned='true' WHERE classcode=@classcode", MySQLConn)
                     comm.Parameters.AddWithValue("classcode", subjcode)
                     reader = comm.ExecuteReader
                     MySQLConn.Close()

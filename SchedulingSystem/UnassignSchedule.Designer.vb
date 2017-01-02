@@ -22,6 +22,7 @@ Partial Class UnassignSchedule
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(UnassignSchedule))
         Me.ComboBoxClasscode = New System.Windows.Forms.ComboBox()
         Me.btnUnassign = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -238,6 +239,7 @@ Partial Class UnassignSchedule
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "UnassignSchedule"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

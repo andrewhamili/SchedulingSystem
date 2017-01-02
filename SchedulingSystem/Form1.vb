@@ -56,6 +56,7 @@ Public Class LoginPage
                     activeuserlname = reader.GetString("lname")
                     Dim welcomename As String = activeuserfname + " " + activeuserlname
                     AdminPage.lblName.Text = "Welcome!, " & welcomename & ""
+                    Get_Active_SchoolYearSemester()
                     AdminPage.Show()
                 Else
                     MsgBox("You have entered an incorrect username/password", MsgBoxStyle.Exclamation, SystemTitle)
@@ -120,6 +121,25 @@ Public Class LoginPage
         Finally
             MySQLConn.Dispose()
         End Try
-
+    End Sub
+    Public Sub Get_Active_SchoolYearSemester()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring & database
+        Try
+            MySQLConn.Open()
+            comm = New MySqlCommand("SELECT * FROM existingschoolyearsemester WHERE isActive='true';", MySQLConn)
+            reader = comm.ExecuteReader
+            While reader.Read
+                SchoolYear = reader.GetString("schoolyear")
+                Semester = reader.GetString("semester")
+            End While
+            MySQLConn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            MySQLConn.Dispose()
+        End Try
     End Sub
 End Class
