@@ -9,6 +9,7 @@ Public Class UserWindow
     End Property
     Public instrname As String = ""
     Private Sub UserWindow_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        lblTotalUnit.Text = ""
         lblWelcomeText.Text = instrname
         lblSchoolYear.Text = SchoolYear
         lblSemester.Text = Semester

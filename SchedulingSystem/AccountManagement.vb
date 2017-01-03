@@ -108,7 +108,7 @@ Class AccountManagement
             MySQLConn.ConnectionString = connstring & database
             Try
                 MySQLConn.Open()
-                comm = New MySqlCommand("INSERT INTO userlist VALUES(@fname, @mname, @lname, @username, @password, @usertype)", MySQLConn)
+                comm = New MySqlCommand("INSERT INTO userlist VALUES(@fname, @mname, @lname, @username, sha2(@password, 512), @usertype)", MySQLConn)
                 With comm.Parameters
                     .AddWithValue("username", txtUsername.Text)
                     .AddWithValue("password", txtRetypePassword.Text)
