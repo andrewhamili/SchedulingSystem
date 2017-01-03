@@ -63,14 +63,18 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CEU_Logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\MetroFrameworkLibraries\MySql.Data.dll</HintPath>
+      <HintPath>C:\Users\Andrew\Documents\MetroFrameworkLibraries\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySqlBackup">
+    <Reference Include="MySqlBackup, Version=2.0.9.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\Andrew\Documents\MetroFrameworkLibraries\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -190,6 +194,12 @@
     <Compile Include="UnassignSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UserWindow.Designer.vb">
+      <DependentUpon>UserWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AccountManagement.resx">
@@ -222,6 +232,13 @@
     <EmbeddedResource Include="PrintWindow.resx">
       <DependentUpon>PrintWindow.vb</DependentUpon>
     </EmbeddedResource>
+    <Content Include="7z.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="7z.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CEU_Logo.ico" />
     <Content Include="Schedule-Single.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -239,6 +256,9 @@
     </Content>
     <EmbeddedResource Include="UnassignSchedule.resx">
       <DependentUpon>UnassignSchedule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserWindow.resx">
+      <DependentUpon>UserWindow.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

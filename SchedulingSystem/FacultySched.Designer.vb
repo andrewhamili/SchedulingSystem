@@ -40,7 +40,7 @@ Partial Class FacultySched
         Me.DataGridViewSched.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.DataGridViewSched.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridViewSched.Location = New System.Drawing.Point(0, 203)
-        Me.DataGridViewSched.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DataGridViewSched.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridViewSched.Name = "DataGridViewSched"
         Me.DataGridViewSched.ReadOnly = True
         Me.DataGridViewSched.RowHeadersVisible = False
@@ -88,8 +88,9 @@ Partial Class FacultySched
         Me.Controls.Add(Me.LabelFacultyName)
         Me.Controls.Add(Me.DataGridViewSched)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FacultySched"

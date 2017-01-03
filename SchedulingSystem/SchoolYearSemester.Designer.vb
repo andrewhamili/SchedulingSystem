@@ -34,6 +34,7 @@ Partial Class SchoolYearSemester
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.SFD_Database = New System.Windows.Forms.SaveFileDialog()
         Me.SuspendLayout()
         '
         'Label1
@@ -138,6 +139,11 @@ Partial Class SchoolYearSemester
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
+        'SFD_Database
+        '
+        Me.SFD_Database.CheckFileExists = True
+        Me.SFD_Database.Filter = "Scheduling System Backup files|*.ssbackup"
+        '
         'SchoolYearSemester
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -176,4 +182,5 @@ Partial Class SchoolYearSemester
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents btnClose As System.Windows.Forms.Button
+    Friend WithEvents SFD_Database As System.Windows.Forms.SaveFileDialog
 End Class

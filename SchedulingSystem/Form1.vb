@@ -8,6 +8,9 @@ Public Class LoginPage
     End Sub
 
     Private Sub LoginPage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If My.Application.CommandLineArgs.Count > 0 Then
+
+        End If
         CheckMYSQLConnection()
         Check_if_database_exists()
         If MySQLConnection = True Then
@@ -54,10 +57,18 @@ Public Class LoginPage
                     activeusername = reader.GetString("username")
                     activeuserfname = reader.GetString("fname")
                     activeuserlname = reader.GetString("lname")
+                    usertype = reader.GetString("usertype")
                     Dim welcomename As String = activeuserfname + " " + activeuserlname
+                    Dim UserPageName As String = activeuserlname + ", " + activeuserfname
                     AdminPage.lblName.Text = "Welcome!, " & welcomename & ""
                     Get_Active_SchoolYearSemester()
-                    AdminPage.Show()
+                    If usertype = "Administrator" Then
+                        AdminPage.Show()
+                    Else
+                        UserWindow.instrname = UserPageName
+                        UserWindow.Show()
+                    End If
+
                 Else
                     MsgBox("You have entered an incorrect username/password", MsgBoxStyle.Exclamation, SystemTitle)
                     With tboxusername

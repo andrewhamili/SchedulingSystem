@@ -30,7 +30,6 @@ Public Class AdminPage
         ans = MsgBox("Are you sure you want to log-out now?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
         If ans = Windows.Forms.DialogResult.Yes Then
             Me.Close()
-
         End If
     End Sub
 

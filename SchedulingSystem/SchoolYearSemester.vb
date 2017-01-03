@@ -1,4 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.IO
+Imports Microsoft.Win32
+
 Class SchoolYearSemester
 
     Public hovercheck As Boolean = False
@@ -13,8 +16,8 @@ Class SchoolYearSemester
 
     Private Sub SchoolYearSemester_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         CancelButton = btnClose
-        ComboBoxSchoolYear.Text = schoolyear
-        ComboBoxSemester.Text = semester
+        ComboBoxSchoolYear.Text = SchoolYear
+        ComboBoxSemester.Text = Semester
     End Sub
 
     Private Sub SchoolYearSemester_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
@@ -69,7 +72,7 @@ Class SchoolYearSemester
 
     Private Sub ButtonDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonDelete.Click
         Dim confirmDelete As DialogResult = MsgBox("Are you sure you want to delete the selected School Year and Semester. This action is irreversible unless you have the latest database backup", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
-        If ComboBoxSchoolYear.Text = schoolyear And ComboBoxSemester.Text = semester Then
+        If ComboBoxSchoolYear.Text = SchoolYear And ComboBoxSemester.Text = Semester Then
             MsgBox("You cannot delete the selected School Year and Semester because it is Active, activate another School Year and Semester so that you can delete this.", MsgBoxStyle.Critical, SystemTitle)
         ElseIf confirmDelete = DialogResult.Yes Then
             If MySQLConn.State = ConnectionState.Open Then
@@ -119,8 +122,8 @@ Class SchoolYearSemester
                 count += 1
             End While
             If count > 0 Then
-                schoolyear = ComboBoxSchoolYear.Text
-                semester = ComboBoxSemester.Text
+                SchoolYear = ComboBoxSchoolYear.Text
+                Semester = ComboBoxSemester.Text
                 MySQLConn.Close()
                 MySQLConn.Open()
                 comm = New MySqlCommand("UPDATE existingschoolyearsemester SET isActive='false';UPDATE existingschoolyearsemester SET isActive='true' WHERE schoolyear=@schoolyear AND semester=@semester;", MySQLConn)
@@ -135,6 +138,82 @@ Class SchoolYearSemester
                 MsgBox("The School Year and Semester does not exist. Click the 'Create' button first!", MsgBoxStyle.Critical, SystemTitle)
             End If
             MySQLConn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            MySQLConn.Dispose()
+        End Try
+    End Sub
+
+    Private Sub btnBackup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBackup.Click
+        BackupDB()
+    End Sub
+    Public Sub setFileAssociation()
+        Dim root As RegistryKey = Registry.ClassesRoot
+        Dim filetype As RegistryKey = root.OpenSubKey(".ssbackup")
+        If filetype Is Nothing Then 'Check if file is associated
+            Dim newReg As RegistryKey
+            'Create new Registry Key
+            newReg = root.CreateSubKey(".ssbackup")
+            'Set Unique file type name
+            newReg.SetValue("", "ssbackup.test")
+            'Create file type information Key
+            Dim info As RegistryKey = root.CreateSubKey("ssbackup.test")
+            'Set default value to file type Description
+            info.SetValue("", "Scheduling System Backup File")
+            'Create shell Key to contain all verbs. (Context Menu)
+            Dim shell As RegistryKey = info.CreateSubKey("shell")
+            'Create a subkey for the "Open" verb
+            Dim open As RegistryKey = shell.CreateSubKey("Open")
+            'Set the menu name against the key
+            open.SetValue("", "&Open Document")
+            'Create and set the command string
+            newReg = open.CreateSubKey("command")
+            newReg.SetValue("", Application.ExecutablePath & " ""%l"" ")
+            'Assign a default icon
+            newReg = info.CreateSubKey("DefaultIcon")
+            newReg.SetValue("", Application.ExecutablePath + ",0")
+            MsgBox("You can now open the file", MsgBoxStyle.Information, SystemTitle)
+        End If
+    End Sub
+    Public Sub BackupDB()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        Dim DBbackup As New MySqlBackup
+        MySQLConn.ConnectionString = connstring & database
+        Try
+            If SFD_Database.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
+                MySQLConn.Open()
+                comm = New MySqlCommand
+                comm.Connection = MySQLConn
+                DBbackup = New MySqlBackup(comm)
+                With DBbackup
+                    .ExportInfo.AddCreateDatabase = True
+                    .ExportInfo.EnableEncryption = True
+                    .ExportInfo.EncryptionPassword = "a"
+                    .ExportToFile("db.sql")
+                End With
+                MySQLConn.Close()
+            End If
+            Dim archive As New Process
+            With archive
+                With .StartInfo
+                    .WindowStyle = ProcessWindowStyle.Hidden
+                    .CreateNoWindow = True
+                    .FileName = "7z.exe"
+                    .Arguments = "a backup.7z db.sql -p123 -mhe"
+                End With
+                .Start()
+                .WaitForExit()
+            End With
+            Dim files As New FileInfo("backup.7z")
+            If File.Exists(SFD_Database.FileName) Then
+                File.Delete(SFD_Database.FileName)
+            End If
+            files.MoveTo(SFD_Database.FileName)
+            Dim dbfile As New FileInfo("db.sql")
+            dbfile.Delete()
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
