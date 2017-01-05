@@ -35,7 +35,7 @@ Public Class FacultySched
                 comm.Parameters.AddWithValue("instructor", instrname)
                 reader = comm.ExecuteReader
                 While reader.Read
-                    lbltotalunit.Text = "Total Unit(s): " + reader.GetString("total")
+                    lbltotalunit.Text = reader.GetString("total")
                 End While
                 MySQLConn.Close()
             End If

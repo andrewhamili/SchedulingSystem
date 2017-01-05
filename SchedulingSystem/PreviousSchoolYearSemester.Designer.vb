@@ -103,7 +103,7 @@ Partial Class PreviousSchoolYearSemester
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "PreviousSchoolYearSemester"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PreviousSchoolYearSemester"

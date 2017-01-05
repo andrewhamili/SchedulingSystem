@@ -27,6 +27,7 @@ Partial Class FacultySched
         Me.LabelFacultyName = New System.Windows.Forms.Label()
         Me.lbltotalunit = New System.Windows.Forms.Label()
         Me.PictureBoxPrint = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridViewSched, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxPrint, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -61,7 +62,7 @@ Partial Class FacultySched
         'lbltotalunit
         '
         Me.lbltotalunit.AutoSize = True
-        Me.lbltotalunit.Location = New System.Drawing.Point(12, 181)
+        Me.lbltotalunit.Location = New System.Drawing.Point(111, 181)
         Me.lbltotalunit.Name = "lbltotalunit"
         Me.lbltotalunit.Size = New System.Drawing.Size(76, 18)
         Me.lbltotalunit.TabIndex = 2
@@ -77,12 +78,22 @@ Partial Class FacultySched
         Me.PictureBoxPrint.TabIndex = 3
         Me.PictureBoxPrint.TabStop = False
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 181)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(93, 18)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Total Unit(s):"
+        '
         'FacultySched
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(894, 411)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBoxPrint)
         Me.Controls.Add(Me.lbltotalunit)
         Me.Controls.Add(Me.LabelFacultyName)
@@ -106,4 +117,5 @@ Partial Class FacultySched
     Friend WithEvents LabelFacultyName As System.Windows.Forms.Label
     Friend WithEvents lbltotalunit As System.Windows.Forms.Label
     Friend WithEvents PictureBoxPrint As System.Windows.Forms.PictureBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

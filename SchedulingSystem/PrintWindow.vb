@@ -78,7 +78,7 @@ Public Class PrintWindow
         Dim semestertexts As New ReportParameter("ReportParameterSemester", semestertext)
 
         Dim profname As New ReportParameter("ProfName", FacultySched.instrname)
-        Dim totalunit As New ReportParameter("TotalUnits", FacultySched.lbltotalunit.Text.Substring(15, 2))
+        Dim totalunit As New ReportParameter("TotalUnits", FacultySched.lbltotalunit.Text)
 
 
         With ReportViewer1
@@ -109,7 +109,7 @@ Public Class PrintWindow
         Dim semestertexts As New ReportParameter("ReportParameterSemester", semestertext)
 
         Dim profname As New ReportParameter("ProfName", UserWindow.instrname)
-        Dim totalunit As New ReportParameter("TotalUnits", UserWindow.lblTotalUnit.Text.Substring(15, 2))
+        Dim totalunit As New ReportParameter("TotalUnits", UserWindow.lblTotalUnit.Text)
 
 
         With ReportViewer1

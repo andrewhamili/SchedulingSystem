@@ -32,6 +32,7 @@ Partial Class UserWindow
         Me.lblSchoolYear = New System.Windows.Forms.Label()
         Me.lblSemester = New System.Windows.Forms.Label()
         Me.btnLogout = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridViewSched, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxPrint, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -66,7 +67,7 @@ Partial Class UserWindow
         'lblTotalUnit
         '
         Me.lblTotalUnit.AutoSize = True
-        Me.lblTotalUnit.Location = New System.Drawing.Point(1, 228)
+        Me.lblTotalUnit.Location = New System.Drawing.Point(111, 228)
         Me.lblTotalUnit.Name = "lblTotalUnit"
         Me.lblTotalUnit.Size = New System.Drawing.Size(82, 18)
         Me.lblTotalUnit.TabIndex = 2
@@ -127,12 +128,22 @@ Partial Class UserWindow
         Me.btnLogout.Text = "Log-out"
         Me.btnLogout.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 228)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(93, 18)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "Total Unit(s):"
+        '
         'UserWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(899, 456)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnLogout)
         Me.Controls.Add(Me.lblSemester)
         Me.Controls.Add(Me.lblSchoolYear)
@@ -144,7 +155,7 @@ Partial Class UserWindow
         Me.Controls.Add(Me.lblWelcomeText)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "UserWindow"
@@ -165,4 +176,5 @@ Partial Class UserWindow
     Friend WithEvents lblSchoolYear As System.Windows.Forms.Label
     Friend WithEvents lblSemester As System.Windows.Forms.Label
     Friend WithEvents btnLogout As System.Windows.Forms.Button
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

@@ -53,4 +53,10 @@ Public Class PreviousSchoolYearSemester
             MySQLConn.Dispose()
         End Try
     End Sub
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        MsgBox("The Creation of School Year and Semester has been cancelled by the user.", MsgBoxStyle.Information, SystemTitle)
+        Me.Dispose()
+        SchoolYearSemester.Show()
+    End Sub
 End Class
