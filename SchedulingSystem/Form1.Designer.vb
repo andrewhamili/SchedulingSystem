@@ -93,9 +93,9 @@ Partial Class LoginPage
         Me.lblDate.AutoSize = True
         Me.lblDate.Location = New System.Drawing.Point(12, 9)
         Me.lblDate.Name = "lblDate"
-        Me.lblDate.Size = New System.Drawing.Size(152, 18)
+        Me.lblDate.Size = New System.Drawing.Size(146, 18)
         Me.lblDate.TabIndex = 6
-        Me.lblDate.Text = "September 22, 1997"
+        Me.lblDate.Text = "November 13, 1997"
         '
         'lblTime
         '

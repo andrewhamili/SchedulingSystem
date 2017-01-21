@@ -121,6 +121,12 @@
     <Compile Include="AssignSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DatabaseConnectionConfiguration.Designer.vb">
+      <DependentUpon>DatabaseConnectionConfiguration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseConnectionConfiguration.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataSetPrint.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AssignSchedule.resx">
       <DependentUpon>AssignSchedule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseConnectionConfiguration.resx">
+      <DependentUpon>DatabaseConnectionConfiguration.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FacultySched.resx">
       <DependentUpon>FacultySched.vb</DependentUpon>
