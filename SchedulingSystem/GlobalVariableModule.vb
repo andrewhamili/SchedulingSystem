@@ -3,7 +3,7 @@ Module GlobalVariableModule
 
 
     Public MySQLConn As New MySqlConnection 'Variable for handling MySQL Connection
-    Public connstring As String = "server=localhost;username=root;password=root;" 'This is the connection string to be used to connect to the MySQL Database
+    Public connstring As String = "server=" & My.Settings.hostname & ";username=" & My.Settings.username & ";password=" & My.Settings.password & ";" 'This is the connection string to be used to connect to the MySQL Database
 
     Public database As String = "Database=scheduling;"
 
