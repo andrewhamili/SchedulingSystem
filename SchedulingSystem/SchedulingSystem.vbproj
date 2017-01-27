@@ -122,6 +122,12 @@
     <Compile Include="AssignSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AvailableRooms.Designer.vb">
+      <DependentUpon>AvailableRooms.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AvailableRooms.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DatabaseConnectionConfiguration.Designer.vb">
       <DependentUpon>DatabaseConnectionConfiguration.vb</DependentUpon>
     </Compile>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AssignSchedule.resx">
       <DependentUpon>AssignSchedule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AvailableRooms.resx">
+      <DependentUpon>AvailableRooms.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseConnectionConfiguration.resx">
       <DependentUpon>DatabaseConnectionConfiguration.vb</DependentUpon>
