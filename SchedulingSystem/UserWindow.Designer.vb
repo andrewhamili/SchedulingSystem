@@ -33,6 +33,7 @@ Partial Class UserWindow
         Me.lblSemester = New System.Windows.Forms.Label()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnQueryRooms = New System.Windows.Forms.Button()
         CType(Me.DataGridViewSched, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxPrint, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -137,12 +138,22 @@ Partial Class UserWindow
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Total Unit(s):"
         '
+        'btnQueryRooms
+        '
+        Me.btnQueryRooms.Location = New System.Drawing.Point(777, 60)
+        Me.btnQueryRooms.Name = "btnQueryRooms"
+        Me.btnQueryRooms.Size = New System.Drawing.Size(110, 52)
+        Me.btnQueryRooms.TabIndex = 11
+        Me.btnQueryRooms.Text = "Check room availability"
+        Me.btnQueryRooms.UseVisualStyleBackColor = True
+        '
         'UserWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(899, 456)
+        Me.Controls.Add(Me.btnQueryRooms)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnLogout)
         Me.Controls.Add(Me.lblSemester)
@@ -177,4 +188,5 @@ Partial Class UserWindow
     Friend WithEvents lblSemester As System.Windows.Forms.Label
     Friend WithEvents btnLogout As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents btnQueryRooms As System.Windows.Forms.Button
 End Class

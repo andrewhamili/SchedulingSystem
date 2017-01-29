@@ -188,7 +188,6 @@ Partial Class AddSchedule
         '
         Me.CboxChooseRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CboxChooseRoom.FormattingEnabled = True
-        Me.CboxChooseRoom.Items.AddRange(New Object() {"ISC201", "ISC301", "ISC302", "ISC303", "ISC401", "ISC402", "ISC403", "ISC501", "ISC502", "ISC503", "ISC601", "ISC602", "ISC603"})
         Me.CboxChooseRoom.Location = New System.Drawing.Point(112, 299)
         Me.CboxChooseRoom.Name = "CboxChooseRoom"
         Me.CboxChooseRoom.Size = New System.Drawing.Size(121, 26)

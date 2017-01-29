@@ -3,6 +3,10 @@
 Public Class AddSchedule
 
     Public daytext As String
+    Private Sub AddSchedule_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        CancelButton = btnCancel
+        Load_Rooms()
+    End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
 
@@ -160,8 +164,23 @@ Public Class AddSchedule
             End If
         End If
     End Sub
-
-    Private Sub AddSchedule_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        CancelButton = btnCancel
+    Public Sub Load_Rooms()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring & database
+        Try
+            MySQLConn.Open()
+            comm = New MySqlCommand("SELECT * FROM `roomlist" + SchoolYear & Semester + "`", MySQLConn)
+            reader = comm.ExecuteReader
+            While reader.Read
+                CboxChooseRoom.Items.Add(reader.GetString("room"))
+            End While
+            MySQLConn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            MySQLConn.Dispose()
+        End Try
     End Sub
 End Class

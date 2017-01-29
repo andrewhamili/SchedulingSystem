@@ -90,4 +90,8 @@ Public Class UserWindow
         LoginPage.Show()
         LoginPage.tboxusername.Focus()
     End Sub
+
+    Private Sub btnQueryRooms_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnQueryRooms.Click
+        AvailableRooms.ShowDialog()
+    End Sub
 End Class

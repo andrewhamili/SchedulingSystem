@@ -23,94 +23,105 @@ Partial Class AvailableRooms
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AvailableRooms))
-        Me.DataGridAvailableRooms = New System.Windows.Forms.DataGridView()
-        Me.lblName = New System.Windows.Forms.Label()
-        Me.lbl_avRoom = New System.Windows.Forms.Label()
-        Me.lbl_user = New System.Windows.Forms.Label()
-        CType(Me.DataGridAvailableRooms, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DTP_date = New System.Windows.Forms.DateTimePicker()
+        Me.DTP_timestart = New System.Windows.Forms.DateTimePicker()
+        Me.ListBoxRooms = New System.Windows.Forms.ListBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.DTP_timeend = New System.Windows.Forms.DateTimePicker()
+        Me.btnShow = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'DataGridAvailableRooms
+        'DTP_date
         '
-        Me.DataGridAvailableRooms.AllowUserToAddRows = False
-        Me.DataGridAvailableRooms.AllowUserToDeleteRows = False
-        Me.DataGridAvailableRooms.AllowUserToResizeRows = False
-        Me.DataGridAvailableRooms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridAvailableRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridAvailableRooms.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.DataGridAvailableRooms.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataGridAvailableRooms.Location = New System.Drawing.Point(0, 119)
-        Me.DataGridAvailableRooms.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.DataGridAvailableRooms.Name = "DataGridAvailableRooms"
-        Me.DataGridAvailableRooms.ReadOnly = True
-        Me.DataGridAvailableRooms.RowHeadersVisible = False
-        Me.DataGridAvailableRooms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridAvailableRooms.Size = New System.Drawing.Size(1362, 623)
-        Me.DataGridAvailableRooms.TabIndex = 3
+        Me.DTP_date.CustomFormat = "MM/dd/yyyy"
+        Me.DTP_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DTP_date.Location = New System.Drawing.Point(133, 12)
+        Me.DTP_date.Name = "DTP_date"
+        Me.DTP_date.Size = New System.Drawing.Size(105, 26)
+        Me.DTP_date.TabIndex = 4
         '
-        'lblName
+        'DTP_timestart
         '
-        Me.lblName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.lblName.AutoSize = True
-        Me.lblName.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblName.ForeColor = System.Drawing.Color.Green
-        Me.lblName.Location = New System.Drawing.Point(16, 17)
-        Me.lblName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblName.Name = "lblName"
-        Me.lblName.Size = New System.Drawing.Size(114, 19)
-        Me.lblName.TabIndex = 4
-        Me.lblName.Text = "Logged in as:"
+        Me.DTP_timestart.CustomFormat = "HH:mm"
+        Me.DTP_timestart.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DTP_timestart.Location = New System.Drawing.Point(244, 12)
+        Me.DTP_timestart.MaxDate = New Date(2030, 12, 31, 0, 0, 0, 0)
+        Me.DTP_timestart.Name = "DTP_timestart"
+        Me.DTP_timestart.ShowUpDown = True
+        Me.DTP_timestart.Size = New System.Drawing.Size(64, 26)
+        Me.DTP_timestart.TabIndex = 5
         '
-        'lbl_avRoom
+        'ListBoxRooms
         '
-        Me.lbl_avRoom.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lbl_avRoom.AutoSize = True
-        Me.lbl_avRoom.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_avRoom.Location = New System.Drawing.Point(742, 96)
-        Me.lbl_avRoom.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lbl_avRoom.Name = "lbl_avRoom"
-        Me.lbl_avRoom.Size = New System.Drawing.Size(179, 24)
-        Me.lbl_avRoom.TabIndex = 5
-        Me.lbl_avRoom.Text = "Available Rooms"
+        Me.ListBoxRooms.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ListBoxRooms.Font = New System.Drawing.Font("Arial", 14.0!)
+        Me.ListBoxRooms.FormattingEnabled = True
+        Me.ListBoxRooms.ItemHeight = 22
+        Me.ListBoxRooms.Location = New System.Drawing.Point(0, 108)
+        Me.ListBoxRooms.Name = "ListBoxRooms"
+        Me.ListBoxRooms.Size = New System.Drawing.Size(483, 290)
+        Me.ListBoxRooms.TabIndex = 6
+        Me.ListBoxRooms.UseTabStops = False
         '
-        'lbl_user
+        'Label1
         '
-        Me.lbl_user.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.lbl_user.AutoSize = True
-        Me.lbl_user.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_user.ForeColor = System.Drawing.Color.Green
-        Me.lbl_user.Location = New System.Drawing.Point(138, 17)
-        Me.lbl_user.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lbl_user.Name = "lbl_user"
-        Me.lbl_user.Size = New System.Drawing.Size(0, 19)
-        Me.lbl_user.TabIndex = 6
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(9, 17)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(118, 19)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Date and Time"
+        '
+        'DTP_timeend
+        '
+        Me.DTP_timeend.CustomFormat = "HH:mm"
+        Me.DTP_timeend.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DTP_timeend.Location = New System.Drawing.Point(314, 11)
+        Me.DTP_timeend.MaxDate = New Date(2030, 12, 31, 0, 0, 0, 0)
+        Me.DTP_timeend.Name = "DTP_timeend"
+        Me.DTP_timeend.ShowUpDown = True
+        Me.DTP_timeend.Size = New System.Drawing.Size(64, 26)
+        Me.DTP_timeend.TabIndex = 5
+        '
+        'btnShow
+        '
+        Me.btnShow.Location = New System.Drawing.Point(384, 11)
+        Me.btnShow.Name = "btnShow"
+        Me.btnShow.Size = New System.Drawing.Size(75, 27)
+        Me.btnShow.TabIndex = 8
+        Me.btnShow.Text = "Show"
+        Me.btnShow.UseVisualStyleBackColor = True
         '
         'AvailableRooms
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1362, 742)
-        Me.Controls.Add(Me.lbl_user)
-        Me.Controls.Add(Me.lbl_avRoom)
-        Me.Controls.Add(Me.lblName)
-        Me.Controls.Add(Me.DataGridAvailableRooms)
+        Me.ClientSize = New System.Drawing.Size(483, 398)
+        Me.Controls.Add(Me.btnShow)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.ListBoxRooms)
+        Me.Controls.Add(Me.DTP_timeend)
+        Me.Controls.Add(Me.DTP_timestart)
+        Me.Controls.Add(Me.DTP_date)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "AvailableRooms"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Available Rooms"
-        CType(Me.DataGridAvailableRooms, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents DataGridAvailableRooms As DataGridView
-    Friend WithEvents lblName As Label
-    Friend WithEvents lbl_avRoom As Label
-    Friend WithEvents lbl_user As Label
+    Friend WithEvents DTP_date As System.Windows.Forms.DateTimePicker
+    Friend WithEvents DTP_timestart As System.Windows.Forms.DateTimePicker
+    Friend WithEvents ListBoxRooms As System.Windows.Forms.ListBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents DTP_timeend As System.Windows.Forms.DateTimePicker
+    Friend WithEvents btnShow As System.Windows.Forms.Button
 End Class

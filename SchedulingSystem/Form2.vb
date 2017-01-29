@@ -291,19 +291,15 @@ Public Class AdminPage
         TabControl2.SelectedTab = TabSchedule
     End Sub
 
-    Private Sub TimerTimeAndDate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerTimeAndDate.Tick
-        txtCurrentSchoolYear.Text = SchoolYear
-        txtCurrentSemester.Text = Semester
-        Me.Text = "Home Page        " & Now.ToString("MMMMM dd, yyyy    HH:mm:ss")
-    End Sub
+    'Private Sub TimerTimeAndDate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerTimeAndDate.Tick
+    '    txtCurrentSchoolYear.Text = SchoolYear
+    '    txtCurrentSemester.Text = Semester
+    '    Me.Text = "Home Page        " & Now.ToString("MMMMM dd, yyyy    HH:mm:ss")
+    'End Sub
     Public Sub Load_FacultyList()
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-
-        Dim adapter As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
 
         MySQLConn.ConnectionString = connstring & database
         Try
@@ -346,5 +342,9 @@ Public Class AdminPage
             FacultySched.instrname = instructor
             FacultySched.ShowDialog()
         End If
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnQueryRoom.Click
+        AvailableRooms.ShowDialog()
     End Sub
 End Class

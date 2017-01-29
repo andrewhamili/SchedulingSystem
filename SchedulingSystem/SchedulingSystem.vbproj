@@ -115,7 +115,6 @@
     <Compile Include="AddSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="AssignSchedule.Designer.vb">
       <DependentUpon>AssignSchedule.vb</DependentUpon>
     </Compile>
