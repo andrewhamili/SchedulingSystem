@@ -9,7 +9,7 @@ Public Class AvailableRooms
     Private Sub AvailableRooms_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Load_current_Rooms(RoomList)
         Console.WriteLine(RoomList.Count)
-        DTP_date.Value = Now.ToString("MM/dd/yyyy HH:mm")
+        DTP_date.Value = Now.ToString("MM/dd/yyyy")
         DTP_timestart.Value = Now.ToString("MM/dd/yyyy HH:mm")
         Dim PlusOne As DateTime = DTP_timestart.Value
         DTP_timeend.Value = PlusOne.AddHours(1).ToString("MM/dd/yyyy HH:mm")
