@@ -48,7 +48,8 @@ Public Class AdminPage
         'Dim adapter As New MySqlDataAdapter
         'Dim bsource As New BindingSource
         'Dim dbdataset As New DataTable
-        dbdataset.Clear()
+        dbdataset.Rows.Clear()
+        dbdataset.Columns.Clear()
 
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
@@ -214,7 +215,7 @@ Public Class AdminPage
     End Sub
 
     Private Sub PictureBoxPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBoxPrintSchedules.Click
-        
+
         PrintAction = "AllSched"
 
         PrepareDataForPrintingAllSchedules()
@@ -291,12 +292,14 @@ Public Class AdminPage
         TabControl2.SelectedTab = TabSchedule
     End Sub
 
-    'Private Sub TimerTimeAndDate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerTimeAndDate.Tick
-    '    txtCurrentSchoolYear.Text = SchoolYear
-    '    txtCurrentSemester.Text = Semester
-    '    Me.Text = "Home Page        " & Now.ToString("MMMMM dd, yyyy    HH:mm:ss")
-    'End Sub
+    Private Sub TimerTimeAndDate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerTimeAndDate.Tick
+        txtCurrentSchoolYear.Text = SchoolYear
+        txtCurrentSemester.Text = Semester
+        Me.Text = "Home Page        " & Now.ToString("MMMMM dd, yyyy    HH:mm:ss")
+    End Sub
     Public Sub Load_FacultyList()
+        dbdataset.Rows.Clear()
+        dbdataset.Columns.Clear()
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
@@ -319,6 +322,7 @@ Public Class AdminPage
     End Sub
 
     Private Sub FacultyList_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles FacultyList.Enter
+        dbdataset.Clear()
         Load_FacultyList()
     End Sub
 
@@ -346,5 +350,11 @@ Public Class AdminPage
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnQueryRoom.Click
         AvailableRooms.ShowDialog()
+    End Sub
+
+    Private Sub ScheduleManagement_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles ScheduleManagement.Enter
+        Load_Schedules()
+        Load_Subjects()
+        lblTotalSubjects.Text = "Total Subjects: " + DataGridSubjects.Rows.Count.ToString
     End Sub
 End Class
