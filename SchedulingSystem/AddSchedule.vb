@@ -182,5 +182,9 @@ Public Class AddSchedule
         Finally
             MySQLConn.Dispose()
         End Try
+        If CboxChooseRoom.Items.Count = 0 Then
+            MsgBox("There are no rooms available. Please add a room first!", MsgBoxStyle.Critical, SystemTitle)
+            Me.Dispose()
+        End If
     End Sub
 End Class
