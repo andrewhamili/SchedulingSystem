@@ -35,6 +35,8 @@ Partial Class SchoolYearSemester
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.SFD_Database = New System.Windows.Forms.SaveFileDialog()
+        Me.OpenFileDialog_Database = New System.Windows.Forms.OpenFileDialog()
+        Me.FolderBrowserDialog_Database = New System.Windows.Forms.FolderBrowserDialog()
         Me.SuspendLayout()
         '
         'Label1
@@ -142,7 +144,7 @@ Partial Class SchoolYearSemester
         'SFD_Database
         '
         Me.SFD_Database.CheckFileExists = True
-        Me.SFD_Database.Filter = "Scheduling System Backup files|*.ssbackup"
+        Me.SFD_Database.Filter = "Scheduling System Backup file|*.ssbackup"
         '
         'SchoolYearSemester
         '
@@ -183,4 +185,6 @@ Partial Class SchoolYearSemester
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents SFD_Database As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents OpenFileDialog_Database As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents FolderBrowserDialog_Database As System.Windows.Forms.FolderBrowserDialog
 End Class

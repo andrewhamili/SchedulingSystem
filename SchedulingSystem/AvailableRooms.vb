@@ -16,7 +16,7 @@ Public Class AvailableRooms
         DTP_timeend.Value = PlusOne.AddHours(1).ToString("MM/dd/yyyy HH:mm")
         day = DTP_date.Value.DayOfWeek.ToString.Substring(0, 2)
         Show_available_rooms()
-        ListBoxRooms.Items.AddRange(RoomList.ToArray)
+        'ListBoxRooms.Items.AddRange(RoomList.ToArray)
     End Sub
     Public Sub Load_current_Rooms(ByRef room As List(Of String))
         
@@ -89,5 +89,9 @@ Public Class AvailableRooms
 
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
         Me.Dispose()
+    End Sub
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        End
     End Sub
 End Class

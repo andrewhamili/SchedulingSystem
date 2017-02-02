@@ -140,7 +140,7 @@ Partial Class AdminPage
         '
         'btnQueryRoom
         '
-        Me.btnQueryRoom.Location = New System.Drawing.Point(776, 104)
+        Me.btnQueryRoom.Location = New System.Drawing.Point(776, 109)
         Me.btnQueryRoom.Name = "btnQueryRoom"
         Me.btnQueryRoom.Size = New System.Drawing.Size(111, 52)
         Me.btnQueryRoom.TabIndex = 8

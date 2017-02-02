@@ -52,7 +52,7 @@ Class SchoolYearSemester
                     PreviousSchoolYearSemester.ShowDialog()
                 Else
                     MySQLConn.Open()
-                    comm = New MySqlCommand("CREATE TABLE `subjectlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "` LIKE subjectlist;CREATE TABLE `assignedsubj" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "` LIKE assignedsubj;", MySQLConn)
+                    comm = New MySqlCommand("CREATE TABLE `subjectlist" & ComboBoxSchoolYear.Text + ComboBoxSemester.Text & "` LIKE subjectlist;CREATE TABLE `assignedsubj" & ComboBoxSchoolYear.Text + ComboBoxSemester.Text & "` LIKE assignedsubj;CREATE TABLE `roomlist" & ComboBoxSchoolYear.Text + ComboBoxSemester.Text & "` LIKE roomlist;", MySQLConn)
                     comm.ExecuteReader()
                     MySQLConn.Close()
                     MySQLConn.Open()
@@ -182,8 +182,11 @@ Class SchoolYearSemester
         End If
         Dim DBbackup As New MySqlBackup
         MySQLConn.ConnectionString = connstring & database
+        'SFD_Database.FileName = "SchedulingSystemBackup_" + Now.ToString("MMddyyyy_HHmm")
+
         Try
-            If SFD_Database.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
+            'If SFD_Database.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
+            If FolderBrowserDialog_Database.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
                 MySQLConn.Open()
                 comm = New MySqlCommand
                 comm.Connection = MySQLConn
@@ -195,29 +198,54 @@ Class SchoolYearSemester
                     .ExportToFile("db.sql")
                 End With
                 MySQLConn.Close()
-            End If
-            Dim archive As New Process
-            With archive
-                With .StartInfo
-                    .WindowStyle = ProcessWindowStyle.Hidden
-                    .CreateNoWindow = True
-                    .FileName = "7z.exe"
-                    .Arguments = "a backup.7z db.sql -p123 -mhe"
+                Dim archive As New Process
+                With archive
+                    With .StartInfo
+                        .WindowStyle = ProcessWindowStyle.Hidden
+                        .CreateNoWindow = True
+                        .FileName = "7z.exe"
+                        .Arguments = "a backup.7z db.sql -p123 -mhe"
+                    End With
+                    .Start()
+                    .WaitForExit()
                 End With
-                .Start()
-                .WaitForExit()
-            End With
-            Dim files As New FileInfo("backup.7z")
-            If File.Exists(SFD_Database.FileName) Then
-                File.Delete(SFD_Database.FileName)
+                Dim files As New FileInfo("backup.7z")
+                If File.Exists(SFD_Database.FileName) Then
+                    File.Delete(SFD_Database.FileName)
+                End If
+                files.MoveTo(SFD_Database.FileName)
+                Dim dbfile As New FileInfo("db.sql")
+                dbfile.Delete()
             End If
-            files.MoveTo(SFD_Database.FileName)
-            Dim dbfile As New FileInfo("db.sql")
-            dbfile.Delete()
+
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
             MySQLConn.Dispose()
         End Try
+    End Sub
+    Public Sub RestoreDB()
+        If OpenFileDialog_Database.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+            Dim DBRestore As New MySqlBackup
+            MySQLConn.ConnectionString = connstring & database
+            Try
+                MySQLConn.Open()
+                comm = New MySqlCommand
+                comm.Connection = MySQLConn
+                DBRestore = New MySqlBackup(comm)
+                With DBRestore
+                    .ImportFromFile(OpenFileDialog_Database.FileName)
+                End With
+                MySQLConn.Close()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            Finally
+                MySQLConn.Dispose()
+            End Try
+        End If
+        
     End Sub
 End Class
