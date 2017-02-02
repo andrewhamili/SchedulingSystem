@@ -182,11 +182,11 @@ Class SchoolYearSemester
         End If
         Dim DBbackup As New MySqlBackup
         MySQLConn.ConnectionString = connstring & database
-        'SFD_Database.FileName = "SchedulingSystemBackup_" + Now.ToString("MMddyyyy_HHmm")
+        SFD_Database.FileName = "SchedulingSystemBackup_" + Now.ToString("MMddyyyy_HHmm")
 
         Try
-            'If SFD_Database.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
-            If FolderBrowserDialog_Database.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
+            If SFD_Database.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
+
                 MySQLConn.Open()
                 comm = New MySqlCommand
                 comm.Connection = MySQLConn
