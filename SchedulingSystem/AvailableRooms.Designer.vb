@@ -29,6 +29,7 @@ Partial Class AvailableRooms
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DTP_timeend = New System.Windows.Forms.DateTimePicker()
         Me.btnShow = New System.Windows.Forms.Button()
+        Me.btnClose = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'DTP_date
@@ -93,6 +94,15 @@ Partial Class AvailableRooms
         Me.btnShow.Text = "Show"
         Me.btnShow.UseVisualStyleBackColor = True
         '
+        'btnClose
+        '
+        Me.btnClose.Location = New System.Drawing.Point(171, 130)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(117, 44)
+        Me.btnClose.TabIndex = 9
+        Me.btnClose.Text = "Close"
+        Me.btnClose.UseVisualStyleBackColor = True
+        '
         'AvailableRooms
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -105,6 +115,7 @@ Partial Class AvailableRooms
         Me.Controls.Add(Me.DTP_timeend)
         Me.Controls.Add(Me.DTP_timestart)
         Me.Controls.Add(Me.DTP_date)
+        Me.Controls.Add(Me.btnClose)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
@@ -124,4 +135,5 @@ Partial Class AvailableRooms
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents DTP_timeend As System.Windows.Forms.DateTimePicker
     Friend WithEvents btnShow As System.Windows.Forms.Button
+    Friend WithEvents btnClose As System.Windows.Forms.Button
 End Class

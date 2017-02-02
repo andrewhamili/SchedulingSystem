@@ -7,6 +7,7 @@ Public Class AvailableRooms
         Me.Dispose()
     End Sub
     Private Sub AvailableRooms_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        CancelButton = btnClose
         Load_current_Rooms(RoomList)
         Console.WriteLine(RoomList.Count)
         DTP_date.Value = Now.ToString("MM/dd/yyyy")
@@ -84,5 +85,9 @@ Public Class AvailableRooms
             MySQLConn.Dispose()
         End Try
 
+    End Sub
+
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        Me.Dispose()
     End Sub
 End Class

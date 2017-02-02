@@ -58,6 +58,7 @@ Partial Class AdminPage
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.btnAccountManagement = New System.Windows.Forms.Button()
         Me.TimerTimeAndDate = New System.Windows.Forms.Timer(Me.components)
+        Me.btnManageRoom = New System.Windows.Forms.Button()
         Me.TabControl.SuspendLayout()
         Me.ScheduleManagement.SuspendLayout()
         Me.TabControl2.SuspendLayout()
@@ -217,7 +218,7 @@ Partial Class AdminPage
         '
         Me.PictureBoxPrintSchedules.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBoxPrintSchedules.Image = Global.SchedulingSystem.My.Resources.Resources.giphy
-        Me.PictureBoxPrintSchedules.Location = New System.Drawing.Point(1140, 104)
+        Me.PictureBoxPrintSchedules.Location = New System.Drawing.Point(1140, 109)
         Me.PictureBoxPrintSchedules.Name = "PictureBoxPrintSchedules"
         Me.PictureBoxPrintSchedules.Size = New System.Drawing.Size(100, 50)
         Me.PictureBoxPrintSchedules.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -227,7 +228,7 @@ Partial Class AdminPage
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(1010, 104)
+        Me.Button1.Location = New System.Drawing.Point(1010, 109)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(111, 52)
         Me.Button1.TabIndex = 4
@@ -237,7 +238,7 @@ Partial Class AdminPage
         'btnAssignSched
         '
         Me.btnAssignSched.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAssignSched.Location = New System.Drawing.Point(893, 104)
+        Me.btnAssignSched.Location = New System.Drawing.Point(893, 109)
         Me.btnAssignSched.Name = "btnAssignSched"
         Me.btnAssignSched.Size = New System.Drawing.Size(111, 52)
         Me.btnAssignSched.TabIndex = 3
@@ -274,6 +275,7 @@ Partial Class AdminPage
         'TabSubject
         '
         Me.TabSubject.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TabSubject.Controls.Add(Me.btnManageRoom)
         Me.TabSubject.Controls.Add(Me.PictureBoxPrintSubjects)
         Me.TabSubject.Controls.Add(Me.btnManageSchedule)
         Me.TabSubject.Controls.Add(Me.btnAddSchedule)
@@ -445,6 +447,18 @@ Partial Class AdminPage
         Me.btnAccountManagement.Text = "Account Management"
         Me.btnAccountManagement.UseVisualStyleBackColor = True
         '
+        'TimerTimeAndDate
+        '
+        '
+        'btnManageRoom
+        '
+        Me.btnManageRoom.Location = New System.Drawing.Point(724, 75)
+        Me.btnManageRoom.Name = "btnManageRoom"
+        Me.btnManageRoom.Size = New System.Drawing.Size(133, 50)
+        Me.btnManageRoom.TabIndex = 5
+        Me.btnManageRoom.Text = "Manage Rooms"
+        Me.btnManageRoom.UseVisualStyleBackColor = True
+        '
         'AdminPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -520,4 +534,5 @@ Partial Class AdminPage
     Friend WithEvents TimerTimeAndDate As System.Windows.Forms.Timer
     Friend WithEvents DataGridViewFacultyList As System.Windows.Forms.DataGridView
     Friend WithEvents btnQueryRoom As System.Windows.Forms.Button
+    Friend WithEvents btnManageRoom As System.Windows.Forms.Button
 End Class

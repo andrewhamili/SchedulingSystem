@@ -41,15 +41,13 @@ Public Class AdminPage
         AssignSchedule.ShowDialog()
     End Sub
     Public Sub Load_Schedules()
-
+        dbdataset.Clear()
         GroupBoxSearch.Hide()
         lblSearch.Hide()
 
         'Dim adapter As New MySqlDataAdapter
         'Dim bsource As New BindingSource
         'Dim dbdataset As New DataTable
-        dbdataset.Rows.Clear()
-        dbdataset.Columns.Clear()
 
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
@@ -298,13 +296,16 @@ Public Class AdminPage
         Me.Text = "Home Page        " & Now.ToString("MMMMM dd, yyyy    HH:mm:ss")
     End Sub
     Public Sub Load_FacultyList()
-        dbdataset.Rows.Clear()
-        dbdataset.Columns.Clear()
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
 
         MySQLConn.ConnectionString = connstring & database
+
+        Dim adapter As New MySqlDataAdapter
+        Dim bsource As New BindingSource
+        Dim dbdataset As New DataTable
+
         Try
             MySQLConn.Open()
             comm = New MySqlCommand("SELECT lname AS 'Last Name', fname AS 'First Name', mname AS 'Middle Name', username AS Username FROM userlist WHERE username!='pass';", MySQLConn)
@@ -356,5 +357,9 @@ Public Class AdminPage
         Load_Schedules()
         Load_Subjects()
         lblTotalSubjects.Text = "Total Subjects: " + DataGridSubjects.Rows.Count.ToString
+    End Sub
+
+    Private Sub btnManageRoom_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnManageRoom.Click
+        RoomManagement.ShowDialog()
     End Sub
 End Class
