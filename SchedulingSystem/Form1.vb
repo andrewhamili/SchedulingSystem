@@ -86,11 +86,10 @@ Public Class LoginPage
         End If
         
     End Sub
-
-    'Private Sub Timer_CurrentTimeAndDate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer_CurrentTimeAndDate.Tick
-    '    lblDate.Text = Now.ToString("MMMMM dd, yyyy")
-    '    lblTime.Text = Now.ToString("HH:mm:ss")
-    'End Sub
+    Private Sub Timer_CurrentTimeAndDate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer_CurrentTimeAndDate.Tick
+        lblDate.Text = Now.ToString("MMMMM dd, yyyy")
+        lblTime.Text = Now.ToString("HH:mm:ss")
+    End Sub
     Public Sub CheckMYSQLConnection()
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()

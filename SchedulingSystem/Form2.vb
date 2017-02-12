@@ -37,13 +37,11 @@ Public Class AdminPage
         SchoolYearSemester.ShowDialog()
     End Sub
 
-    Private Sub btnAssignSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAssignSched.Click
+    Private Sub btnAssignSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         AssignSchedule.ShowDialog()
     End Sub
     Public Sub Load_Schedules()
         dbdataset.Clear()
-        GroupBoxSearch.Hide()
-        lblSearch.Hide()
 
         'Dim adapter As New MySqlDataAdapter
         'Dim bsource As New BindingSource
@@ -107,7 +105,7 @@ Public Class AdminPage
         ManageSchedule.ShowDialog()
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         UnassignSchedule.ShowDialog()
     End Sub
 
@@ -126,100 +124,80 @@ Public Class AdminPage
 
     End Sub
 
-    Private Sub DataGridSched_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DataGridSched.KeyDown
-        If e.KeyCode = Keys.F AndAlso e.Modifiers = Keys.Control Then
-            GroupBoxSearch.Show()
-        End If
-        Console.WriteLine("Press")
-    End Sub
+    'Private Sub txtSearchClasscode_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    Dim theText As String = txtSearchClasscode.Text
+    '    Dim Letter As String
+    '    Dim SelectionIndex As Integer = txtSearchClasscode.SelectionStart
+    '    Dim Change As Integer
 
-    Private Sub DataGridSched_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridSched.LostFocus
-        lblSearch.Hide()
-    End Sub
+    '    For x As Integer = 0 To txtSearchClasscode.Text.Length - 1
+    '        Letter = txtSearchClasscode.Text.Substring(x, 1)
+    '        If charactersAllowedClasscodeAndRoom.Contains(Letter) = False Then
+    '            theText = theText.Replace(Letter, String.Empty)
+    '            Change = 1
+    '        End If
+    '    Next
 
-    Private Sub txtSearchClasscode_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearchClasscode.TextChanged
-        Dim theText As String = txtSearchClasscode.Text
-        Dim Letter As String
-        Dim SelectionIndex As Integer = txtSearchClasscode.SelectionStart
-        Dim Change As Integer
+    '    txtSearchClasscode.Text = theText
+    '    txtSearchClasscode.Select(SelectionIndex - Change, 0)
 
-        For x As Integer = 0 To txtSearchClasscode.Text.Length - 1
-            Letter = txtSearchClasscode.Text.Substring(x, 1)
-            If charactersAllowedClasscodeAndRoom.Contains(Letter) = False Then
-                theText = theText.Replace(Letter, String.Empty)
-                Change = 1
-            End If
-        Next
+    '    Dim dv As New DataView(dbdataset)
+    '    dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and 'Subject Description' LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
+    '    DataGridSched.DataSource = dv
+    'End Sub
 
-        txtSearchClasscode.Text = theText
-        txtSearchClasscode.Select(SelectionIndex - Change, 0)
+    'Private Sub txtSearchSubjDesc_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    Dim theText As String = txtSearchSubjDesc.Text
+    '    Dim Letter As String
+    '    Dim SelectionIndex As Integer = txtSearchSubjDesc.SelectionStart
+    '    Dim Change As Integer
 
-        Dim dv As New DataView(dbdataset)
-        dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and 'Subject Description' LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
-        DataGridSched.DataSource = dv
-    End Sub
+    '    For x As Integer = 0 To txtSearchSubjDesc.Text.Length - 1
+    '        Letter = txtSearchSubjDesc.Text.Substring(x, 1)
+    '        If charactersAllowed.Contains(Letter) = False Then
+    '            theText = theText.Replace(Letter, String.Empty)
+    '            Change = 1
+    '        End If
+    '    Next
 
-    Private Sub txtSearchSubjDesc_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearchSubjDesc.TextChanged
-        Dim theText As String = txtSearchSubjDesc.Text
-        Dim Letter As String
-        Dim SelectionIndex As Integer = txtSearchSubjDesc.SelectionStart
-        Dim Change As Integer
+    '    txtSearchSubjDesc.Text = theText
+    '    txtSearchSubjDesc.Select(SelectionIndex - Change, 0)
 
-        For x As Integer = 0 To txtSearchSubjDesc.Text.Length - 1
-            Letter = txtSearchSubjDesc.Text.Substring(x, 1)
-            If charactersAllowed.Contains(Letter) = False Then
-                theText = theText.Replace(Letter, String.Empty)
-                Change = 1
-            End If
-        Next
+    '    Dim dv As New DataView(dbdataset)
+    '    dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and SubjectDescription LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
+    '    DataGridSched.DataSource = dv
+    'End Sub
 
-        txtSearchSubjDesc.Text = theText
-        txtSearchSubjDesc.Select(SelectionIndex - Change, 0)
+    'Private Sub txtSearchRoom_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    Dim theText As String = txtSearchRoom.Text
+    '    Dim Letter As String
+    '    Dim SelectionIndex As Integer = txtSearchRoom.SelectionStart
+    '    Dim Change As Integer
 
-        Dim dv As New DataView(dbdataset)
-        dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and SubjectDescription LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
-        DataGridSched.DataSource = dv
-    End Sub
+    '    For x As Integer = 0 To txtSearchRoom.Text.Length - 1
+    '        Letter = txtSearchRoom.Text.Substring(x, 1)
+    '        If charactersAllowedClasscodeAndRoom.Contains(Letter) = False Then
+    '            theText = theText.Replace(Letter, String.Empty)
+    '            Change = 1
+    '        End If
+    '    Next
 
-    Private Sub txtSearchRoom_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearchRoom.TextChanged
-        Dim theText As String = txtSearchRoom.Text
-        Dim Letter As String
-        Dim SelectionIndex As Integer = txtSearchRoom.SelectionStart
-        Dim Change As Integer
+    '    txtSearchRoom.Text = theText
+    '    txtSearchRoom.Select(SelectionIndex - Change, 0)
 
-        For x As Integer = 0 To txtSearchRoom.Text.Length - 1
-            Letter = txtSearchRoom.Text.Substring(x, 1)
-            If charactersAllowedClasscodeAndRoom.Contains(Letter) = False Then
-                theText = theText.Replace(Letter, String.Empty)
-                Change = 1
-            End If
-        Next
+    '    Dim dv As New DataView(dbdataset)
+    '    dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and SubjectDescription LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
+    '    DataGridSched.DataSource = dv
+    'End Sub
 
-        txtSearchRoom.Text = theText
-        txtSearchRoom.Select(SelectionIndex - Change, 0)
+    'Private Sub DataGridSched_MouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridSched.MouseClick
+    '    lblSearch.Show()
+    'End Sub
 
-        Dim dv As New DataView(dbdataset)
-        dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and SubjectDescription LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
-        DataGridSched.DataSource = dv
-    End Sub
-
-    Private Sub DataGridSched_MouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridSched.MouseClick
-        lblSearch.Show()
-    End Sub
-
-    Private Sub DataGridSched_MouseHover(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridSched.MouseHover
-        lblSearch.Show()
-        DataGridSched.Focus()
-    End Sub
-
-    Private Sub PictureBoxPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBoxPrintSchedules.Click
-
-        PrintAction = "AllSched"
-
-        PrepareDataForPrintingAllSchedules()
-
-        PrintWindow.ShowDialog()
-    End Sub
+    'Private Sub DataGridSched_MouseHover(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridSched.MouseHover
+    '    lblSearch.Show()
+    '    DataGridSched.Focus()
+    'End Sub
     Public Sub PrepareDataForPrintingAllSchedules()
         data.Clear()
         Try
@@ -349,7 +327,7 @@ Public Class AdminPage
         End If
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnQueryRoom.Click
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         AvailableRooms.ShowDialog()
     End Sub
 
@@ -361,5 +339,21 @@ Public Class AdminPage
 
     Private Sub btnManageRoom_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnManageRoom.Click
         RoomManagement.ShowDialog()
+    End Sub
+
+    Private Sub ButtonAssignSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonAssignSched.Click
+        AssignSchedule.ShowDialog()
+    End Sub
+
+    Private Sub ButtonRemoveSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonRemoveSched.Click
+        UnassignSchedule.ShowDialog()
+    End Sub
+
+    Private Sub ButtonPrintAssignedSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonPrintAssignedSched.Click
+        PrintAction = "AllSched"
+
+        PrepareDataForPrintingAllSchedules()
+
+        PrintWindow.ShowDialog()
     End Sub
 End Class
