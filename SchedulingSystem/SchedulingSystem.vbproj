@@ -219,6 +219,12 @@
     <Compile Include="UnassignSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UpForm.Designer.vb">
+      <DependentUpon>UpForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UpForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserWindow.Designer.vb">
       <DependentUpon>UserWindow.vb</DependentUpon>
     </Compile>
@@ -298,6 +304,9 @@
     </Content>
     <EmbeddedResource Include="UnassignSchedule.resx">
       <DependentUpon>UnassignSchedule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpForm.resx">
+      <DependentUpon>UpForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserWindow.resx">
       <DependentUpon>UserWindow.vb</DependentUpon>
