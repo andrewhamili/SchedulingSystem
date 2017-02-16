@@ -1,0 +1,3 @@
+Guest account to view vacant rooms.
+
+Logo on Login, with info

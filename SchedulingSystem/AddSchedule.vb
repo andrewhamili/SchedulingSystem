@@ -145,7 +145,6 @@ Public Class AddSchedule
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
-        AdminPage.ChangeTab()
         Me.Dispose()
     End Sub
 

@@ -10,7 +10,7 @@ Module GlobalVariableModule
     Public comm As New MySqlCommand 'MySQL Command Handler
     Public reader As MySqlDataReader 'MySQL query result reader
 
-    Public SystemTitle As String = "Scheduling System" 'Variable to be used for the Dialog box titles.
+    Public SystemTitle As String = "Faculty Workload Scheduling System" 'Variable to be used for the Dialog box titles.
     Public usertype As String = "" 'Public Variable to storte the logged-in user's usertype
     Public activeusername As String = "" 'Public Variable to store the activeuser's username
     Public activeuserfname As String = "" 'Public Variable to store the logged-in user's first name.
@@ -22,5 +22,7 @@ Module GlobalVariableModule
 
     Public data As New DataSetPrint
     Public PrintAction As String
+
+    Public Status As Boolean = False
 
 End Module

@@ -519,7 +519,6 @@ Public Class AssignSchedule
             MsgBox("No subject assigned!", MsgBoxStyle.Information, "Empty")
         End If
         AdminPage.dbdataset.Clear()
-        AdminPage.Load_Schedules()
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click

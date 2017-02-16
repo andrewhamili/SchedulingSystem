@@ -21,7 +21,7 @@ Public Class AdminPage
     End Sub
 
     Private Sub AdminPage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Load_Schedules()
+        ControlViewAssignedSchedule1.Hide()
         TimerTimeAndDate.Enabled = True
     End Sub
 
@@ -40,78 +40,18 @@ Public Class AdminPage
     Private Sub btnAssignSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         AssignSchedule.ShowDialog()
     End Sub
-    Public Sub Load_Schedules()
-        dbdataset.Clear()
+    
 
-        'Dim adapter As New MySqlDataAdapter
-        'Dim bsource As New BindingSource
-        'Dim dbdataset As New DataTable
-
-        If MySQLConn.State = ConnectionState.Open Then
-            MySQLConn.Close()
-        End If
-
-
-
-        MySQLConn.ConnectionString = connstring & database
-        Try
-            MySQLConn.Open()
-            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'SubjectDescription', day AS Day, room AS Room, TIME_FORMAT(TimeStart, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeEnd, '%H:%i') AS 'Time End', instructor AS Instructor, units as 'Unit(s)' FROM `assignedsubj" & schoolyear & "" & semester & "` ORDER BY instructor ASC", MySQLConn)
-            adapter.SelectCommand = comm
-            adapter.Fill(dbdataset)
-            DataGridSched.DataSource = dbdataset
-            adapter.Update(dbdataset)
-            MySQLConn.Close()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            MySQLConn.Dispose()
-        End Try
-    End Sub
-    Public Sub Load_Subjects()
-        Dim adapter As New MySqlDataAdapter
-        Dim bsource As New BindingSource
-        Dim dbdataset As New DataTable
-
-        If MySQLConn.State = ConnectionState.Open Then
-            MySQLConn.Close()
-        End If
-        MySQLConn.ConnectionString = connstring & database
-        Try
-            MySQLConn.Open()
-            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'Subject Description', subj_unit as 'Unit(s)', day AS Day, TIME_FORMAT(TimeFrom, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeTo, '%H:%i') AS 'Time End', room AS Room FROM `subjectlist" & schoolyear & "" & semester & "` ORDER BY room ASC", MySQLConn)
-            adapter.SelectCommand = comm
-            adapter.Fill(dbdataset)
-            DataGridSubjects.DataSource = dbdataset
-            adapter.Update(dbdataset)
-            MySQLConn.Close()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            MySQLConn.Dispose()
-        End Try
-    End Sub
-
-    Private Sub TabSubject_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabSubject.Enter
-        Load_Subjects()
-        lblTotalSubjects.Text = "Total Subjects: " + DataGridSubjects.Rows.Count.ToString
-    End Sub
-
-    Private Sub btnAddSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddSchedule.Click
+    Private Sub btnAddSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         AddSchedule.ShowDialog()
     End Sub
 
-    Private Sub btnManageSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnManageSchedule.Click
+    Private Sub btnManageSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ManageSchedule.ShowDialog()
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         UnassignSchedule.ShowDialog()
-    End Sub
-
-    Private Sub TabSchedule_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabSchedule.Enter
-        Load_Schedules()
-
     End Sub
 
     Private Sub AdminPage_ResizeEnd(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.ResizeEnd
@@ -198,146 +138,20 @@ Public Class AdminPage
     '    lblSearch.Show()
     '    DataGridSched.Focus()
     'End Sub
-    Public Sub PrepareDataForPrintingAllSchedules()
-        data.Clear()
-        Try
-            '' Add Table
-            'ds.Tables.Add("Test")
-
-            '' Add Columns
-            'Dim col As DataColumn
-            'For Each dgvCol As DataGridViewColumn In DataGridView1.Columns
-            '    col = New DataColumn(dgvCol.Name)
-            '    ds.Tables("Invoices").Columns.Add(col)
-            'Next
-
-            ' Rows from the datagridview
-            Dim row As DataRow
-            Dim colcount As Integer = DataGridSched.Columns.Count - 1
-            For i As Integer = 0 To DataGridSched.Rows.Count - 1
-                row = data.Tables(0).Rows.Add
-                For Each column As DataGridViewColumn In DataGridSched.Columns
-                    row.Item(column.Index) = DataGridSched.Rows.Item(i).Cells(column.Index).Value
-                Next
-            Next
-
-        Catch ex As Exception
-
-            MsgBox("CRITICAL ERROR : Exception caught while converting dataGridView to DataSet (dgvtods).. " & Chr(10) & ex.Message)
-        End Try
-    End Sub
-
-    Private Sub PictureBoxPrintSubjects_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBoxPrintSubjects.Click
-        PrintAction = "AllSubjects"
-        PrepareDataForPrintingAllSubjects()
-        PrintWindow.ShowDialog()
-    End Sub
-    Public Sub PrepareDataForPrintingAllSubjects()
-        data.Clear()
-        Try
-            '' Add Table
-            'ds.Tables.Add("Test")
-
-            '' Add Columns
-            'Dim col As DataColumn
-            'For Each dgvCol As DataGridViewColumn In DataGridView1.Columns
-            '    col = New DataColumn(dgvCol.Name)
-            '    ds.Tables("Invoices").Columns.Add(col)
-            'Next
-
-            ' Rows from the datagridview
-            Dim row As DataRow
-            Dim colcount As Integer = DataGridSubjects.Columns.Count - 1
-            For i As Integer = 0 To DataGridSubjects.Rows.Count - 1
-                row = data.Tables(1).Rows.Add
-                For Each column As DataGridViewColumn In DataGridSubjects.Columns
-                    row.Item(column.Index) = DataGridSubjects.Rows.Item(i).Cells(column.Index).Value
-                Next
-            Next
-
-        Catch ex As Exception
-
-            MsgBox("CRITICAL ERROR : Exception caught while converting dataGridView to DataSet (dgvtods).. " & Chr(10) & ex.Message)
-        End Try
-    End Sub
-
     Private Sub btnAccountManagement_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAccountManagement.Click
         AccountManagement.ShowDialog()
     End Sub
-    Public Sub ChangeTab()
-        TabControl2.SelectedTab = TabSchedule
-    End Sub
-
     Private Sub TimerTimeAndDate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerTimeAndDate.Tick
         txtCurrentSchoolYear.Text = SchoolYear
         txtCurrentSemester.Text = Semester
         Me.Text = "Home Page        " & Now.ToString("MMMMM dd, yyyy    HH:mm:ss")
     End Sub
-    Public Sub Load_FacultyList()
-        If MySQLConn.State = ConnectionState.Open Then
-            MySQLConn.Close()
-        End If
-
-        MySQLConn.ConnectionString = connstring & database
-
-        Dim adapter As New MySqlDataAdapter
-        Dim bsource As New BindingSource
-        Dim dbdataset As New DataTable
-
-        Try
-            MySQLConn.Open()
-            comm = New MySqlCommand("SELECT lname AS 'Last Name', fname AS 'First Name', mname AS 'Middle Name', username AS Username FROM userlist WHERE username!='pass';", MySQLConn)
-            adapter.SelectCommand = comm
-            adapter.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            DataGridViewFacultyList.DataSource = bsource
-            adapter.Update(dbdataset)
-            MySQLConn.Close()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            MySQLConn.Close()
-        End Try
-    End Sub
-
-    Private Sub FacultyList_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles FacultyList.Enter
-        dbdataset.Clear()
-        Load_FacultyList()
-    End Sub
-
-    Private Sub DataGridViewFacultyList_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
-        If e.RowIndex >= 0 Then
-            Dim row As DataGridViewRow
-            Dim instructor As String
-            row = DataGridViewFacultyList.Rows(e.RowIndex)
-            instructor = row.Cells("Last Name").Value + ", " + row.Cells("First Name").Value
-            FacultySched.instrname = instructor
-            FacultySched.ShowDialog()
-        End If
-    End Sub
-
-    Private Sub DataGridViewFacultyList_CellDoubleClick1(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewFacultyList.CellDoubleClick
-        If e.RowIndex >= 0 Then
-            Dim row As DataGridViewRow
-            Dim instructor As String = ""
-            row = DataGridViewFacultyList.Rows(e.RowIndex)
-            instructor = row.Cells("Last Name").Value + ", " + row.Cells("First Name").Value
-            FacultySched.instrname = instructor
-            FacultySched.ShowDialog()
-        End If
-    End Sub
+    
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         AvailableRooms.ShowDialog()
     End Sub
-
-    Private Sub ScheduleManagement_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles ScheduleManagement.Enter
-        Load_Schedules()
-        Load_Subjects()
-        lblTotalSubjects.Text = "Total Subjects: " + DataGridSubjects.Rows.Count.ToString
-    End Sub
-
-    Private Sub btnManageRoom_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnManageRoom.Click
+    Private Sub btnManageRoom_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         RoomManagement.ShowDialog()
     End Sub
 
@@ -349,11 +163,8 @@ Public Class AdminPage
         UnassignSchedule.ShowDialog()
     End Sub
 
-    Private Sub ButtonPrintAssignedSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonPrintAssignedSched.Click
-        PrintAction = "AllSched"
-
-        PrepareDataForPrintingAllSchedules()
-
-        PrintWindow.ShowDialog()
+    Private Sub ButtonItemViewAssignedSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemViewAssignedSched.Click
+        ControlViewAssignedSchedule1.Show()
+        ControlViewAssignedSchedule1.Load_Schedules()
     End Sub
 End Class

@@ -225,7 +225,7 @@ Partial Class AssignSchedule
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 40)
         Me.btnCancel.TabIndex = 8
-        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.Text = "Close"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'Label1

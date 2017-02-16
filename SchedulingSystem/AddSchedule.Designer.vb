@@ -28,7 +28,6 @@ Partial Class AddSchedule
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txt_AddSchedule_Classcode = New System.Windows.Forms.TextBox()
         Me.txt_AddSchedule_SubjDesc = New System.Windows.Forms.TextBox()
@@ -87,23 +86,14 @@ Partial Class AddSchedule
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(12, 233)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(83, 18)
+        Me.Label5.Size = New System.Drawing.Size(42, 18)
         Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Time From"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 266)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(62, 18)
-        Me.Label6.TabIndex = 5
-        Me.Label6.Text = "Time To"
+        Me.Label5.Text = "Time"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(12, 302)
+        Me.Label7.Location = New System.Drawing.Point(11, 281)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(50, 18)
         Me.Label7.TabIndex = 6
@@ -131,7 +121,7 @@ Partial Class AddSchedule
         Me.txt_AddSchedule_Unit.Location = New System.Drawing.Point(168, 103)
         Me.txt_AddSchedule_Unit.MaxLength = 2
         Me.txt_AddSchedule_Unit.Name = "txt_AddSchedule_Unit"
-        Me.txt_AddSchedule_Unit.Size = New System.Drawing.Size(197, 26)
+        Me.txt_AddSchedule_Unit.Size = New System.Drawing.Size(35, 26)
         Me.txt_AddSchedule_Unit.TabIndex = 9
         '
         'CheckBox_AddSchedule_Day_mo
@@ -188,7 +178,7 @@ Partial Class AddSchedule
         '
         Me.CboxChooseRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CboxChooseRoom.FormattingEnabled = True
-        Me.CboxChooseRoom.Location = New System.Drawing.Point(112, 299)
+        Me.CboxChooseRoom.Location = New System.Drawing.Point(111, 278)
         Me.CboxChooseRoom.Name = "CboxChooseRoom"
         Me.CboxChooseRoom.Size = New System.Drawing.Size(121, 26)
         Me.CboxChooseRoom.TabIndex = 17
@@ -208,7 +198,7 @@ Partial Class AddSchedule
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(118, 38)
         Me.btnCancel.TabIndex = 19
-        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.Text = "Close"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'CheckBox_AddSchedule_Day_sa
@@ -225,7 +215,7 @@ Partial Class AddSchedule
         '
         Me.DateTimePicker_AddSchedule_timefrom.CustomFormat = "HH:mm"
         Me.DateTimePicker_AddSchedule_timefrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker_AddSchedule_timefrom.Location = New System.Drawing.Point(136, 227)
+        Me.DateTimePicker_AddSchedule_timefrom.Location = New System.Drawing.Point(168, 227)
         Me.DateTimePicker_AddSchedule_timefrom.MaxDate = New Date(2030, 12, 31, 0, 0, 0, 0)
         Me.DateTimePicker_AddSchedule_timefrom.MinDate = New Date(2015, 1, 1, 0, 0, 0, 0)
         Me.DateTimePicker_AddSchedule_timefrom.Name = "DateTimePicker_AddSchedule_timefrom"
@@ -238,7 +228,7 @@ Partial Class AddSchedule
         '
         Me.DateTimePicker_AddSchedule_timeto.CustomFormat = "HH:mm"
         Me.DateTimePicker_AddSchedule_timeto.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker_AddSchedule_timeto.Location = New System.Drawing.Point(136, 260)
+        Me.DateTimePicker_AddSchedule_timeto.Location = New System.Drawing.Point(272, 227)
         Me.DateTimePicker_AddSchedule_timeto.Name = "DateTimePicker_AddSchedule_timeto"
         Me.DateTimePicker_AddSchedule_timeto.ShowUpDown = True
         Me.DateTimePicker_AddSchedule_timeto.Size = New System.Drawing.Size(76, 26)
@@ -250,7 +240,7 @@ Partial Class AddSchedule
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(474, 394)
+        Me.ClientSize = New System.Drawing.Size(394, 394)
         Me.Controls.Add(Me.DateTimePicker_AddSchedule_timeto)
         Me.Controls.Add(Me.DateTimePicker_AddSchedule_timefrom)
         Me.Controls.Add(Me.CheckBox_AddSchedule_Day_sa)
@@ -266,7 +256,6 @@ Partial Class AddSchedule
         Me.Controls.Add(Me.txt_AddSchedule_SubjDesc)
         Me.Controls.Add(Me.txt_AddSchedule_Classcode)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -289,7 +278,6 @@ Partial Class AddSchedule
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents txt_AddSchedule_Classcode As System.Windows.Forms.TextBox
     Friend WithEvents txt_AddSchedule_SubjDesc As System.Windows.Forms.TextBox

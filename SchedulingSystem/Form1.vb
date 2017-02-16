@@ -8,6 +8,7 @@ Public Class LoginPage
     End Sub
 
     Private Sub LoginPage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        lblWelcome.Text = SystemTitle
         If My.Application.CommandLineArgs.Count > 0 Then
 
         End If
@@ -64,6 +65,8 @@ Public Class LoginPage
                     Get_Active_SchoolYearSemester()
                     If usertype = "Administrator" Then
                         AdminPage.Show()
+                        Status = True
+                        'UpForm.Show()
                     Else
                         UserWindow.instrname = UserPageName
                         UserWindow.Show()

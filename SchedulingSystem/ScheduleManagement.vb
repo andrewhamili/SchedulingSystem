@@ -128,12 +128,10 @@ Class ManageSchedule
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
-        AdminPage.ChangeTab()
         Me.Dispose()
     End Sub
 
     Private Sub btnCancel1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel1.Click
-        AdminPage.ChangeTab()
         Me.Dispose()
     End Sub
 
