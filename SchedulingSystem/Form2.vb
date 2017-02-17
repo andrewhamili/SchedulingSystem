@@ -21,6 +21,7 @@ Public Class AdminPage
     End Sub
 
     Private Sub AdminPage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ControlViewSubjects1.Hide()
         ControlViewAssignedSchedule1.Hide()
         GroupBoxContainer.Text = ""
         TimerTimeAndDate.Enabled = True
@@ -29,24 +30,18 @@ Public Class AdminPage
     Private Sub btnChangeSchoolyearSemester_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         SchoolYearSemester.ShowDialog()
     End Sub
-
     Private Sub btnAssignSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         AssignSchedule.ShowDialog()
     End Sub
-    
-
     Private Sub btnAddSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         AddSchedule.ShowDialog()
     End Sub
-
     Private Sub btnManageSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ManageSchedule.ShowDialog()
     End Sub
-
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         UnassignSchedule.ShowDialog()
     End Sub
-
     Private Sub AdminPage_ResizeEnd(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.ResizeEnd
         Dim height As Integer = Me.Height
         Dim width As Integer = Me.Width
@@ -56,81 +51,6 @@ Public Class AdminPage
         End If
 
     End Sub
-
-    'Private Sub txtSearchClasscode_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    Dim theText As String = txtSearchClasscode.Text
-    '    Dim Letter As String
-    '    Dim SelectionIndex As Integer = txtSearchClasscode.SelectionStart
-    '    Dim Change As Integer
-
-    '    For x As Integer = 0 To txtSearchClasscode.Text.Length - 1
-    '        Letter = txtSearchClasscode.Text.Substring(x, 1)
-    '        If charactersAllowedClasscodeAndRoom.Contains(Letter) = False Then
-    '            theText = theText.Replace(Letter, String.Empty)
-    '            Change = 1
-    '        End If
-    '    Next
-
-    '    txtSearchClasscode.Text = theText
-    '    txtSearchClasscode.Select(SelectionIndex - Change, 0)
-
-    '    Dim dv As New DataView(dbdataset)
-    '    dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and 'Subject Description' LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
-    '    DataGridSched.DataSource = dv
-    'End Sub
-
-    'Private Sub txtSearchSubjDesc_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    Dim theText As String = txtSearchSubjDesc.Text
-    '    Dim Letter As String
-    '    Dim SelectionIndex As Integer = txtSearchSubjDesc.SelectionStart
-    '    Dim Change As Integer
-
-    '    For x As Integer = 0 To txtSearchSubjDesc.Text.Length - 1
-    '        Letter = txtSearchSubjDesc.Text.Substring(x, 1)
-    '        If charactersAllowed.Contains(Letter) = False Then
-    '            theText = theText.Replace(Letter, String.Empty)
-    '            Change = 1
-    '        End If
-    '    Next
-
-    '    txtSearchSubjDesc.Text = theText
-    '    txtSearchSubjDesc.Select(SelectionIndex - Change, 0)
-
-    '    Dim dv As New DataView(dbdataset)
-    '    dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and SubjectDescription LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
-    '    DataGridSched.DataSource = dv
-    'End Sub
-
-    'Private Sub txtSearchRoom_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    Dim theText As String = txtSearchRoom.Text
-    '    Dim Letter As String
-    '    Dim SelectionIndex As Integer = txtSearchRoom.SelectionStart
-    '    Dim Change As Integer
-
-    '    For x As Integer = 0 To txtSearchRoom.Text.Length - 1
-    '        Letter = txtSearchRoom.Text.Substring(x, 1)
-    '        If charactersAllowedClasscodeAndRoom.Contains(Letter) = False Then
-    '            theText = theText.Replace(Letter, String.Empty)
-    '            Change = 1
-    '        End If
-    '    Next
-
-    '    txtSearchRoom.Text = theText
-    '    txtSearchRoom.Select(SelectionIndex - Change, 0)
-
-    '    Dim dv As New DataView(dbdataset)
-    '    dv.RowFilter = String.Format("Classcode LIKE '%{0}%' and SubjectDescription LIKE '%{1}%' and Room LIKE '%{2}%'", txtSearchClasscode.Text, txtSearchSubjDesc.Text, txtSearchRoom.Text)
-    '    DataGridSched.DataSource = dv
-    'End Sub
-
-    'Private Sub DataGridSched_MouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridSched.MouseClick
-    '    lblSearch.Show()
-    'End Sub
-
-    'Private Sub DataGridSched_MouseHover(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridSched.MouseHover
-    '    lblSearch.Show()
-    '    DataGridSched.Focus()
-    'End Sub
     Private Sub btnAccountManagement_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         AccountManagement.ShowDialog()
     End Sub
@@ -143,16 +63,21 @@ Public Class AdminPage
 
     Private Sub ButtonAssignSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonAssignSched.Click
         AssignSchedule.ShowDialog()
+        lblNavigate.SendToBack()
     End Sub
 
     Private Sub ButtonRemoveSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonRemoveSched.Click
         UnassignSchedule.ShowDialog()
+        lblNavigate.SendToBack()
     End Sub
 
     Private Sub ButtonItemViewAssignedSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemViewAssignedSched.Click
         ControlViewAssignedSchedule1.Show()
         ControlViewAssignedSchedule1.Load_Schedules()
+        ControlViewSubjects1.Hide()
         GroupBoxContainer.Text = "Assigned Schedules"
+        lblNavigate.SendToBack()
+
     End Sub
 
     Private Sub ExplorerBarGroupItemLogout_ExpandChange(ByVal sender As Object, ByVal e As System.EventArgs) Handles ExplorerBarGroupItemLogout.ExpandChange
@@ -167,5 +92,12 @@ Public Class AdminPage
     Private Sub ButtonAddAccount_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonAddAccount.Click
         EntryText = "Add"
         AccountManagement.Show()
+    End Sub
+
+    Private Sub ButtonViewSubjects_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonViewSubjects.Click
+        GroupBoxContainer.Text = "Subjects list"
+        ControlViewAssignedSchedule1.Hide()
+        ControlViewSubjects1.Show()
+        ControlViewSubjects1.Load_Subjects()
     End Sub
 End Class

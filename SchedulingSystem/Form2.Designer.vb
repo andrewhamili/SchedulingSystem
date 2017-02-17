@@ -31,6 +31,7 @@ Partial Class AdminPage
         Me.ButtonItemViewAssignedSched = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonAssignSched = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonRemoveSched = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonViewSubjects = New DevComponents.DotNetBar.ButtonItem()
         Me.ExplorerBarGroupItemEmployee = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.ButtonAddAccount = New DevComponents.DotNetBar.ButtonItem()
         Me.ExplorerBarGroupItemPrinting = New DevComponents.DotNetBar.ExplorerBarGroupItem()
@@ -39,8 +40,10 @@ Partial Class AdminPage
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.ExplorerBarGroupItemLogout = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.GroupBoxContainer = New System.Windows.Forms.GroupBox()
-        Me.ControlViewAssignedSchedule1 = New SchedulingSystem.ControlViewAssignedSchedule()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblNavigate = New System.Windows.Forms.Label()
+        Me.ControlViewSubjects1 = New SchedulingSystem.ControlViewSubjects()
+        Me.ControlViewAssignedSchedule1 = New SchedulingSystem.ControlViewAssignedSchedule()
         CType(Me.ExplorerBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBoxContainer.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,12 +102,13 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemSchedule.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemSchedule.Cursor = System.Windows.Forms.Cursors.Default
         Me.ExplorerBarGroupItemSchedule.ExpandBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
+        Me.ExplorerBarGroupItemSchedule.Expanded = True
         Me.ExplorerBarGroupItemSchedule.ExpandForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(165, Byte), Integer))
         Me.ExplorerBarGroupItemSchedule.ExpandHotBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
         Me.ExplorerBarGroupItemSchedule.ExpandHotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.ExplorerBarGroupItemSchedule.Image = Global.SchedulingSystem.My.Resources.Resources.google_calendar_logo
         Me.ExplorerBarGroupItemSchedule.Name = "ExplorerBarGroupItemSchedule"
-        Me.ExplorerBarGroupItemSchedule.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemViewAssignedSched, Me.ButtonAssignSched, Me.ButtonRemoveSched})
+        Me.ExplorerBarGroupItemSchedule.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemViewAssignedSched, Me.ButtonAssignSched, Me.ButtonRemoveSched, Me.ButtonViewSubjects})
         Me.ExplorerBarGroupItemSchedule.Text = "Schedule"
         '
         '
@@ -160,6 +164,17 @@ Partial Class AdminPage
         Me.ButtonRemoveSched.Name = "ButtonRemoveSched"
         Me.ButtonRemoveSched.Text = "Remove Schedule"
         '
+        'ButtonViewSubjects
+        '
+        Me.ButtonViewSubjects.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonViewSubjects.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ButtonViewSubjects.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.ButtonViewSubjects.HotFontUnderline = True
+        Me.ButtonViewSubjects.HotForeColor = System.Drawing.SystemColors.ControlDark
+        Me.ButtonViewSubjects.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
+        Me.ButtonViewSubjects.Name = "ButtonViewSubjects"
+        Me.ButtonViewSubjects.Text = "View Subjects"
+        '
         'ExplorerBarGroupItemEmployee
         '
         '
@@ -176,7 +191,6 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemEmployee.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemEmployee.Cursor = System.Windows.Forms.Cursors.Default
         Me.ExplorerBarGroupItemEmployee.ExpandBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ExplorerBarGroupItemEmployee.Expanded = True
         Me.ExplorerBarGroupItemEmployee.ExpandForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(165, Byte), Integer))
         Me.ExplorerBarGroupItemEmployee.ExpandHotBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
         Me.ExplorerBarGroupItemEmployee.ExpandHotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -363,6 +377,11 @@ Partial Class AdminPage
         '
         'GroupBoxContainer
         '
+        Me.GroupBoxContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBoxContainer.Controls.Add(Me.lblNavigate)
+        Me.GroupBoxContainer.Controls.Add(Me.ControlViewSubjects1)
         Me.GroupBoxContainer.Controls.Add(Me.ControlViewAssignedSchedule1)
         Me.GroupBoxContainer.Font = New System.Drawing.Font("Arial Black", 12.0!)
         Me.GroupBoxContainer.Location = New System.Drawing.Point(274, 87)
@@ -371,6 +390,34 @@ Partial Class AdminPage
         Me.GroupBoxContainer.TabIndex = 12
         Me.GroupBoxContainer.TabStop = False
         Me.GroupBoxContainer.Text = "Assigned Schedules"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.CEU_Logo
+        Me.PictureBox1.Location = New System.Drawing.Point(609, 9)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(103, 72)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 11
+        Me.PictureBox1.TabStop = False
+        '
+        'lblNavigate
+        '
+        Me.lblNavigate.AutoSize = True
+        Me.lblNavigate.Location = New System.Drawing.Point(156, 222)
+        Me.lblNavigate.Name = "lblNavigate"
+        Me.lblNavigate.Size = New System.Drawing.Size(326, 23)
+        Me.lblNavigate.TabIndex = 12
+        Me.lblNavigate.Text = "To get started, navigate to the right"
+        '
+        'ControlViewSubjects1
+        '
+        Me.ControlViewSubjects1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ControlViewSubjects1.Location = New System.Drawing.Point(3, 26)
+        Me.ControlViewSubjects1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.ControlViewSubjects1.Name = "ControlViewSubjects1"
+        Me.ControlViewSubjects1.Size = New System.Drawing.Size(980, 462)
+        Me.ControlViewSubjects1.TabIndex = 11
         '
         'ControlViewAssignedSchedule1
         '
@@ -381,16 +428,6 @@ Partial Class AdminPage
         Me.ControlViewAssignedSchedule1.Name = "ControlViewAssignedSchedule1"
         Me.ControlViewAssignedSchedule1.Size = New System.Drawing.Size(980, 462)
         Me.ControlViewAssignedSchedule1.TabIndex = 10
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.CEU_Logo
-        Me.PictureBox1.Location = New System.Drawing.Point(609, 9)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(113, 79)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 11
-        Me.PictureBox1.TabStop = False
         '
         'AdminPage
         '
@@ -410,6 +447,7 @@ Partial Class AdminPage
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.ExplorerBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBoxContainer.ResumeLayout(False)
+        Me.GroupBoxContainer.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -432,4 +470,7 @@ Partial Class AdminPage
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents GroupBoxContainer As System.Windows.Forms.GroupBox
     Friend WithEvents ExplorerBarGroupItemLogout As DevComponents.DotNetBar.ExplorerBarGroupItem
+    Friend WithEvents ButtonViewSubjects As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ControlViewSubjects1 As SchedulingSystem.ControlViewSubjects
+    Friend WithEvents lblNavigate As System.Windows.Forms.Label
 End Class

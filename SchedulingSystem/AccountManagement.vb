@@ -10,7 +10,6 @@ Class AccountManagement
         Else
             PanelCreate.Hide()
         End If
-
         Load_Accounts()
         PanelTools.Hide()
     End Sub
