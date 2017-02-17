@@ -25,4 +25,6 @@ Module GlobalVariableModule
 
     Public Status As Boolean = False
 
+    Public EntryText As String
+
 End Module

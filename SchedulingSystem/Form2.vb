@@ -131,7 +131,7 @@ Public Class AdminPage
     '    lblSearch.Show()
     '    DataGridSched.Focus()
     'End Sub
-    Private Sub btnAccountManagement_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAccountManagement.Click
+    Private Sub btnAccountManagement_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         AccountManagement.ShowDialog()
     End Sub
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -162,5 +162,10 @@ Public Class AdminPage
             RemoveHandler ExplorerBarGroupItemLogout.ExpandChange, AddressOf ExplorerBarGroupItemLogout_ExpandChange
             Me.Close()
         End If
+    End Sub
+
+    Private Sub ButtonAddAccount_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonAddAccount.Click
+        EntryText = "Add"
+        AccountManagement.Show()
     End Sub
 End Class

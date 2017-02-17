@@ -25,12 +25,8 @@ Partial Class AdminPage
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminPage))
         Me.lblName = New System.Windows.Forms.Label()
-        Me.btnLogout = New System.Windows.Forms.Button()
-        Me.btnAccountManagement = New System.Windows.Forms.Button()
         Me.TimerTimeAndDate = New System.Windows.Forms.Timer(Me.components)
         Me.ExplorerBar1 = New DevComponents.DotNetBar.ExplorerBar()
-        Me.GroupBoxContainer = New System.Windows.Forms.GroupBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ExplorerBarGroupItemSchedule = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.ButtonItemViewAssignedSched = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonAssignSched = New DevComponents.DotNetBar.ButtonItem()
@@ -42,7 +38,9 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItem2 = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.ExplorerBarGroupItemLogout = New DevComponents.DotNetBar.ExplorerBarGroupItem()
+        Me.GroupBoxContainer = New System.Windows.Forms.GroupBox()
         Me.ControlViewAssignedSchedule1 = New SchedulingSystem.ControlViewAssignedSchedule()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.ExplorerBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBoxContainer.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,26 +58,6 @@ Partial Class AdminPage
         Me.lblName.Size = New System.Drawing.Size(232, 29)
         Me.lblName.TabIndex = 0
         Me.lblName.Text = "Welcome!, Group 3"
-        '
-        'btnLogout
-        '
-        Me.btnLogout.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnLogout.Location = New System.Drawing.Point(1099, 9)
-        Me.btnLogout.Name = "btnLogout"
-        Me.btnLogout.Size = New System.Drawing.Size(161, 45)
-        Me.btnLogout.TabIndex = 7
-        Me.btnLogout.Text = "Log-out"
-        Me.btnLogout.UseVisualStyleBackColor = True
-        '
-        'btnAccountManagement
-        '
-        Me.btnAccountManagement.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAccountManagement.Location = New System.Drawing.Point(1099, 59)
-        Me.btnAccountManagement.Name = "btnAccountManagement"
-        Me.btnAccountManagement.Size = New System.Drawing.Size(161, 45)
-        Me.btnAccountManagement.TabIndex = 8
-        Me.btnAccountManagement.Text = "Account Management"
-        Me.btnAccountManagement.UseVisualStyleBackColor = True
         '
         'ExplorerBar1
         '
@@ -105,27 +83,6 @@ Partial Class AdminPage
         Me.ExplorerBar1.Text = "ExplorerBar1"
         Me.ExplorerBar1.ThemeAware = True
         '
-        'GroupBoxContainer
-        '
-        Me.GroupBoxContainer.Controls.Add(Me.ControlViewAssignedSchedule1)
-        Me.GroupBoxContainer.Font = New System.Drawing.Font("Arial Black", 12.0!)
-        Me.GroupBoxContainer.Location = New System.Drawing.Point(274, 87)
-        Me.GroupBoxContainer.Name = "GroupBoxContainer"
-        Me.GroupBoxContainer.Size = New System.Drawing.Size(986, 491)
-        Me.GroupBoxContainer.TabIndex = 12
-        Me.GroupBoxContainer.TabStop = False
-        Me.GroupBoxContainer.Text = "Assigned Schedules"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.CEU_Logo
-        Me.PictureBox1.Location = New System.Drawing.Point(609, 9)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(142, 95)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 11
-        Me.PictureBox1.TabStop = False
-        '
         'ExplorerBarGroupItemSchedule
         '
         '
@@ -142,7 +99,6 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemSchedule.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemSchedule.Cursor = System.Windows.Forms.Cursors.Default
         Me.ExplorerBarGroupItemSchedule.ExpandBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ExplorerBarGroupItemSchedule.Expanded = True
         Me.ExplorerBarGroupItemSchedule.ExpandForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(165, Byte), Integer))
         Me.ExplorerBarGroupItemSchedule.ExpandHotBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
         Me.ExplorerBarGroupItemSchedule.ExpandHotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -405,6 +361,17 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemLogout.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemLogout.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
         '
+        'GroupBoxContainer
+        '
+        Me.GroupBoxContainer.Controls.Add(Me.ControlViewAssignedSchedule1)
+        Me.GroupBoxContainer.Font = New System.Drawing.Font("Arial Black", 12.0!)
+        Me.GroupBoxContainer.Location = New System.Drawing.Point(274, 87)
+        Me.GroupBoxContainer.Name = "GroupBoxContainer"
+        Me.GroupBoxContainer.Size = New System.Drawing.Size(986, 491)
+        Me.GroupBoxContainer.TabIndex = 12
+        Me.GroupBoxContainer.TabStop = False
+        Me.GroupBoxContainer.Text = "Assigned Schedules"
+        '
         'ControlViewAssignedSchedule1
         '
         Me.ControlViewAssignedSchedule1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -415,6 +382,16 @@ Partial Class AdminPage
         Me.ControlViewAssignedSchedule1.Size = New System.Drawing.Size(980, 462)
         Me.ControlViewAssignedSchedule1.TabIndex = 10
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.CEU_Logo
+        Me.PictureBox1.Location = New System.Drawing.Point(609, 9)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(113, 79)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 11
+        Me.PictureBox1.TabStop = False
+        '
         'AdminPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -424,8 +401,6 @@ Partial Class AdminPage
         Me.Controls.Add(Me.GroupBoxContainer)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ExplorerBar1)
-        Me.Controls.Add(Me.btnAccountManagement)
-        Me.Controls.Add(Me.btnLogout)
         Me.Controls.Add(Me.lblName)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -433,7 +408,6 @@ Partial Class AdminPage
         Me.MinimizeBox = False
         Me.Name = "AdminPage"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Home Page"
         CType(Me.ExplorerBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBoxContainer.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -442,8 +416,6 @@ Partial Class AdminPage
 
     End Sub
     Friend WithEvents lblName As System.Windows.Forms.Label
-    Friend WithEvents btnLogout As System.Windows.Forms.Button
-    Friend WithEvents btnAccountManagement As System.Windows.Forms.Button
     Friend WithEvents TimerTimeAndDate As System.Windows.Forms.Timer
     Friend WithEvents ExplorerBar1 As DevComponents.DotNetBar.ExplorerBar
     Friend WithEvents ExplorerBarGroupItemSchedule As DevComponents.DotNetBar.ExplorerBarGroupItem
