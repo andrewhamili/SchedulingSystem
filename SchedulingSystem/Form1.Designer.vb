@@ -32,19 +32,19 @@ Partial Class LoginPage
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.lblDate = New System.Windows.Forms.Label()
         Me.lblTime = New System.Windows.Forms.Label()
-        Me.lblDatabaseStatus = New System.Windows.Forms.Label()
         Me.Timer_CurrentTimeAndDate = New System.Windows.Forms.Timer(Me.components)
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblWelcome = New System.Windows.Forms.Label()
         Me.lblIntro = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(242, 154)
+        Me.Label1.Location = New System.Drawing.Point(6, 61)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(84, 18)
         Me.Label1.TabIndex = 0
@@ -53,7 +53,7 @@ Partial Class LoginPage
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(242, 191)
+        Me.Label2.Location = New System.Drawing.Point(6, 98)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(82, 18)
         Me.Label2.TabIndex = 1
@@ -61,14 +61,14 @@ Partial Class LoginPage
         '
         'tboxusername
         '
-        Me.tboxusername.Location = New System.Drawing.Point(346, 154)
+        Me.tboxusername.Location = New System.Drawing.Point(110, 61)
         Me.tboxusername.Name = "tboxusername"
         Me.tboxusername.Size = New System.Drawing.Size(156, 26)
         Me.tboxusername.TabIndex = 0
         '
         'tboxpassword
         '
-        Me.tboxpassword.Location = New System.Drawing.Point(346, 191)
+        Me.tboxpassword.Location = New System.Drawing.Point(110, 98)
         Me.tboxpassword.Name = "tboxpassword"
         Me.tboxpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.tboxpassword.Size = New System.Drawing.Size(156, 26)
@@ -77,7 +77,7 @@ Partial Class LoginPage
         '
         'btnLogin
         '
-        Me.btnLogin.Location = New System.Drawing.Point(245, 321)
+        Me.btnLogin.Location = New System.Drawing.Point(42, 178)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(111, 43)
         Me.btnLogin.TabIndex = 2
@@ -86,7 +86,7 @@ Partial Class LoginPage
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(372, 321)
+        Me.btnCancel.Location = New System.Drawing.Point(169, 178)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(111, 43)
         Me.btnCancel.TabIndex = 3
@@ -96,7 +96,7 @@ Partial Class LoginPage
         'lblDate
         '
         Me.lblDate.ForeColor = System.Drawing.Color.White
-        Me.lblDate.Location = New System.Drawing.Point(358, 5)
+        Me.lblDate.Location = New System.Drawing.Point(506, 9)
         Me.lblDate.Name = "lblDate"
         Me.lblDate.Size = New System.Drawing.Size(180, 18)
         Me.lblDate.TabIndex = 6
@@ -107,81 +107,75 @@ Partial Class LoginPage
         '
         Me.lblTime.AutoSize = True
         Me.lblTime.ForeColor = System.Drawing.Color.White
-        Me.lblTime.Location = New System.Drawing.Point(468, 23)
+        Me.lblTime.Location = New System.Drawing.Point(616, 27)
         Me.lblTime.Name = "lblTime"
         Me.lblTime.Size = New System.Drawing.Size(70, 18)
         Me.lblTime.TabIndex = 7
         Me.lblTime.Text = "00:00:00"
         Me.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'lblDatabaseStatus
-        '
-        Me.lblDatabaseStatus.AutoSize = True
-        Me.lblDatabaseStatus.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lblDatabaseStatus.Location = New System.Drawing.Point(362, 9)
-        Me.lblDatabaseStatus.Name = "lblDatabaseStatus"
-        Me.lblDatabaseStatus.Size = New System.Drawing.Size(58, 19)
-        Me.lblDatabaseStatus.TabIndex = 8
-        Me.lblDatabaseStatus.Text = "Offline"
-        '
         'Timer_CurrentTimeAndDate
         '
-        '
-        'Panel1
-        '
-        Me.Panel1.Location = New System.Drawing.Point(366, -74)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(200, 100)
-        Me.Panel1.TabIndex = 9
         '
         'lblWelcome
         '
         Me.lblWelcome.AutoSize = True
+        Me.lblWelcome.Font = New System.Drawing.Font("Arial Black", 12.0!)
         Me.lblWelcome.Location = New System.Drawing.Point(12, 179)
         Me.lblWelcome.Name = "lblWelcome"
-        Me.lblWelcome.Size = New System.Drawing.Size(89, 18)
+        Me.lblWelcome.Size = New System.Drawing.Size(295, 138)
         Me.lblWelcome.TabIndex = 10
-        Me.lblWelcome.Text = "lblWelcome"
+        Me.lblWelcome.Text = "Centro Escolar University" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Computer Educaton Department" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Faculty Workload" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Sche" & _
+            "duling System" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblIntro
         '
         Me.lblIntro.AutoSize = True
-        Me.lblIntro.Location = New System.Drawing.Point(12, 226)
+        Me.lblIntro.Location = New System.Drawing.Point(13, 342)
         Me.lblIntro.Name = "lblIntro"
-        Me.lblIntro.Size = New System.Drawing.Size(52, 18)
+        Me.lblIntro.Size = New System.Drawing.Size(321, 90)
         Me.lblIntro.TabIndex = 11
-        Me.lblIntro.Text = "lblIntro"
+        Me.lblIntro.Text = "This System allows the Secretary to organize " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "faculty load records." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "For emplo" & _
+            "yees not under CED, the username" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and password is guest."
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.CEU_Logo
-        Me.PictureBox1.Location = New System.Drawing.Point(15, 23)
+        Me.PictureBox1.Location = New System.Drawing.Point(78, 27)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(160, 128)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 12
         Me.PictureBox1.TabStop = False
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.btnCancel)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.btnLogin)
+        Me.GroupBox1.Controls.Add(Me.tboxusername)
+        Me.GroupBox1.Controls.Add(Me.tboxpassword)
+        Me.GroupBox1.Location = New System.Drawing.Point(388, 179)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(298, 281)
+        Me.GroupBox1.TabIndex = 13
+        Me.GroupBox1.TabStop = False
+        '
         'LoginPage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(540, 434)
+        Me.ClientSize = New System.Drawing.Size(698, 500)
         Me.ControlBox = False
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblIntro)
         Me.Controls.Add(Me.lblWelcome)
         Me.Controls.Add(Me.lblDate)
         Me.Controls.Add(Me.lblTime)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.lblDatabaseStatus)
-        Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.btnLogin)
-        Me.Controls.Add(Me.tboxpassword)
-        Me.Controls.Add(Me.tboxusername)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -192,6 +186,8 @@ Partial Class LoginPage
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Faculty Workload Scheduling System"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -204,11 +200,10 @@ Partial Class LoginPage
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents lblDate As System.Windows.Forms.Label
     Friend WithEvents lblTime As System.Windows.Forms.Label
-    Friend WithEvents lblDatabaseStatus As System.Windows.Forms.Label
     Friend WithEvents Timer_CurrentTimeAndDate As System.Windows.Forms.Timer
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents lblWelcome As System.Windows.Forms.Label
     Friend WithEvents lblIntro As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
 
 End Class

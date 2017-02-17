@@ -8,22 +8,21 @@ Public Class LoginPage
     End Sub
 
     Private Sub LoginPage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        lblWelcome.Text = SystemTitle
         If My.Application.CommandLineArgs.Count > 0 Then
 
         End If
         CheckMYSQLConnection()
         Check_if_database_exists()
         If MySQLConnection = True Then
-            With lblDatabaseStatus
-                .Text = "Online"
-                .ForeColor = Color.Green
-            End With
+            'With lblDatabaseStatus
+            '    .Text = "Online"
+            '    .ForeColor = Color.Green
+            'End With
         Else
-            With lblDatabaseStatus
-                .Text = "Offline"
-                .ForeColor = Color.Red
-            End With
+            'With lblDatabaseStatus
+            '    .Text = "Offline"
+            '    .ForeColor = Color.Red
+            'End With
         End If
         AcceptButton = btnLogin
         CancelButton = btnCancel

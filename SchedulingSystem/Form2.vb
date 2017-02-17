@@ -22,18 +22,11 @@ Public Class AdminPage
 
     Private Sub AdminPage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ControlViewAssignedSchedule1.Hide()
+        GroupBoxContainer.Text = ""
         TimerTimeAndDate.Enabled = True
     End Sub
 
-    Private Sub btnLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogout.Click
-        Dim ans As DialogResult
-        ans = MsgBox("Are you sure you want to log-out now?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
-        If ans = Windows.Forms.DialogResult.Yes Then
-            Me.Close()
-        End If
-    End Sub
-
-    Private Sub btnChangeSchoolyearSemester_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnChangeSchoolyearSemester.Click
+    Private Sub btnChangeSchoolyearSemester_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         SchoolYearSemester.ShowDialog()
     End Sub
 
@@ -141,13 +134,6 @@ Public Class AdminPage
     Private Sub btnAccountManagement_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAccountManagement.Click
         AccountManagement.ShowDialog()
     End Sub
-    Private Sub TimerTimeAndDate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerTimeAndDate.Tick
-        txtCurrentSchoolYear.Text = SchoolYear
-        txtCurrentSemester.Text = Semester
-        Me.Text = "Home Page        " & Now.ToString("MMMMM dd, yyyy    HH:mm:ss")
-    End Sub
-    
-
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         AvailableRooms.ShowDialog()
     End Sub
@@ -166,5 +152,15 @@ Public Class AdminPage
     Private Sub ButtonItemViewAssignedSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemViewAssignedSched.Click
         ControlViewAssignedSchedule1.Show()
         ControlViewAssignedSchedule1.Load_Schedules()
+        GroupBoxContainer.Text = "Assigned Schedules"
+    End Sub
+
+    Private Sub ExplorerBarGroupItemLogout_ExpandChange(ByVal sender As Object, ByVal e As System.EventArgs) Handles ExplorerBarGroupItemLogout.ExpandChange
+        Dim ans As DialogResult
+        ans = MsgBox("Are you sure you want to log-out now?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
+        If ans = Windows.Forms.DialogResult.Yes Then
+            RemoveHandler ExplorerBarGroupItemLogout.ExpandChange, AddressOf ExplorerBarGroupItemLogout_ExpandChange
+            Me.Close()
+        End If
     End Sub
 End Class
