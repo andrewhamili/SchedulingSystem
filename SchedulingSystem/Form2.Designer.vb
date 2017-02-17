@@ -40,38 +40,41 @@ Partial Class AdminPage
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.ExplorerBarGroupItemLogout = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.GroupBoxContainer = New System.Windows.Forms.GroupBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblNavigate = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblSystemName = New System.Windows.Forms.Label()
         Me.ControlViewSubjects1 = New SchedulingSystem.ControlViewSubjects()
         Me.ControlViewAssignedSchedule1 = New SchedulingSystem.ControlViewAssignedSchedule()
-        CType(Me.ExplorerBar1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBoxContainer.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        CType(Me.ExplorerBar1,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBoxContainer.SuspendLayout
+        CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'lblName
         '
-        Me.lblName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.lblName.AutoSize = True
-        Me.lblName.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.lblName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
+        Me.lblName.AutoSize = true
+        Me.lblName.Font = New System.Drawing.Font("Arial", 14!, System.Drawing.FontStyle.Bold)
         Me.lblName.ForeColor = System.Drawing.Color.Green
-        Me.lblName.Location = New System.Drawing.Point(12, 9)
+        Me.lblName.Location = New System.Drawing.Point(9, 12)
+        Me.lblName.Margin = New System.Windows.Forms.Padding(0)
         Me.lblName.Name = "lblName"
-        Me.lblName.Size = New System.Drawing.Size(232, 29)
+        Me.lblName.Size = New System.Drawing.Size(184, 22)
         Me.lblName.TabIndex = 0
         Me.lblName.Text = "Welcome!, Group 3"
+        Me.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ExplorerBar1
         '
         Me.ExplorerBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar
-        Me.ExplorerBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ExplorerBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
         Me.ExplorerBar1.BackColor = System.Drawing.SystemColors.Control
         '
         '
         '
-        Me.ExplorerBar1.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(171, Byte), Integer), CType(CType(171, Byte), Integer), CType(CType(171, Byte), Integer))
+        Me.ExplorerBar1.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(171,Byte),Integer), CType(CType(171,Byte),Integer), CType(CType(171,Byte),Integer))
         Me.ExplorerBar1.BackStyle.BackColor2 = System.Drawing.Color.Gray
         Me.ExplorerBar1.BackStyle.BackColorGradientAngle = 90
         Me.ExplorerBar1.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
@@ -79,19 +82,19 @@ Partial Class AdminPage
         Me.ExplorerBar1.GroupImages = Nothing
         Me.ExplorerBar1.Groups.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ExplorerBarGroupItemSchedule, Me.ExplorerBarGroupItemEmployee, Me.ExplorerBarGroupItemPrinting, Me.ExplorerBarGroupItem2, Me.ExplorerBarGroupItemLogout})
         Me.ExplorerBar1.Images = Nothing
-        Me.ExplorerBar1.Location = New System.Drawing.Point(2, 87)
+        Me.ExplorerBar1.Location = New System.Drawing.Point(3, 87)
         Me.ExplorerBar1.Name = "ExplorerBar1"
         Me.ExplorerBar1.Size = New System.Drawing.Size(266, 504)
         Me.ExplorerBar1.TabIndex = 9
         Me.ExplorerBar1.Text = "ExplorerBar1"
-        Me.ExplorerBar1.ThemeAware = True
+        Me.ExplorerBar1.ThemeAware = true
         '
         'ExplorerBarGroupItemSchedule
         '
         '
         '
         '
-        Me.ExplorerBarGroupItemSchedule.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemSchedule.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214,Byte),Integer), CType(CType(223,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemSchedule.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
         Me.ExplorerBarGroupItemSchedule.BackStyle.BorderBottomWidth = 1
         Me.ExplorerBarGroupItemSchedule.BackStyle.BorderColor = System.Drawing.Color.White
@@ -101,11 +104,11 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemSchedule.BackStyle.BorderRightWidth = 1
         Me.ExplorerBarGroupItemSchedule.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemSchedule.Cursor = System.Windows.Forms.Cursors.Default
-        Me.ExplorerBarGroupItemSchedule.ExpandBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ExplorerBarGroupItemSchedule.Expanded = True
-        Me.ExplorerBarGroupItemSchedule.ExpandForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(165, Byte), Integer))
-        Me.ExplorerBarGroupItemSchedule.ExpandHotBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ExplorerBarGroupItemSchedule.ExpandHotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ExplorerBarGroupItemSchedule.ExpandBorderColor = System.Drawing.Color.FromArgb(CType(CType(174,Byte),Integer), CType(CType(182,Byte),Integer), CType(CType(216,Byte),Integer))
+        Me.ExplorerBarGroupItemSchedule.Expanded = true
+        Me.ExplorerBarGroupItemSchedule.ExpandForeColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(60,Byte),Integer), CType(CType(165,Byte),Integer))
+        Me.ExplorerBarGroupItemSchedule.ExpandHotBorderColor = System.Drawing.Color.FromArgb(CType(CType(174,Byte),Integer), CType(CType(182,Byte),Integer), CType(CType(216,Byte),Integer))
+        Me.ExplorerBarGroupItemSchedule.ExpandHotForeColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         Me.ExplorerBarGroupItemSchedule.Image = Global.SchedulingSystem.My.Resources.Resources.google_calendar_logo
         Me.ExplorerBarGroupItemSchedule.Name = "ExplorerBarGroupItemSchedule"
         Me.ExplorerBarGroupItemSchedule.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemViewAssignedSched, Me.ButtonAssignSched, Me.ButtonRemoveSched, Me.ButtonViewSubjects})
@@ -114,29 +117,29 @@ Partial Class AdminPage
         '
         '
         Me.ExplorerBarGroupItemSchedule.TitleHotStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemSchedule.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemSchedule.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199,Byte),Integer), CType(CType(211,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemSchedule.TitleHotStyle.CornerDiameter = 3
         Me.ExplorerBarGroupItemSchedule.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemSchedule.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemSchedule.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemSchedule.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ExplorerBarGroupItemSchedule.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         '
         '
         '
         Me.ExplorerBarGroupItemSchedule.TitleStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemSchedule.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemSchedule.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199,Byte),Integer), CType(CType(211,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemSchedule.TitleStyle.CornerDiameter = 3
         Me.ExplorerBarGroupItemSchedule.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemSchedule.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemSchedule.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemSchedule.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.ExplorerBarGroupItemSchedule.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
         '
         'ButtonItemViewAssignedSched
         '
         Me.ButtonItemViewAssignedSched.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonItemViewAssignedSched.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ButtonItemViewAssignedSched.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.ButtonItemViewAssignedSched.HotFontUnderline = True
+        Me.ButtonItemViewAssignedSched.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
+        Me.ButtonItemViewAssignedSched.HotFontUnderline = true
         Me.ButtonItemViewAssignedSched.HotForeColor = System.Drawing.SystemColors.ControlDark
         Me.ButtonItemViewAssignedSched.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
         Me.ButtonItemViewAssignedSched.Name = "ButtonItemViewAssignedSched"
@@ -146,9 +149,9 @@ Partial Class AdminPage
         '
         Me.ButtonAssignSched.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonAssignSched.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ButtonAssignSched.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.ButtonAssignSched.HotFontUnderline = True
-        Me.ButtonAssignSched.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ButtonAssignSched.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
+        Me.ButtonAssignSched.HotFontUnderline = true
+        Me.ButtonAssignSched.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         Me.ButtonAssignSched.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
         Me.ButtonAssignSched.Name = "ButtonAssignSched"
         Me.ButtonAssignSched.Text = "Assign Schedule"
@@ -157,9 +160,9 @@ Partial Class AdminPage
         '
         Me.ButtonRemoveSched.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonRemoveSched.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ButtonRemoveSched.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.ButtonRemoveSched.HotFontUnderline = True
-        Me.ButtonRemoveSched.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ButtonRemoveSched.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
+        Me.ButtonRemoveSched.HotFontUnderline = true
+        Me.ButtonRemoveSched.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         Me.ButtonRemoveSched.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
         Me.ButtonRemoveSched.Name = "ButtonRemoveSched"
         Me.ButtonRemoveSched.Text = "Remove Schedule"
@@ -168,8 +171,8 @@ Partial Class AdminPage
         '
         Me.ButtonViewSubjects.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonViewSubjects.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ButtonViewSubjects.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.ButtonViewSubjects.HotFontUnderline = True
+        Me.ButtonViewSubjects.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
+        Me.ButtonViewSubjects.HotFontUnderline = true
         Me.ButtonViewSubjects.HotForeColor = System.Drawing.SystemColors.ControlDark
         Me.ButtonViewSubjects.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
         Me.ButtonViewSubjects.Name = "ButtonViewSubjects"
@@ -180,7 +183,7 @@ Partial Class AdminPage
         '
         '
         '
-        Me.ExplorerBarGroupItemEmployee.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemEmployee.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214,Byte),Integer), CType(CType(223,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemEmployee.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
         Me.ExplorerBarGroupItemEmployee.BackStyle.BorderBottomWidth = 1
         Me.ExplorerBarGroupItemEmployee.BackStyle.BorderColor = System.Drawing.Color.White
@@ -190,10 +193,10 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemEmployee.BackStyle.BorderRightWidth = 1
         Me.ExplorerBarGroupItemEmployee.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemEmployee.Cursor = System.Windows.Forms.Cursors.Default
-        Me.ExplorerBarGroupItemEmployee.ExpandBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ExplorerBarGroupItemEmployee.ExpandForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(165, Byte), Integer))
-        Me.ExplorerBarGroupItemEmployee.ExpandHotBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ExplorerBarGroupItemEmployee.ExpandHotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ExplorerBarGroupItemEmployee.ExpandBorderColor = System.Drawing.Color.FromArgb(CType(CType(174,Byte),Integer), CType(CType(182,Byte),Integer), CType(CType(216,Byte),Integer))
+        Me.ExplorerBarGroupItemEmployee.ExpandForeColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(60,Byte),Integer), CType(CType(165,Byte),Integer))
+        Me.ExplorerBarGroupItemEmployee.ExpandHotBorderColor = System.Drawing.Color.FromArgb(CType(CType(174,Byte),Integer), CType(CType(182,Byte),Integer), CType(CType(216,Byte),Integer))
+        Me.ExplorerBarGroupItemEmployee.ExpandHotForeColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         Me.ExplorerBarGroupItemEmployee.Image = Global.SchedulingSystem.My.Resources.Resources.build9600
         Me.ExplorerBarGroupItemEmployee.Name = "ExplorerBarGroupItemEmployee"
         Me.ExplorerBarGroupItemEmployee.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonAddAccount})
@@ -202,30 +205,30 @@ Partial Class AdminPage
         '
         '
         Me.ExplorerBarGroupItemEmployee.TitleHotStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemEmployee.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemEmployee.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199,Byte),Integer), CType(CType(211,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemEmployee.TitleHotStyle.CornerDiameter = 3
         Me.ExplorerBarGroupItemEmployee.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemEmployee.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemEmployee.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemEmployee.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ExplorerBarGroupItemEmployee.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         '
         '
         '
         Me.ExplorerBarGroupItemEmployee.TitleStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemEmployee.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemEmployee.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199,Byte),Integer), CType(CType(211,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemEmployee.TitleStyle.CornerDiameter = 3
         Me.ExplorerBarGroupItemEmployee.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemEmployee.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemEmployee.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemEmployee.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.ExplorerBarGroupItemEmployee.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
         '
         'ButtonAddAccount
         '
         Me.ButtonAddAccount.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonAddAccount.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ButtonAddAccount.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.ButtonAddAccount.HotFontUnderline = True
-        Me.ButtonAddAccount.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ButtonAddAccount.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
+        Me.ButtonAddAccount.HotFontUnderline = true
+        Me.ButtonAddAccount.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         Me.ButtonAddAccount.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
         Me.ButtonAddAccount.Name = "ButtonAddAccount"
         Me.ButtonAddAccount.Text = "Add Account"
@@ -235,7 +238,7 @@ Partial Class AdminPage
         '
         '
         '
-        Me.ExplorerBarGroupItemPrinting.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemPrinting.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214,Byte),Integer), CType(CType(223,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemPrinting.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
         Me.ExplorerBarGroupItemPrinting.BackStyle.BorderBottomWidth = 1
         Me.ExplorerBarGroupItemPrinting.BackStyle.BorderColor = System.Drawing.Color.White
@@ -254,30 +257,30 @@ Partial Class AdminPage
         '
         '
         Me.ExplorerBarGroupItemPrinting.TitleHotStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemPrinting.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemPrinting.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199,Byte),Integer), CType(CType(211,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemPrinting.TitleHotStyle.CornerDiameter = 3
         Me.ExplorerBarGroupItemPrinting.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemPrinting.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemPrinting.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemPrinting.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ExplorerBarGroupItemPrinting.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         '
         '
         '
         Me.ExplorerBarGroupItemPrinting.TitleStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemPrinting.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemPrinting.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199,Byte),Integer), CType(CType(211,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemPrinting.TitleStyle.CornerDiameter = 3
         Me.ExplorerBarGroupItemPrinting.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemPrinting.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemPrinting.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemPrinting.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.ExplorerBarGroupItemPrinting.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
         '
         'ButtonPrintAssignedSched
         '
         Me.ButtonPrintAssignedSched.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonPrintAssignedSched.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ButtonPrintAssignedSched.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.ButtonPrintAssignedSched.HotFontUnderline = True
-        Me.ButtonPrintAssignedSched.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ButtonPrintAssignedSched.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
+        Me.ButtonPrintAssignedSched.HotFontUnderline = true
+        Me.ButtonPrintAssignedSched.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         Me.ButtonPrintAssignedSched.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
         Me.ButtonPrintAssignedSched.Name = "ButtonPrintAssignedSched"
         Me.ButtonPrintAssignedSched.Text = "Print Assigned Schedules"
@@ -287,7 +290,7 @@ Partial Class AdminPage
         '
         '
         '
-        Me.ExplorerBarGroupItem2.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItem2.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214,Byte),Integer), CType(CType(223,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItem2.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
         Me.ExplorerBarGroupItem2.BackStyle.BorderBottomWidth = 1
         Me.ExplorerBarGroupItem2.BackStyle.BorderColor = System.Drawing.Color.White
@@ -306,30 +309,30 @@ Partial Class AdminPage
         '
         '
         Me.ExplorerBarGroupItem2.TitleHotStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItem2.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItem2.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199,Byte),Integer), CType(CType(211,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItem2.TitleHotStyle.CornerDiameter = 3
         Me.ExplorerBarGroupItem2.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItem2.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItem2.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItem2.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ExplorerBarGroupItem2.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         '
         '
         '
         Me.ExplorerBarGroupItem2.TitleStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItem2.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItem2.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199,Byte),Integer), CType(CType(211,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItem2.TitleStyle.CornerDiameter = 3
         Me.ExplorerBarGroupItem2.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItem2.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItem2.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItem2.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.ExplorerBarGroupItem2.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
         '
         'ButtonItem1
         '
         Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonItem1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ButtonItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.ButtonItem1.HotFontUnderline = True
-        Me.ButtonItem1.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ButtonItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
+        Me.ButtonItem1.HotFontUnderline = true
+        Me.ButtonItem1.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         Me.ButtonItem1.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
         Me.ButtonItem1.Name = "ButtonItem1"
         Me.ButtonItem1.Text = "SchoolYear and Semester"
@@ -339,7 +342,7 @@ Partial Class AdminPage
         '
         '
         '
-        Me.ExplorerBarGroupItemLogout.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemLogout.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214,Byte),Integer), CType(CType(223,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemLogout.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
         Me.ExplorerBarGroupItemLogout.BackStyle.BorderBottomWidth = 1
         Me.ExplorerBarGroupItemLogout.BackStyle.BorderColor = System.Drawing.Color.White
@@ -349,7 +352,7 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemLogout.BackStyle.BorderRightWidth = 1
         Me.ExplorerBarGroupItemLogout.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemLogout.Cursor = System.Windows.Forms.Cursors.Default
-        Me.ExplorerBarGroupItemLogout.ExpandButtonVisible = False
+        Me.ExplorerBarGroupItemLogout.ExpandButtonVisible = false
         Me.ExplorerBarGroupItemLogout.Image = Global.SchedulingSystem.My.Resources.Resources.logout
         Me.ExplorerBarGroupItemLogout.Name = "ExplorerBarGroupItemLogout"
         Me.ExplorerBarGroupItemLogout.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors
@@ -358,57 +361,71 @@ Partial Class AdminPage
         '
         '
         Me.ExplorerBarGroupItemLogout.TitleHotStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemLogout.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemLogout.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199,Byte),Integer), CType(CType(211,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemLogout.TitleHotStyle.CornerDiameter = 3
         Me.ExplorerBarGroupItemLogout.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemLogout.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemLogout.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemLogout.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ExplorerBarGroupItemLogout.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66,Byte),Integer), CType(CType(142,Byte),Integer), CType(CType(255,Byte),Integer))
         '
         '
         '
         Me.ExplorerBarGroupItemLogout.TitleStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemLogout.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemLogout.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199,Byte),Integer), CType(CType(211,Byte),Integer), CType(CType(247,Byte),Integer))
         Me.ExplorerBarGroupItemLogout.TitleStyle.CornerDiameter = 3
         Me.ExplorerBarGroupItemLogout.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemLogout.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemLogout.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemLogout.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.ExplorerBarGroupItemLogout.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33,Byte),Integer), CType(CType(93,Byte),Integer), CType(CType(198,Byte),Integer))
         '
         'GroupBoxContainer
         '
-        Me.GroupBoxContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBoxContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.GroupBoxContainer.Controls.Add(Me.lblNavigate)
         Me.GroupBoxContainer.Controls.Add(Me.ControlViewSubjects1)
         Me.GroupBoxContainer.Controls.Add(Me.ControlViewAssignedSchedule1)
-        Me.GroupBoxContainer.Font = New System.Drawing.Font("Arial Black", 12.0!)
+        Me.GroupBoxContainer.Font = New System.Drawing.Font("Arial Black", 12!)
         Me.GroupBoxContainer.Location = New System.Drawing.Point(274, 87)
         Me.GroupBoxContainer.Name = "GroupBoxContainer"
         Me.GroupBoxContainer.Size = New System.Drawing.Size(986, 491)
         Me.GroupBoxContainer.TabIndex = 12
-        Me.GroupBoxContainer.TabStop = False
+        Me.GroupBoxContainer.TabStop = false
         Me.GroupBoxContainer.Text = "Assigned Schedules"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.CEU_Logo
-        Me.PictureBox1.Location = New System.Drawing.Point(609, 9)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(103, 72)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 11
-        Me.PictureBox1.TabStop = False
         '
         'lblNavigate
         '
-        Me.lblNavigate.AutoSize = True
+        Me.lblNavigate.AutoSize = true
         Me.lblNavigate.Location = New System.Drawing.Point(156, 222)
         Me.lblNavigate.Name = "lblNavigate"
         Me.lblNavigate.Size = New System.Drawing.Size(326, 23)
         Me.lblNavigate.TabIndex = 12
         Me.lblNavigate.Text = "To get started, navigate to the right"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.CEU_Logo
+        Me.PictureBox1.Location = New System.Drawing.Point(501, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(70, 69)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 11
+        Me.PictureBox1.TabStop = false
+        '
+        'lblSystemName
+        '
+        Me.lblSystemName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.lblSystemName.AutoSize = true
+        Me.lblSystemName.Font = New System.Drawing.Font("Arial Black", 9.5!)
+        Me.lblSystemName.Location = New System.Drawing.Point(600, 3)
+        Me.lblSystemName.Name = "lblSystemName"
+        Me.lblSystemName.Size = New System.Drawing.Size(243, 90)
+        Me.lblSystemName.TabIndex = 13
+        Me.lblSystemName.Text = "Centro Escolar University"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Computer Educaton Department"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Faculty Workload"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Sche"& _ 
+    "duling System"
+        Me.lblSystemName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ControlViewSubjects1
         '
@@ -422,7 +439,7 @@ Partial Class AdminPage
         'ControlViewAssignedSchedule1
         '
         Me.ControlViewAssignedSchedule1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ControlViewAssignedSchedule1.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.ControlViewAssignedSchedule1.Font = New System.Drawing.Font("Arial", 12!)
         Me.ControlViewAssignedSchedule1.Location = New System.Drawing.Point(3, 26)
         Me.ControlViewAssignedSchedule1.Margin = New System.Windows.Forms.Padding(4)
         Me.ControlViewAssignedSchedule1.Name = "ControlViewAssignedSchedule1"
@@ -431,46 +448,48 @@ Partial Class AdminPage
         '
         'AdminPage
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9!, 18!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(192,Byte),Integer), CType(CType(192,Byte),Integer))
         Me.ClientSize = New System.Drawing.Size(1272, 590)
+        Me.Controls.Add(Me.lblSystemName)
         Me.Controls.Add(Me.GroupBoxContainer)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ExplorerBar1)
         Me.Controls.Add(Me.lblName)
-        Me.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Font = New System.Drawing.Font("Arial", 12!)
+        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.MinimizeBox = False
+        Me.MinimizeBox = false
         Me.Name = "AdminPage"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        CType(Me.ExplorerBar1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBoxContainer.ResumeLayout(False)
-        Me.GroupBoxContainer.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        CType(Me.ExplorerBar1,System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBoxContainer.ResumeLayout(false)
+        Me.GroupBoxContainer.PerformLayout
+        CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).EndInit
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
     Friend WithEvents lblName As System.Windows.Forms.Label
     Friend WithEvents TimerTimeAndDate As System.Windows.Forms.Timer
-    Friend WithEvents ExplorerBar1 As DevComponents.DotNetBar.ExplorerBar
-    Friend WithEvents ExplorerBarGroupItemSchedule As DevComponents.DotNetBar.ExplorerBarGroupItem
-    Friend WithEvents ExplorerBarGroupItemEmployee As DevComponents.DotNetBar.ExplorerBarGroupItem
-    Friend WithEvents ButtonAssignSched As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonAddAccount As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonRemoveSched As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ExplorerBarGroupItemPrinting As DevComponents.DotNetBar.ExplorerBarGroupItem
-    Friend WithEvents ButtonPrintAssignedSched As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ExplorerBarGroupItem2 As DevComponents.DotNetBar.ExplorerBarGroupItem
-    Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItemViewAssignedSched As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ControlViewAssignedSchedule1 As SchedulingSystem.ControlViewAssignedSchedule
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents GroupBoxContainer As System.Windows.Forms.GroupBox
-    Friend WithEvents ExplorerBarGroupItemLogout As DevComponents.DotNetBar.ExplorerBarGroupItem
-    Friend WithEvents ButtonViewSubjects As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ControlViewSubjects1 As SchedulingSystem.ControlViewSubjects
     Friend WithEvents lblNavigate As System.Windows.Forms.Label
+    Private WithEvents ExplorerBar1 As DevComponents.DotNetBar.ExplorerBar
+    Private WithEvents ExplorerBarGroupItemSchedule As DevComponents.DotNetBar.ExplorerBarGroupItem
+    Private WithEvents ExplorerBarGroupItemEmployee As DevComponents.DotNetBar.ExplorerBarGroupItem
+    Private WithEvents ButtonAssignSched As DevComponents.DotNetBar.ButtonItem
+    Private WithEvents ButtonAddAccount As DevComponents.DotNetBar.ButtonItem
+    Private WithEvents ButtonRemoveSched As DevComponents.DotNetBar.ButtonItem
+    Private WithEvents ExplorerBarGroupItemPrinting As DevComponents.DotNetBar.ExplorerBarGroupItem
+    Private WithEvents ButtonPrintAssignedSched As DevComponents.DotNetBar.ButtonItem
+    Private WithEvents ExplorerBarGroupItem2 As DevComponents.DotNetBar.ExplorerBarGroupItem
+    Private WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
+    Private WithEvents ButtonItemViewAssignedSched As DevComponents.DotNetBar.ButtonItem
+    Private WithEvents ExplorerBarGroupItemLogout As DevComponents.DotNetBar.ExplorerBarGroupItem
+    Private WithEvents ButtonViewSubjects As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents lblSystemName As Label
 End Class

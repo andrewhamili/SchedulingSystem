@@ -296,6 +296,13 @@
     <None Include="Resources\CEU_Logo.png" />
     <None Include="Resources\gear.png" />
     <None Include="Resources\logout.png" />
+    <Content Include="Library\DevComponents.DotNetBar2.dll" />
+    <Content Include="Library\DevComponents.DotNetBar2.xml" />
+    <Content Include="Library\Microsoft.ReportViewer.Common.dll" />
+    <Content Include="Library\Microsoft.ReportViewer.WebForms.dll" />
+    <Content Include="Library\Microsoft.ReportViewer.WebForms.xml" />
+    <Content Include="Library\Microsoft.ReportViewer.WinForms.dll" />
+    <Content Include="Library\Microsoft.ReportViewer.WinForms.xml" />
     <Content Include="Schedule-Single.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -425,9 +432,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Library\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
