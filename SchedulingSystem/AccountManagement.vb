@@ -6,9 +6,11 @@ Class AccountManagement
         CancelButton = btnCancel
 
         If EntryText = "Add" Then
+            PanelCreate.Show()
             PanelEditOrDelete.Hide()
         Else
             PanelCreate.Hide()
+            PanelEditOrDelete.Hide()
         End If
         Load_Accounts()
         PanelTools.Hide()
@@ -38,8 +40,15 @@ Class AccountManagement
         End Try
     End Sub
 
-    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.Dispose()
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        If Not (txtFname.Text="" And txtMname.Text="" And txtLname.Text="" And txtUsername.Text="" And txtPassword.Text="" And txtRetypePassword.Text="" And ComboBoxUsertype.Text="")
+            Dim confirm As DialogResult = MessageBox.Show(Me, "Changes will not be saved. Are you sure you want to close this window?", systemTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            If confirm=DialogResult.Yes Then
+                Me.Dispose()
+            End If
+        Else
+            Me.Dispose()
+        End If
     End Sub
     Public Sub EditUser()
         If txtPassword.Text = "" Then
@@ -139,12 +148,14 @@ Class AccountManagement
         End If
     End Sub
 
-    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
         txtFname.Text = ""
         txtMname.Text = ""
         txtLname.Text = ""
         txtUsername.Text = ""
         txtPassword.Text = ""
         txtRetypePassword.Text = ""
+        txtFname.Focus
     End Sub
 End Class
