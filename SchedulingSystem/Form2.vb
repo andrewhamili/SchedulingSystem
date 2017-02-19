@@ -100,4 +100,8 @@ Public Class AdminPage
         ControlViewSubjects1.Show()
         ControlViewSubjects1.Load_Subjects()
     End Sub
+
+    Private Sub ButtonItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemSchoolYearSemester.Click
+        SchoolYearSemester.ShowDialog()
+    End Sub
 End Class
