@@ -104,4 +104,9 @@ Public Class AdminPage
     Private Sub ButtonItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemSchoolYearSemester.Click
         SchoolYearSemester.ShowDialog()
     End Sub
+
+    Private Sub ButtonItemEditOrDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemEditOrDelete.Click
+        EntryText = "Edit"
+        AccountManagement.ShowDialog()
+    End Sub
 End Class

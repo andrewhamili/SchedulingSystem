@@ -154,6 +154,12 @@
     <Compile Include="DataSetPrint.vb">
       <DependentUpon>DataSetPrint.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FacultyManagement.Designer.vb">
+      <DependentUpon>FacultyManagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacultyManagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FacultySched.Designer.vb">
       <DependentUpon>FacultySched.vb</DependentUpon>
     </Compile>
@@ -259,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseConnectionConfiguration.resx">
       <DependentUpon>DatabaseConnectionConfiguration.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacultyManagement.resx">
+      <DependentUpon>FacultyManagement.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FacultySched.resx">
       <DependentUpon>FacultySched.vb</DependentUpon>

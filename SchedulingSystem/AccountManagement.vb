@@ -8,6 +8,8 @@ Class AccountManagement
         If EntryText = "Add" Then
             PanelCreate.Show()
             PanelEditOrDelete.Hide()
+        ElseIf EntryText = "Edit" Then
+            PanelEditOrDelete.Show()
         Else
             PanelCreate.Hide()
             PanelEditOrDelete.Hide()
@@ -157,5 +159,21 @@ Class AccountManagement
         txtPassword.Text = ""
         txtRetypePassword.Text = ""
         txtFname.Focus
+    End Sub
+
+    Private Sub DataGridViewAccounts_CellDoubleClick1(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewAccounts.CellDoubleClick
+        If e.RowIndex >= 0 Then
+            Dim row As DataGridViewRow = DataGridViewAccounts.Rows(e.RowIndex)
+            txtFnameEdit.Text = row.Cells("First Name").Value
+            txtMnameEdit.Text = row.Cells("Middle Name").Value
+            txtLnameEdit.Text = row.Cells("Last Name").Value
+            txtUsernameEdit.Text = row.Cells("Username").Value
+            ComboBoxUsertypeEdit.Text = row.Cells("User Type").Value
+            PanelTools.Show()
+        End If
+    End Sub
+
+    Private Sub BtnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnClose.Click
+        Dispose()
     End Sub
 End Class
