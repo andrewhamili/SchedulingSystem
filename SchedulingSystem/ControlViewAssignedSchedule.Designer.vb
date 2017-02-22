@@ -22,10 +22,10 @@ Partial Class ControlViewAssignedSchedule
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridSched = New System.Windows.Forms.DataGridView()
         Me.TabControlContainer = New System.Windows.Forms.TabControl()
         Me.TabAll = New System.Windows.Forms.TabPage()
@@ -45,13 +45,13 @@ Partial Class ControlViewAssignedSchedule
         Me.DataGridSched.AllowUserToDeleteRows = False
         Me.DataGridSched.AllowUserToResizeRows = False
         Me.DataGridSched.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 12.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridSched.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Arial", 12.0!)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridSched.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridSched.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridSched.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridSched.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
@@ -60,8 +60,8 @@ Partial Class ControlViewAssignedSchedule
         Me.DataGridSched.Name = "DataGridSched"
         Me.DataGridSched.ReadOnly = True
         Me.DataGridSched.RowHeadersVisible = False
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridSched.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridSched.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridSched.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridSched.Size = New System.Drawing.Size(850, 525)
         Me.DataGridSched.TabIndex = 4
@@ -98,16 +98,16 @@ Partial Class ControlViewAssignedSchedule
         Me.TabSpecific.Padding = New System.Windows.Forms.Padding(3)
         Me.TabSpecific.Size = New System.Drawing.Size(856, 531)
         Me.TabSpecific.TabIndex = 1
-        Me.TabSpecific.Text = "Specific Employee"
+        Me.TabSpecific.Text = "By Professor"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(7, 43)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(192, 18)
+        Me.Label1.Size = New System.Drawing.Size(150, 18)
         Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Double-Click a row to view"
+        Me.Label1.Text = "Double-Click to view"
         '
         'DataGridFaculty
         '
@@ -115,13 +115,13 @@ Partial Class ControlViewAssignedSchedule
         Me.DataGridFaculty.AllowUserToDeleteRows = False
         Me.DataGridFaculty.AllowUserToResizeRows = False
         Me.DataGridFaculty.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Arial", 12.0!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridFaculty.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Arial", 12.0!)
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridFaculty.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridFaculty.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridFaculty.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.DataGridFaculty.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
@@ -130,8 +130,8 @@ Partial Class ControlViewAssignedSchedule
         Me.DataGridFaculty.Name = "DataGridFaculty"
         Me.DataGridFaculty.ReadOnly = True
         Me.DataGridFaculty.RowHeadersVisible = False
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridFaculty.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridFaculty.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridFaculty.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridFaculty.Size = New System.Drawing.Size(850, 365)
         Me.DataGridFaculty.TabIndex = 5

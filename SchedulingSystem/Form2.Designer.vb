@@ -27,6 +27,12 @@ Partial Class AdminPage
         Me.lblName = New System.Windows.Forms.Label()
         Me.TimerTimeAndDate = New System.Windows.Forms.Timer(Me.components)
         Me.ExplorerBar1 = New DevComponents.DotNetBar.ExplorerBar()
+        Me.GroupBoxContainer = New System.Windows.Forms.GroupBox()
+        Me.lblNavigate = New System.Windows.Forms.Label()
+        Me.lblSystemName = New System.Windows.Forms.Label()
+        Me.ControlViewSubjects1 = New SchedulingSystem.ControlViewSubjects()
+        Me.ControlViewAssignedSchedule1 = New SchedulingSystem.ControlViewAssignedSchedule()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ExplorerBarGroupItemSchedule = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.ButtonItemViewAssignedSched = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonAssignSched = New DevComponents.DotNetBar.ButtonItem()
@@ -44,12 +50,6 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItem2 = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.ButtonItemSchoolYearSemester = New DevComponents.DotNetBar.ButtonItem()
         Me.ExplorerBarGroupItemLogout = New DevComponents.DotNetBar.ExplorerBarGroupItem()
-        Me.GroupBoxContainer = New System.Windows.Forms.GroupBox()
-        Me.lblNavigate = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.lblSystemName = New System.Windows.Forms.Label()
-        Me.ControlViewSubjects1 = New SchedulingSystem.ControlViewSubjects()
-        Me.ControlViewAssignedSchedule1 = New SchedulingSystem.ControlViewAssignedSchedule()
         CType(Me.ExplorerBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBoxContainer.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,6 +94,74 @@ Partial Class AdminPage
         Me.ExplorerBar1.Text = "ExplorerBar1"
         Me.ExplorerBar1.ThemeAware = True
         '
+        'GroupBoxContainer
+        '
+        Me.GroupBoxContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBoxContainer.Controls.Add(Me.lblNavigate)
+        Me.GroupBoxContainer.Controls.Add(Me.ControlViewSubjects1)
+        Me.GroupBoxContainer.Controls.Add(Me.ControlViewAssignedSchedule1)
+        Me.GroupBoxContainer.Font = New System.Drawing.Font("Arial Black", 12.0!)
+        Me.GroupBoxContainer.Location = New System.Drawing.Point(274, 87)
+        Me.GroupBoxContainer.Name = "GroupBoxContainer"
+        Me.GroupBoxContainer.Size = New System.Drawing.Size(986, 491)
+        Me.GroupBoxContainer.TabIndex = 12
+        Me.GroupBoxContainer.TabStop = False
+        Me.GroupBoxContainer.Text = "Assigned Schedules"
+        '
+        'lblNavigate
+        '
+        Me.lblNavigate.AutoSize = True
+        Me.lblNavigate.Location = New System.Drawing.Point(156, 222)
+        Me.lblNavigate.Name = "lblNavigate"
+        Me.lblNavigate.Size = New System.Drawing.Size(326, 23)
+        Me.lblNavigate.TabIndex = 12
+        Me.lblNavigate.Text = "To get started, navigate to the right"
+        '
+        'lblSystemName
+        '
+        Me.lblSystemName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblSystemName.AutoSize = True
+        Me.lblSystemName.Font = New System.Drawing.Font("Arial Black", 9.5!)
+        Me.lblSystemName.Location = New System.Drawing.Point(600, 3)
+        Me.lblSystemName.Name = "lblSystemName"
+        Me.lblSystemName.Size = New System.Drawing.Size(242, 90)
+        Me.lblSystemName.TabIndex = 13
+        Me.lblSystemName.Text = "Centro Escolar University" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Computer Educaton Department" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Faculty Workload" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Sche" & _
+            "duling System"
+        Me.lblSystemName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'ControlViewSubjects1
+        '
+        Me.ControlViewSubjects1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ControlViewSubjects1.Location = New System.Drawing.Point(3, 26)
+        Me.ControlViewSubjects1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.ControlViewSubjects1.Name = "ControlViewSubjects1"
+        Me.ControlViewSubjects1.Size = New System.Drawing.Size(980, 462)
+        Me.ControlViewSubjects1.TabIndex = 11
+        '
+        'ControlViewAssignedSchedule1
+        '
+        Me.ControlViewAssignedSchedule1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ControlViewAssignedSchedule1.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.ControlViewAssignedSchedule1.Location = New System.Drawing.Point(3, 26)
+        Me.ControlViewAssignedSchedule1.Margin = New System.Windows.Forms.Padding(4)
+        Me.ControlViewAssignedSchedule1.Name = "ControlViewAssignedSchedule1"
+        Me.ControlViewAssignedSchedule1.Size = New System.Drawing.Size(980, 462)
+        Me.ControlViewAssignedSchedule1.TabIndex = 10
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.CEU_Logo
+        Me.PictureBox1.Location = New System.Drawing.Point(501, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(70, 69)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 11
+        Me.PictureBox1.TabStop = False
+        '
         'ExplorerBarGroupItemSchedule
         '
         '
@@ -113,10 +181,10 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemSchedule.ExpandForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(165, Byte), Integer))
         Me.ExplorerBarGroupItemSchedule.ExpandHotBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
         Me.ExplorerBarGroupItemSchedule.ExpandHotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.ExplorerBarGroupItemSchedule.Image = Global.SchedulingSystem.My.Resources.Resources.google_calendar_logo
+        Me.ExplorerBarGroupItemSchedule.Image = Global.SchedulingSystem.My.Resources.Resources.clock1
         Me.ExplorerBarGroupItemSchedule.Name = "ExplorerBarGroupItemSchedule"
         Me.ExplorerBarGroupItemSchedule.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemViewAssignedSched, Me.ButtonAssignSched, Me.ButtonRemoveSched, Me.ButtonViewSubjects})
-        Me.ExplorerBarGroupItemSchedule.Text = "Schedule"
+        Me.ExplorerBarGroupItemSchedule.Text = "Schedule Management"
         '
         '
         '
@@ -193,6 +261,7 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderRightWidth = 1
         Me.ExplorerBarGroupItemSubjectManagement.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemSubjectManagement.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ExplorerBarGroupItemSubjectManagement.Image = Global.SchedulingSystem.My.Resources.Resources.subject_icon
         Me.ExplorerBarGroupItemSubjectManagement.Name = "ExplorerBarGroupItemSubjectManagement"
         Me.ExplorerBarGroupItemSubjectManagement.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors
         Me.ExplorerBarGroupItemSubjectManagement.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemCreateSubject, Me.ButtonItemScheduleSubject})
@@ -316,9 +385,10 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
         Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderRightWidth = 1
         Me.ExplorerBarGroupItemFacultyManagement.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ExplorerBarGroupItemFacultyManagement.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ExplorerBarGroupItemFacultyManagement.Cursor = System.Windows.Forms.Cursors.Default
         Me.ExplorerBarGroupItemFacultyManagement.ExpandButtonVisible = False
         Me.ExplorerBarGroupItemFacultyManagement.HeaderExpands = False
+        Me.ExplorerBarGroupItemFacultyManagement.Image = Global.SchedulingSystem.My.Resources.Resources.faculty_management
         Me.ExplorerBarGroupItemFacultyManagement.Name = "ExplorerBarGroupItemFacultyManagement"
         Me.ExplorerBarGroupItemFacultyManagement.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors
         Me.ExplorerBarGroupItemFacultyManagement.Text = "Faculty Management"
@@ -486,74 +556,6 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemLogout.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemLogout.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
         Me.ExplorerBarGroupItemLogout.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
-        '
-        'GroupBoxContainer
-        '
-        Me.GroupBoxContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBoxContainer.Controls.Add(Me.lblNavigate)
-        Me.GroupBoxContainer.Controls.Add(Me.ControlViewSubjects1)
-        Me.GroupBoxContainer.Controls.Add(Me.ControlViewAssignedSchedule1)
-        Me.GroupBoxContainer.Font = New System.Drawing.Font("Arial Black", 12.0!)
-        Me.GroupBoxContainer.Location = New System.Drawing.Point(274, 87)
-        Me.GroupBoxContainer.Name = "GroupBoxContainer"
-        Me.GroupBoxContainer.Size = New System.Drawing.Size(986, 491)
-        Me.GroupBoxContainer.TabIndex = 12
-        Me.GroupBoxContainer.TabStop = False
-        Me.GroupBoxContainer.Text = "Assigned Schedules"
-        '
-        'lblNavigate
-        '
-        Me.lblNavigate.AutoSize = True
-        Me.lblNavigate.Location = New System.Drawing.Point(156, 222)
-        Me.lblNavigate.Name = "lblNavigate"
-        Me.lblNavigate.Size = New System.Drawing.Size(326, 23)
-        Me.lblNavigate.TabIndex = 12
-        Me.lblNavigate.Text = "To get started, navigate to the right"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.SchedulingSystem.My.Resources.Resources.CEU_Logo
-        Me.PictureBox1.Location = New System.Drawing.Point(501, 12)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(70, 69)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 11
-        Me.PictureBox1.TabStop = False
-        '
-        'lblSystemName
-        '
-        Me.lblSystemName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblSystemName.AutoSize = True
-        Me.lblSystemName.Font = New System.Drawing.Font("Arial Black", 9.5!)
-        Me.lblSystemName.Location = New System.Drawing.Point(600, 3)
-        Me.lblSystemName.Name = "lblSystemName"
-        Me.lblSystemName.Size = New System.Drawing.Size(242, 90)
-        Me.lblSystemName.TabIndex = 13
-        Me.lblSystemName.Text = "Centro Escolar University" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Computer Educaton Department" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Faculty Workload" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Sche" & _
-            "duling System"
-        Me.lblSystemName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'ControlViewSubjects1
-        '
-        Me.ControlViewSubjects1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ControlViewSubjects1.Location = New System.Drawing.Point(3, 26)
-        Me.ControlViewSubjects1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.ControlViewSubjects1.Name = "ControlViewSubjects1"
-        Me.ControlViewSubjects1.Size = New System.Drawing.Size(980, 462)
-        Me.ControlViewSubjects1.TabIndex = 11
-        '
-        'ControlViewAssignedSchedule1
-        '
-        Me.ControlViewAssignedSchedule1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ControlViewAssignedSchedule1.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.ControlViewAssignedSchedule1.Location = New System.Drawing.Point(3, 26)
-        Me.ControlViewAssignedSchedule1.Margin = New System.Windows.Forms.Padding(4)
-        Me.ControlViewAssignedSchedule1.Name = "ControlViewAssignedSchedule1"
-        Me.ControlViewAssignedSchedule1.Size = New System.Drawing.Size(980, 462)
-        Me.ControlViewAssignedSchedule1.TabIndex = 10
         '
         'AdminPage
         '

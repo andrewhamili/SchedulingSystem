@@ -27,9 +27,12 @@ Public Class FacultyManagement
         txt_Mname.Text = ""
         txt_Lname.Text = ""
         txt_SchoolCollege.Text = ""
+        btn_Save.BringToFront()
+        btn_Delete.Hide()
     End Sub
     Private Sub FacultyManagement_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         LoadFacultyTable()
+        btn_Delete.Hide()
     End Sub
 
     Private Sub Save_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Save.Click
@@ -46,6 +49,7 @@ Public Class FacultyManagement
             MsgBox("Faculty registered!", MsgBoxStyle.Information, SystemTitle)
             MySQLConn.Close()
             ClearFields()
+
             LoadFacultyTable()
         Catch ex As Exception
             MessageBox.Show(Me, ex.Message, SystemTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -69,8 +73,8 @@ Public Class FacultyManagement
             MySQLConn.Close()
 
             ClearFields()
-            btn_Update.Enabled = False
-            btn_Save.Enabled = True
+            btn_Save.BringToFront()
+            btn_Delete.Hide()
             LoadFacultyTable()
         Catch ex As Exception
             MessageBox.Show(Me, ex.Message, SystemTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -88,8 +92,8 @@ Public Class FacultyManagement
         Dim row As DataGridViewRow
         If e.RowIndex >= 0 Then
             txt_Empid.Enabled = False
-            btn_Update.Enabled = True
-            btn_Save.Enabled = False
+            btn_Update.BringToFront()
+            btn_Delete.Show()
             row = DataGridViewFaculty.Rows(e.RowIndex)
             txt_Empid.Text = row.Cells("Employee ID").Value
             txt_Fname.Text = row.Cells("First Name").Value
@@ -97,5 +101,9 @@ Public Class FacultyManagement
             txt_Lname.Text = row.Cells("Last Name").Value
             txt_SchoolCollege.Text = row.Cells("School/College").Value
         End If
+    End Sub
+
+    Private Sub btn_Clear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Clear.Click
+        ClearFields()
     End Sub
 End Class

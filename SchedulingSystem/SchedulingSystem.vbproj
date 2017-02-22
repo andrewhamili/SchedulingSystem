@@ -315,6 +315,10 @@
     <Content Include="Library\Microsoft.ReportViewer.WebForms.xml" />
     <Content Include="Library\Microsoft.ReportViewer.WinForms.dll" />
     <Content Include="Library\Microsoft.ReportViewer.WinForms.xml" />
+    <None Include="Resources\clock.png" />
+    <None Include="Resources\faculty_management.png" />
+    <None Include="Resources\subject_icon.png" />
+    <None Include="Resources\clock1.png" />
     <Content Include="Schedule-Single.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

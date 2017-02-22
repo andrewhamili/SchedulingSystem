@@ -116,7 +116,6 @@ Partial Class FacultyManagement
         '
         'btn_Update
         '
-        Me.btn_Update.Enabled = False
         Me.btn_Update.Location = New System.Drawing.Point(665, 27)
         Me.btn_Update.Name = "btn_Update"
         Me.btn_Update.Size = New System.Drawing.Size(102, 33)
@@ -188,7 +187,7 @@ Partial Class FacultyManagement
         '
         'btn_Clear
         '
-        Me.btn_Clear.Location = New System.Drawing.Point(665, 66)
+        Me.btn_Clear.Location = New System.Drawing.Point(665, 67)
         Me.btn_Clear.Name = "btn_Clear"
         Me.btn_Clear.Size = New System.Drawing.Size(102, 33)
         Me.btn_Clear.TabIndex = 17
