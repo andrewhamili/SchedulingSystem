@@ -32,8 +32,13 @@ Partial Class AdminPage
         Me.ButtonAssignSched = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonRemoveSched = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonViewSubjects = New DevComponents.DotNetBar.ButtonItem()
+        Me.ExplorerBarGroupItemSubjectManagement = New DevComponents.DotNetBar.ExplorerBarGroupItem()
+        Me.ButtonItemCreateSubject = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItemScheduleSubject = New DevComponents.DotNetBar.ButtonItem()
         Me.ExplorerBarGroupItemEmployee = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.ButtonAddAccount = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItemEditOrDelete = New DevComponents.DotNetBar.ButtonItem()
+        Me.ExplorerBarGroupItemFacultyManagement = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.ExplorerBarGroupItemPrinting = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.ButtonPrintAssignedSched = New DevComponents.DotNetBar.ButtonItem()
         Me.ExplorerBarGroupItem2 = New DevComponents.DotNetBar.ExplorerBarGroupItem()
@@ -43,14 +48,6 @@ Partial Class AdminPage
         Me.lblNavigate = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblSystemName = New System.Windows.Forms.Label()
-        Me.ButtonItemEditOrDelete = New DevComponents.DotNetBar.ButtonItem()
-        Me.ExplorerBarGroupItemFacultyManagement = New DevComponents.DotNetBar.ExplorerBarGroupItem()
-        Me.ButtonItemView = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItemAdd = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItemEdit = New DevComponents.DotNetBar.ButtonItem()
-        Me.ExplorerBarGroupItemSubjectManagement = New DevComponents.DotNetBar.ExplorerBarGroupItem()
-        Me.ButtonItemCreateSubject = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItemScheduleSubject = New DevComponents.DotNetBar.ButtonItem()
         Me.ControlViewSubjects1 = New SchedulingSystem.ControlViewSubjects()
         Me.ControlViewAssignedSchedule1 = New SchedulingSystem.ControlViewAssignedSchedule()
         CType(Me.ExplorerBar1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -181,6 +178,66 @@ Partial Class AdminPage
         Me.ButtonViewSubjects.Name = "ButtonViewSubjects"
         Me.ButtonViewSubjects.Text = "View Subjects"
         '
+        'ExplorerBarGroupItemSubjectManagement
+        '
+        '
+        '
+        '
+        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderBottomWidth = 1
+        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderColor = System.Drawing.Color.White
+        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderLeftWidth = 1
+        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderRightWidth = 1
+        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ExplorerBarGroupItemSubjectManagement.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ExplorerBarGroupItemSubjectManagement.Name = "ExplorerBarGroupItemSubjectManagement"
+        Me.ExplorerBarGroupItemSubjectManagement.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors
+        Me.ExplorerBarGroupItemSubjectManagement.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemCreateSubject, Me.ButtonItemScheduleSubject})
+        Me.ExplorerBarGroupItemSubjectManagement.Text = "Subject Management"
+        '
+        '
+        '
+        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.BackColor = System.Drawing.Color.White
+        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.CornerDiameter = 3
+        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        '
+        '
+        '
+        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.BackColor = System.Drawing.Color.White
+        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.CornerDiameter = 3
+        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
+        '
+        'ButtonItemCreateSubject
+        '
+        Me.ButtonItemCreateSubject.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItemCreateSubject.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.ButtonItemCreateSubject.HotFontUnderline = True
+        Me.ButtonItemCreateSubject.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ButtonItemCreateSubject.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
+        Me.ButtonItemCreateSubject.Name = "ButtonItemCreateSubject"
+        Me.ButtonItemCreateSubject.Text = "Create Subject"
+        '
+        'ButtonItemScheduleSubject
+        '
+        Me.ButtonItemScheduleSubject.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItemScheduleSubject.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.ButtonItemScheduleSubject.HotFontUnderline = True
+        Me.ButtonItemScheduleSubject.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ButtonItemScheduleSubject.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
+        Me.ButtonItemScheduleSubject.Name = "ButtonItemScheduleSubject"
+        Me.ButtonItemScheduleSubject.Text = "Schedule Subject"
+        '
         'ExplorerBarGroupItemEmployee
         '
         '
@@ -234,6 +291,57 @@ Partial Class AdminPage
         Me.ButtonAddAccount.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
         Me.ButtonAddAccount.Name = "ButtonAddAccount"
         Me.ButtonAddAccount.Text = "Add Account"
+        '
+        'ButtonItemEditOrDelete
+        '
+        Me.ButtonItemEditOrDelete.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItemEditOrDelete.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ButtonItemEditOrDelete.HotFontUnderline = True
+        Me.ButtonItemEditOrDelete.HotForeColor = System.Drawing.SystemColors.ControlDark
+        Me.ButtonItemEditOrDelete.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
+        Me.ButtonItemEditOrDelete.Name = "ButtonItemEditOrDelete"
+        Me.ButtonItemEditOrDelete.Text = "Edit/Delete"
+        '
+        'ExplorerBarGroupItemFacultyManagement
+        '
+        '
+        '
+        '
+        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderBottomWidth = 1
+        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderColor = System.Drawing.Color.White
+        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderLeftWidth = 1
+        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderRightWidth = 1
+        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ExplorerBarGroupItemFacultyManagement.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ExplorerBarGroupItemFacultyManagement.ExpandButtonVisible = False
+        Me.ExplorerBarGroupItemFacultyManagement.HeaderExpands = False
+        Me.ExplorerBarGroupItemFacultyManagement.Name = "ExplorerBarGroupItemFacultyManagement"
+        Me.ExplorerBarGroupItemFacultyManagement.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors
+        Me.ExplorerBarGroupItemFacultyManagement.Text = "Faculty Management"
+        '
+        '
+        '
+        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.BackColor = System.Drawing.Color.White
+        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.CornerDiameter = 3
+        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
+        '
+        '
+        '
+        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.BackColor = System.Drawing.Color.White
+        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.CornerDiameter = 3
+        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
         '
         'ExplorerBarGroupItemPrinting
         '
@@ -353,6 +461,7 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemLogout.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemLogout.Cursor = System.Windows.Forms.Cursors.Default
         Me.ExplorerBarGroupItemLogout.ExpandButtonVisible = False
+        Me.ExplorerBarGroupItemLogout.HeaderExpands = False
         Me.ExplorerBarGroupItemLogout.Image = Global.SchedulingSystem.My.Resources.Resources.logout
         Me.ExplorerBarGroupItemLogout.Name = "ExplorerBarGroupItemLogout"
         Me.ExplorerBarGroupItemLogout.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors
@@ -427,145 +536,6 @@ Partial Class AdminPage
             "duling System"
         Me.lblSystemName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'ButtonItemEditOrDelete
-        '
-        Me.ButtonItemEditOrDelete.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItemEditOrDelete.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButtonItemEditOrDelete.HotFontUnderline = True
-        Me.ButtonItemEditOrDelete.HotForeColor = System.Drawing.SystemColors.ControlDark
-        Me.ButtonItemEditOrDelete.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
-        Me.ButtonItemEditOrDelete.Name = "ButtonItemEditOrDelete"
-        Me.ButtonItemEditOrDelete.Text = "Edit/Delete"
-        '
-        'ExplorerBarGroupItemFacultyManagement
-        '
-        '
-        '
-        '
-        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(247, Byte), Integer))
-        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderBottomWidth = 1
-        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderLeftWidth = 1
-        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.BorderRightWidth = 1
-        Me.ExplorerBarGroupItemFacultyManagement.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ExplorerBarGroupItemFacultyManagement.Name = "ExplorerBarGroupItemFacultyManagement"
-        Me.ExplorerBarGroupItemFacultyManagement.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors
-        Me.ExplorerBarGroupItemFacultyManagement.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemView, Me.ButtonItemAdd, Me.ButtonItemEdit})
-        Me.ExplorerBarGroupItemFacultyManagement.Text = "Faculty Management"
-        '
-        '
-        '
-        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
-        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.CornerDiameter = 3
-        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemFacultyManagement.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
-        '
-        '
-        '
-        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
-        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.CornerDiameter = 3
-        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemFacultyManagement.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
-        '
-        'ButtonItemView
-        '
-        Me.ButtonItemView.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItemView.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButtonItemView.HotFontUnderline = True
-        Me.ButtonItemView.HotForeColor = System.Drawing.SystemColors.ControlDark
-        Me.ButtonItemView.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
-        Me.ButtonItemView.Name = "ButtonItemView"
-        Me.ButtonItemView.Text = "View"
-        '
-        'ButtonItemAdd
-        '
-        Me.ButtonItemAdd.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItemAdd.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButtonItemAdd.HotFontUnderline = True
-        Me.ButtonItemAdd.HotForeColor = System.Drawing.SystemColors.ControlDark
-        Me.ButtonItemAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
-        Me.ButtonItemAdd.Name = "ButtonItemAdd"
-        Me.ButtonItemAdd.Text = "Add"
-        '
-        'ButtonItemEdit
-        '
-        Me.ButtonItemEdit.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItemEdit.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButtonItemEdit.HotFontUnderline = True
-        Me.ButtonItemEdit.HotForeColor = System.Drawing.SystemColors.ControlDark
-        Me.ButtonItemEdit.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
-        Me.ButtonItemEdit.Name = "ButtonItemEdit"
-        Me.ButtonItemEdit.Text = "Edit"
-        '
-        'ExplorerBarGroupItemSubjectManagement
-        '
-        '
-        '
-        '
-        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(214, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(247, Byte), Integer))
-        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderBottomWidth = 1
-        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderLeftWidth = 1
-        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.BorderRightWidth = 1
-        Me.ExplorerBarGroupItemSubjectManagement.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ExplorerBarGroupItemSubjectManagement.Cursor = System.Windows.Forms.Cursors.Default
-        Me.ExplorerBarGroupItemSubjectManagement.Name = "ExplorerBarGroupItemSubjectManagement"
-        Me.ExplorerBarGroupItemSubjectManagement.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors
-        Me.ExplorerBarGroupItemSubjectManagement.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemCreateSubject, Me.ButtonItemScheduleSubject})
-        Me.ExplorerBarGroupItemSubjectManagement.Text = "Subject Management"
-        '
-        '
-        '
-        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
-        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.CornerDiameter = 3
-        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemSubjectManagement.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
-        '
-        '
-        '
-        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.BackColor = System.Drawing.Color.White
-        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(247, Byte), Integer))
-        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.CornerDiameter = 3
-        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.ExplorerBarGroupItemSubjectManagement.TitleStyle.TextColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(198, Byte), Integer))
-        '
-        'ButtonItemCreateSubject
-        '
-        Me.ButtonItemCreateSubject.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItemCreateSubject.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButtonItemCreateSubject.HotFontUnderline = True
-        Me.ButtonItemCreateSubject.HotForeColor = System.Drawing.SystemColors.ControlDark
-        Me.ButtonItemCreateSubject.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
-        Me.ButtonItemCreateSubject.Name = "ButtonItemCreateSubject"
-        Me.ButtonItemCreateSubject.Text = "Create Subject"
-        '
-        'ButtonItemScheduleSubject
-        '
-        Me.ButtonItemScheduleSubject.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItemScheduleSubject.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButtonItemScheduleSubject.HotFontUnderline = True
-        Me.ButtonItemScheduleSubject.HotForeColor = System.Drawing.SystemColors.ControlDark
-        Me.ButtonItemScheduleSubject.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
-        Me.ButtonItemScheduleSubject.Name = "ButtonItemScheduleSubject"
-        Me.ButtonItemScheduleSubject.Text = "Schedule Subject"
-        '
         'ControlViewSubjects1
         '
         Me.ControlViewSubjects1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -636,7 +606,4 @@ Partial Class AdminPage
     Friend WithEvents ExplorerBarGroupItemSubjectManagement As DevComponents.DotNetBar.ExplorerBarGroupItem
     Friend WithEvents ButtonItemCreateSubject As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItemScheduleSubject As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItemView As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItemAdd As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItemEdit As DevComponents.DotNetBar.ButtonItem
 End Class

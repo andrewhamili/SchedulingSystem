@@ -27,4 +27,9 @@ Module GlobalVariableModule
 
     Public EntryText As String
 
+    Public Sub CheckOpenConnection_AND_CloseIt()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+    End Sub
 End Module

@@ -80,15 +80,6 @@ Public Class AdminPage
 
     End Sub
 
-    Private Sub ExplorerBarGroupItemLogout_ExpandChange(ByVal sender As Object, ByVal e As System.EventArgs) Handles ExplorerBarGroupItemLogout.ExpandChange
-        Dim ans As DialogResult
-        ans = MsgBox("Are you sure you want to log-out now?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
-        If ans = Windows.Forms.DialogResult.Yes Then
-            RemoveHandler ExplorerBarGroupItemLogout.ExpandChange, AddressOf ExplorerBarGroupItemLogout_ExpandChange
-            Me.Close()
-        End If
-    End Sub
-
     Private Sub ButtonAddAccount_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonAddAccount.Click
         EntryText = "Add"
         AccountManagement.Show()
@@ -108,5 +99,17 @@ Public Class AdminPage
     Private Sub ButtonItemEditOrDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemEditOrDelete.Click
         EntryText = "Edit"
         AccountManagement.ShowDialog()
+    End Sub
+
+    Private Sub ExplorerBarGroupItemFacultyManagement_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ExplorerBarGroupItemFacultyManagement.Click
+        FacultyManagement.ShowDialog()
+    End Sub
+
+    Private Sub ExplorerBarGroupItemLogout_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ExplorerBarGroupItemLogout.Click
+        Dim ans As DialogResult
+        ans = MsgBox("Are you sure you want to log-out now?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
+        If ans = Windows.Forms.DialogResult.Yes Then
+            Me.Close()
+        End If
     End Sub
 End Class

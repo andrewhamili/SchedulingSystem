@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class FacultyManagement
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -25,30 +25,28 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewFaculty = New System.Windows.Forms.DataGridView()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btn_Save = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btn_Update = New System.Windows.Forms.Button()
+        Me.btn_Close = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.txt_Empid = New System.Windows.Forms.TextBox()
+        Me.txt_Fname = New System.Windows.Forms.TextBox()
+        Me.txt_Mname = New System.Windows.Forms.TextBox()
+        Me.txt_Lname = New System.Windows.Forms.TextBox()
+        Me.txt_SchoolCollege = New System.Windows.Forms.TextBox()
+        Me.btn_Delete = New System.Windows.Forms.Button()
+        Me.btn_Clear = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewFaculty, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(40, 50)
+        Me.Label1.Location = New System.Drawing.Point(44, 72)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(73, 20)
         Me.Label1.TabIndex = 0
@@ -57,7 +55,7 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(24, 82)
+        Me.Label2.Location = New System.Drawing.Point(28, 104)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(89, 20)
         Me.Label2.TabIndex = 1
@@ -65,7 +63,7 @@ Partial Class Form1
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.DataGridView1)
+        Me.GroupBox1.Controls.Add(Me.DataGridViewFaculty)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 197)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(775, 306)
@@ -73,166 +71,159 @@ Partial Class Form1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Records"
         '
-        'DataGridView1
+        'DataGridViewFaculty
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 22)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(769, 281)
-        Me.DataGridView1.TabIndex = 0
+        Me.DataGridViewFaculty.AllowUserToAddRows = False
+        Me.DataGridViewFaculty.AllowUserToDeleteRows = False
+        Me.DataGridViewFaculty.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridViewFaculty.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewFaculty.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridViewFaculty.Location = New System.Drawing.Point(3, 22)
+        Me.DataGridViewFaculty.MultiSelect = False
+        Me.DataGridViewFaculty.Name = "DataGridViewFaculty"
+        Me.DataGridViewFaculty.ReadOnly = True
+        Me.DataGridViewFaculty.RowHeadersVisible = False
+        Me.DataGridViewFaculty.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridViewFaculty.Size = New System.Drawing.Size(769, 281)
+        Me.DataGridViewFaculty.TabIndex = 0
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(41, 114)
+        Me.Label3.Location = New System.Drawing.Point(45, 136)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(72, 20)
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Last Name"
         '
-        'Button1
+        'btn_Save
         '
-        Me.Button1.Location = New System.Drawing.Point(658, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(102, 33)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Register/Save"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btn_Save.Location = New System.Drawing.Point(665, 27)
+        Me.btn_Save.Name = "btn_Save"
+        Me.btn_Save.Size = New System.Drawing.Size(102, 33)
+        Me.btn_Save.TabIndex = 4
+        Me.btn_Save.Text = "Register/Save"
+        Me.btn_Save.UseVisualStyleBackColor = True
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(26, 18)
+        Me.Label4.Location = New System.Drawing.Point(30, 40)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(87, 20)
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "Employee ID"
         '
-        'Button2
+        'btn_Update
         '
-        Me.Button2.Location = New System.Drawing.Point(658, 51)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(102, 33)
-        Me.Button2.TabIndex = 6
-        Me.Button2.Text = "Update"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btn_Update.Enabled = False
+        Me.btn_Update.Location = New System.Drawing.Point(665, 27)
+        Me.btn_Update.Name = "btn_Update"
+        Me.btn_Update.Size = New System.Drawing.Size(102, 33)
+        Me.btn_Update.TabIndex = 6
+        Me.btn_Update.Text = "Update"
+        Me.btn_Update.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btn_Close
         '
-        Me.Button3.Location = New System.Drawing.Point(658, 90)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(102, 33)
-        Me.Button3.TabIndex = 7
-        Me.Button3.Text = "Cancel"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btn_Close.Location = New System.Drawing.Point(665, 154)
+        Me.btn_Close.Name = "btn_Close"
+        Me.btn_Close.Size = New System.Drawing.Size(102, 33)
+        Me.btn_Close.TabIndex = 7
+        Me.btn_Close.Text = "Close"
+        Me.btn_Close.UseVisualStyleBackColor = True
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(330, 21)
+        Me.Label5.Location = New System.Drawing.Point(359, 42)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(102, 20)
         Me.Label5.TabIndex = 8
         Me.Label5.Text = "School/College"
         '
-        'Label6
+        'txt_Empid
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(365, 53)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(67, 20)
-        Me.Label6.TabIndex = 9
-        Me.Label6.Text = "Semester"
+        Me.txt_Empid.Location = New System.Drawing.Point(139, 37)
+        Me.txt_Empid.Name = "txt_Empid"
+        Me.txt_Empid.Size = New System.Drawing.Size(177, 26)
+        Me.txt_Empid.TabIndex = 11
         '
-        'Label7
+        'txt_Fname
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(365, 85)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(66, 20)
-        Me.Label7.TabIndex = 10
-        Me.Label7.Text = "School yr"
+        Me.txt_Fname.Location = New System.Drawing.Point(139, 69)
+        Me.txt_Fname.Name = "txt_Fname"
+        Me.txt_Fname.Size = New System.Drawing.Size(177, 26)
+        Me.txt_Fname.TabIndex = 12
         '
-        'TextBox1
+        'txt_Mname
         '
-        Me.TextBox1.Location = New System.Drawing.Point(135, 15)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox1.TabIndex = 11
+        Me.txt_Mname.Location = New System.Drawing.Point(139, 101)
+        Me.txt_Mname.Name = "txt_Mname"
+        Me.txt_Mname.Size = New System.Drawing.Size(177, 26)
+        Me.txt_Mname.TabIndex = 13
         '
-        'TextBox2
+        'txt_Lname
         '
-        Me.TextBox2.Location = New System.Drawing.Point(135, 47)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox2.TabIndex = 12
+        Me.txt_Lname.Location = New System.Drawing.Point(139, 133)
+        Me.txt_Lname.Name = "txt_Lname"
+        Me.txt_Lname.Size = New System.Drawing.Size(177, 26)
+        Me.txt_Lname.TabIndex = 14
         '
-        'TextBox3
+        'txt_SchoolCollege
         '
-        Me.TextBox3.Location = New System.Drawing.Point(135, 79)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox3.TabIndex = 13
+        Me.txt_SchoolCollege.Location = New System.Drawing.Point(467, 40)
+        Me.txt_SchoolCollege.Name = "txt_SchoolCollege"
+        Me.txt_SchoolCollege.Size = New System.Drawing.Size(142, 26)
+        Me.txt_SchoolCollege.TabIndex = 15
         '
-        'TextBox4
+        'btn_Delete
         '
-        Me.TextBox4.Location = New System.Drawing.Point(135, 111)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox4.TabIndex = 14
+        Me.btn_Delete.Location = New System.Drawing.Point(665, 113)
+        Me.btn_Delete.Name = "btn_Delete"
+        Me.btn_Delete.Size = New System.Drawing.Size(102, 33)
+        Me.btn_Delete.TabIndex = 16
+        Me.btn_Delete.Text = "Delete"
+        Me.btn_Delete.UseVisualStyleBackColor = True
         '
-        'TextBox5
+        'btn_Clear
         '
-        Me.TextBox5.Location = New System.Drawing.Point(463, 18)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox5.TabIndex = 15
+        Me.btn_Clear.Location = New System.Drawing.Point(665, 66)
+        Me.btn_Clear.Name = "btn_Clear"
+        Me.btn_Clear.Size = New System.Drawing.Size(102, 33)
+        Me.btn_Clear.TabIndex = 17
+        Me.btn_Clear.Text = "Clear"
+        Me.btn_Clear.UseVisualStyleBackColor = True
         '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(463, 50)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox6.TabIndex = 16
-        '
-        'TextBox7
-        '
-        Me.TextBox7.Location = New System.Drawing.Point(463, 82)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox7.TabIndex = 17
-        '
-        'Form1
+        'FacultyManagement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(803, 515)
-        Me.Controls.Add(Me.TextBox7)
-        Me.Controls.Add(Me.TextBox6)
-        Me.Controls.Add(Me.TextBox5)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.btn_Clear)
+        Me.Controls.Add(Me.btn_Delete)
+        Me.Controls.Add(Me.txt_SchoolCollege)
+        Me.Controls.Add(Me.txt_Lname)
+        Me.Controls.Add(Me.txt_Mname)
+        Me.Controls.Add(Me.txt_Fname)
+        Me.Controls.Add(Me.txt_Empid)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btn_Close)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.btn_Save)
+        Me.Controls.Add(Me.btn_Update)
         Me.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Name = "Form1"
+        Me.Name = "FacultyManagement"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Faculty Registration"
         Me.GroupBox1.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewFaculty, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -241,20 +232,18 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DataGridViewFaculty As DataGridView
     Friend WithEvents Label3 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btn_Save As Button
     Friend WithEvents Label4 As Label
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btn_Update As Button
+    Friend WithEvents btn_Close As Button
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents txt_Empid As TextBox
+    Friend WithEvents txt_Fname As TextBox
+    Friend WithEvents txt_Mname As TextBox
+    Friend WithEvents txt_Lname As TextBox
+    Friend WithEvents txt_SchoolCollege As TextBox
+    Friend WithEvents btn_Delete As System.Windows.Forms.Button
+    Friend WithEvents btn_Clear As System.Windows.Forms.Button
 End Class
