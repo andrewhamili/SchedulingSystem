@@ -331,7 +331,9 @@
     <EmbeddedResource Include="ScheduleManagement.resx">
       <DependentUpon>ScheduleManagement.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Schedules.rdlc" />
+    <Content Include="Schedules.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="SchoolYearSemester.resx">
       <DependentUpon>SchoolYearSemester.vb</DependentUpon>
     </EmbeddedResource>
