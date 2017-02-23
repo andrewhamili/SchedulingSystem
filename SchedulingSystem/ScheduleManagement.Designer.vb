@@ -40,14 +40,14 @@ Partial Class ManageSchedule
         Me.CheckBoxDay_fr = New System.Windows.Forms.CheckBox()
         Me.CheckBoxDay_we = New System.Windows.Forms.CheckBox()
         Me.CheckBoxDay_mo = New System.Windows.Forms.CheckBox()
-        Me.txtUnit = New System.Windows.Forms.TextBox()
-        Me.txtSubjDesc = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtSubjDesc = New System.Windows.Forms.Label()
+        Me.txtUnit = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -56,7 +56,7 @@ Partial Class ManageSchedule
         Me.ComboBoxClasscode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.ComboBoxClasscode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.ComboBoxClasscode.FormattingEnabled = True
-        Me.ComboBoxClasscode.Location = New System.Drawing.Point(129, 45)
+        Me.ComboBoxClasscode.Location = New System.Drawing.Point(141, 36)
         Me.ComboBoxClasscode.Name = "ComboBoxClasscode"
         Me.ComboBoxClasscode.Size = New System.Drawing.Size(254, 26)
         Me.ComboBoxClasscode.TabIndex = 0
@@ -64,7 +64,7 @@ Partial Class ManageSchedule
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(17, 53)
+        Me.Label8.Location = New System.Drawing.Point(42, 39)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(83, 18)
         Me.Label8.TabIndex = 2
@@ -81,6 +81,8 @@ Partial Class ManageSchedule
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.txtUnit)
+        Me.Panel1.Controls.Add(Me.txtSubjDesc)
         Me.Panel1.Controls.Add(Me.btnReset)
         Me.Panel1.Controls.Add(Me.btnDelete)
         Me.Panel1.Controls.Add(Me.DateTimePickertimeto)
@@ -94,8 +96,6 @@ Partial Class ManageSchedule
         Me.Panel1.Controls.Add(Me.CheckBoxDay_fr)
         Me.Panel1.Controls.Add(Me.CheckBoxDay_we)
         Me.Panel1.Controls.Add(Me.CheckBoxDay_mo)
-        Me.Panel1.Controls.Add(Me.txtUnit)
-        Me.Panel1.Controls.Add(Me.txtSubjDesc)
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.Label5)
@@ -104,23 +104,23 @@ Partial Class ManageSchedule
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Location = New System.Drawing.Point(2, 92)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(399, 379)
+        Me.Panel1.Size = New System.Drawing.Size(428, 421)
         Me.Panel1.TabIndex = 67
         '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(144, 336)
+        Me.btnReset.Location = New System.Drawing.Point(157, 356)
         Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(113, 39)
+        Me.btnReset.Size = New System.Drawing.Size(115, 40)
         Me.btnReset.TabIndex = 66
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(263, 290)
+        Me.btnDelete.Location = New System.Drawing.Point(278, 310)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(112, 40)
+        Me.btnDelete.Size = New System.Drawing.Size(115, 40)
         Me.btnDelete.TabIndex = 65
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
@@ -129,7 +129,7 @@ Partial Class ManageSchedule
         '
         Me.DateTimePickertimeto.CustomFormat = "HH:mm"
         Me.DateTimePickertimeto.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePickertimeto.Location = New System.Drawing.Point(139, 216)
+        Me.DateTimePickertimeto.Location = New System.Drawing.Point(299, 187)
         Me.DateTimePickertimeto.Name = "DateTimePickertimeto"
         Me.DateTimePickertimeto.ShowUpDown = True
         Me.DateTimePickertimeto.Size = New System.Drawing.Size(76, 26)
@@ -140,7 +140,7 @@ Partial Class ManageSchedule
         '
         Me.DateTimePickertimefrom.CustomFormat = "HH:mm"
         Me.DateTimePickertimefrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePickertimefrom.Location = New System.Drawing.Point(139, 183)
+        Me.DateTimePickertimefrom.Location = New System.Drawing.Point(181, 187)
         Me.DateTimePickertimefrom.MaxDate = New Date(2030, 12, 31, 0, 0, 0, 0)
         Me.DateTimePickertimefrom.MinDate = New Date(2015, 1, 1, 0, 0, 0, 0)
         Me.DateTimePickertimefrom.Name = "DateTimePickertimefrom"
@@ -152,7 +152,7 @@ Partial Class ManageSchedule
         'CheckBoxDay_sa
         '
         Me.CheckBoxDay_sa.AutoSize = True
-        Me.CheckBoxDay_sa.Location = New System.Drawing.Point(334, 129)
+        Me.CheckBoxDay_sa.Location = New System.Drawing.Point(337, 142)
         Me.CheckBoxDay_sa.Name = "CheckBoxDay_sa"
         Me.CheckBoxDay_sa.Size = New System.Drawing.Size(38, 22)
         Me.CheckBoxDay_sa.TabIndex = 62
@@ -161,16 +161,16 @@ Partial Class ManageSchedule
         '
         'btnCancel1
         '
-        Me.btnCancel1.Location = New System.Drawing.Point(18, 292)
+        Me.btnCancel1.Location = New System.Drawing.Point(36, 310)
         Me.btnCancel1.Name = "btnCancel1"
-        Me.btnCancel1.Size = New System.Drawing.Size(118, 38)
+        Me.btnCancel1.Size = New System.Drawing.Size(115, 40)
         Me.btnCancel1.TabIndex = 61
         Me.btnCancel1.Text = "Cancel"
         Me.btnCancel1.UseVisualStyleBackColor = True
         '
         'btnModify
         '
-        Me.btnModify.Location = New System.Drawing.Point(142, 290)
+        Me.btnModify.Location = New System.Drawing.Point(157, 310)
         Me.btnModify.Name = "btnModify"
         Me.btnModify.Size = New System.Drawing.Size(115, 40)
         Me.btnModify.TabIndex = 60
@@ -182,7 +182,7 @@ Partial Class ManageSchedule
         Me.ComboBoxRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxRoom.FormattingEnabled = True
         Me.ComboBoxRoom.Items.AddRange(New Object() {"ISC201", "ISC301", "ISC302", "ISC303", "ISC401", "ISC402", "ISC403", "ISC501", "ISC502", "ISC503", "ISC601", "ISC602", "ISC603"})
-        Me.ComboBoxRoom.Location = New System.Drawing.Point(115, 255)
+        Me.ComboBoxRoom.Location = New System.Drawing.Point(181, 244)
         Me.ComboBoxRoom.Name = "ComboBoxRoom"
         Me.ComboBoxRoom.Size = New System.Drawing.Size(121, 26)
         Me.ComboBoxRoom.TabIndex = 59
@@ -190,7 +190,7 @@ Partial Class ManageSchedule
         'CheckBoxDay_th
         '
         Me.CheckBoxDay_th.AutoSize = True
-        Me.CheckBoxDay_th.Location = New System.Drawing.Point(171, 129)
+        Me.CheckBoxDay_th.Location = New System.Drawing.Point(186, 142)
         Me.CheckBoxDay_th.Name = "CheckBoxDay_th"
         Me.CheckBoxDay_th.Size = New System.Drawing.Size(44, 22)
         Me.CheckBoxDay_th.TabIndex = 58
@@ -200,7 +200,7 @@ Partial Class ManageSchedule
         'CheckBoxDay_tu
         '
         Me.CheckBoxDay_tu.AutoSize = True
-        Me.CheckBoxDay_tu.Location = New System.Drawing.Point(252, 103)
+        Me.CheckBoxDay_tu.Location = New System.Drawing.Point(267, 116)
         Me.CheckBoxDay_tu.Name = "CheckBoxDay_tu"
         Me.CheckBoxDay_tu.Size = New System.Drawing.Size(36, 22)
         Me.CheckBoxDay_tu.TabIndex = 57
@@ -210,7 +210,7 @@ Partial Class ManageSchedule
         'CheckBoxDay_fr
         '
         Me.CheckBoxDay_fr.AutoSize = True
-        Me.CheckBoxDay_fr.Location = New System.Drawing.Point(252, 129)
+        Me.CheckBoxDay_fr.Location = New System.Drawing.Point(267, 142)
         Me.CheckBoxDay_fr.Name = "CheckBoxDay_fr"
         Me.CheckBoxDay_fr.Size = New System.Drawing.Size(37, 22)
         Me.CheckBoxDay_fr.TabIndex = 56
@@ -220,7 +220,7 @@ Partial Class ManageSchedule
         'CheckBoxDay_we
         '
         Me.CheckBoxDay_we.AutoSize = True
-        Me.CheckBoxDay_we.Location = New System.Drawing.Point(333, 103)
+        Me.CheckBoxDay_we.Location = New System.Drawing.Point(337, 116)
         Me.CheckBoxDay_we.Name = "CheckBoxDay_we"
         Me.CheckBoxDay_we.Size = New System.Drawing.Size(42, 22)
         Me.CheckBoxDay_we.TabIndex = 55
@@ -230,31 +230,17 @@ Partial Class ManageSchedule
         'CheckBoxDay_mo
         '
         Me.CheckBoxDay_mo.AutoSize = True
-        Me.CheckBoxDay_mo.Location = New System.Drawing.Point(171, 103)
+        Me.CheckBoxDay_mo.Location = New System.Drawing.Point(186, 116)
         Me.CheckBoxDay_mo.Name = "CheckBoxDay_mo"
         Me.CheckBoxDay_mo.Size = New System.Drawing.Size(40, 22)
         Me.CheckBoxDay_mo.TabIndex = 54
         Me.CheckBoxDay_mo.Text = "M"
         Me.CheckBoxDay_mo.UseVisualStyleBackColor = True
         '
-        'txtUnit
-        '
-        Me.txtUnit.Location = New System.Drawing.Point(171, 59)
-        Me.txtUnit.Name = "txtUnit"
-        Me.txtUnit.Size = New System.Drawing.Size(210, 26)
-        Me.txtUnit.TabIndex = 53
-        '
-        'txtSubjDesc
-        '
-        Me.txtSubjDesc.Location = New System.Drawing.Point(171, 12)
-        Me.txtSubjDesc.Name = "txtSubjDesc"
-        Me.txtSubjDesc.Size = New System.Drawing.Size(210, 26)
-        Me.txtSubjDesc.TabIndex = 52
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(15, 258)
+        Me.Label7.Location = New System.Drawing.Point(109, 248)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(50, 18)
         Me.Label7.TabIndex = 50
@@ -263,25 +249,25 @@ Partial Class ManageSchedule
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(15, 222)
+        Me.Label6.Location = New System.Drawing.Point(267, 191)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(62, 18)
+        Me.Label6.Size = New System.Drawing.Size(21, 18)
         Me.Label6.TabIndex = 49
-        Me.Label6.Text = "Time To"
+        Me.Label6.Text = "to"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(15, 189)
+        Me.Label5.Location = New System.Drawing.Point(117, 191)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(83, 18)
+        Me.Label5.Size = New System.Drawing.Size(42, 18)
         Me.Label5.TabIndex = 48
-        Me.Label5.Text = "Time From"
+        Me.Label5.Text = "Time"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(16, 140)
+        Me.Label4.Location = New System.Drawing.Point(123, 129)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(36, 18)
         Me.Label4.TabIndex = 47
@@ -290,7 +276,7 @@ Partial Class ManageSchedule
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(15, 67)
+        Me.Label3.Location = New System.Drawing.Point(106, 68)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(53, 18)
         Me.Label3.TabIndex = 46
@@ -304,6 +290,24 @@ Partial Class ManageSchedule
         Me.Label2.Size = New System.Drawing.Size(144, 18)
         Me.Label2.TabIndex = 45
         Me.Label2.Text = "Subject Description"
+        '
+        'txtSubjDesc
+        '
+        Me.txtSubjDesc.Location = New System.Drawing.Point(183, 18)
+        Me.txtSubjDesc.Name = "txtSubjDesc"
+        Me.txtSubjDesc.Size = New System.Drawing.Size(210, 26)
+        Me.txtSubjDesc.TabIndex = 67
+        Me.txtSubjDesc.Text = "Centro Escolar"
+        Me.txtSubjDesc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtUnit
+        '
+        Me.txtUnit.Location = New System.Drawing.Point(183, 65)
+        Me.txtUnit.Name = "txtUnit"
+        Me.txtUnit.Size = New System.Drawing.Size(210, 26)
+        Me.txtUnit.TabIndex = 68
+        Me.txtUnit.Text = "Centro Escolar"
+        Me.txtUnit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ManageSchedule
         '
@@ -322,7 +326,7 @@ Partial Class ManageSchedule
         Me.MaximizeBox = False
         Me.Name = "ManageSchedule"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "ScheduleManagement"
+        Me.Text = "Modify Subject"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -345,8 +349,6 @@ Partial Class ManageSchedule
     Friend WithEvents CheckBoxDay_fr As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxDay_we As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxDay_mo As System.Windows.Forms.CheckBox
-    Friend WithEvents txtUnit As System.Windows.Forms.TextBox
-    Friend WithEvents txtSubjDesc As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -354,4 +356,6 @@ Partial Class ManageSchedule
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnReset As System.Windows.Forms.Button
+    Friend WithEvents txtUnit As System.Windows.Forms.Label
+    Friend WithEvents txtSubjDesc As System.Windows.Forms.Label
 End Class

@@ -85,7 +85,7 @@ Public Class AdminPage
         AccountManagement.Show()
     End Sub
 
-    Private Sub ButtonViewSubjects_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonViewSubjects.Click
+    Private Sub ButtonViewSubjects_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         GroupBoxContainer.Text = "Subjects list"
         ControlViewAssignedSchedule1.Hide()
         ControlViewSubjects1.Show()
@@ -111,5 +111,50 @@ Public Class AdminPage
         If ans = Windows.Forms.DialogResult.Yes Then
             Me.Close()
         End If
+    End Sub
+
+    Private Sub ButtonPrintAssignedSched_Click(sender As System.Object, e As System.EventArgs) Handles ButtonPrintAssignedSched.Click
+        PrintAction = "AllSched"
+
+        PrepareDataForPrintingAllSchedules()
+
+        PrintWindow.ShowDialog()
+    End Sub
+
+    Public Sub PrepareDataForPrintingAllSchedules()
+        data.Clear()
+        Try
+            '' Add Table
+            'ds.Tables.Add("Test")
+
+            '' Add Columns
+            'Dim col As DataColumn
+            'For Each dgvCol As DataGridViewColumn In DataGridView1.Columns
+            '    col = New DataColumn(dgvCol.Name)
+            '    ds.Tables("Invoices").Columns.Add(col)
+            'Next
+
+            ' Rows from the datagridview
+            Dim row As DataRow
+            Dim colcount As Integer = ControlViewAssignedSchedule1.DataGridSched.Columns.Count - 1
+            For i As Integer = 0 To ControlViewAssignedSchedule1.DataGridSched.Rows.Count - 1
+                row = data.Tables(0).Rows.Add
+                For Each column As DataGridViewColumn In ControlViewAssignedSchedule1.DataGridSched.Columns
+                    row.Item(column.Index) = ControlViewAssignedSchedule1.DataGridSched.Rows.Item(i).Cells(column.Index).Value
+                Next
+            Next
+
+        Catch ex As Exception
+
+            MsgBox("CRITICAL ERROR : Exception caught while converting dataGridView to DataSet (dgvtods).. " & Chr(10) & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub ButtonItemViewSubjects_Click(sender As System.Object, e As System.EventArgs) Handles ButtonItemViewSubjects.Click
+
+    End Sub
+
+    Private Sub ButtonItemModifySubjects_Click(sender As System.Object, e As System.EventArgs) Handles ButtonItemModifySubjects.Click
+
     End Sub
 End Class

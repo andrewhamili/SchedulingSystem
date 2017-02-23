@@ -42,9 +42,9 @@ Partial Class ControlViewSubjects
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridSubjects.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridSubjects.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DataGridSubjects.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridSubjects.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataGridSubjects.Location = New System.Drawing.Point(0, 133)
+        Me.DataGridSubjects.Location = New System.Drawing.Point(0, 0)
         Me.DataGridSubjects.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridSubjects.Name = "DataGridSubjects"
         Me.DataGridSubjects.ReadOnly = True
@@ -52,7 +52,7 @@ Partial Class ControlViewSubjects
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.DataGridSubjects.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridSubjects.Size = New System.Drawing.Size(479, 201)
+        Me.DataGridSubjects.Size = New System.Drawing.Size(479, 334)
         Me.DataGridSubjects.TabIndex = 5
         '
         'ControlViewSubjects
