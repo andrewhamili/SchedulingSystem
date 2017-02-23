@@ -102,7 +102,7 @@ Partial Class FacultyManagement
         Me.btn_Save.Name = "btn_Save"
         Me.btn_Save.Size = New System.Drawing.Size(102, 33)
         Me.btn_Save.TabIndex = 4
-        Me.btn_Save.Text = "Register/Save"
+        Me.btn_Save.Text = "Register"
         Me.btn_Save.UseVisualStyleBackColor = True
         '
         'Label4
@@ -122,10 +122,11 @@ Partial Class FacultyManagement
         Me.btn_Update.TabIndex = 6
         Me.btn_Update.Text = "Update"
         Me.btn_Update.UseVisualStyleBackColor = True
+        Me.btn_Update.Visible = False
         '
         'btn_Close
         '
-        Me.btn_Close.Location = New System.Drawing.Point(665, 154)
+        Me.btn_Close.Location = New System.Drawing.Point(665, 150)
         Me.btn_Close.Name = "btn_Close"
         Me.btn_Close.Size = New System.Drawing.Size(102, 33)
         Me.btn_Close.TabIndex = 7
@@ -178,7 +179,7 @@ Partial Class FacultyManagement
         '
         'btn_Delete
         '
-        Me.btn_Delete.Location = New System.Drawing.Point(665, 113)
+        Me.btn_Delete.Location = New System.Drawing.Point(665, 108)
         Me.btn_Delete.Name = "btn_Delete"
         Me.btn_Delete.Size = New System.Drawing.Size(102, 33)
         Me.btn_Delete.TabIndex = 16
@@ -187,7 +188,7 @@ Partial Class FacultyManagement
         '
         'btn_Clear
         '
-        Me.btn_Clear.Location = New System.Drawing.Point(665, 67)
+        Me.btn_Clear.Location = New System.Drawing.Point(665, 66)
         Me.btn_Clear.Name = "btn_Clear"
         Me.btn_Clear.Size = New System.Drawing.Size(102, 33)
         Me.btn_Clear.TabIndex = 17

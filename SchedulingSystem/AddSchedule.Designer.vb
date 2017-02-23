@@ -268,7 +268,7 @@ Partial Class AddSchedule
         Me.MinimizeBox = False
         Me.Name = "AddSchedule"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AddSchedule"
+        Me.Text = "Add Schedule"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

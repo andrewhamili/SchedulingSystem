@@ -45,8 +45,8 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemLogout = New DevComponents.DotNetBar.ExplorerBarGroupItem()
         Me.GroupBoxContainer = New System.Windows.Forms.GroupBox()
         Me.lblNavigate = New System.Windows.Forms.Label()
-        Me.ControlViewAssignedSchedule1 = New SchedulingSystem.ControlViewAssignedSchedule()
         Me.ControlViewSubjects1 = New SchedulingSystem.ControlViewSubjects()
+        Me.ControlViewAssignedSchedule1 = New SchedulingSystem.ControlViewAssignedSchedule()
         Me.lblSystemName = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.ExplorerBar1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -486,9 +486,9 @@ Partial Class AdminPage
         Me.GroupBoxContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBoxContainer.Controls.Add(Me.lblNavigate)
         Me.GroupBoxContainer.Controls.Add(Me.ControlViewSubjects1)
         Me.GroupBoxContainer.Controls.Add(Me.ControlViewAssignedSchedule1)
+        Me.GroupBoxContainer.Controls.Add(Me.lblNavigate)
         Me.GroupBoxContainer.Font = New System.Drawing.Font("Arial Black", 12.0!)
         Me.GroupBoxContainer.Location = New System.Drawing.Point(274, 87)
         Me.GroupBoxContainer.Name = "GroupBoxContainer"
@@ -506,6 +506,15 @@ Partial Class AdminPage
         Me.lblNavigate.TabIndex = 12
         Me.lblNavigate.Text = "To get started, navigate to the right"
         '
+        'ControlViewSubjects1
+        '
+        Me.ControlViewSubjects1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ControlViewSubjects1.Location = New System.Drawing.Point(3, 26)
+        Me.ControlViewSubjects1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.ControlViewSubjects1.Name = "ControlViewSubjects1"
+        Me.ControlViewSubjects1.Size = New System.Drawing.Size(980, 462)
+        Me.ControlViewSubjects1.TabIndex = 11
+        '
         'ControlViewAssignedSchedule1
         '
         Me.ControlViewAssignedSchedule1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -515,15 +524,6 @@ Partial Class AdminPage
         Me.ControlViewAssignedSchedule1.Name = "ControlViewAssignedSchedule1"
         Me.ControlViewAssignedSchedule1.Size = New System.Drawing.Size(980, 462)
         Me.ControlViewAssignedSchedule1.TabIndex = 10
-        '
-        'ControlViewSubjects1
-        '
-        Me.ControlViewSubjects1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ControlViewSubjects1.Location = New System.Drawing.Point(3, 26)
-        Me.ControlViewSubjects1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.ControlViewSubjects1.Name = "ControlViewSubjects1"
-        Me.ControlViewSubjects1.Size = New System.Drawing.Size(980, 462)
-        Me.ControlViewSubjects1.TabIndex = 11
         '
         'lblSystemName
         '

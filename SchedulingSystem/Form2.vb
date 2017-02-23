@@ -151,10 +151,13 @@ Public Class AdminPage
     End Sub
 
     Private Sub ButtonItemViewSubjects_Click(sender As System.Object, e As System.EventArgs) Handles ButtonItemViewSubjects.Click
-
+        GroupBoxContainer.Text = "Subjects list"
+        ControlViewAssignedSchedule1.Hide()
+        ControlViewSubjects1.Show()
+        ControlViewSubjects1.Load_Subjects()
     End Sub
 
     Private Sub ButtonItemModifySubjects_Click(sender As System.Object, e As System.EventArgs) Handles ButtonItemModifySubjects.Click
-
+        ManageSchedule.ShowDialog()
     End Sub
 End Class
