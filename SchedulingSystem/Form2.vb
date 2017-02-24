@@ -160,4 +160,12 @@ Public Class AdminPage
     Private Sub ButtonItemModifySubjects_Click(sender As System.Object, e As System.EventArgs) Handles ButtonItemModifySubjects.Click
         ManageSchedule.ShowDialog()
     End Sub
+
+    Private Sub ButtonItemAddSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemAddSchedule.Click
+        AddSchedule.ShowDialog()
+    End Sub
+
+    Private Sub ButtonItemRoomList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemRoomList.Click
+        RoomManagement.ShowDialog()
+    End Sub
 End Class

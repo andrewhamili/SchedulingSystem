@@ -11,7 +11,7 @@ Public Class ControlViewSubjects
         MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
-            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'Subject Description', subj_unit as 'Unit(s)', day AS Day, TIME_FORMAT(TimeFrom, '%H:%i') AS 'Time Start', TIME_FORMAT(TimeTo, '%H:%i') AS 'Time End', room AS Room FROM `subjectlist" & schoolyear & "" & semester & "` ORDER BY room ASC", MySQLConn)
+            comm = New MySqlCommand("SELECT classcode AS Classcode, subj_desc AS 'Subject Description', subj_unit as 'Unit(s)' FROM `subjectlist" & schoolyear & "" & semester & "` ORDER BY room ASC", MySQLConn)
             adapter.SelectCommand = comm
             adapter.Fill(dbdataset)
             DataGridSubjects.DataSource = dbdataset

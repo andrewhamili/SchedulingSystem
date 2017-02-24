@@ -158,7 +158,7 @@ Partial Class AssignSchedule
         '
         'btnSaveSchedule
         '
-        Me.btnSaveSchedule.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSaveSchedule.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnSaveSchedule.Location = New System.Drawing.Point(167, 302)
         Me.btnSaveSchedule.Name = "btnSaveSchedule"
         Me.btnSaveSchedule.Size = New System.Drawing.Size(109, 40)
@@ -220,7 +220,7 @@ Partial Class AssignSchedule
         '
         'btnCancel
         '
-        Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnCancel.Location = New System.Drawing.Point(283, 302)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 40)

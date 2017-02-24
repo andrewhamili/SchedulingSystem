@@ -82,7 +82,7 @@ Class SchoolYearSemester
 
             Try
                 MySQLConn.Open()
-                comm = New MySqlCommand("DROP TABLE `assignedsubj" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DROP TABLE `subjectlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DELETE FROM existingschoolyearsemester WHERE schoolyear=@schoolyear AND semester=@semester;", MySQLConn)
+                comm = New MySqlCommand("DROP TABLE `assignedsubj" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DROP TABLE `subjectlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DROP TABLE `roomlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & ";DELETE FROM existingschoolyearsemester WHERE schoolyear=@schoolyear AND semester=@semester;", MySQLConn)
                 comm.Parameters.AddWithValue("schoolyear", ComboBoxSchoolYear.Text)
                 comm.Parameters.AddWithValue("semester", ComboBoxSemester.Text)
                 comm.ExecuteReader()

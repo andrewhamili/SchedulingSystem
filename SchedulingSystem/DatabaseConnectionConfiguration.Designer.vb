@@ -119,6 +119,8 @@ Partial Class DatabaseConnectionConfiguration
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
+		Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "DatabaseConnectionConfiguration"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DatabaseConnectionConfiguration"
