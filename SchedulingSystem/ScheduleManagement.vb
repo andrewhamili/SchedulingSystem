@@ -220,6 +220,7 @@ Class ManageSchedule
             Dim TimeEnd As DateTime = DateTimePickertimeto.Value.ToString("HH:mm")
 
             Dim span As TimeSpan
+            span = TimeEnd.Subtract(TimeStart)
 
             If answer = Windows.Forms.DialogResult.Yes Then
                 If span.TotalSeconds <= 0 Then
