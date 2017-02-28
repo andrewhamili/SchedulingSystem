@@ -171,7 +171,7 @@ Partial Class UserWindow
         Me.MinimizeBox = False
         Me.Name = "UserWindow"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "UserWindow"
+        Me.Text = "User Window"
         CType(Me.DataGridViewSched, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBoxPrint, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

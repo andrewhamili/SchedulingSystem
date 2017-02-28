@@ -27,6 +27,8 @@ Partial Class ManageSchedule
         Me.Label8 = New System.Windows.Forms.Label()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtUnit = New System.Windows.Forms.Label()
+        Me.txtSubjDesc = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.DateTimePickertimeto = New System.Windows.Forms.DateTimePicker()
@@ -46,8 +48,6 @@ Partial Class ManageSchedule
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtSubjDesc = New System.Windows.Forms.Label()
-        Me.txtUnit = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -107,9 +107,27 @@ Partial Class ManageSchedule
         Me.Panel1.Size = New System.Drawing.Size(428, 421)
         Me.Panel1.TabIndex = 67
         '
+        'txtUnit
+        '
+        Me.txtUnit.Location = New System.Drawing.Point(183, 65)
+        Me.txtUnit.Name = "txtUnit"
+        Me.txtUnit.Size = New System.Drawing.Size(210, 26)
+        Me.txtUnit.TabIndex = 68
+        Me.txtUnit.Text = "Centro Escolar"
+        Me.txtUnit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtSubjDesc
+        '
+        Me.txtSubjDesc.Location = New System.Drawing.Point(183, 18)
+        Me.txtSubjDesc.Name = "txtSubjDesc"
+        Me.txtSubjDesc.Size = New System.Drawing.Size(210, 26)
+        Me.txtSubjDesc.TabIndex = 67
+        Me.txtSubjDesc.Text = "Centro Escolar"
+        Me.txtSubjDesc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(157, 356)
+        Me.btnReset.Location = New System.Drawing.Point(96, 356)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(115, 40)
         Me.btnReset.TabIndex = 66
@@ -118,7 +136,7 @@ Partial Class ManageSchedule
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(278, 310)
+        Me.btnDelete.Location = New System.Drawing.Point(270, 310)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(115, 40)
         Me.btnDelete.TabIndex = 65
@@ -161,7 +179,7 @@ Partial Class ManageSchedule
         '
         'btnCancel1
         '
-        Me.btnCancel1.Location = New System.Drawing.Point(36, 310)
+        Me.btnCancel1.Location = New System.Drawing.Point(229, 356)
         Me.btnCancel1.Name = "btnCancel1"
         Me.btnCancel1.Size = New System.Drawing.Size(115, 40)
         Me.btnCancel1.TabIndex = 61
@@ -170,7 +188,7 @@ Partial Class ManageSchedule
         '
         'btnModify
         '
-        Me.btnModify.Location = New System.Drawing.Point(157, 310)
+        Me.btnModify.Location = New System.Drawing.Point(59, 310)
         Me.btnModify.Name = "btnModify"
         Me.btnModify.Size = New System.Drawing.Size(115, 40)
         Me.btnModify.TabIndex = 60
@@ -290,24 +308,6 @@ Partial Class ManageSchedule
         Me.Label2.Size = New System.Drawing.Size(144, 18)
         Me.Label2.TabIndex = 45
         Me.Label2.Text = "Subject Description"
-        '
-        'txtSubjDesc
-        '
-        Me.txtSubjDesc.Location = New System.Drawing.Point(183, 18)
-        Me.txtSubjDesc.Name = "txtSubjDesc"
-        Me.txtSubjDesc.Size = New System.Drawing.Size(210, 26)
-        Me.txtSubjDesc.TabIndex = 67
-        Me.txtSubjDesc.Text = "Centro Escolar"
-        Me.txtSubjDesc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'txtUnit
-        '
-        Me.txtUnit.Location = New System.Drawing.Point(183, 65)
-        Me.txtUnit.Name = "txtUnit"
-        Me.txtUnit.Size = New System.Drawing.Size(210, 26)
-        Me.txtUnit.TabIndex = 68
-        Me.txtUnit.Text = "Centro Escolar"
-        Me.txtUnit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ManageSchedule
         '

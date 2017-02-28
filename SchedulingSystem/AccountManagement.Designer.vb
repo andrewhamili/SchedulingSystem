@@ -24,17 +24,18 @@ Partial Class AccountManagement
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AccountManagement))
         Me.PanelEditOrDelete = New System.Windows.Forms.Panel()
+        Me.DataGridViewAccounts = New System.Windows.Forms.DataGridView()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.PanelTools = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtFnameEdit = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btn_ClearEdit = New System.Windows.Forms.Button()
         Me.txtUsernameEdit = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtPasswordEdit = New System.Windows.Forms.TextBox()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.txtLnameEdit = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -42,8 +43,7 @@ Partial Class AccountManagement
         Me.Label15 = New System.Windows.Forms.Label()
         Me.txtMnameEdit = New System.Windows.Forms.TextBox()
         Me.txtRetypePasswordEdit = New System.Windows.Forms.TextBox()
-        Me.DataGridViewAccounts = New System.Windows.Forms.DataGridView()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btn_SaveEdit = New System.Windows.Forms.Button()
         Me.BtnClose = New System.Windows.Forms.Button()
         Me.PanelCreate = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -64,194 +64,22 @@ Partial Class AccountManagement
         Me.txtMname = New System.Windows.Forms.TextBox()
         Me.txtRetypePassword = New System.Windows.Forms.TextBox()
         Me.PanelEditOrDelete.SuspendLayout()
-        Me.PanelTools.SuspendLayout()
         CType(Me.DataGridViewAccounts, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelTools.SuspendLayout()
         Me.PanelCreate.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanelEditOrDelete
         '
-        Me.PanelEditOrDelete.Controls.Add(Me.PanelTools)
         Me.PanelEditOrDelete.Controls.Add(Me.DataGridViewAccounts)
         Me.PanelEditOrDelete.Controls.Add(Me.Label1)
+        Me.PanelEditOrDelete.Controls.Add(Me.PanelTools)
         Me.PanelEditOrDelete.Controls.Add(Me.BtnClose)
         Me.PanelEditOrDelete.Location = New System.Drawing.Point(1, 3)
         Me.PanelEditOrDelete.Name = "PanelEditOrDelete"
         Me.PanelEditOrDelete.Size = New System.Drawing.Size(518, 520)
         Me.PanelEditOrDelete.TabIndex = 22
         Me.PanelEditOrDelete.Visible = False
-        '
-        'PanelTools
-        '
-        Me.PanelTools.Controls.Add(Me.Label9)
-        Me.PanelTools.Controls.Add(Me.txtFnameEdit)
-        Me.PanelTools.Controls.Add(Me.Button1)
-        Me.PanelTools.Controls.Add(Me.txtUsernameEdit)
-        Me.PanelTools.Controls.Add(Me.Label10)
-        Me.PanelTools.Controls.Add(Me.Label11)
-        Me.PanelTools.Controls.Add(Me.Button2)
-        Me.PanelTools.Controls.Add(Me.Label12)
-        Me.PanelTools.Controls.Add(Me.txtPasswordEdit)
-        Me.PanelTools.Controls.Add(Me.Button3)
-        Me.PanelTools.Controls.Add(Me.txtLnameEdit)
-        Me.PanelTools.Controls.Add(Me.Label13)
-        Me.PanelTools.Controls.Add(Me.Label14)
-        Me.PanelTools.Controls.Add(Me.ComboBoxUsertypeEdit)
-        Me.PanelTools.Controls.Add(Me.Label15)
-        Me.PanelTools.Controls.Add(Me.txtMnameEdit)
-        Me.PanelTools.Controls.Add(Me.txtRetypePasswordEdit)
-        Me.PanelTools.Location = New System.Drawing.Point(3, 190)
-        Me.PanelTools.Name = "PanelTools"
-        Me.PanelTools.Size = New System.Drawing.Size(515, 343)
-        Me.PanelTools.TabIndex = 21
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(73, 4)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(85, 18)
-        Me.Label9.TabIndex = 31
-        Me.Label9.Text = "First Name"
-        '
-        'txtFnameEdit
-        '
-        Me.txtFnameEdit.Enabled = False
-        Me.txtFnameEdit.Location = New System.Drawing.Point(214, 4)
-        Me.txtFnameEdit.Name = "txtFnameEdit"
-        Me.txtFnameEdit.Size = New System.Drawing.Size(200, 26)
-        Me.txtFnameEdit.TabIndex = 21
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(214, 268)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(97, 44)
-        Me.Button1.TabIndex = 29
-        Me.Button1.Text = "Clear"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'txtUsernameEdit
-        '
-        Me.txtUsernameEdit.Enabled = False
-        Me.txtUsernameEdit.Location = New System.Drawing.Point(214, 103)
-        Me.txtUsernameEdit.Name = "txtUsernameEdit"
-        Me.txtUsernameEdit.Size = New System.Drawing.Size(200, 26)
-        Me.txtUsernameEdit.TabIndex = 24
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(73, 203)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(78, 18)
-        Me.Label10.TabIndex = 37
-        Me.Label10.Text = "User Type"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(73, 73)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(84, 18)
-        Me.Label11.TabIndex = 33
-        Me.Label11.Text = "Last Name"
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(100, 268)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(108, 44)
-        Me.Button2.TabIndex = 28
-        Me.Button2.Text = "Save"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(73, 106)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(80, 18)
-        Me.Label12.TabIndex = 34
-        Me.Label12.Text = "Username"
-        '
-        'txtPasswordEdit
-        '
-        Me.txtPasswordEdit.Location = New System.Drawing.Point(214, 135)
-        Me.txtPasswordEdit.Name = "txtPasswordEdit"
-        Me.txtPasswordEdit.Size = New System.Drawing.Size(200, 26)
-        Me.txtPasswordEdit.TabIndex = 25
-        Me.txtPasswordEdit.UseSystemPasswordChar = True
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(317, 268)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(100, 44)
-        Me.Button3.TabIndex = 30
-        Me.Button3.Text = "Cancel"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'txtLnameEdit
-        '
-        Me.txtLnameEdit.Enabled = False
-        Me.txtLnameEdit.Location = New System.Drawing.Point(214, 70)
-        Me.txtLnameEdit.Name = "txtLnameEdit"
-        Me.txtLnameEdit.Size = New System.Drawing.Size(200, 26)
-        Me.txtLnameEdit.TabIndex = 23
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(73, 170)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(136, 18)
-        Me.Label13.TabIndex = 36
-        Me.Label13.Text = "Re-type Password"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(73, 40)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(101, 18)
-        Me.Label14.TabIndex = 32
-        Me.Label14.Text = "Middle Name"
-        '
-        'ComboBoxUsertypeEdit
-        '
-        Me.ComboBoxUsertypeEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxUsertypeEdit.FormattingEnabled = True
-        Me.ComboBoxUsertypeEdit.Items.AddRange(New Object() {"Administrator", "User"})
-        Me.ComboBoxUsertypeEdit.Location = New System.Drawing.Point(213, 200)
-        Me.ComboBoxUsertypeEdit.Name = "ComboBoxUsertypeEdit"
-        Me.ComboBoxUsertypeEdit.Size = New System.Drawing.Size(200, 26)
-        Me.ComboBoxUsertypeEdit.TabIndex = 27
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(73, 138)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(78, 18)
-        Me.Label15.TabIndex = 35
-        Me.Label15.Text = "Password"
-        '
-        'txtMnameEdit
-        '
-        Me.txtMnameEdit.Enabled = False
-        Me.txtMnameEdit.Location = New System.Drawing.Point(214, 37)
-        Me.txtMnameEdit.Name = "txtMnameEdit"
-        Me.txtMnameEdit.Size = New System.Drawing.Size(200, 26)
-        Me.txtMnameEdit.TabIndex = 22
-        '
-        'txtRetypePasswordEdit
-        '
-        Me.txtRetypePasswordEdit.Location = New System.Drawing.Point(214, 167)
-        Me.txtRetypePasswordEdit.Name = "txtRetypePasswordEdit"
-        Me.txtRetypePasswordEdit.Size = New System.Drawing.Size(200, 26)
-        Me.txtRetypePasswordEdit.TabIndex = 26
-        Me.txtRetypePasswordEdit.UseSystemPasswordChar = True
         '
         'DataGridViewAccounts
         '
@@ -277,6 +105,178 @@ Partial Class AccountManagement
         Me.Label1.Size = New System.Drawing.Size(477, 18)
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "Double-click a row to edit (Only Password and User type is editable)"
+        '
+        'PanelTools
+        '
+        Me.PanelTools.Controls.Add(Me.Label9)
+        Me.PanelTools.Controls.Add(Me.txtFnameEdit)
+        Me.PanelTools.Controls.Add(Me.btn_ClearEdit)
+        Me.PanelTools.Controls.Add(Me.txtUsernameEdit)
+        Me.PanelTools.Controls.Add(Me.Label10)
+        Me.PanelTools.Controls.Add(Me.Label11)
+        Me.PanelTools.Controls.Add(Me.Label12)
+        Me.PanelTools.Controls.Add(Me.txtPasswordEdit)
+        Me.PanelTools.Controls.Add(Me.btn_Cancel)
+        Me.PanelTools.Controls.Add(Me.txtLnameEdit)
+        Me.PanelTools.Controls.Add(Me.Label13)
+        Me.PanelTools.Controls.Add(Me.Label14)
+        Me.PanelTools.Controls.Add(Me.ComboBoxUsertypeEdit)
+        Me.PanelTools.Controls.Add(Me.Label15)
+        Me.PanelTools.Controls.Add(Me.txtMnameEdit)
+        Me.PanelTools.Controls.Add(Me.txtRetypePasswordEdit)
+        Me.PanelTools.Controls.Add(Me.btn_SaveEdit)
+        Me.PanelTools.Location = New System.Drawing.Point(3, 190)
+        Me.PanelTools.Name = "PanelTools"
+        Me.PanelTools.Size = New System.Drawing.Size(515, 343)
+        Me.PanelTools.TabIndex = 21
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(109, 16)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(85, 18)
+        Me.Label9.TabIndex = 31
+        Me.Label9.Text = "First Name"
+        '
+        'txtFnameEdit
+        '
+        Me.txtFnameEdit.Enabled = False
+        Me.txtFnameEdit.Location = New System.Drawing.Point(214, 13)
+        Me.txtFnameEdit.Name = "txtFnameEdit"
+        Me.txtFnameEdit.Size = New System.Drawing.Size(200, 26)
+        Me.txtFnameEdit.TabIndex = 21
+        '
+        'btn_ClearEdit
+        '
+        Me.btn_ClearEdit.Location = New System.Drawing.Point(214, 268)
+        Me.btn_ClearEdit.Name = "btn_ClearEdit"
+        Me.btn_ClearEdit.Size = New System.Drawing.Size(97, 44)
+        Me.btn_ClearEdit.TabIndex = 29
+        Me.btn_ClearEdit.Text = "Clear"
+        Me.btn_ClearEdit.UseVisualStyleBackColor = True
+        '
+        'txtUsernameEdit
+        '
+        Me.txtUsernameEdit.Enabled = False
+        Me.txtUsernameEdit.Location = New System.Drawing.Point(214, 112)
+        Me.txtUsernameEdit.Name = "txtUsernameEdit"
+        Me.txtUsernameEdit.Size = New System.Drawing.Size(200, 26)
+        Me.txtUsernameEdit.TabIndex = 24
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(115, 212)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(78, 18)
+        Me.Label10.TabIndex = 37
+        Me.Label10.Text = "User Type"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(109, 82)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(84, 18)
+        Me.Label11.TabIndex = 33
+        Me.Label11.Text = "Last Name"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(113, 115)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(80, 18)
+        Me.Label12.TabIndex = 34
+        Me.Label12.Text = "Username"
+        '
+        'txtPasswordEdit
+        '
+        Me.txtPasswordEdit.Location = New System.Drawing.Point(214, 144)
+        Me.txtPasswordEdit.Name = "txtPasswordEdit"
+        Me.txtPasswordEdit.Size = New System.Drawing.Size(200, 26)
+        Me.txtPasswordEdit.TabIndex = 25
+        Me.txtPasswordEdit.UseSystemPasswordChar = True
+        '
+        'btn_Cancel
+        '
+        Me.btn_Cancel.Location = New System.Drawing.Point(317, 268)
+        Me.btn_Cancel.Name = "btn_Cancel"
+        Me.btn_Cancel.Size = New System.Drawing.Size(100, 44)
+        Me.btn_Cancel.TabIndex = 30
+        Me.btn_Cancel.Text = "Cancel"
+        Me.btn_Cancel.UseVisualStyleBackColor = True
+        '
+        'txtLnameEdit
+        '
+        Me.txtLnameEdit.Enabled = False
+        Me.txtLnameEdit.Location = New System.Drawing.Point(214, 79)
+        Me.txtLnameEdit.Name = "txtLnameEdit"
+        Me.txtLnameEdit.Size = New System.Drawing.Size(200, 26)
+        Me.txtLnameEdit.TabIndex = 23
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(57, 179)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(136, 18)
+        Me.Label13.TabIndex = 36
+        Me.Label13.Text = "Re-type Password"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(93, 49)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(101, 18)
+        Me.Label14.TabIndex = 32
+        Me.Label14.Text = "Middle Name"
+        '
+        'ComboBoxUsertypeEdit
+        '
+        Me.ComboBoxUsertypeEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxUsertypeEdit.FormattingEnabled = True
+        Me.ComboBoxUsertypeEdit.Items.AddRange(New Object() {"Administrator", "User"})
+        Me.ComboBoxUsertypeEdit.Location = New System.Drawing.Point(213, 209)
+        Me.ComboBoxUsertypeEdit.Name = "ComboBoxUsertypeEdit"
+        Me.ComboBoxUsertypeEdit.Size = New System.Drawing.Size(200, 26)
+        Me.ComboBoxUsertypeEdit.TabIndex = 27
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(113, 147)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(78, 18)
+        Me.Label15.TabIndex = 35
+        Me.Label15.Text = "Password"
+        '
+        'txtMnameEdit
+        '
+        Me.txtMnameEdit.Enabled = False
+        Me.txtMnameEdit.Location = New System.Drawing.Point(214, 46)
+        Me.txtMnameEdit.Name = "txtMnameEdit"
+        Me.txtMnameEdit.Size = New System.Drawing.Size(200, 26)
+        Me.txtMnameEdit.TabIndex = 22
+        '
+        'txtRetypePasswordEdit
+        '
+        Me.txtRetypePasswordEdit.Location = New System.Drawing.Point(214, 176)
+        Me.txtRetypePasswordEdit.Name = "txtRetypePasswordEdit"
+        Me.txtRetypePasswordEdit.Size = New System.Drawing.Size(200, 26)
+        Me.txtRetypePasswordEdit.TabIndex = 26
+        Me.txtRetypePasswordEdit.UseSystemPasswordChar = True
+        '
+        'btn_SaveEdit
+        '
+        Me.btn_SaveEdit.Location = New System.Drawing.Point(100, 268)
+        Me.btn_SaveEdit.Name = "btn_SaveEdit"
+        Me.btn_SaveEdit.Size = New System.Drawing.Size(108, 44)
+        Me.btn_SaveEdit.TabIndex = 28
+        Me.btn_SaveEdit.Text = "Save"
+        Me.btn_SaveEdit.UseVisualStyleBackColor = True
         '
         'BtnClose
         '
@@ -315,7 +315,7 @@ Partial Class AccountManagement
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(60, 120)
+        Me.Label2.Location = New System.Drawing.Point(108, 82)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(85, 18)
         Me.Label2.TabIndex = 14
@@ -323,14 +323,14 @@ Partial Class AccountManagement
         '
         'txtFname
         '
-        Me.txtFname.Location = New System.Drawing.Point(201, 120)
+        Me.txtFname.Location = New System.Drawing.Point(223, 78)
         Me.txtFname.Name = "txtFname"
         Me.txtFname.Size = New System.Drawing.Size(200, 26)
         Me.txtFname.TabIndex = 1
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(229, 363)
+        Me.btnDelete.Location = New System.Drawing.Point(229, 394)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(97, 44)
         Me.btnDelete.TabIndex = 11
@@ -339,7 +339,7 @@ Partial Class AccountManagement
         '
         'txtUsername
         '
-        Me.txtUsername.Location = New System.Drawing.Point(201, 219)
+        Me.txtUsername.Location = New System.Drawing.Point(223, 209)
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.Size = New System.Drawing.Size(200, 26)
         Me.txtUsername.TabIndex = 5
@@ -347,7 +347,7 @@ Partial Class AccountManagement
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(60, 319)
+        Me.Label8.Location = New System.Drawing.Point(112, 343)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(78, 18)
         Me.Label8.TabIndex = 20
@@ -356,7 +356,7 @@ Partial Class AccountManagement
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(60, 189)
+        Me.Label4.Location = New System.Drawing.Point(108, 169)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(84, 18)
         Me.Label4.TabIndex = 16
@@ -364,7 +364,7 @@ Partial Class AccountManagement
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(115, 363)
+        Me.btnSave.Location = New System.Drawing.Point(115, 394)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(108, 44)
         Me.btnSave.TabIndex = 9
@@ -374,7 +374,7 @@ Partial Class AccountManagement
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(60, 222)
+        Me.Label5.Location = New System.Drawing.Point(112, 212)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(80, 18)
         Me.Label5.TabIndex = 17
@@ -382,7 +382,7 @@ Partial Class AccountManagement
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(201, 251)
+        Me.txtPassword.Location = New System.Drawing.Point(223, 252)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(200, 26)
         Me.txtPassword.TabIndex = 6
@@ -390,7 +390,7 @@ Partial Class AccountManagement
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(332, 363)
+        Me.btnCancel.Location = New System.Drawing.Point(332, 394)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(100, 44)
         Me.btnCancel.TabIndex = 13
@@ -399,7 +399,7 @@ Partial Class AccountManagement
         '
         'txtLname
         '
-        Me.txtLname.Location = New System.Drawing.Point(201, 186)
+        Me.txtLname.Location = New System.Drawing.Point(223, 166)
         Me.txtLname.Name = "txtLname"
         Me.txtLname.Size = New System.Drawing.Size(200, 26)
         Me.txtLname.TabIndex = 4
@@ -407,7 +407,7 @@ Partial Class AccountManagement
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(60, 286)
+        Me.Label7.Location = New System.Drawing.Point(54, 298)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(136, 18)
         Me.Label7.TabIndex = 19
@@ -416,7 +416,7 @@ Partial Class AccountManagement
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(60, 156)
+        Me.Label3.Location = New System.Drawing.Point(92, 124)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(101, 18)
         Me.Label3.TabIndex = 15
@@ -427,7 +427,7 @@ Partial Class AccountManagement
         Me.ComboBoxUsertype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxUsertype.FormattingEnabled = True
         Me.ComboBoxUsertype.Items.AddRange(New Object() {"Administrator", "User"})
-        Me.ComboBoxUsertype.Location = New System.Drawing.Point(200, 316)
+        Me.ComboBoxUsertype.Location = New System.Drawing.Point(222, 339)
         Me.ComboBoxUsertype.Name = "ComboBoxUsertype"
         Me.ComboBoxUsertype.Size = New System.Drawing.Size(200, 26)
         Me.ComboBoxUsertype.TabIndex = 8
@@ -435,7 +435,7 @@ Partial Class AccountManagement
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(60, 254)
+        Me.Label6.Location = New System.Drawing.Point(112, 255)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(78, 18)
         Me.Label6.TabIndex = 18
@@ -443,14 +443,14 @@ Partial Class AccountManagement
         '
         'txtMname
         '
-        Me.txtMname.Location = New System.Drawing.Point(201, 153)
+        Me.txtMname.Location = New System.Drawing.Point(223, 121)
         Me.txtMname.Name = "txtMname"
         Me.txtMname.Size = New System.Drawing.Size(200, 26)
         Me.txtMname.TabIndex = 2
         '
         'txtRetypePassword
         '
-        Me.txtRetypePassword.Location = New System.Drawing.Point(201, 283)
+        Me.txtRetypePassword.Location = New System.Drawing.Point(223, 294)
         Me.txtRetypePassword.Name = "txtRetypePassword"
         Me.txtRetypePassword.Size = New System.Drawing.Size(200, 26)
         Me.txtRetypePassword.TabIndex = 7
@@ -470,12 +470,12 @@ Partial Class AccountManagement
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "AccountManagement"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AccountManagement"
+        Me.Text = "Account Management"
         Me.PanelEditOrDelete.ResumeLayout(False)
         Me.PanelEditOrDelete.PerformLayout()
+        CType(Me.DataGridViewAccounts, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelTools.ResumeLayout(False)
         Me.PanelTools.PerformLayout()
-        CType(Me.DataGridViewAccounts, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelCreate.ResumeLayout(False)
         Me.PanelCreate.PerformLayout()
         Me.ResumeLayout(False)
@@ -505,14 +505,14 @@ Partial Class AccountManagement
     Friend WithEvents txtRetypePassword As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents txtFnameEdit As System.Windows.Forms.TextBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btn_ClearEdit As System.Windows.Forms.Button
     Friend WithEvents txtUsernameEdit As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btn_SaveEdit As System.Windows.Forms.Button
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents txtPasswordEdit As System.Windows.Forms.TextBox
-    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents btn_Cancel As System.Windows.Forms.Button
     Friend WithEvents txtLnameEdit As System.Windows.Forms.TextBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label

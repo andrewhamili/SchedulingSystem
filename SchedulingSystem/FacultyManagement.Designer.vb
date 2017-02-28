@@ -39,7 +39,6 @@ Partial Class FacultyManagement
         Me.txt_SchoolCollege = New System.Windows.Forms.TextBox()
         Me.btn_Delete = New System.Windows.Forms.Button()
         Me.btn_Clear = New System.Windows.Forms.Button()
-        Me.DomainUpDown1 = New System.Windows.Forms.DomainUpDown()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewFaculty, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -47,7 +46,7 @@ Partial Class FacultyManagement
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(50, 65)
+        Me.Label1.Location = New System.Drawing.Point(54, 66)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(85, 18)
         Me.Label1.TabIndex = 0
@@ -56,7 +55,7 @@ Partial Class FacultyManagement
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(32, 94)
+        Me.Label2.Location = New System.Drawing.Point(38, 95)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(101, 18)
         Me.Label2.TabIndex = 1
@@ -91,7 +90,7 @@ Partial Class FacultyManagement
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(51, 122)
+        Me.Label3.Location = New System.Drawing.Point(55, 124)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(84, 18)
         Me.Label3.TabIndex = 3
@@ -109,7 +108,7 @@ Partial Class FacultyManagement
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(34, 36)
+        Me.Label4.Location = New System.Drawing.Point(45, 38)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(97, 18)
         Me.Label4.TabIndex = 5
@@ -196,31 +195,12 @@ Partial Class FacultyManagement
         Me.btn_Clear.Text = "Clear"
         Me.btn_Clear.UseVisualStyleBackColor = True
         '
-        'DomainUpDown1
-        '
-        Me.DomainUpDown1.Items.Add("1")
-        Me.DomainUpDown1.Items.Add("2")
-        Me.DomainUpDown1.Items.Add("3")
-        Me.DomainUpDown1.Items.Add("4")
-        Me.DomainUpDown1.Items.Add("5")
-        Me.DomainUpDown1.Items.Add("6")
-        Me.DomainUpDown1.Items.Add("7")
-        Me.DomainUpDown1.Items.Add("8")
-        Me.DomainUpDown1.Items.Add("9")
-        Me.DomainUpDown1.Items.Add("10")
-        Me.DomainUpDown1.Location = New System.Drawing.Point(418, 106)
-        Me.DomainUpDown1.Name = "DomainUpDown1"
-        Me.DomainUpDown1.Size = New System.Drawing.Size(120, 26)
-        Me.DomainUpDown1.TabIndex = 18
-        Me.DomainUpDown1.Text = "DomainUpDown1"
-        '
         'FacultyManagement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(903, 463)
-        Me.Controls.Add(Me.DomainUpDown1)
         Me.Controls.Add(Me.btn_Clear)
         Me.Controls.Add(Me.btn_Delete)
         Me.Controls.Add(Me.txt_SchoolCollege)
@@ -238,7 +218,7 @@ Partial Class FacultyManagement
         Me.Controls.Add(Me.btn_Save)
         Me.Controls.Add(Me.btn_Update)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FacultyManagement"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Faculty Registration"
@@ -266,5 +246,4 @@ Partial Class FacultyManagement
     Friend WithEvents txt_SchoolCollege As TextBox
     Friend WithEvents btn_Delete As System.Windows.Forms.Button
     Friend WithEvents btn_Clear As System.Windows.Forms.Button
-    Friend WithEvents DomainUpDown1 As System.Windows.Forms.DomainUpDown
 End Class

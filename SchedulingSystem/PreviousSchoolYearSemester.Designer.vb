@@ -37,7 +37,7 @@ Partial Class PreviousSchoolYearSemester
         Me.Label1.Font = New System.Drawing.Font("Arial Black", 12.0!)
         Me.Label1.Location = New System.Drawing.Point(78, 81)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(112, 23)
+        Me.Label1.Size = New System.Drawing.Size(110, 23)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "SchoolYear"
         '
@@ -106,7 +106,7 @@ Partial Class PreviousSchoolYearSemester
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "PreviousSchoolYearSemester"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "PreviousSchoolYearSemester"
+        Me.Text = "Copy schedule from previous semester"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

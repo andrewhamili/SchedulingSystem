@@ -43,21 +43,25 @@ Class AccountManagement
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
-        If Not (txtFname.Text="" And txtMname.Text="" And txtLname.Text="" And txtUsername.Text="" And txtPassword.Text="" And txtRetypePassword.Text="" And ComboBoxUsertype.Text="")
-            Dim confirm As DialogResult = MessageBox.Show(Me, "Changes will not be saved. Are you sure you want to close this window?", systemTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-            If confirm=DialogResult.Yes Then
+        If Not (txtFnameEdit.Text = "" And txtMnameEdit.Text = "" And txtLnameEdit.Text = "" And txtUsernameEdit.Text = "" And txtPasswordEdit.Text = "" And txtRetypePasswordEdit.Text = "" And ComboBoxUsertypeEdit.Text = "") Then
+            Dim confirm As DialogResult = MessageBox.Show(Me, "Changes will not be saved. Are you sure you want to close this window?", SystemTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            If confirm = DialogResult.Yes Then
                 Me.Dispose()
             End If
         Else
             Me.Dispose()
         End If
     End Sub
-    Public Sub EditUser()
-        If txtPassword.Text = "" Then
+    Private Sub btn_SaveEdit_Click(sender As System.Object, e As System.EventArgs) Handles btn_SaveEdit.Click
+        If txtPasswordEdit.Text = "" Then
             MsgBox("Password cannot be blank!", MsgBoxStyle.Critical, SystemTitle)
             Exit Sub
         End If
-        If txtPassword.Text <> txtRetypePassword.Text Then
+        If txtFnameEdit.Text = "" Or txtLnameEdit.Text = "" Or txtMnameEdit.Text = "" Or txtUsernameEdit.Text = "" Then
+            MsgBox("Please select an account.", MsgBoxStyle.Critical, SystemTitle)
+            Exit Sub
+        End If
+        If txtPasswordEdit.Text <> txtRetypePasswordEdit.Text Then
             MsgBox("The Passwords do not match!", MsgBoxStyle.Critical, SystemTitle)
             Exit Sub
         End If
@@ -68,21 +72,23 @@ Class AccountManagement
         Try
             MySQLConn.Open()
             comm = New MySqlCommand("UPDATE userlist SET password=sha2(@password,512),  usertype=@usertype WHERE username=@username;", MySQLConn)
-            comm.Parameters.AddWithValue("password", txtRetypePassword.Text)
-            comm.Parameters.AddWithValue("usertype", ComboBoxUsertype.Text)
-            comm.Parameters.AddWithValue("username", txtUsername.Text)
+            comm.Parameters.AddWithValue("password", txtRetypePasswordEdit.Text)
+            comm.Parameters.AddWithValue("usertype", ComboBoxUsertypeEdit.Text)
+            comm.Parameters.AddWithValue("username", txtUsernameEdit.Text)
             comm.ExecuteReader()
             MsgBox("The Account has been successfully updated!", MsgBoxStyle.Information, SystemTitle)
             EntryText = ""
-            txtFname.Text = ""
-            txtMname.Text = ""
-            txtLname.Text = ""
-            txtUsername.Text = ""
-            txtPassword.Text = ""
-            txtRetypePassword.Text = ""
+            txtFnameEdit.Text = ""
+            txtMnameEdit.Text = ""
+            txtLnameEdit.Text = ""
+            txtUsernameEdit.Text = ""
+            txtPasswordEdit.Text = ""
+            txtRetypePasswordEdit.Text = ""
             DataGridViewAccounts.Enabled = True
             MySQLConn.Close()
             Load_Accounts()
+            PanelTools.Hide()
+
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
@@ -90,26 +96,26 @@ Class AccountManagement
         End Try
     End Sub
 
-    Private Sub DataGridViewAccounts_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
-        If e.RowIndex >= 0 Then
-            PanelTools.Show()
-            Dim row As DataGridViewRow = DataGridViewAccounts.Rows(e.RowIndex)
-            txtFname.Text = row.Cells("First Name").Value
-            txtMname.Text = row.Cells("Middle Name").Value
-            txtLname.Text = row.Cells("Last Name").Value
-            txtUsername.Text = row.Cells("Username").Value
-            ComboBoxUsertype.Text = row.Cells("User Type").Value
-            txtFname.Enabled = False
-            txtMname.Enabled = False
-            txtLname.Enabled = False
-            txtUsername.Enabled = False
-            DataGridViewAccounts.Enabled = False
-            EntryText = "Edit"
-        End If
-    End Sub
-    Public Sub CreateUser()
+    'Private Sub DataGridViewAccounts_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
+    '    If e.RowIndex >= 0 Then
+    '        PanelTools.Show()
+    '        Dim row As DataGridViewRow = DataGridViewAccounts.Rows(e.RowIndex)
+    '        txtFname.Text = row.Cells("First Name").Value
+    '        txtMname.Text = row.Cells("Middle Name").Value
+    '        txtLname.Text = row.Cells("Last Name").Value
+    '        txtUsername.Text = row.Cells("Username").Value
+    '        ComboBoxUsertype.Text = row.Cells("User Type").Value
+    '        txtFname.Enabled = False
+    '        txtMname.Enabled = False
+    '        txtLname.Enabled = False
+    '        txtUsername.Enabled = False
+    '        DataGridViewAccounts.Enabled = False
+    '        EntryText = "Edit"
+    '    End If
+    'End Sub
+    Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
         If txtFname.Text = "" Or txtLname.Text = "" Or txtUsername.Text = "" Or txtPassword.Text = "" Or ComboBoxUsertype.Text = "" Then
-            MsgBox("Please complete th fields", MsgBoxStyle.Critical, SystemTitle)
+            MsgBox("Please complete the fields", MsgBoxStyle.Critical, SystemTitle)
         ElseIf txtPassword.Text <> txtRetypePassword.Text Then
             MsgBox("The passwords do not match!", MsgBoxStyle.Critical, SystemTitle)
         Else
@@ -141,7 +147,6 @@ Class AccountManagement
                 ComboBoxUsertype.Text = ""
                 MySQLConn.Close()
                 Load_Accounts()
-                MySQLConn.Close()
             Catch ex As Exception
                 MsgBox(ex.Message)
             Finally
@@ -151,14 +156,15 @@ Class AccountManagement
     End Sub
 
 
-    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
-        txtFname.Text = ""
-        txtMname.Text = ""
-        txtLname.Text = ""
-        txtUsername.Text = ""
-        txtPassword.Text = ""
-        txtRetypePassword.Text = ""
-        txtFname.Focus
+    Private Sub btn_ClearEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_ClearEdit.Click
+        txtFnameEdit.Text = ""
+        txtMnameEdit.Text = ""
+        txtLnameEdit.Text = ""
+        txtUsernameEdit.Text = ""
+        txtPasswordEdit.Text = ""
+        txtRetypePasswordEdit.Text = ""
+
+        txtFnameEdit.Focus()
     End Sub
 
     Private Sub DataGridViewAccounts_CellDoubleClick1(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewAccounts.CellDoubleClick
@@ -175,5 +181,20 @@ Class AccountManagement
 
     Private Sub BtnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnClose.Click
         Dispose()
+    End Sub
+
+    Private Sub btn_Cancel_Click(sender As System.Object, e As System.EventArgs) Handles btn_Cancel.Click
+        Me.Close()
+    End Sub
+
+    Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
+        txtFname.Text = ""
+        txtMname.Text = ""
+        txtLname.Text = ""
+        txtUsername.Text = ""
+        txtPassword.Text = ""
+        txtRetypePassword.Text = ""
+        ComboBoxUsertype.Text = ""
+        txtFname.Focus()
     End Sub
 End Class
