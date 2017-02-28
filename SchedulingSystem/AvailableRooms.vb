@@ -4,7 +4,13 @@ Public Class AvailableRooms
     Public day As String
 
     Private Sub AvailableRooms_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
-        Me.Dispose()
+        If usertype = "Guest" Then
+            Me.Dispose()
+            LoginPage.Show()
+            LoginPage.tboxusername.Focus()
+        Else
+            Me.Dispose()
+        End If
     End Sub
     Private Sub AvailableRooms_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         CancelButton = btnClose

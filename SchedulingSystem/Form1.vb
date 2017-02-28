@@ -66,6 +66,8 @@ Public Class LoginPage
                         AdminPage.Show()
                         Status = True
                         'UpForm.Show()
+                    ElseIf usertype = "Guest" Then
+                        AvailableRooms.Show()
                     Else
                         UserWindow.instrname = UserPageName
                         UserWindow.Show()

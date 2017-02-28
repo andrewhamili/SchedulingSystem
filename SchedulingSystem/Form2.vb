@@ -25,6 +25,8 @@ Public Class AdminPage
         ControlViewAssignedSchedule1.Hide()
         GroupBoxContainer.Text = ""
         TimerTimeAndDate.Enabled = True
+        ButtonItemViewAssignedSched.RaiseClick()
+        ControlViewAssignedSchedule1.Hide()
     End Sub
 
     Private Sub btnChangeSchoolyearSemester_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -101,7 +103,7 @@ Public Class AdminPage
         AccountManagement.ShowDialog()
     End Sub
 
-    Private Sub ExplorerBarGroupItemFacultyManagement_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ExplorerBarGroupItemFacultyManagement.Click
+    Private Sub ExplorerBarGroupItemFacultyManagement_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         FacultyManagement.ShowDialog()
     End Sub
 
@@ -155,6 +157,7 @@ Public Class AdminPage
         ControlViewAssignedSchedule1.Hide()
         ControlViewSubjects1.Show()
         ControlViewSubjects1.Load_Subjects()
+        lblNavigate.SendToBack()
     End Sub
 
     Private Sub ButtonItemModifySubjects_Click(sender As System.Object, e As System.EventArgs) Handles ButtonItemModifySubjects.Click
@@ -165,7 +168,8 @@ Public Class AdminPage
         AddSchedule.ShowDialog()
     End Sub
 
-    Private Sub ButtonItemRoomList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemRoomList.Click
+    Private Sub ExplorerBarGroupItemRoomList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExplorerBarGroupItemRoomList.Click
         RoomManagement.ShowDialog()
     End Sub
+
 End Class
