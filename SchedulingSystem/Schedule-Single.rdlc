@@ -806,37 +806,6 @@
         </Style>
       </Textbox>
       <Rectangle Name="Rectangle1">
-        <ReportItems>
-          <Textbox Name="Textbox13">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Room</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox13</rd:DefaultName>
-            <Top>0.31584in</Top>
-            <Left>0.55222in</Left>
-            <Height>0.25in</Height>
-            <Width>1in</Width>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-        </ReportItems>
         <PageBreak>
           <BreakLocation>End</BreakLocation>
         </PageBreak>

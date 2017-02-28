@@ -39,6 +39,7 @@ Partial Class FacultyManagement
         Me.txt_SchoolCollege = New System.Windows.Forms.TextBox()
         Me.btn_Delete = New System.Windows.Forms.Button()
         Me.btn_Clear = New System.Windows.Forms.Button()
+        Me.DomainUpDown1 = New System.Windows.Forms.DomainUpDown()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewFaculty, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -195,12 +196,31 @@ Partial Class FacultyManagement
         Me.btn_Clear.Text = "Clear"
         Me.btn_Clear.UseVisualStyleBackColor = True
         '
+        'DomainUpDown1
+        '
+        Me.DomainUpDown1.Items.Add("1")
+        Me.DomainUpDown1.Items.Add("2")
+        Me.DomainUpDown1.Items.Add("3")
+        Me.DomainUpDown1.Items.Add("4")
+        Me.DomainUpDown1.Items.Add("5")
+        Me.DomainUpDown1.Items.Add("6")
+        Me.DomainUpDown1.Items.Add("7")
+        Me.DomainUpDown1.Items.Add("8")
+        Me.DomainUpDown1.Items.Add("9")
+        Me.DomainUpDown1.Items.Add("10")
+        Me.DomainUpDown1.Location = New System.Drawing.Point(418, 106)
+        Me.DomainUpDown1.Name = "DomainUpDown1"
+        Me.DomainUpDown1.Size = New System.Drawing.Size(120, 26)
+        Me.DomainUpDown1.TabIndex = 18
+        Me.DomainUpDown1.Text = "DomainUpDown1"
+        '
         'FacultyManagement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(903, 463)
+        Me.Controls.Add(Me.DomainUpDown1)
         Me.Controls.Add(Me.btn_Clear)
         Me.Controls.Add(Me.btn_Delete)
         Me.Controls.Add(Me.txt_SchoolCollege)
@@ -246,4 +266,5 @@ Partial Class FacultyManagement
     Friend WithEvents txt_SchoolCollege As TextBox
     Friend WithEvents btn_Delete As System.Windows.Forms.Button
     Friend WithEvents btn_Clear As System.Windows.Forms.Button
+    Friend WithEvents DomainUpDown1 As System.Windows.Forms.DomainUpDown
 End Class
