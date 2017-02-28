@@ -46,11 +46,11 @@ Class SchoolYearSemester
             If count > 0 Then
                 MsgBox("Error creating the School Year and Semester because it already exists!", MsgBoxStyle.Exclamation, SystemTitle)
             Else
-                Dim copyexist As DialogResult = MsgBox("Do you want to copy subjects from a previous School Year and Semester?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
+                Dim copyexist As DialogResult = MsgBox("Do you want to copy subjects from a previous School Year and Semester?" & vbNewLine & vbNewLine & vbNewLine & "Choosing ""Yes"", a window will appear that you can choose where to copy an semester record to the selected semester in this window." & vbNewLine & vbNewLine & "Choosing ""No"", the system will create a new semester with no data." & vbNewLine & vbNewLine & "Choosing ""Cancel"" will only close this confirmation dialog box.", MsgBoxStyle.Question + MsgBoxStyle.YesNoCancel, SystemTitle)
                 If copyexist = DialogResult.Yes Then
                     Me.Hide()
                     PreviousSchoolYearSemester.ShowDialog()
-                Else
+                ElseIf copyexist = DialogResult.No Then
                     MySQLConn.Open()
                     comm = New MySqlCommand("CREATE TABLE `subjectlist" & ComboBoxSchoolYear.Text + ComboBoxSemester.Text & "` LIKE subjectlist;CREATE TABLE `assignedsubj" & ComboBoxSchoolYear.Text + ComboBoxSemester.Text & "` LIKE assignedsubj;CREATE TABLE `roomlist" & ComboBoxSchoolYear.Text + ComboBoxSemester.Text & "` LIKE roomlist;", MySQLConn)
                     comm.ExecuteReader()
@@ -63,6 +63,8 @@ Class SchoolYearSemester
                     comm.ExecuteReader()
                     MsgBox("The School Year and Semester has been successfully created. You can now Load it by clicking the 'Load' Button.", MsgBoxStyle.Information, SystemTitle)
                     MySQLConn.Close()
+                Else
+                    'Do Nothing because the user clicked cancel
                 End If
             End If
         Catch ex As Exception
@@ -82,12 +84,19 @@ Class SchoolYearSemester
 
             Try
                 MySQLConn.Open()
-                comm = New MySqlCommand("DROP TABLE `assignedsubj" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DROP TABLE `subjectlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DROP TABLE `roomlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & ";DELETE FROM existingschoolyearsemester WHERE schoolyear=@schoolyear AND semester=@semester;", MySQLConn)
+                comm = New MySqlCommand("DROP TABLE `assignedsubj" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DROP TABLE `subjectlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DROP TABLE `roomlist" & ComboBoxSchoolYear.Text & "" & ComboBoxSemester.Text & "`;DELETE FROM existingschoolyearsemester WHERE schoolyear=@schoolyear AND semester=@semester;", MySQLConn)
                 comm.Parameters.AddWithValue("schoolyear", ComboBoxSchoolYear.Text)
                 comm.Parameters.AddWithValue("semester", ComboBoxSemester.Text)
                 comm.ExecuteReader()
                 MsgBox("The School Year and Semester has been successfully deleted!", MsgBoxStyle.Information, SystemTitle)
                 MySQLConn.Close()
+            Catch ex As MySqlException
+                If ex.Number = 1051 Then
+                    MsgBox("The semester you are trying to delete doesn't exist.", MsgBoxStyle.Critical, SystemTitle)
+                Else
+                    MsgBox(ex.Number, MsgBoxStyle.Critical, SystemTitle)
+                End If
+
             Catch ex As Exception
                 MsgBox(ex.Message)
             Finally

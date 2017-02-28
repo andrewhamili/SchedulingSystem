@@ -59,7 +59,7 @@ Partial Class AdminPage
         'lblName
         '
         Me.lblName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblName.AutoSize = True
         Me.lblName.Font = New System.Drawing.Font("Arial", 14.0!, System.Drawing.FontStyle.Bold)
         Me.lblName.ForeColor = System.Drawing.Color.Green
@@ -75,7 +75,7 @@ Partial Class AdminPage
         '
         Me.ExplorerBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar
         Me.ExplorerBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ExplorerBar1.BackColor = System.Drawing.SystemColors.Control
         '
         '
@@ -111,12 +111,13 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemSchedule.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ExplorerBarGroupItemSchedule.Cursor = System.Windows.Forms.Cursors.Default
         Me.ExplorerBarGroupItemSchedule.ExpandBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
+        Me.ExplorerBarGroupItemSchedule.Expanded = True
         Me.ExplorerBarGroupItemSchedule.ExpandForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(165, Byte), Integer))
         Me.ExplorerBarGroupItemSchedule.ExpandHotBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(182, Byte), Integer), CType(CType(216, Byte), Integer))
         Me.ExplorerBarGroupItemSchedule.ExpandHotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.ExplorerBarGroupItemSchedule.Image = Global.SchedulingSystem.My.Resources.Resources.clock1
         Me.ExplorerBarGroupItemSchedule.Name = "ExplorerBarGroupItemSchedule"
-        Me.ExplorerBarGroupItemSchedule.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemViewAssignedSched, Me.ButtonAssignSched, Me.ButtonItemAddSchedule, Me.ButtonRemoveSched})
+        Me.ExplorerBarGroupItemSchedule.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemViewAssignedSched, Me.ButtonAssignSched, Me.ButtonItemAddSchedule, Me.ButtonItemModifySubjects, Me.ButtonRemoveSched})
         Me.ExplorerBarGroupItemSchedule.Text = "Schedule Management"
         '
         '
@@ -199,7 +200,7 @@ Partial Class AdminPage
         Me.ExplorerBarGroupItemSubjectManagement.Image = Global.SchedulingSystem.My.Resources.Resources.subject_icon
         Me.ExplorerBarGroupItemSubjectManagement.Name = "ExplorerBarGroupItemSubjectManagement"
         Me.ExplorerBarGroupItemSubjectManagement.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors
-        Me.ExplorerBarGroupItemSubjectManagement.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemViewSubjects, Me.ButtonItemModifySubjects})
+        Me.ExplorerBarGroupItemSubjectManagement.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemViewSubjects})
         Me.ExplorerBarGroupItemSubjectManagement.Text = "Subject Management"
         '
         '
@@ -240,7 +241,7 @@ Partial Class AdminPage
         Me.ButtonItemModifySubjects.HotForeColor = System.Drawing.Color.FromArgb(CType(CType(66, Byte), Integer), CType(CType(142, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.ButtonItemModifySubjects.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None
         Me.ButtonItemModifySubjects.Name = "ButtonItemModifySubjects"
-        Me.ButtonItemModifySubjects.Text = "Modify Subjects"
+        Me.ButtonItemModifySubjects.Text = "Modify Schedule"
         '
         'ExplorerBarGroupItemEmployee
         '
@@ -507,8 +508,8 @@ Partial Class AdminPage
         'GroupBoxContainer
         '
         Me.GroupBoxContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBoxContainer.Controls.Add(Me.lblNavigate)
         Me.GroupBoxContainer.Controls.Add(Me.ControlViewSubjects1)
         Me.GroupBoxContainer.Controls.Add(Me.ControlViewAssignedSchedule1)
@@ -525,7 +526,7 @@ Partial Class AdminPage
         Me.lblNavigate.AutoSize = True
         Me.lblNavigate.Location = New System.Drawing.Point(84, 175)
         Me.lblNavigate.Name = "lblNavigate"
-        Me.lblNavigate.Size = New System.Drawing.Size(303, 23)
+        Me.lblNavigate.Size = New System.Drawing.Size(302, 23)
         Me.lblNavigate.TabIndex = 2
         Me.lblNavigate.Text = "click an item to the right to start."
         '
@@ -551,15 +552,15 @@ Partial Class AdminPage
         'lblSystemName
         '
         Me.lblSystemName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblSystemName.AutoSize = True
         Me.lblSystemName.Font = New System.Drawing.Font("Arial Black", 9.5!)
         Me.lblSystemName.Location = New System.Drawing.Point(600, 3)
         Me.lblSystemName.Name = "lblSystemName"
-        Me.lblSystemName.Size = New System.Drawing.Size(243, 90)
+        Me.lblSystemName.Size = New System.Drawing.Size(242, 90)
         Me.lblSystemName.TabIndex = 13
         Me.lblSystemName.Text = "Centro Escolar University" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Computer Educaton Department" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Faculty Workload" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Sche" & _
-    "duling System"
+            "duling System"
         Me.lblSystemName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'PictureBox1

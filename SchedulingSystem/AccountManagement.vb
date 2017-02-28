@@ -197,4 +197,36 @@ Class AccountManagement
         ComboBoxUsertype.Text = ""
         txtFname.Focus()
     End Sub
+
+    Private Sub btn_DeleteEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_DeleteEdit.Click
+        Try
+            Dim confirm As DialogResult = MessageBox.Show(Me, "Are you sure you want to delete the account of " & txtFnameEdit.Text & " " & txtLnameEdit.Text & "?", SystemTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If confirm = DialogResult.Yes Then
+                MySQLConn.Open()
+                comm = New MySqlCommand("DELETE FROM userlist WHERE usertype=@usertype AND username=@username AND fname=@firstname AND lname=@lastname", MySQLConn)
+                comm.Parameters.AddWithValue("usertype", ComboBoxUsertypeEdit.Text)
+                comm.Parameters.AddWithValue("username", txtUsernameEdit.Text)
+                comm.Parameters.AddWithValue("firstname", txtFnameEdit.Text)
+                comm.Parameters.AddWithValue("lastname", txtLnameEdit.Text)
+                comm.ExecuteNonQuery()
+                MySQLConn.Close()
+                Load_Accounts()
+                PanelTools.Hide()
+                EntryText = ""
+                txtFnameEdit.Text = ""
+                txtMnameEdit.Text = ""
+                txtLnameEdit.Text = ""
+                txtUsernameEdit.Text = ""
+                txtPasswordEdit.Text = ""
+                txtRetypePasswordEdit.Text = ""
+                DataGridViewAccounts.Enabled = True
+                MsgBox("The Account has been successfully Deleted!", MsgBoxStyle.Information, SystemTitle)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            MySQLConn.Dispose()
+        End Try
+
+    End Sub
 End Class

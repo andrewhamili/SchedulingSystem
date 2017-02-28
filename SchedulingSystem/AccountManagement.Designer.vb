@@ -63,6 +63,7 @@ Partial Class AccountManagement
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtMname = New System.Windows.Forms.TextBox()
         Me.txtRetypePassword = New System.Windows.Forms.TextBox()
+        Me.btn_DeleteEdit = New System.Windows.Forms.Button()
         Me.PanelEditOrDelete.SuspendLayout()
         CType(Me.DataGridViewAccounts, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelTools.SuspendLayout()
@@ -108,6 +109,7 @@ Partial Class AccountManagement
         '
         'PanelTools
         '
+        Me.PanelTools.Controls.Add(Me.btn_DeleteEdit)
         Me.PanelTools.Controls.Add(Me.Label9)
         Me.PanelTools.Controls.Add(Me.txtFnameEdit)
         Me.PanelTools.Controls.Add(Me.btn_ClearEdit)
@@ -149,7 +151,7 @@ Partial Class AccountManagement
         '
         'btn_ClearEdit
         '
-        Me.btn_ClearEdit.Location = New System.Drawing.Point(214, 268)
+        Me.btn_ClearEdit.Location = New System.Drawing.Point(268, 268)
         Me.btn_ClearEdit.Name = "btn_ClearEdit"
         Me.btn_ClearEdit.Size = New System.Drawing.Size(97, 44)
         Me.btn_ClearEdit.TabIndex = 29
@@ -201,7 +203,7 @@ Partial Class AccountManagement
         '
         'btn_Cancel
         '
-        Me.btn_Cancel.Location = New System.Drawing.Point(317, 268)
+        Me.btn_Cancel.Location = New System.Drawing.Point(371, 268)
         Me.btn_Cancel.Name = "btn_Cancel"
         Me.btn_Cancel.Size = New System.Drawing.Size(100, 44)
         Me.btn_Cancel.TabIndex = 30
@@ -271,7 +273,7 @@ Partial Class AccountManagement
         '
         'btn_SaveEdit
         '
-        Me.btn_SaveEdit.Location = New System.Drawing.Point(100, 268)
+        Me.btn_SaveEdit.Location = New System.Drawing.Point(40, 268)
         Me.btn_SaveEdit.Name = "btn_SaveEdit"
         Me.btn_SaveEdit.Size = New System.Drawing.Size(108, 44)
         Me.btn_SaveEdit.TabIndex = 28
@@ -456,6 +458,15 @@ Partial Class AccountManagement
         Me.txtRetypePassword.TabIndex = 7
         Me.txtRetypePassword.UseSystemPasswordChar = True
         '
+        'btn_DeleteEdit
+        '
+        Me.btn_DeleteEdit.Location = New System.Drawing.Point(154, 268)
+        Me.btn_DeleteEdit.Name = "btn_DeleteEdit"
+        Me.btn_DeleteEdit.Size = New System.Drawing.Size(108, 44)
+        Me.btn_DeleteEdit.TabIndex = 28
+        Me.btn_DeleteEdit.Text = "Delete"
+        Me.btn_DeleteEdit.UseVisualStyleBackColor = True
+        '
         'AccountManagement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -521,4 +532,5 @@ Partial Class AccountManagement
     Friend WithEvents txtMnameEdit As System.Windows.Forms.TextBox
     Friend WithEvents txtRetypePasswordEdit As System.Windows.Forms.TextBox
     Friend WithEvents BtnClose As System.Windows.Forms.Button
+    Friend WithEvents btn_DeleteEdit As System.Windows.Forms.Button
 End Class
