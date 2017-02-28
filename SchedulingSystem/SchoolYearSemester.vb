@@ -53,14 +53,14 @@ Class SchoolYearSemester
                 ElseIf copyexist = DialogResult.No Then
                     MySQLConn.Open()
                     comm = New MySqlCommand("CREATE TABLE `subjectlist" & ComboBoxSchoolYear.Text + ComboBoxSemester.Text & "` LIKE subjectlist;CREATE TABLE `assignedsubj" & ComboBoxSchoolYear.Text + ComboBoxSemester.Text & "` LIKE assignedsubj;CREATE TABLE `roomlist" & ComboBoxSchoolYear.Text + ComboBoxSemester.Text & "` LIKE roomlist;", MySQLConn)
-                    comm.ExecuteReader()
+                    comm.ExecuteNonQuery()
                     MySQLConn.Close()
                     MySQLConn.Open()
                     comm = New MySqlCommand("INSERT INTO existingschoolyearsemester VALUES(@schoolyear, @semester, @isActive);", MySQLConn)
                     comm.Parameters.AddWithValue("schoolyear", ComboBoxSchoolYear.Text)
                     comm.Parameters.AddWithValue("semester", ComboBoxSemester.Text)
                     comm.Parameters.AddWithValue("isActive", "false")
-                    comm.ExecuteReader()
+                    comm.ExecuteNonQuery()
                     MsgBox("The School Year and Semester has been successfully created. You can now Load it by clicking the 'Load' Button.", MsgBoxStyle.Information, SystemTitle)
                     MySQLConn.Close()
                 Else
