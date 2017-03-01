@@ -183,7 +183,7 @@ Partial Class ManageSchedule
         Me.btnCancel1.Name = "btnCancel1"
         Me.btnCancel1.Size = New System.Drawing.Size(115, 40)
         Me.btnCancel1.TabIndex = 61
-        Me.btnCancel1.Text = "Cancel"
+        Me.btnCancel1.Text = "Close"
         Me.btnCancel1.UseVisualStyleBackColor = True
         '
         'btnModify

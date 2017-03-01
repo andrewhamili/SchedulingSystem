@@ -57,7 +57,7 @@ Class AccountManagement
             MsgBox("Password cannot be blank!", MsgBoxStyle.Critical, SystemTitle)
             Exit Sub
         End If
-        If txtFnameEdit.Text = "" Or txtLnameEdit.Text = "" Or txtMnameEdit.Text = "" Or txtUsernameEdit.Text = "" Then
+        If txtFnameEdit.Text = "" Or txtLnameEdit.Text = "" Or txtUsernameEdit.Text = "" Then
             MsgBox("Please select an account.", MsgBoxStyle.Critical, SystemTitle)
             Exit Sub
         End If
@@ -169,6 +169,8 @@ Class AccountManagement
 
     Private Sub DataGridViewAccounts_CellDoubleClick1(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewAccounts.CellDoubleClick
         If e.RowIndex >= 0 Then
+            txtRetypePasswordEdit.Text = ""
+            txtPasswordEdit.Text = ""
             Dim row As DataGridViewRow = DataGridViewAccounts.Rows(e.RowIndex)
             txtFnameEdit.Text = row.Cells("First Name").Value
             txtMnameEdit.Text = row.Cells("Middle Name").Value
