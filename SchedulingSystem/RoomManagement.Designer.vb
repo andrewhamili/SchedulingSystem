@@ -22,6 +22,7 @@ Partial Class RoomManagement
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RoomManagement))
         Me.txtRoom = New System.Windows.Forms.TextBox()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.ListBoxRoom = New System.Windows.Forms.ListBox()
@@ -96,12 +97,13 @@ Partial Class RoomManagement
         Me.Controls.Add(Me.txtRoom)
         Me.Controls.Add(Me.btnClose)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "RoomManagement"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "RoomManagement"
+        Me.Text = "Room Management"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

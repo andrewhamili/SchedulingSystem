@@ -60,10 +60,10 @@ Public Class LoginPage
                     usertype = reader.GetString("usertype")
                     Dim welcomename As String = activeuserfname + " " + activeuserlname
                     Dim UserPageName As String = activeuserlname + ", " + activeuserfname
-                    AdminPage.lblName.Text = "Welcome!, " & welcomename & ""
+                    Form2.lblName.Text = "Welcome!, " & welcomename & ""
                     Get_Active_SchoolYearSemester()
                     If usertype = "Administrator" Then
-                        AdminPage.Show()
+                        Form2.Show()
                         Status = True
                         'UpForm.Show()
                     ElseIf usertype = "Guest" Then
@@ -150,6 +150,8 @@ Public Class LoginPage
                 Semester = reader.GetString("semester")
             End While
             MySQLConn.Close()
+            Form2.lbl_SchoolYear.Text = SchoolYear
+            Form2.lbl_Semester.Text = Semester
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally

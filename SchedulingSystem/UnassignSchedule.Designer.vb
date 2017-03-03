@@ -238,12 +238,15 @@ Partial Class UnassignSchedule
         Me.Controls.Add(Me.ComboBoxClasscode)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(558, 459)
+        Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(558, 459)
         Me.Name = "UnassignSchedule"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "UnassignSchedule"
+        Me.Text = "Unassign Schedule"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

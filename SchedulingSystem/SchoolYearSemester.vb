@@ -21,7 +21,7 @@ Class SchoolYearSemester
     End Sub
 
     Private Sub SchoolYearSemester_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
-        AdminPage.Show()
+        Form2.Show()
     End Sub
 
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
@@ -141,6 +141,8 @@ Class SchoolYearSemester
                     .AddWithValue("semester", ComboBoxSemester.Text)
                 End With
                 comm.ExecuteReader()
+                Form2.lbl_SchoolYear.Text = ComboBoxSchoolYear.Text
+                Form2.lbl_Semester.Text = ComboBoxSemester.Text
                 MsgBox("The School Year and Semester is now loaded!", MsgBoxStyle.Information, SystemTitle)
                 MySQLConn.Close()
             Else
@@ -225,6 +227,7 @@ Class SchoolYearSemester
                 files.MoveTo(SFD_Database.FileName)
                 Dim dbfile As New FileInfo("db.sql")
                 dbfile.Delete()
+                MessageBox.Show(Me, "Backup successful.", SystemTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
         Catch ex As Exception
@@ -234,27 +237,52 @@ Class SchoolYearSemester
         End Try
     End Sub
     Public Sub RestoreDB()
+        Dim confirm As DialogResult = MessageBox.Show(Me, "Are you sure you want to restore a backup?" & vbNewLine & vbNewLine & "Any changes will be reversed to the state of the backup that will be selected.", SystemTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        If confirm = DialogResult.No Then
+            Exit Sub
+        End If
         If OpenFileDialog_Database.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
             If MySQLConn.State = ConnectionState.Open Then
                 MySQLConn.Close()
             End If
             Dim DBRestore As New MySqlBackup
-            MySQLConn.ConnectionString = connstring & database
+            MySQLConn.ConnectionString = connstring
             Try
                 MySQLConn.Open()
                 comm = New MySqlCommand
                 comm.Connection = MySQLConn
                 DBRestore = New MySqlBackup(comm)
-                With DBRestore
-                    .ImportFromFile(OpenFileDialog_Database.FileName)
+                Dim archive As New Process
+                With archive
+                    With .StartInfo
+                        .WindowStyle = ProcessWindowStyle.Hidden
+                        .CreateNoWindow = True
+                        .FileName = "7z.exe"
+                        .Arguments = "e " & OpenFileDialog_Database.FileName & " -aoa -p123"
+                    End With
+                    .Start()
+                    .WaitForExit()
                 End With
+                With DBRestore
+                    .ImportInfo.EnableEncryption = True
+                    .ImportInfo.EncryptionPassword = "a"
+
+                    .ImportFromFile("db.sql")
+                End With
+                Dim file As New FileInfo("db.sql")
+                file.Delete()
                 MySQLConn.Close()
+                MessageBox.Show(Me, "Restore successful.", SystemTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Catch ex As Exception
                 MsgBox(ex.Message)
             Finally
                 MySQLConn.Dispose()
             End Try
         End If
-        
+
+    End Sub
+
+    Private Sub btnRestore_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRestore.Click
+        RestoreDB()
     End Sub
 End Class

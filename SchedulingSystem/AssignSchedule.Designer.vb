@@ -425,7 +425,7 @@ Partial Class AssignSchedule
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "AssignSchedule"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AssignSchedule"
+        Me.Text = "Assign Schedule"
         CType(Me.DataGridViewPendingList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBoxEmployeeInfo.ResumeLayout(False)
         Me.GroupBoxEmployeeInfo.PerformLayout()

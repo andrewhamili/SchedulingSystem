@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class AdminPage
+Public Class Form2
 
     Public adapter As New MySqlDataAdapter
     Public bsource As New BindingSource
@@ -115,7 +115,7 @@ Public Class AdminPage
         End If
     End Sub
 
-    Private Sub ButtonPrintAssignedSched_Click(sender As System.Object, e As System.EventArgs) Handles ButtonPrintAssignedSched.Click
+    Private Sub ButtonPrintAssignedSched_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonPrintAssignedSched.Click
         PrintAction = "AllSched"
 
         PrepareDataForPrintingAllSchedules()
@@ -152,7 +152,7 @@ Public Class AdminPage
         End Try
     End Sub
 
-    Private Sub ButtonItemViewSubjects_Click(sender As System.Object, e As System.EventArgs) Handles ButtonItemViewSubjects.Click
+    Private Sub ButtonItemViewSubjects_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemViewSubjects.Click
         GroupBoxContainer.Text = "Subjects list"
         ControlViewAssignedSchedule1.Hide()
         ControlViewSubjects1.Show()
@@ -160,7 +160,7 @@ Public Class AdminPage
         lblNavigate.SendToBack()
     End Sub
 
-    Private Sub ButtonItemModifySubjects_Click(sender As System.Object, e As System.EventArgs) Handles ButtonItemModifySubjects.Click
+    Private Sub ButtonItemModifySubjects_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonItemModifySubjects.Click
         ManageSchedule.ShowDialog()
     End Sub
 

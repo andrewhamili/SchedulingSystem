@@ -97,7 +97,7 @@ Class UnassignSchedule
             .Enabled = True
             .Text = ""
         End With
-        AdminPage.dbdataset.Clear()
+        Form2.dbdataset.Clear()
         ComboBoxClasscode.Focus()
     End Sub
     Private Sub ComboBoxClasscode_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxClasscode.SelectedIndexChanged

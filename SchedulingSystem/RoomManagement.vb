@@ -32,6 +32,11 @@ Class RoomManagement
 
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         Dim response As DialogResult = MsgBox("Sure to add this room?" & vbCrLf + vbCrLf & "NOTE: The system cannot detect room duplication if it has a different Character casing or spacing to a duplicate item. So, you should double check the added rooms.", MsgBoxStyle.Question + MsgBoxStyle.YesNo, SystemTitle)
+
+        If txtRoom.Text = "" Then
+            MsgBox("Please enter a room!", MsgBoxStyle.Critical, SystemTitle)
+            Exit Sub
+        End If
         If response = DialogResult.No Then
             Exit Sub
         End If
@@ -46,6 +51,12 @@ Class RoomManagement
             comm.ExecuteNonQuery()
             MsgBox("The room has been successfully added to the list!", MsgBoxStyle.Information, SystemTitle)
             MySQLConn.Close()
+        Catch ex As MySqlException
+            If ex.Number = 1062 Then
+                MessageBox.Show(Me, "The room exists.", SystemTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                MessageBox.Show(Me, ex.Number & vbNewLine & ex.Message, SystemTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
